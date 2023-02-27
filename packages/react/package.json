@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && next export -o output",
     "start": "next start",
     "lint": "next lint"
   },
@@ -17,5 +17,9 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "typescript": "4.9.5"
+  },
+  "devDependencies": {
+    "@unocss/postcss": "^0.50.1",
+    "sass": "^1.58.3"
   }
 }

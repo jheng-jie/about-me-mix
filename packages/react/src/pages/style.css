@@ -1,0 +1,6 @@
+@unocss;
+
+html,
+body {
+  @apply grid select-none transition-all;
+}

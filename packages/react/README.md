@@ -1,38 +1,57 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Next 13 + Webpack
 
-## Getting Started
+---
 
-First, run the development server:
+## SASS 預處理
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+> 隨插即用
+
+```sh
+yarn add -D sass
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## Atomic
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+> 使用 [@unocss/postcss](https://github.com/unocss/unocss/tree/main/packages/postcss) 非穩定版
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- `install`
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+  ```sh
+  yarn add -D unocss @unocss/postcss
+  ```
+  
+- `postcss.config.js` 新增 `plugins`
 
-## Learn More
+- `uno.config.js` 新增 `UnoCSS` 設定
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## i18n
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## Store
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## SSG
+
+---
+
+## 相容性
+
+> 內建 SWC 設定
+
+- `.swcrc` 設定
+
+- `next.config.js` 依賴需要額外設定
+
+  ```js
+  module.exports = {
+    transpilePackages: ['@pixi']
+  }
+  ```
+
+---
