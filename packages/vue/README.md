@@ -2,7 +2,7 @@
 
 ---
 
-## `SASS` 預處理
+## SASS 預處理
 
 > 隨插即用
 
@@ -12,7 +12,7 @@ yarn add -D sass
 
 ---
 
-## `Atomic`
+## Atomic
 
 > 使用 [UnoCSS](https://github.com/unocss/unocss)
 
@@ -40,7 +40,7 @@ yarn add -D sass
 
 ---
 
-## `i18n`
+## i18n
 
 > 使用 [@nuxtjs/i18n@next](https://v8.i18n.nuxtjs.org/getting-started/setup)
 
@@ -74,9 +74,32 @@ yarn add -D sass
 
 ---
 
-## `Static Route`
+## Store
 
-> 預設就包含語系路由
+> 使用 [Pinia](https://pinia.vuejs.org/)
+
+- `install`
+
+  ```sh
+  yarn add pinia @pinia/nuxt
+  ```
+
+- `nuxt.config.ts`
+
+  ```ts
+  export default defineNuxtConfig({
+    modules: [
+      // pinia
+      '@pinia/nuxt',
+    ],
+  })
+  ```
+
+---
+
+## SSG
+
+- 預設就包含語系路由
 
 - 更方便設定 [SEO](https://github.com/harlan-zw/nuxt-seo-kit)
 

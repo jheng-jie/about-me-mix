@@ -27,7 +27,17 @@ export default defineNuxtConfig({
     '@unocss/nuxt',
     // i18n
     '@nuxtjs/i18n',
+    // pinia
+    [
+      '@pinia/nuxt',
+      {
+        autoImports: ['defineStore', 'storeToRefs'],
+      },
+    ],
   ],
+
+  // 申明 plugins
+  plugins: [{ src: '~/plugins/initialize.ts', mode: 'client' }],
 
   // 開發資料夾
   srcDir: './src',

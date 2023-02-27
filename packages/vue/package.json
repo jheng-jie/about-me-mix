@@ -16,6 +16,8 @@
     "sass": "^1.58.3"
   },
   "dependencies": {
-    "@about-me-mix/common": "^1.0.0"
+    "@about-me-mix/common": "^1.0.0",
+    "@pinia/nuxt": "^0.4.7",
+    "pinia": "^2.0.32"
   }
 }

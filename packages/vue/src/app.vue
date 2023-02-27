@@ -6,7 +6,6 @@
 
 <script lang="ts" setup>
 const { t, locale: lang } = useI18n()
-
 const route = useRoute()
 
 useHead({
