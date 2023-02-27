@@ -3,12 +3,14 @@
   import Layout from '@/layouts/index.svelte'
   import { initialize } from '@/stores'
   import { page } from '$app/stores'
-  import { base } from '$app/paths'
 
   // route name
-  const site = String($page.route?.id || '')
-    .replace(/\/\[locale]\//, '')
-    .toUpperCase()
+  let site = ''
+  $: {
+    site = String($page.route?.id || '')
+      .replace(/\/\[locale]\//, '')
+      .toUpperCase()
+  }
   // store initialize
   initialize()
 </script>
