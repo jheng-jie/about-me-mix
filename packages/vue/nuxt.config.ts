@@ -1,3 +1,4 @@
+import type { NuxtConfig } from '@nuxt/schema'
 import { DEFAULT_LOCALE, SUPPORTS_LOCALES } from '@about-me-mix/common/config.json'
 import { messages } from './src/core/i18n'
 import transformerDirectives from '@unocss/transformer-directives'
@@ -5,7 +6,6 @@ import unoPreset from '@unocss/preset-uno'
 
 /**
  * @desc https://nuxt.com/docs/api/configuration/nuxt-config
- * @type {NuxtConfig}
  */
 export default defineNuxtConfig({
   runtimeConfig: {
@@ -65,6 +65,7 @@ export default defineNuxtConfig({
       locale: DEFAULT_LOCALE,
       fallbackLocale: DEFAULT_LOCALE,
     },
+    trailingSlash: true,
   },
 
   vite: {
@@ -78,4 +79,4 @@ export default defineNuxtConfig({
 
   // 組件設定，可用於多商戶配置，此專案不需要
   components: {},
-})
+} as NuxtConfig)
