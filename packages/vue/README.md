@@ -1,42 +1,87 @@
-# Nuxt 3 Minimal Starter
+# Nuxt 3 + Vite
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+---
 
-## Setup
+## `SASS` 預處理
 
-Make sure to install the dependencies:
+> 隨插即用
 
-```bash
-# yarn
-yarn install
-
-# npm
-npm install
-
-# pnpm
-pnpm install
+```sh
+yarn add -D sass
 ```
 
-## Development Server
+---
 
-Start the development server on http://localhost:3000
+## `Atomic`
 
-```bash
-npm run dev
-```
+> 使用 [UnoCSS](https://github.com/unocss/unocss)
 
-## Production
+- `install`
 
-Build the application for production:
+  ```sh
+  yarn add -D @unocss/nuxt
+  ```
 
-```bash
-npm run build
-```
+- `nuxt.config.ts`
 
-Locally preview production build:
+  ```ts
+  export default defineNuxtConfig({
+    // 自動引用樣式
+    css: [
+      // UnoCSS use reset TailwindCSS
+      '@unocss/reset/tailwind.css',
+    ],
+    modules: [
+      // unocss
+      '@unocss/nuxt',
+    ],
+  })
+  ```
 
-```bash
-npm run preview
-```
+---
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+## `i18n`
+
+> 使用 [@nuxtjs/i18n@next](https://v8.i18n.nuxtjs.org/getting-started/setup)
+
+- `install`
+
+  ```sh
+  yarn add -D @nuxtjs/i18n@next
+  ```
+
+- `nuxt.config.ts`
+
+  ```ts
+  export default defineNuxtConfig({
+    modules: [
+      // i18n
+      '@nuxtjs/i18n',
+    ],
+    i18n: {
+      defaultLocale: config.DEFAULT_LOCALE,
+      locales: config.SUPPORTS_LOCALES,
+      // 預設語系也產出 static
+      strategy: 'prefix_and_default',
+      vueI18n: {
+        messages,
+        legacy: false,
+        locale: config.DEFAULT_LOCALE,
+      },
+    },
+  })
+  ```
+
+---
+
+## `Static Route`
+
+> 預設就包含語系路由
+
+- 更方便設定 [SEO](https://github.com/harlan-zw/nuxt-seo-kit)
+
+  ```sh
+  yarn add nuxt-seo-kit
+  ```
+
+---
