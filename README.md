@@ -10,15 +10,21 @@
 
 ---
 
-## 預計開發目標
+## 預計研究項目
 
-- `sass` + `atomic css`
+- 每個框架都使用 `sass` + `atomic css`
 
-- `i18n` + `static route`
+- 語系 `i18n`
 
-- `browser compatibility`
+- 持久化數據 `store`
 
-- `github page`
+- 動畫 `transitions`
+
+- 靜態路由 `SSG`
+
+- 相容性 `browser compatibility`
+
+- 發佈 `github page`
 
 ---
 
