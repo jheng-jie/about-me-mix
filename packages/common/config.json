@@ -1,0 +1,4 @@
+{
+  "DEFAULT_LOCALE": "zh",
+  "SUPPORTS_LOCALES": ["en", "zh"]
+}
