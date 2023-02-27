@@ -29,7 +29,7 @@
 - 為了 `README.md` 可以自動排版 😆
 
   ```sh
-  yarn add prettier -W
+  yarn add prettier prettier-plugin-svelte -W
   ```
 
 - 建立工作區專案
@@ -127,7 +127,7 @@
 - 建立專案
 
   ```sh
-   npm create svelte@3 svelte
+  cd packgages && npm create svelte@3 svelte
   ```
 
 - `packages/svelte/package.json`
