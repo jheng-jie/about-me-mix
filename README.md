@@ -38,21 +38,39 @@
   mkdir packages
   ```
 
-  - 建立 [Vue](#vue-ssg-project) 專案
+  1. 建立 [Vue](#vue-ssg-project) 專案
 
-  - 建立 [React](#react-ssg-project) 專案
+  2. 建立 [React](#react-ssg-project) 專案
 
-  - 建立 [Svelte](#svelte-ssg-project) 專案
+  3. 建立 [Svelte](#svelte-ssg-project) 專案
 
-- `package.json` 新增指令
+  4. `package.json` 新增指令
 
-  ```sh
+     ```sh
+     {
+       "scripts": {
+         "vue": "yarn workspace @about-me-mix/vue dev",
+         "react": "yarn workspace @about-me-mix/react dev",
+         "svelte": "yarn workspace @about-me-mix/svelte dev"
+       }
+     }
+     ```
+
+- 新增 `tsconfig.json`
+
+  ```json
   {
-    "scripts": {
-      "vue": "yarn workspace @about-me-mix/vue dev",
-      "react": "yarn workspace @about-me-mix/react dev",
-      "svelte": "yarn workspace @about-me-mix/svelte dev"
-    }
+    "references": [
+      {
+        "path": "./packages/vue/tsconfig.json"
+      },
+      {
+        "path": "./packages/svelte/tsconfig.json"
+      },
+      {
+        "path": "./packages/react/tsconfig.json"
+      }
+    ]
   }
   ```
 
