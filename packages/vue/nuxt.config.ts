@@ -1,5 +1,7 @@
 import { DEFAULT_LOCALE, SUPPORTS_LOCALES } from '@about-me-mix/common/config.json'
 import { messages } from './src/core/i18n'
+import transformerDirectives from '@unocss/transformer-directives'
+import unoPreset from '@unocss/preset-uno'
 
 /**
  * @desc https://nuxt.com/docs/api/configuration/nuxt-config
@@ -35,6 +37,15 @@ export default defineNuxtConfig({
       },
     ],
   ],
+
+  // CSS 原子設計模式
+  unocss: {
+    transformers: [
+      // for --at-apply
+      transformerDirectives(),
+    ],
+    presets: [unoPreset()],
+  },
 
   // 申明 plugins
   plugins: [{ src: '~/plugins/initialize.ts', mode: 'client' }],
