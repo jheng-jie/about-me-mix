@@ -1,38 +1,110 @@
-# create-svelte
+# SvelteKit + Vite
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+---
 
-## Creating a project
+## SASS 預處理
 
-If you're seeing this, you've probably already done this step. Congrats!
+> 隨插即用
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
+```sh
+yarn add -D sass
 ```
 
-## Developing
+---
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+## Atomic
 
-```bash
-npm run dev
+> 使用 [UnoCSS](https://github.com/unocss/unocss)
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+- `install`
 
-## Building
+  ```sh
+  yarn add -D unocss
+  ```
 
-To create a production version of your app:
+- `vite.config.ts`
 
-```bash
-npm run build
-```
+  ```ts
+  import UnoCSS from 'unocss/vite'
+  import { extractorSvelte } from 'unocss'
+  import transformerDirectives from '@unocss/transformer-directives'
 
-You can preview the production build with `npm run preview`.
+  export default defineConfig({
+    plugins: [
+      // atomic css
+      UnoCSS({
+        transformers: [
+          // for --at-apply:
+          transformerDirectives(),
+        ],
+        extractors: [extractorSvelte],
+      }),
+    ],
+  })
+  ```
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+---
+
+## i18n
+
+> 使用 [sveltekit-i18n](https://github.com/sveltekit-i18n/lib#readme)
+
+- `install`
+
+  ```sh
+  yarn add sveltekit-i18n
+  ```
+
+- `./src/core/i18n/index.ts` 語系設定
+
+- `./src/routes/+layout.ts` 入口加載語系
+
+- `./src/hooks.server.ts` 入口覆蓋 `html lang`
+
+---
+
+## Store
+
+> 使用內建響應性數據
+
+- `stores/index.ts`
+
+---
+
+## SSG
+
+> 需要額外裝 [@sveltejs/adapter-static](https://github.com/sveltejs/kit)
+
+- `install`
+
+  ```sh
+  yarn add -D @sveltejs/adapter-static
+  ```
+
+- `svelte.config.js` 覆蓋 `adapter`
+
+- `static route`
+
+  1. `./src/routes/[locale]/*` 新增動態路由
+
+  2. `svelte.config.js` 註冊路由
+
+  ```js
+  export default {
+    kit: {
+      prerender: {
+        entries: ['./home/', './forbidden/', '...']
+      },
+    }
+  }
+  ```
+
+---
+
+## 相容性
+
+- [#12](https://github.com/sveltejs/kit/issues/12)
+
+- [#6265](https://github.com/sveltejs/kit/pull/6265) 似乎快可以兼容舊版
+
+---
