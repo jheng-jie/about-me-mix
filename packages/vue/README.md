@@ -85,3 +85,19 @@ yarn add -D sass
   ```
 
 ---
+
+## 相容性
+
+- 只能用慘淡來形容
+
+- [#15464](https://github.com/nuxt/nuxt/issues/15464)
+
+- [#14893](https://github.com/nuxt/nuxt/issues/14893)
+
+- [#14634](https://github.com/nuxt/nuxt/issues/14634)
+
+- [#12577](https://github.com/nuxt/nuxt/issues/12577)
+
+- [#11642](https://github.com/nuxt/nuxt/issues/11642)
+
+---
