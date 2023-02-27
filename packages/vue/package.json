@@ -11,5 +11,8 @@
   },
   "devDependencies": {
     "nuxt": "^3.2.2"
+  },
+  "dependencies": {
+    "@about-me-mix/common": "^1.0.0"
   }
 }

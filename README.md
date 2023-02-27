@@ -20,7 +20,8 @@
 
   `package.json`
 
-  ```json
+  ```json5
+  // 新增工作區
   {
     "workspaces": ["packages/*"]
   }
@@ -73,6 +74,8 @@
     ]
   }
   ```
+
+- 新增 [Common](#common-project) 工作區
 
 ---
 
@@ -138,6 +141,29 @@
     name: '@about-me-mix/svelte',
     version: '1.0.0',
   }
+  ```
+
+---
+
+## Common Project
+
+> 放置共用腳本
+
+- 各專案 `loader` 依舊是獨立的，需要注意寫法是否衝突
+
+- 建立專案
+
+  ```sh
+  mkdir -p packages/common/ && cd packages/common/
+  yarn init
+  ```
+
+- 每個專案都安裝此依賴
+
+  ```sh
+  yarn workspace @about-me-mix/vue add @about-me-mix/common@^1.0.0
+  yarn workspace @about-me-mix/react add @about-me-mix/common@^1.0.0
+  yarn workspace @about-me-mix/svelte add @about-me-mix/common@^1.0.0
   ```
 
 ---
