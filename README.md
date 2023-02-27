@@ -10,6 +10,18 @@
 
 ---
 
+## 預計開發目標
+
+- `sass` + `atomic css`
+
+- `i18n` + `static route`
+
+- `browser compatibility`
+
+- `github page`
+
+---
+
 ## History
 
 - 初始化專案
@@ -76,6 +88,8 @@
   ```
 
 - 新增 [Common](#common-project) 工作區
+
+- 依照各框架實現計畫
 
 ---
 
