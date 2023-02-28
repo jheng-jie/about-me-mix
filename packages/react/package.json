@@ -4,18 +4,28 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && next export -o output",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
     "@about-me-mix/common": "^1.0.0",
+    "@reduxjs/toolkit": "^1.9.3",
     "@types/node": "18.14.2",
     "@types/react": "18.0.28",
     "@types/react-dom": "18.0.11",
+    "i18next": "^22.4.10",
     "next": "13.2.1",
+    "next-i18next": "^13.1.6",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-i18next": "^12.2.0",
+    "react-redux": "^8.0.5",
     "typescript": "4.9.5"
+  },
+  "devDependencies": {
+    "@unocss/postcss": "^0.50.1",
+    "next-seo": "^5.15.0",
+    "sass": "^1.58.3"
   }
 }
