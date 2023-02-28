@@ -1,4 +1,5 @@
 import React from 'react'
+import Header from '@/components/header/index'
 
 /**
  * @desc 預設布局
@@ -6,7 +7,7 @@ import React from 'react'
 export default ({ children }: { children: React.ReactNode }) => {
   return (
     <>
-      <div>header</div>
+      <Header />
       {children}
     </>
   )
