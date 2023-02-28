@@ -44,6 +44,16 @@ yarn add -D sass
 
 ## Store
 
+> 使用 [Redux Toolkit](https://github.com/reduxjs/redux-toolkit)
+
+- `install`
+  
+  ```sh
+  yarn add @reduxjs/toolkit react-redux
+  ```
+  
+- `_app.tsx` 需掛上 `store`
+
 ---
 
 ## SSG

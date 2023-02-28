@@ -1,23 +1,18 @@
-import { useRouter } from 'next/router'
-import { useTranslation } from 'next-i18next'
 import { getStaticPaths, getStaticProps } from '@/core/i18n'
+import { useSelector } from 'react-redux'
+import { RootState } from '@/stores'
 export { getStaticPaths, getStaticProps }
 
 /**
  * @desc 首頁
  */
 export default () => {
-  const router = useRouter()
-  const { t } = useTranslation(['common'])
-
-  const onClick = () => {
-    router.replace('/en/home').catch(console.warn)
-  }
+  const width = useSelector<RootState>(state => state.width)
+  const height = useSelector<RootState>(state => state.width)
 
   return (
-    <main className="bg-blue-500 text-white">
-      <button onClick={onClick}>en</button>
-      {t('website.title')}
-    </main>
+    <div className="bg-red-500 text-white">
+      <span>{`${width} * ${height}`}</span>
+    </div>
   )
 }
