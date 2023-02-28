@@ -5,10 +5,21 @@ const path = require('path')
 const nextConfig = {
   reactStrictMode: true,
 
+  // 實驗性功能，可惜還不支援 export，https://beta.nextjs.org/docs/app-directory-roadmap#planned-features
+  // experimental: {
+  //   appDir: true,
+  // },
+
   // env
   env: {
     ...config,
   },
+
+  // 內建 i18n 不支援 export
+  // i18n: {
+  //   locales: config.SUPPORTS_LOCALES,
+  //   defaultLocale: config.DEFAULT_LOCALE,
+  // },
 
   // base url
   basePath: '/react',
@@ -38,10 +49,10 @@ module.exports = phase => {
      * @desc webpack options
      */
     webpack(config) {
-      return {
-        ...config,
-        cache: isDevelop,
-      }
+      config.resolve.fallback = { fs: false, path: false }
+      config.cache = isDevelop
+
+      return config
     },
   }
 }
