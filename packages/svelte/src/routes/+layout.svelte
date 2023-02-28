@@ -1,6 +1,6 @@
 <script lang="ts">
   import { t } from '@/core/i18n'
-  import Layout from '@/layouts/index.svelte'
+  import Layout from '@/components/layout/index.svelte'
   import { initialize } from '@/stores'
   import { page } from '$app/stores'
 
@@ -11,6 +11,7 @@
       .replace(/\/\[locale]\//, '')
       .toUpperCase()
   }
+
   // store initialize
   initialize()
 </script>

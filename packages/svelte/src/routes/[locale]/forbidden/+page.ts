@@ -1,6 +1,8 @@
+import { LAYOUT } from '@about-me-mix/common/constant'
+
 /** @type {import('./$types').LayoutLoad} */
 export function load() {
   return {
-    layout: 'single',
+    layout: LAYOUT.SINGLE,
   }
 }
