@@ -2,5 +2,8 @@
   "website": {
     "title": "{0} - SSG 混合框架測試",
     "description": "React, Vue, Svelte 靜態站點測試 {0}"
+  },
+  "header": {
+    "title": "About Me"
   }
 }
