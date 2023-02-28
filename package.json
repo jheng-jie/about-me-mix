@@ -7,7 +7,9 @@
   "scripts": {
     "vue": "yarn workspace @about-me-mix/vue dev",
     "react": "yarn workspace @about-me-mix/react dev",
-    "svelte": "yarn workspace @about-me-mix/svelte dev"
+    "svelte": "yarn workspace @about-me-mix/svelte dev",
+    "dev": "sh ./shell/dev.sh",
+    "build": "sh ./shell/build.sh"
   },
   "workspaces": [
     "packages/*"
