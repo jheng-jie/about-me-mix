@@ -1,18 +1,44 @@
-import { getStaticPaths, getStaticProps } from '@/core/i18n'
+import type { ElementPositionProgress } from '@about-me-mix/common/scroll-progess'
+import type { RootState } from '@/stores'
+import { useState, useRef, useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import { RootState } from '@/stores'
+import { getChildrenRect, getElementProgressData } from '@about-me-mix/common/scroll-progess'
+import SectionOpening from '@/components/section/opening'
+import { getStaticPaths, getStaticProps } from '@/core/i18n'
 export { getStaticPaths, getStaticProps }
 
 /**
  * @desc 首頁
  */
 export default () => {
-  const width = useSelector<RootState>(state => state.width)
-  const height = useSelector<RootState>(state => state.width)
+  // progress cache
+  const childrenElement = useRef<ElementPositionProgress[]>([])
+  const [childrenProgressData, setChildrenProgressData] = useState<ElementPositionProgress[]>([])
+
+  // 快取子層位置，避免一直計算
+  const main = useRef<HTMLElement>(null)
+  const sizeUpdateTimestamp = useSelector((state: RootState) => state.sizeUpdateTimestamp)
+  useEffect(() => {
+    if (!main.current) return
+    childrenElement.current = getChildrenRect(main.current)
+  }, [main, sizeUpdateTimestamp])
+
+  // 子層相對捲軸位置計算
+  const onScrollHandler = () => setChildrenProgressData(getElementProgressData(childrenElement.current))
+
+  // listen scroll
+  useEffect(() => {
+    // mounted
+    window.addEventListener('scroll', onScrollHandler)
+    return () => {
+      // unmounted
+      window.removeEventListener('scroll', onScrollHandler)
+    }
+  }, [])
 
   return (
-    <div className="bg-red-500 text-white">
-      <span>{`${width} * ${height}`}</span>
-    </div>
+    <main ref={main} className="min-h-screen w-full bg-blue-100 font-bold text-14px">
+      <SectionOpening progress={childrenProgressData[0]} />
+    </main>
   )
 }

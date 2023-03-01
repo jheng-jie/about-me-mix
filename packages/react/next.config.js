@@ -36,6 +36,9 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+
+  // for swc
+  transpilePackages: ['@about-me-mix'],
 }
 
 module.exports = phase => {
