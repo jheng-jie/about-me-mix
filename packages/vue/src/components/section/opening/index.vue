@@ -35,13 +35,13 @@ watch(scrollProgress, () => {
           <!--box-->
           <div
             :style="{ backgroundImage: `url(${bg[index]})` }"
-            class="h-[100vh] w-full flex flex-col items-center justify-center pb-40px font-medium text-18px bg-center bg-cover"
+            class="h-[100vh] w-full flex flex-col items-center justify-center font-medium text-18px bg-center bg-cover"
           >
-            <img :class="{ 'brightness-0 invert-100': !index }" class="w-300px h-300px" :src="icon" alt="" />
+            <img :class="{ 'brightness-0 invert-100': !index }" class="w-auto h-200px mb-20px" :src="icon" alt="" />
             <h1
               v-t="'section.opening.title'"
               :class="!index ? 'text-white' : 'text-black'"
-              class="text-36px font-black mb-16px -mt-40px"
+              class="text-36px font-black mb-16px"
             />
             <p v-t="'section.opening.desc'" :class="!index ? 'text-gray-400' : 'text-gray-600'" class="mb-16px" />
             <p
