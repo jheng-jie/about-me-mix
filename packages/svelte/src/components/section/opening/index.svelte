@@ -1,0 +1,45 @@
+<script lang="ts">
+  import type { ElementPositionProgress } from '@about-me-mix/common/scroll-progess'
+  import icon from '@about-me-mix/common/assets/svelte.png?url'
+  import top from '@about-me-mix/common/assets/polygon-1412485.jpg?url'
+  import bottom from '@about-me-mix/common/assets/polygon-1412486.jpg?url'
+  import Repeat from './component/repeat.svelte'
+  import { t } from '@/core/i18n'
+
+  const bg = [top, bottom]
+
+  // progress data
+  export let progress: ElementPositionProgress
+
+  // computed progress
+  let container: HTMLDivElement
+  $: if (container && progress && progress.overlapping === 1) {
+    // overflow
+    const mask = container?.children?.[1] as HTMLDivElement
+    if (mask) mask.style.height = `${((1 - progress.progress) * 100).toFixed(2)}%`
+  }
+</script>
+
+<section class="h-[200vh] w-full relative">
+  <div bind:this={container} class="sticky top-0 left-0 h-[100vh] w-full">
+    <Repeat let:index count={2}>
+      <!--mask-->
+      <div class="absolute top-0 left-0 w-full h-full overflow-hidden">
+        <!--box-->
+        <div
+          style:background-image={`url(${bg[index]})`}
+          class="h-[100vh] w-full flex flex-col items-center justify-center font-medium text-18px bg-center bg-cover"
+        >
+          <img class={`w-auto h-200px mb-20px ${!index && 'brightness-0 invert-100'}`} src={icon} alt="" />
+          <h1 class={`text-36px font-black mb-16px ${!index ? 'text-white' : 'text-black'}`}>
+            {$t('section.opening.title')}
+          </h1>
+          <p class={`mb-16px ${!index ? 'text-gray-400' : 'text-gray-600'}`}>{$t('section.opening.desc')}</p>
+          <p class={`${!index ? 'text-gray-400' : 'text-gray-600'}`}>
+            {$t('section.opening.target').replace(/\{0}/, 'SvelteKit')}
+          </p>
+        </div>
+      </div>
+    </Repeat>
+  </div>
+</section>
