@@ -5,5 +5,12 @@
   },
   "header": {
     "title": "About Me"
+  },
+  "section": {
+    "opening": {
+      "title": "這是個簡單的自介網頁",
+      "desc": "上方選單切換不同框架，呈現效果一致",
+      "target": "現在是 {0} 框架"
+    }
   }
 }
