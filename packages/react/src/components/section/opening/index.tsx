@@ -17,14 +17,14 @@ const Content = ({ index }: { index: number }) => {
     <div key={index} className="absolute top-0 left-0 w-full h-full overflow-hidden">
       {/*box*/}
       <div
-        className="h-[100vh] w-full flex flex-col items-center justify-center font-medium text-18px bg-center bg-cover"
+        className="h-[100vh] w-full flex flex-col items-center justify-center font-medium text-4.5 bg-center bg-cover"
         style={{ backgroundImage: `url(${bg[index]})` }}
       >
-        <img src={icon.src} className={`w-auto h-200px mb-20px ${!index && 'brightness-0 invert-100'}`} alt="" />
-        <h1 className={`text-36px font-black mb-16px ${!index ? 'text-white' : 'text-black'}`}>
+        <img src={icon.src} className={`w-auto h-50 mb-5 ${!index && 'brightness-0 invert-100'}`} alt="" />
+        <h1 className={`text-9 font-black mb-4 ${!index ? 'text-white' : 'text-black'}`}>
           {t('section.opening.title')}
         </h1>
-        <p className={`mb-16px ${!index ? 'text-gray-400' : 'text-gray-600'}`}>{t('section.opening.desc')}</p>
+        <p className={`mb-4 ${!index ? 'text-gray-400' : 'text-gray-600'}`}>{t('section.opening.desc')}</p>
         <p className={!index ? 'text-gray-400' : 'text-gray-600'}>{t('section.opening.target', ['Next 13'])}</p>
       </div>
     </div>

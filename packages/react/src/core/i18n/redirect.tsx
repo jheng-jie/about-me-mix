@@ -30,7 +30,7 @@ export const createRedirectMap = (redirects: Array<{ from: string; to: string }>
           {/*meta refresh*/}
           <NextSeo additionalMetaTags={[redirect as any]} />
 
-          <main className="fixed w-full h-full left-0 top-0 flex items-center justify-center text-24px font-bold gray-100 text-gray-500">
+          <main className="fixed w-full h-full left-0 top-0 flex items-center justify-center text-6 font-bold gray-100 text-gray-500">
             redirect...
           </main>
         </>

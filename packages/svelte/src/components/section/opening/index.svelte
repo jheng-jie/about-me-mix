@@ -28,13 +28,13 @@
         <!--box-->
         <div
           style:background-image={`url(${bg[index]})`}
-          class="h-[100vh] w-full flex flex-col items-center justify-center font-medium text-18px bg-center bg-cover"
+          class="h-[100vh] w-full flex flex-col items-center justify-center font-medium text-4.5 bg-center bg-cover"
         >
-          <img class={`w-auto h-200px mb-20px ${!index && 'brightness-0 invert-100'}`} src={icon} alt="" />
-          <h1 class={`text-36px font-black mb-16px ${!index ? 'text-white' : 'text-black'}`}>
+          <img class={`w-auto h-50 mb-5 ${!index && 'brightness-0 invert-100'}`} src={icon} alt="" />
+          <h1 class={`text-9 font-black mb-4 ${!index ? 'text-white' : 'text-black'}`}>
             {$t('section.opening.title')}
           </h1>
-          <p class={`mb-16px ${!index ? 'text-gray-400' : 'text-gray-600'}`}>{$t('section.opening.desc')}</p>
+          <p class={`mb-4 ${!index ? 'text-gray-400' : 'text-gray-600'}`}>{$t('section.opening.desc')}</p>
           <p class={`${!index ? 'text-gray-400' : 'text-gray-600'}`}>
             {$t('section.opening.target').replace(/\{0}/, 'SvelteKit')}
           </p>

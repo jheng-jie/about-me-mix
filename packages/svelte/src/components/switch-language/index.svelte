@@ -30,7 +30,7 @@
 
 <div class="h-full flex items-center cursor-pointer relative select-none" on:click={() => (show = true)}>
   <!--current locale-->
-  <img src={icon} alt="" class="w-24px h-24px mx-6px" />
+  <img src={icon} alt="" class="w-6 h-6 mx-1.5" />
 
   {#if show}
     <!--mask-->
@@ -40,15 +40,15 @@
       on:click|preventDefault|stopPropagation={() => (show = false)}
     />
     <!--dropdown-->
-    <div class="absolute top-0 right-0 pt-46px z-10" transition:fade={dropdownTransition}>
-      <div class="bg-white rounded-6px py-4px shadow-md">
+    <div class="absolute top-0 right-0 pt-11.5 z-10" transition:fade={dropdownTransition}>
+      <div class="bg-white rounded-1.5 py-1 shadow-md">
         {#each $locales as item, i}
           <div
             on:click|preventDefault|stopPropagation={() => onSelectLocale(item)}
             :key="item"
-            class="hover:bg-gray-200 transition-colors p-6px"
+            class="hover:bg-gray-200 transition-colors p-1.5"
           >
-            <img src={iconMap.get(item) || ''} alt="" class="w-24px h-24px" />
+            <img src={iconMap.get(item) || ''} alt="" class="w-6 h-6" />
           </div>
         {/each}
       </div>
