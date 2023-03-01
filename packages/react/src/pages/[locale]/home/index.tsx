@@ -39,6 +39,7 @@ export default () => {
   return (
     <main ref={main} className="min-h-screen w-full bg-blue-100 font-bold text-14px">
       <SectionOpening progress={childrenProgressData[0]} />
+      <div className="h-[200vh]" />
     </main>
   )
 }

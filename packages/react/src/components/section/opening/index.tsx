@@ -5,7 +5,6 @@ import Repeat from './component/repeat'
 import top from '@about-me-mix/common/assets/polygon-1412485.jpg'
 import bottom from '@about-me-mix/common/assets/polygon-1412486.jpg'
 import icon from '@about-me-mix/common/assets/next.png'
-import Image from 'next/image'
 import { useTranslation } from 'next-i18next'
 
 const bg = [top.src, bottom.src]
@@ -33,19 +32,13 @@ export default ({ progress: scrollProgress }: { progress: ElementPositionProgres
   // Repeat 子層必須使用 Function Component
   const Content = ({ index }: { index: number }) => (
     // mask
-    <div
-      key={index}
-      className="absolute top-0 left-0 w-full h-full overflow-hidden bg-cover bg-top"
-      style={{ backgroundImage: `url(${bg[index]})` }}
-    >
+    <div key={index} className="absolute top-0 left-0 w-full h-full overflow-hidden">
       {/*box*/}
-      <div className="h-[100vh] w-full flex flex-col items-center justify-center pb-40px font-medium text-18px">
-        <Image
-          priority={true}
-          src={icon}
-          className={`w-220px h-220px mb-20px ${!index && 'brightness-0 invert-100'}`}
-          alt=""
-        />
+      <div
+        className="h-[100vh] w-full flex flex-col items-center justify-center pb-40px font-medium text-18px bg-center bg-cover"
+        style={{ backgroundImage: `url(${bg[index]})` }}
+      >
+        <img src={icon.src} className={`w-220px h-220px mb-20px ${!index && 'brightness-0 invert-100'}`} alt="" />
         <h1 className={`text-36px font-black mb-16px ${!index ? 'text-white' : 'text-black'}`}>
           {t('section.opening.title')}
         </h1>

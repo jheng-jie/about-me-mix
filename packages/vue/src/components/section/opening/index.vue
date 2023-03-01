@@ -31,13 +31,13 @@ watch(scrollProgress, () => {
     <div ref="container" class="sticky top-0 left-0 h-[100vh] w-full">
       <Repeat v-slot="{ index }" :count="2">
         <!--mask-->
-        <div
-          class="absolute top-0 left-0 w-full h-full overflow-hidden bg-cover bg-top"
-          :style="{ backgroundImage: `url(${bg[index]})` }"
-        >
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden">
           <!--box-->
-          <div class="h-[100vh] w-full flex flex-col items-center justify-center pb-40px font-medium text-18px">
-            <img :class="{ 'grayscale-100': !index }" class="w-300px h-300px" :src="icon" alt="" />
+          <div
+            :style="{ backgroundImage: `url(${bg[index]})` }"
+            class="h-[100vh] w-full flex flex-col items-center justify-center pb-40px font-medium text-18px bg-center bg-cover"
+          >
+            <img :class="{ 'brightness-0 invert-100': !index }" class="w-300px h-300px" :src="icon" alt="" />
             <h1
               v-t="'section.opening.title'"
               :class="!index ? 'text-white' : 'text-black'"
