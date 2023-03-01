@@ -3,6 +3,7 @@ import type { ElementPositionProgress } from '@about-me-mix/common/scroll-proges
 import { getElementProgressData, getChildrenRect } from '@about-me-mix/common/scroll-progess'
 import { useWebsite } from '@/stores'
 import SectionOpening from '@/components/section/opening/index.vue'
+import SectionDialogue from '@/components/section/dialogue/index.vue'
 
 // progress cache
 const childrenProgressData = ref<ElementPositionProgress[]>([])
@@ -30,6 +31,6 @@ onUnmounted(() => window.removeEventListener('scroll', onScrollHandler))
 <template>
   <main ref="main">
     <SectionOpening :progress="childrenProgressData?.[0]" />
-    <div class="h-[200vh]" />
+    <SectionDialogue :progress="childrenProgressData?.[1]" />
   </main>
 </template>

@@ -38,7 +38,7 @@ const nextConfig = {
   },
 
   // for swc
-  transpilePackages: ['@about-me-mix'],
+  transpilePackages: ['@about-me-mix', 'gsap'],
 }
 
 module.exports = phase => {

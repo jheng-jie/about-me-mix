@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { getChildrenRect, getElementProgressData } from '@about-me-mix/common/scroll-progess'
 import SectionOpening from '@/components/section/opening'
+import SectionDialogue from '@/components/section/dialogue'
 import { getStaticPaths, getStaticProps } from '@/core/i18n'
 export { getStaticPaths, getStaticProps }
 
@@ -39,7 +40,7 @@ export default () => {
   return (
     <main ref={main}>
       <SectionOpening progress={childrenProgressData[0]} />
-      <div className="h-[200vh]" />
+      <SectionDialogue progress={childrenProgressData[1]} />
     </main>
   )
 }

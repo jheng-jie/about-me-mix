@@ -1,9 +1,3 @@
-<template>
-  <NuxtLayout>
-    <NuxtPage />
-  </NuxtLayout>
-</template>
-
 <script lang="ts" setup>
 const { t, locale } = useI18n()
 const route = useRoute()
@@ -28,3 +22,9 @@ watch(locale, () => {
   })
 })
 </script>
+
+<template>
+  <NuxtLayout>
+    <NuxtPage />
+  </NuxtLayout>
+</template>

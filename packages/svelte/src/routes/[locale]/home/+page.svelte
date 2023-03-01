@@ -5,6 +5,7 @@
   import { onDestroy, onMount } from 'svelte'
   import { browser } from '$app/environment'
   import SectionOpening from '@/components/section/opening/index.svelte'
+  import SectionDialogue from '@/components/section/dialogue/index.svelte'
 
   // progress cache
   let childrenProgressData: ElementPositionProgress[]
@@ -32,5 +33,5 @@
 <!--Home Page-->
 <main bind:this={main}>
   <SectionOpening progress={childrenProgressData?.[0]} />
-  <div class="h-[200vh]" />
+  <SectionDialogue progress={childrenProgressData?.[1]} />
 </main>
