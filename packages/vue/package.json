@@ -11,8 +11,8 @@
   },
   "devDependencies": {
     "@nuxtjs/i18n": "^8.0.0-beta.10",
-    "@unocss/nuxt": "^0.50.1",
-    "nuxt": "^3.2.2",
+    "@unocss/nuxt": "0.49.4",
+    "nuxt": "^3.2.3",
     "sass": "^1.58.3"
   },
   "dependencies": {

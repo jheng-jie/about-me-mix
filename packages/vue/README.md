@@ -113,6 +113,8 @@ yarn add -D sass
 
 - 只能用慘淡來形容
 
+- [#19328](https://github.com/nuxt/nuxt/issues/19328)
+
 - [#15464](https://github.com/nuxt/nuxt/issues/15464)
 
 - [#14893](https://github.com/nuxt/nuxt/issues/14893)

@@ -5,7 +5,6 @@ import { MouseEvent, useMemo, useState } from 'react'
 import { motion } from 'framer-motion'
 import enUS from '@about-me-mix/common/assets/en-US.png'
 import zhCHT from '@about-me-mix/common/assets/zh-CHT.png'
-import * as process from 'process'
 
 // icons
 const iconMap = new Map([
