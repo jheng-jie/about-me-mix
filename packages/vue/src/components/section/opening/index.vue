@@ -32,21 +32,21 @@ watch(scrollProgress, () => {
       <Repeat v-slot="{ index }" :count="2">
         <!--mask-->
         <div
-          class="absolute top-0 left-0 w-full h-full overflow-hidden"
+          class="absolute top-0 left-0 w-full h-full overflow-hidden bg-cover bg-top"
           :style="{ backgroundImage: `url(${bg[index]})` }"
         >
           <!--box-->
           <div class="h-[100vh] w-full flex flex-col items-center justify-center pb-40px font-medium text-18px">
-            <img :class="{ 'grayscale-100': index === 0 }" class="w-300px h-300px" :src="icon" alt="" />
+            <img :class="{ 'grayscale-100': !index }" class="w-300px h-300px" :src="icon" alt="" />
             <h1
               v-t="'section.opening.title'"
-              :class="index === 0 ? 'text-white' : 'text-black'"
+              :class="!index ? 'text-white' : 'text-black'"
               class="text-36px font-black mb-16px -mt-40px"
             />
-            <p v-t="'section.opening.desc'" :class="index === 0 ? 'text-gray-400' : 'text-gray-600'" class="mb-16px" />
+            <p v-t="'section.opening.desc'" :class="!index ? 'text-gray-400' : 'text-gray-600'" class="mb-16px" />
             <p
-              v-t="{ path: 'section.opening.target', args: ['Nuxt'] }"
-              :class="index === 0 ? 'text-gray-400' : 'text-gray-600'"
+              v-t="{ path: 'section.opening.target', args: ['Nuxt 3'] }"
+              :class="!index ? 'text-gray-400' : 'text-gray-600'"
             />
           </div>
         </div>
