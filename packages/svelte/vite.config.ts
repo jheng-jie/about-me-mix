@@ -13,7 +13,7 @@ export default defineConfig({
     UnoCSS({
       transformers: [
         // for --at-apply:
-        transformerDirectives(),
+        transformerDirectives() as any,
       ],
       extractors: [extractorSvelte],
     }),

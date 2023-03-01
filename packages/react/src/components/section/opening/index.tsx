@@ -1,36 +1,18 @@
 import type { ElementPositionProgress } from '@about-me-mix/common/scroll-progess'
-import { useRouter } from 'next/router'
 import { useEffect, useMemo, useRef } from 'react'
 import Repeat from './component/repeat'
 import top from '@about-me-mix/common/assets/polygon-1412485.jpg'
 import bottom from '@about-me-mix/common/assets/polygon-1412486.jpg'
 import icon from '@about-me-mix/common/assets/next.png'
-import { useTranslation } from 'next-i18next'
+import { useTranslation, i18n } from 'next-i18next'
 
 const bg = [top.src, bottom.src]
 
-/**
- * @desc Home 開場
- */
-export default ({ progress: scrollProgress }: { progress: ElementPositionProgress }) => {
+// Repeat 子層必須使用 Function Component
+const Content = ({ index }: { index: number }) => {
   const { t } = useTranslation(['common'])
-  const router = useRouter()
-  const locale = router?.query?.locale || ''
 
-  // computed progress
-  const container = useRef<HTMLDivElement>(null)
-  useEffect(() => {
-    if (!scrollProgress || !container.current) return
-    const { overlapping, progress }: ElementPositionProgress = scrollProgress
-    if (overlapping !== 1) return
-
-    // overflow
-    const mask = container.current?.children?.[1] as HTMLDivElement
-    if (mask) mask.style.height = `${((1 - progress) * 100).toFixed(2)}%`
-  }, [scrollProgress])
-
-  // Repeat 子層必須使用 Function Component
-  const Content = ({ index }: { index: number }) => (
+  return (
     // mask
     <div key={index} className="absolute top-0 left-0 w-full h-full overflow-hidden">
       {/*box*/}
@@ -47,14 +29,34 @@ export default ({ progress: scrollProgress }: { progress: ElementPositionProgres
       </div>
     </div>
   )
+}
 
-  return useMemo(() => {
-    return (
+/**
+ * @desc Home 開場
+ */
+export default ({ progress: scrollProgress }: { progress: ElementPositionProgress }) => {
+  const { t } = useTranslation(['common'])
+
+  // computed progress
+  const container = useRef<HTMLDivElement>(null)
+  useEffect(() => {
+    if (!scrollProgress || !container.current) return
+    const { overlapping, progress }: ElementPositionProgress = scrollProgress
+    if (overlapping !== 1) return
+
+    // overflow
+    const mask = container.current?.children?.[1] as HTMLDivElement
+    if (mask) mask.style.height = `${((1 - progress) * 100).toFixed(2)}%`
+  }, [scrollProgress])
+
+  return useMemo(
+    () => (
       <section className="h-[200vh] w-full relative">
         <div ref={container} className="sticky top-0 left-0 h-[100vh] w-full">
           <Repeat count={2}>{Content}</Repeat>
         </div>
       </section>
-    )
-  }, [locale])
+    ),
+    [t],
+  )
 }

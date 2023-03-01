@@ -11,9 +11,11 @@ import { useEffect } from 'react'
 // css
 import '@unocss/reset/tailwind.css'
 import '@/assets/style/initialize.css'
+import '@/assets/style/core.scss'
 
 export default appWithTranslation(({ Component, pageProps }: AppProps<{ layout: number }>) => {
   const router = useRouter()
+  const locale = router?.query?.locale
 
   // SEO
   const site = router.asPath.replace(/(\/\w{2}\/)|(^\/)|(\/$)/g, '').toUpperCase()
@@ -28,6 +30,11 @@ export default appWithTranslation(({ Component, pageProps }: AppProps<{ layout: 
     // set window size
     store.dispatch(initialize())
   }, [])
+
+  // html lang
+  useEffect(() => {
+    document.documentElement.lang = String(locale || nextI18NextConfig.i18n.defaultLocale)
+  }, [locale])
 
   return (
     <Provider store={store}>

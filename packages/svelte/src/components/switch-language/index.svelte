@@ -10,7 +10,10 @@
     ['en', enUS],
     ['zh', zhCHT],
   ])
-  let icon = iconMap.get($locale)
+  let icon
+  $: {
+    icon = iconMap.get($locale)
+  }
 
   // on switch language
   const onSelectLocale = (l: string) => {

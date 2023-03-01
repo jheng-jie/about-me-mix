@@ -1,1 +1,10 @@
 @unocss;
+
+html,
+body {
+    @apply bg-black;
+}
+
+canvas {
+    @apply w-full h-full;
+}

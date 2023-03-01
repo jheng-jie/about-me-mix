@@ -21,7 +21,7 @@ export default defineNuxtConfig({
   },
 
   // UnoCSS use reset TailwindCSS
-  css: ['@unocss/reset/tailwind.css'],
+  css: ['@unocss/reset/tailwind.css', '@/assets/style/core.scss'],
 
   modules: [
     // unocss

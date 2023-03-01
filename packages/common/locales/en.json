@@ -5,5 +5,12 @@
   },
   "header": {
     "title": "About Jie"
+  },
+  "section": {
+    "opening": {
+      "title": "AAAAAAAAAAAAAAAA",
+      "desc": "BBBBBBBBBBBBBBBB，CCCCCCCCCC",
+      "target": "DDDDD {0} EEE"
+    }
   }
 }

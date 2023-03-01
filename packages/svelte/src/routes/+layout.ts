@@ -5,6 +5,7 @@ import { base } from '$app/paths'
 // uno css
 import 'uno.css'
 import '@unocss/reset/tailwind.css'
+import '@/assets/style/core.scss'
 
 // static
 export const prerender = true
