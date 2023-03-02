@@ -34,7 +34,7 @@ export default ({ progress: scrollProgress }: { progress: ElementPositionProgres
   const bg = useMemo(
     () =>
       Array.from({ length: 10 }).map((_, index) => (
-        <div key={index} className="dialogue__bg w-0 h-[10vh] bg-zinc-900 rounded-br-100px" />
+        <div key={index} className="dialogue__bg w-0 h-10vh bg-zinc-900 rounded-br-100px" />
       )),
     [],
   )
@@ -52,8 +52,8 @@ export default ({ progress: scrollProgress }: { progress: ElementPositionProgres
     ))
 
     return (
-      <div className="min-h-[700vh] relative">
-        <div ref={container} className="dialogue w-full h-[100vh] sticky top-0 text-8 overflow-hidden">
+      <div className="min-h-700vh relative">
+        <div ref={container} className="dialogue w-full h-100vh sticky top-0 text-8 overflow-hidden">
           {/*line bg*/}
           {bg}
           {/*user icon*/}

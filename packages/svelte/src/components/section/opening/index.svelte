@@ -27,15 +27,15 @@
   }
 </script>
 
-<section class="h-[200vh] w-full relative">
-  <div bind:this={container} class="sticky top-0 left-0 h-[100vh] w-full">
+<section class="h-200vh w-full relative">
+  <div bind:this={container} class="sticky top-0 left-0 h-100vh w-full">
     <Repeat let:index count={2}>
       <!--mask-->
       <div class="absolute top-0 left-0 w-full h-full overflow-hidden">
         <!--box-->
         <div
           style:background-image={`url(${bg[index]})`}
-          class="h-[100vh] w-full flex flex-col items-center justify-center font-medium text-4.5 bg-center bg-cover"
+          class="h-100vh w-full flex flex-col items-center justify-center font-medium text-4.5 bg-center bg-cover"
         >
           <img class={`w-auto h-50 mb-5 ${!index && 'brightness-0 invert-100'}`} src={icon} alt="" />
           <h1 class={`text-9 font-black mb-4 ${!index ? 'text-white' : 'text-black'}`}>

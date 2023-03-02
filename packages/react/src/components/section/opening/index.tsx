@@ -17,7 +17,7 @@ const Content = ({ index }: { index: number }) => {
     <div key={index} className="absolute top-0 left-0 w-full h-full overflow-hidden">
       {/*box*/}
       <div
-        className="h-[100vh] w-full flex flex-col items-center justify-center font-medium text-4.5 bg-center bg-cover"
+        className="h-100vh w-full flex flex-col items-center justify-center font-medium text-4.5 bg-center bg-cover"
         style={{ backgroundImage: `url(${bg[index]})` }}
       >
         <img src={icon.src} className={`w-auto h-50 mb-5 ${!index && 'brightness-0 invert-100'}`} alt="" />
@@ -55,8 +55,8 @@ export default ({ progress: scrollProgress }: { progress: ElementPositionProgres
 
   return useMemo(
     () => (
-      <section className="h-[200vh] w-full relative">
-        <div ref={container} className="sticky top-0 left-0 h-[100vh] w-full">
+      <section className="h-200vh w-full relative">
+        <div ref={container} className="sticky top-0 left-0 h-100vh w-full">
           <Repeat count={2}>{Content}</Repeat>
         </div>
       </section>

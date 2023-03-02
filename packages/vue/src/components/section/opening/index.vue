@@ -29,15 +29,15 @@ watch(scrollProgress, () => {
 </script>
 
 <template>
-  <section v-memo="[locale]" class="h-[200vh] w-full relative">
-    <div ref="container" class="sticky top-0 left-0 h-[100vh] w-full">
+  <section v-memo="[locale]" class="h-200vh w-full relative">
+    <div ref="container" class="sticky top-0 left-0 h-100vh w-full">
       <Repeat v-slot="{ index }" :count="2" :key="locale">
         <!--mask-->
         <div class="absolute top-0 left-0 w-full h-full overflow-hidden">
           <!--box-->
           <div
             :style="{ backgroundImage: `url(${bg[index]})` }"
-            class="h-[100vh] w-full flex flex-col items-center justify-center font-medium text-4.5 bg-center bg-cover"
+            class="h-100vh w-full flex flex-col items-center justify-center font-medium text-4.5 bg-center bg-cover"
           >
             <img :class="{ 'brightness-0 invert-100': !index }" class="w-auto h-50 mb-5" :src="icon" alt="" />
             <h1

@@ -31,11 +31,11 @@
   }
 </script>
 
-<div class="min-h-[700vh] relative">
-  <div bind:this={container} class="dialogue w-full h-[100vh] sticky top-0 text-8 overflow-hidden">
+<div class="min-h-700vh relative">
+  <div bind:this={container} class="dialogue w-full h-100vh sticky top-0 text-8 overflow-hidden">
     <!--line bg-->
     {#each Array(10) as _, index (index)}
-      <div key={index} class="dialogue__bg w-0 h-[10vh] bg-zinc-900 rounded-br-100px" />
+      <div key={index} class="dialogue__bg w-0 h-10vh bg-zinc-900 rounded-br-100px" />
     {/each}
     <!--user icon-->
     <div class="absolute w-75 h-75 left-1/2 top-3.5/10 -translate-x-1/2 -translate-y-1/2">
