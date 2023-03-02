@@ -8,15 +8,22 @@
 
   const bg = [top, bottom]
 
+  // update mask height
+  const resetMaskHeight = (percent: number) => {
+    const mask = container?.children?.[1] as HTMLDivElement
+    if (!mask) return
+    mask.style.height = `${percent}%`
+  }
+
   // progress data
   export let progress: ElementPositionProgress
+  let prevProgress: ElementPositionProgress
 
   // computed progress
   let container: HTMLDivElement
-  $: if (container && progress && progress.overlapping === 1) {
-    // overflow
-    const mask = container?.children?.[1] as HTMLDivElement
-    if (mask) mask.style.height = `${((1 - progress.progress) * 100).toFixed(2)}%`
+  $: if (container && prevProgress !== progress) {
+    prevProgress = progress
+    resetMaskHeight((1 - progress.progress) * 100)
   }
 </script>
 

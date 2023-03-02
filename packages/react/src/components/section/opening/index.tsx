@@ -31,22 +31,26 @@ const Content = ({ index }: { index: number }) => {
   )
 }
 
+let aaa: ElementPositionProgress
+
 /**
  * @desc Home 開場
  */
 export default ({ progress: scrollProgress }: { progress: ElementPositionProgress }) => {
   const { t } = useTranslation(['common'])
 
+  // update mask height
+  const resetMaskHeight = (percent: number) => {
+    const mask = container.current?.children?.[1] as HTMLDivElement
+    if (!mask) return
+    mask.style.height = `${percent}%`
+  }
+
   // computed progress
   const container = useRef<HTMLDivElement>(null)
   useEffect(() => {
     if (!scrollProgress || !container.current) return
-    const { overlapping, progress }: ElementPositionProgress = scrollProgress
-    if (overlapping !== 1) return
-
-    // overflow
-    const mask = container.current?.children?.[1] as HTMLDivElement
-    if (mask) mask.style.height = `${((1 - progress) * 100).toFixed(2)}%`
+    resetMaskHeight((1 - scrollProgress.progress) * 100)
   }, [scrollProgress])
 
   return useMemo(

@@ -20,10 +20,8 @@
   const cacheChildrenPosition = async () => {
     if (!main) return
     childrenProgressData = getChildrenRect(main)
-    onScrollHandler()
   }
-  $: main && cacheChildrenPosition()
-  $: $sizeUpdateTimestamp && cacheChildrenPosition()
+  $: if ($sizeUpdateTimestamp || main) cacheChildrenPosition()
 
   // listen scroll
   onMount(() => browser && window.addEventListener('scroll', onScrollHandler))

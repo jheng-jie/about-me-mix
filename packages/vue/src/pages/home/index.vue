@@ -18,7 +18,6 @@ const main = ref<HTMLElement>()
 const cacheChildrenPosition = async () => {
   if (!main.value) return
   childrenProgressData.value = getChildrenRect(main.value)
-  onScrollHandler()
 }
 const sizeUpdateTimestamp = computed(() => useWebsite().sizeUpdateTimestamp)
 watch([main, sizeUpdateTimestamp], cacheChildrenPosition)

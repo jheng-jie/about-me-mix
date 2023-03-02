@@ -13,16 +13,18 @@ const scrollProgress = toRef(props, 'progress')
 const { locale } = useI18n()
 const bg = [top, bottom]
 
+// update mask height
+const resetMaskHeight = (percent: number) => {
+  const mask = container.value?.children?.[1] as HTMLDivElement
+  if (!mask) return
+  mask.style.height = `${percent}%`
+}
+
 // computed progress
 const container = ref<HTMLDivElement>()
 watch(scrollProgress, () => {
-  if (!scrollProgress.value || !container.value) return
-  const { overlapping, progress }: ElementPositionProgress = scrollProgress.value
-  if (overlapping !== 1) return
-
-  // overflow
-  const mask = container.value?.children?.[1] as HTMLDivElement
-  if (mask) mask.style.height = `${((1 - progress) * 100).toFixed(2)}%`
+  if (!scrollProgress.value) return
+  resetMaskHeight((1 - scrollProgress.value.progress) * 100)
 })
 </script>
 

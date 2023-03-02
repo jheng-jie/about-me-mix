@@ -39,8 +39,8 @@ export default () => {
 
   return (
     <main ref={main}>
-      <SectionOpening progress={childrenProgressData[0]} />
-      <SectionDialogue progress={childrenProgressData[1]} />
+      <SectionOpening progress={childrenProgressData?.[0]} />
+      <SectionDialogue progress={childrenProgressData?.[1]} />
     </main>
   )
 }
