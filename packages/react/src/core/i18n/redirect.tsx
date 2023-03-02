@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 import { NextSeo } from 'next-seo'
-import React, { useEffect } from 'react'
+import React from 'react'
 
 // create redirect paths
 export const createRedirectMap = (redirects: Array<{ from: string; to: string }>) => {
@@ -19,11 +19,6 @@ export const createRedirectMap = (redirects: Array<{ from: string; to: string }>
       const router = useRouter()
       const to = redirectMap[String(router.query?.locale) as keyof typeof redirectMap] || `/zh/home/`
       redirect.content = `0;url=/react${to}`
-
-      // 避免 meta 無法跳轉
-      useEffect(() => {
-        router.replace(to).catch(console.warn)
-      })
 
       return (
         <>

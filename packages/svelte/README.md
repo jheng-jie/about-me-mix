@@ -61,6 +61,10 @@ yarn add -D sass
 
 - `./src/hooks.server.ts` 入口覆蓋 `html lang`
 
+- 開發問題
+
+  - ⚠️ `i18n` 無法識別物件格式 [#92](https://github.com/sveltekit-i18n/lib/issues/92)
+
 ---
 
 ## Store

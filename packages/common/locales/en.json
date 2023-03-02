@@ -11,6 +11,7 @@
       "title": "AAAAAAAAAAAAAAAA",
       "desc": "BBBBBBBBBBBBBBBB，CCCCCCCCCC",
       "target": "DDDDD {0} EEE"
-    }
+    },
+    "dialogue": ["AA，BBB Jie", "CCCCCCCCCCC Web DDDDD", "EE 3 FFFFFF 4 GGGGGG"]
   }
 }
