@@ -31,7 +31,7 @@ watch(scrollProgress, () => {
 <template>
   <section v-memo="[locale]" class="h-[200vh] w-full relative">
     <div ref="container" class="sticky top-0 left-0 h-[100vh] w-full">
-      <Repeat v-slot="{ index }" :count="2">
+      <Repeat v-slot="{ index }" :count="2" :key="locale">
         <!--mask-->
         <div class="absolute top-0 left-0 w-full h-full overflow-hidden">
           <!--box-->

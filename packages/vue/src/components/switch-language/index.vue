@@ -3,7 +3,9 @@ import enUS from '@about-me-mix/common/assets/en-US.png?url'
 import zhCHT from '@about-me-mix/common/assets/zh-CHT.png?url'
 
 // locale
-const { t, locale, locales, setLocale } = useI18n()
+const { t, locale, locales } = useI18n()
+const router = useRouter()
+const switchLocalePath = useSwitchLocalePath()
 
 // icon
 const iconMap = new Map([
@@ -20,7 +22,7 @@ const show = ref(false)
  */
 const onSelectLocale = (locale: string) => {
   show.value = false
-  setLocale(locale)
+  router.push(switchLocalePath(locale))
 }
 </script>
 

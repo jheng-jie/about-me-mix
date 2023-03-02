@@ -107,6 +107,8 @@ yarn add -D sass
 
 ## 相容性
 
+- 基本上同 `nuxt3`
+
 - [#12](https://github.com/sveltejs/kit/issues/12)
 
 - [#6265](https://github.com/sveltejs/kit/pull/6265) 似乎快可以兼容舊版
