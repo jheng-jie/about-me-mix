@@ -4,6 +4,7 @@ import { getElementProgressData, getChildrenRect } from '@about-me-mix/common/sc
 import { useWebsite } from '@/stores'
 import SectionOpening from '@/components/section/opening/index.vue'
 import SectionDialogue from '@/components/section/dialogue/index.vue'
+import SectionExperience from '@/components/section/experience/index.vue'
 
 // progress cache
 const childrenProgressData = ref<ElementPositionProgress[]>([])
@@ -31,5 +32,6 @@ onUnmounted(() => window.removeEventListener('scroll', onScrollHandler))
   <main ref="main">
     <SectionOpening :progress="childrenProgressData?.[0]" />
     <SectionDialogue :progress="childrenProgressData?.[1]" />
+    <SectionExperience :progress="childrenProgressData?.[2]" />
   </main>
 </template>
