@@ -20,7 +20,7 @@
 
   // set timeline progress
   $: if (progress && progress.overlapping > 0.1) {
-    tween?.progress?.(progress.progress * 0.95 + 0.1)
+    tween?.progress?.(Math.max(0, progress.progress) * 0.85 + (progress.overlapping - 0.1) * 0.2)
   }
 
   // popup content
@@ -31,23 +31,23 @@
   }
 </script>
 
-<div class="min-h-700vh relative">
+<section class="min-h-400vh relative">
   <div bind:this={container} class="dialogue w-full h-100vh sticky top-0 text-8 overflow-hidden">
     <!--line bg-->
-    {#each Array(10) as _, index (index)}
-      <div key={index} class="dialogue__bg w-0 h-10vh bg-zinc-900 rounded-br-100px" />
+    {#each Array(5) as _, index (index)}
+      <div key={index} class="dialogue__bg w-0 h-20vh bg-zinc-800 rounded-br-100px" />
     {/each}
     <!--user icon-->
-    <div class="absolute w-75 h-75 left-1/2 top-3.5/10 -translate-x-1/2 -translate-y-1/2">
-      <div class="dialogue__avatar hidden opacity-0 scale-50 w-75 h-75">
+    <div class="absolute w-65 h-65 left-1/2 top-3.5/10 -translate-x-1/2 -translate-y-1/2">
+      <div class="dialogue__avatar hidden opacity-0 scale-50 w-65 h-65">
         <div
-          class="absolute animate-ping rounded-full w-full h-full bg-zinc-800 animate-delay-0.1s animate-duration-3s"
+          class="absolute animate-ping rounded-full w-full h-full bg-zinc-700 animate-delay-0.1s animate-duration-3s"
         />
         <div
-          class="absolute animate-ping rounded-full w-full h-full bg-zinc-700 animate-delay-0.3s animate-duration-3s"
+          class="absolute animate-ping rounded-full w-full h-full bg-zinc-600 animate-delay-0.3s animate-duration-3s"
         />
         <div
-          class="absolute animate-ping rounded-full w-full h-full bg-zinc-600 animate-delay-0.5s animate-duration-3s"
+          class="absolute animate-ping rounded-full w-full h-full bg-zinc-500 animate-delay-0.5s animate-duration-3s"
         />
         <img src={avatar} alt="" class="w-full h-full relative z-10" />
       </div>
@@ -68,4 +68,4 @@
       </div>
     </div>
   </div>
-</div>
+</section>
