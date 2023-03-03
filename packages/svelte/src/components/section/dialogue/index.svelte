@@ -6,21 +6,33 @@
   import avatar from '@about-me-mix/common/assets/avatar.png?url'
   import { t, locale } from '@/core/i18n'
 
-  // progress data
-  export let progress: ElementPositionProgress
-
-  // gsap timeline
+  // box
   let container: HTMLDivElement
-  let tween: TweenTimeLine
-  $: if (container) {
+  let prevContainer: HTMLDivElement
+  $: if (container && prevContainer !== container) {
+    prevContainer = container
     tween?.kill()
     tween = createTween(container)
   }
-  onDestroy(() => tween?.kill())
 
-  // set timeline progress
-  $: if (progress && progress.overlapping > 0.1) {
-    tween?.progress?.(Math.max(0, progress.progress) * 0.85 + (progress.overlapping - 0.1) * 0.2)
+  // gsap timeline
+  let tween: TweenTimeLine
+  onDestroy(() => tween?.kill())
+  const updateTweenProgress = () => {
+    const _progress = progress.progress * 0.8
+    const overlappingEnter = progress.overlappingEnter * 0.2
+    tween?.progress(_progress + overlappingEnter)
+  }
+
+  // progress data
+  export let progress: ElementPositionProgress
+  let prevProgress: ElementPositionProgress
+  $: if (container && progress && prevProgress !== progress) {
+    prevProgress = progress
+    // hidden
+    if (container) container.style.display = progress.hidden ? 'none' : ''
+    // update tween
+    if (!progress.hidden) updateTweenProgress()
   }
 
   // popup content
@@ -35,7 +47,7 @@
   <div bind:this={container} class="dialogue w-full h-100vh sticky top-0 text-8 overflow-hidden">
     <!--line bg-->
     {#each Array(5) as _, index (index)}
-      <div key={index} class="dialogue__bg w-0 h-20vh bg-zinc-800 rounded-br-100px" />
+      <div key={index} class="dialogue__bg w-0 h-21vh -mb-1 bg-zinc-800 rounded-br-50px" />
     {/each}
     <!--user icon-->
     <div class="absolute w-65 h-65 left-1/2 top-3.5/10 -translate-x-1/2 -translate-y-1/2">

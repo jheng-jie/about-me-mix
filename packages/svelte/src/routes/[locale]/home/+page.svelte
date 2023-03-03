@@ -17,7 +17,7 @@
 
   // 快取子層位置，避免一直計算
   let main: HTMLElement
-  const cacheChildrenPosition = async () => {
+  const cacheChildrenPosition = () => {
     if (!main) return
     childrenProgressData = getChildrenRect(main)
   }

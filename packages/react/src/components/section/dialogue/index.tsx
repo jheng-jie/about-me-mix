@@ -13,11 +13,17 @@ export default ({ progress: scrollProgress }: { progress: ElementPositionProgres
 
   // gsap timeline
   const tween = useRef<TweenTimeLine>()
+  const updateTweenProgress = () => {
+    const progress = scrollProgress!.progress * 0.8
+    const overlappingEnter = scrollProgress!.overlappingEnter * 0.2
+    tween.current?.progress(progress + overlappingEnter)
+  }
+
+  // box
   const container = useRef<HTMLDivElement>(null)
   useEffect(() => {
     if (!container.current) return
     tween.current = createTween(container.current)
-
     return () => {
       tween.current?.kill()
     }
@@ -26,15 +32,17 @@ export default ({ progress: scrollProgress }: { progress: ElementPositionProgres
   // set timeline progress
   useEffect(() => {
     if (!scrollProgress) return
-    if (scrollProgress.overlapping < 0.1) return
-    tween.current?.progress(Math.max(0, scrollProgress.progress) * 0.85 + (scrollProgress.overlapping - 0.1) * 0.2)
+    // hidden
+    if (container.current) container.current.style.display = scrollProgress.hidden ? 'none' : ''
+    // update tween
+    if (!scrollProgress.hidden) updateTweenProgress()
   }, [scrollProgress])
 
   // line bg
   const bg = useMemo(
     () =>
       Array.from({ length: 5 }).map((_, index) => (
-        <div key={index} className="dialogue__bg w-0 h-20vh bg-zinc-800 rounded-br-100px" />
+        <div key={index} className="dialogue__bg w-0 h-21vh -mb-1 bg-zinc-800 rounded-br-50px" />
       )),
     [],
   )

@@ -8,12 +8,12 @@ import icon from '@about-me-mix/common/assets/nuxt.png?url'
 const props = defineProps({
   progress: Object as PropType<ElementPositionProgress>,
 })
-const scrollProgress = toRef(props, 'progress')
 
 const { locale } = useI18n()
 const bg = [top, bottom]
 
 // update mask height
+const container = ref<HTMLDivElement>()
 const resetMaskHeight = (percent: number) => {
   const mask = container.value?.children?.[1] as HTMLDivElement
   if (!mask) return
@@ -21,10 +21,13 @@ const resetMaskHeight = (percent: number) => {
 }
 
 // computed progress
-const container = ref<HTMLDivElement>()
+const scrollProgress = toRef(props, 'progress')
 watch(scrollProgress, () => {
   if (!scrollProgress.value) return
-  resetMaskHeight((1 - scrollProgress.value.progress) * 100)
+  // hidden
+  if (container.value) container.value.style.display = scrollProgress.value.hidden ? 'none' : ''
+  // update progress
+  if (!scrollProgress.value.hidden) resetMaskHeight((1 - scrollProgress.value.progress) * 100)
 })
 </script>
 

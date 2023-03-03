@@ -3,18 +3,23 @@ export type ElementPositionProgress = {
   top: number
   // 高度
   height: number
-  // 相對視窗，重疊百分比
-  overlapping: number
+  // 相對上下視窗
+  overlappingEnter: number
+  overlappingLeave: number
   // 個體捲軸進度
   progress: number
+  // 隱藏
+  hidden: boolean
 }
 
 // 預設值
 export const DEFAULT_PROGRESS_DATA: ElementPositionProgress = {
   top: 0,
   height: 0,
-  overlapping: 0,
+  overlappingEnter: 0,
+  overlappingLeave: 0,
   progress: 0,
+  hidden: false,
 }
 
 /**
@@ -43,21 +48,24 @@ export const getElementProgressData = (list: ElementPositionProgress[]) => {
 
   // 子層範圍計算
   const [x2, y2] = [scrollY, scrollY + screenHeight]
+
   for (const index in list) {
     const child = list[index]
     const { top, height } = child
     const [x, y] = [top, top + height]
 
-    // 重疊範圍
-    const over = max(0, height - max(0, x2 - x) - max(0, y - y2)) / screenHeight
-    const overlapping = y > y2 ? over : min(-0.001, -over)
+    // 重疊相對範圍
+    const overlappingEnter = max(0, min(1, (y2 - x) / screenHeight))
+    const overlappingLeave = max(0, min(1, (y - x2) / screenHeight))
+    const hidden = overlappingEnter + overlappingLeave === 1
 
     // 進度
-    const progress = max(-1, min(1, (scrollY - top) / (height - screenHeight)))
+    const progress = max(0, min(1, (scrollY - top) / (height - screenHeight)))
 
     // update
-    if (child.progress !== progress || child.overlapping !== overlapping)
-      list[index] = { ...child, progress, overlapping }
+    const { progress: p, hidden: h, overlappingEnter: oe, overlappingLeave: ol } = child
+    if (progress !== p || hidden !== h || oe !== overlappingEnter || ol !== overlappingLeave)
+      list[index] = { ...child, progress, hidden, overlappingEnter, overlappingLeave }
   }
   return [...list]
 }

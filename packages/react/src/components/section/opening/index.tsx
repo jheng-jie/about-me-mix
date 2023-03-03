@@ -49,8 +49,11 @@ export default ({ progress: scrollProgress }: { progress: ElementPositionProgres
   // computed progress
   const container = useRef<HTMLDivElement>(null)
   useEffect(() => {
-    if (!scrollProgress || !container.current) return
-    resetMaskHeight((1 - scrollProgress.progress) * 100)
+    if (!scrollProgress) return
+    // hidden
+    if (container.current) container.current.style.display = scrollProgress.hidden ? 'none' : ''
+    // update progress
+    if (!scrollProgress.hidden) resetMaskHeight((1 - scrollProgress.progress) * 100)
   }, [scrollProgress])
 
   return useMemo(

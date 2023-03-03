@@ -16,7 +16,7 @@ const onScrollHandler = () => {
 
 // 快取子層位置，避免一直計算
 const main = ref<HTMLElement>()
-const cacheChildrenPosition = async () => {
+const cacheChildrenPosition = () => {
   if (!main.value) return
   childrenProgressData.value = getChildrenRect(main.value)
 }

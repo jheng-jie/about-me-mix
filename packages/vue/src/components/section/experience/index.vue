@@ -7,23 +7,32 @@ const { rt, tm, locale } = useI18n()
 const props = defineProps({
   progress: Object as PropType<ElementPositionProgress>,
 })
-const scrollProgress = toRef(props, 'progress')
 
+// gsap timeline
 const tween = ref<TweenTimeLine>()
+onUnmounted(() => tween?.value?.kill())
+const updateTweenProgress = () => {
+  const progress = scrollProgress.value!.progress * 0.9
+  const overlappingEnter = scrollProgress.value!.overlappingEnter * 0.1
+  tween.value?.progress(progress + overlappingEnter)
+}
+
+// box
 const container = ref<HTMLDivElement>()
 watch(container, () => {
   if (!container.value) return
   tween.value?.kill()
   tween.value = createTween(container.value)
 })
-onUnmounted(() => tween?.value?.kill())
 
 // set timeline progress
+const scrollProgress = toRef(props, 'progress')
 watch(scrollProgress, () => {
-  if (!container.value) return
   if (!scrollProgress.value) return
-  if (scrollProgress.value.overlapping < 0) return
-  tween.value?.progress(Math.max(0, scrollProgress.value.progress) * 0.9 + scrollProgress.value.overlapping * 0.1)
+  // hidden
+  if (container.value) container.value.style.display = scrollProgress.value.hidden ? 'none' : ''
+  // update tween
+  if (!scrollProgress.value.hidden) updateTweenProgress()
 })
 </script>
 

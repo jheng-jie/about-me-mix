@@ -21,8 +21,10 @@
 
   // computed progress
   let container: HTMLDivElement
-  $: if (container && prevProgress !== progress) {
+  $: if (container && progress && prevProgress !== progress) {
     prevProgress = progress
+    // hidden
+    container.style.display = progress.hidden ? 'none' : ''
     resetMaskHeight((1 - progress.progress) * 100)
   }
 </script>
