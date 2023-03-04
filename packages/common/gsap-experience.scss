@@ -1,0 +1,30 @@
+$group-color: #881337, #831843, #701a75, #581c87, #4c1d95, #312e81, #1e3a8a, #164e63, #134e4a;
+
+.work {
+  @each $color in $group-color {
+    &[data-group='#{index($group-color, $color) - 1}'] {
+      .work {
+        &__line-end,
+        &__line {
+          border-color: $color;
+        }
+        &__head-date,
+        &__team {
+          color: $color;
+        }
+        &__head-line,
+        &__head,
+        &__end {
+          background-color: $color;
+        }
+      }
+      @for $index from 1 through 10 {
+        .work__tag {
+          &:nth-child(#{$index}n) {
+            background-color: lighten($color, $index * 5);
+          }
+        }
+      }
+    }
+  }
+}

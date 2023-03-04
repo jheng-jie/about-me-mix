@@ -13,81 +13,50 @@
       "target": "現在是 {0} 框架"
     },
     "dialogue": ["嗨，我是 Jie", "目前是一位前端 Web 工程師", "有 3 年全端及 4 年前端工作經驗"],
-    "experiences": [
-      {
-        "date": "2015",
-        "label": "資管系畢業"
-      },
-      {
-        "date": "2015/09",
-        "label": "家家有",
-        "works": [
-          { "label": "維護原有專案", "technology": ["php:codeigniter", "mysql", "apache"] },
-          { "label": "購物商城", "technology": ["php:opencart", "html", "jquery"] },
-          { "label": "協助外包商串接 API", "technology": ["soap:xml", "postman"] }
-        ]
-      },
-      {
-        "date": "2016/12",
-        "label": "校園文化",
-        "works": [
-          { "label": "全面淘汰 Flash", "technology": ["html5", "canvas", "fabric js", "css3"] },
-          {
-            "label": "校園 APP",
-            "technology": ["solar2d", "iOS 上架流程", "Android 上架流程"]
-          },
-          { "label": "DM 網站", "technology": ["bootstrap", "owl carousel", "aos", "sweetalert", "gsap", "swiper"] },
-          { "label": "考題系統", "technology": ["echarts"] },
-          { "label": "業務管理系統" },
-          { "label": "校園教材中心" },
-          { "label": "校園資訊教材" }
-        ]
-      },
-      {
-        "date": "2019/01",
-        "label": "遊戲大麥/萌萌噠",
-        "works": [
-          {
-            "label": "聚合式金流串接",
-            "technology": ["git:gitlab", "sourcetree", "nginx", "proxy:ngrok"]
-          },
-          {
-            "label": "Vue 開獎網",
-            "technology": ["node", "vue-cli:vue2", "vuex", "mixin", "vue-router", "less"]
-          },
-          { "label": "Vue 資訊論壇", "technology": ["webpack", "eslint", "prettier"] },
-          {
-            "label": "React 包網 H5 版",
-            "technology": ["react 16", "react:hook", "redux-saga", "react-router", "antd-mobile", "sass"]
-          },
-          { "label": "React 遊戲大麥官方網站", "technology": ["redux-toolkit"] },
-          {
-            "label": "聊天微服務",
-            "technology": ["pm2", "express", "socket.io", "redis", "websocket", "polling"]
-          },
-          {
-            "label": "包網 H5 重構為 Vue 版",
-            "technology": ["vue-cli:vue3", "composition", "typescript", "vue-i18n", "pinia", "tailwindcss"]
-          },
-          {
-            "label": "App 自動化打包工具",
-            "technology": ["vite:vue3", "mongodb", "jenkins", "telegram bot", "gradle", "xcodebuild"]
-          },
-          { "label": "交接文件", "technology": ["vue-press2"] }
-        ]
-      },
-      {
-        "date": "2022/06",
-        "label": "順鴻科技",
-        "works": [
-          { "label": "包網", "technology": ["jest", "unocss", "ssg"] },
-          { "label": "聊天管理系統", "technology": ["stomp", "protobuf"] }
-        ]
-      },
-      {
-        "date": "2023/03",
-        "label": "離職"
-      }
-    ]
+    "experience": {
+      "title": "學經歷"
+    }
+  },
+  "end": ["全端", "後端", "前端"],
+  "team": ["團隊", "個人"],
+  "experience": {
+    "department": {
+      "title": "資管系畢業",
+      "topic": "資管系專題第一名"
+    },
+    "2015": {
+      "company": "家家有",
+      "maintain": "維護原有專案",
+      "cart": "購物商城",
+      "soap": "協助外包商串接 API"
+    },
+    "2016": {
+      "company": "校園文化",
+      "flash": "全面淘汰 Flash",
+      "app": "校園 APP",
+      "dm": "DM 網站",
+      "test": "考題系統",
+      "manage": "業務管理系統",
+      "textbook": "校園教材中心",
+      "online": "線上資訊教材"
+    },
+    "2019": {
+      "company": "遊戲大麥/萌萌噠",
+      "pay": "聚合式金流串接",
+      "source": "Vue 開獎網",
+      "forum": "Vue 資訊論壇",
+      "react_h5": "React 包網 H5 版",
+      "website": "React 遊戲大麥官方網站",
+      "chat": "直播 APP 聊天微服務",
+      "vue_h5": "包網 H5 重構為 Vue 版",
+      "ci": "App 自動化編譯工具",
+      "handover": "交接文件"
+    },
+    "2022": {
+      "company": "順鴻科技",
+      "sport": "Vue 體育PC包網",
+      "chat": "Vue 聊天管理系統"
+    },
+    "leave": "離職"
   }
 }
