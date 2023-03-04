@@ -50,7 +50,7 @@ export default ({ progress: scrollProgress }: { progress: ElementPositionProgres
   return useMemo(() => {
     const content: string[] = t('section.dialogue', { returnObjects: true })
     const dialogue = content.map((row: string, idx) => (
-      <p key={idx} style={{ paddingLeft: `${idx}rem` }}>
+      <p key={idx} style={{ paddingLeft: `${idx}rem` }} className="mb-2">
         {Array.from(row).map((char, cIdx) => (
           <span key={`${idx}_${cIdx}`} className="dialogue__char whitespace-pre inline-block opacity-0 scale-50">
             {char}
@@ -61,12 +61,12 @@ export default ({ progress: scrollProgress }: { progress: ElementPositionProgres
 
     return (
       <section className="min-h-400vh relative">
-        <div ref={container} className="dialogue w-full h-100vh sticky top-0 text-8 overflow-hidden">
+        <div ref={container} className="dialogue w-full h-100vh sticky top-0 text-4 lg:text-6 overflow-hidden">
           {/*line bg*/}
           {bg}
           {/*user icon*/}
-          <div className="absolute w-65 h-65 left-1/2 top-3.5/10 -translate-x-1/2 -translate-y-1/2">
-            <div className="dialogue__avatar hidden opacity-0 scale-50 w-65 h-65">
+          <div className="absolute w-40 h-40 lg:w-65 lg:h-65 left-1/2 top-3.5/10 -translate-x-1/2 -translate-y-1/2">
+            <div className="dialogue__avatar hidden opacity-0 scale-50 w-full h-full">
               <div className="absolute animate-ping rounded-full w-full h-full bg-zinc-700 animate-delay-0.1s animate-duration-3s" />
               <div className="absolute animate-ping rounded-full w-full h-full bg-zinc-600 animate-delay-0.3s animate-duration-3s" />
               <div className="absolute animate-ping rounded-full w-full h-full bg-zinc-500 animate-delay-0.5s animate-duration-3s" />

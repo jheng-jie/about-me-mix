@@ -12,11 +12,11 @@ export default ({ details }: { details: Work }) => {
     <div
       data-group={details.group}
       className={`work flex items-start text-white relative ${
-        details.category ? 'ml-24 -mt-20 text-6 pr-3' : 'text-5'
+        details.category ? 'ml-24 -mt-20 text-5 lg:text-6 pr-1 lg:pr-3' : 'text-4 lg:text-5'
       }`}
     >
       {/*left line*/}
-      {!details.category && <div className="work__line relative w-6 h-0 border-t-4 mt-5" />}
+      {!details.category && <div className="work__line relative w-3 lg:w-6 h-0 border-t-4 mt-4 lg:mt-5" />}
 
       <div className="flex-1">
         {/*name*/}
@@ -53,7 +53,7 @@ export default ({ details }: { details: Work }) => {
         {details.technology?.length && (
           <div className="pl-8 max-w-70 flex flex-wrap">
             {details.technology.map(item => (
-              <span key={item} className="work__tag text-3.5 text-bold px-2 py-0.5 rounded mr-2 mb-2">
+              <span key={item} className="work__tag lg:text-3.5 text-bold px-2 py-0.5 rounded mr-2 mb-2">
                 {item}
               </span>
             ))}
@@ -63,7 +63,7 @@ export default ({ details }: { details: Work }) => {
 
       {/*right line*/}
       {!!details.count && (
-        <div className="work__line relative w-6 h-16.5 rounded-rt-2 border-t-4 border-r-4 mt-5.5">
+        <div className="work__line relative w-4 lg:w-6 h-16.5 rounded-rt-2 border-t-4 border-r-4 mt-4.5 lg:mt-5.5">
           <span className="work__line-end w-4 h-4 border-l-4 border-b-4 inline-block absolute -right-4 -bottom-4 rounded-lb-2" />
         </div>
       )}

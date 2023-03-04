@@ -83,7 +83,7 @@
     class="fixed left-0 top-0 w-full h-100vh flex flex-nowrap overflow-hidden whitespace-nowrap"
   >
     <!--title-->
-    <div class=" w-full h-100vh flex items-center justify-center flex-shrink-0 font-bold text-white text-16">
+    <div class="w-full h-100vh flex items-center justify-center flex-shrink-0 font-bold text-white text-10 lg:text-16">
       <h1 class="experience__title hidden translate-y-40vh">{$t('section.experience.title')}</h1>
     </div>
     <!--works-->

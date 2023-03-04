@@ -82,7 +82,9 @@ onUnmounted(() => window.removeEventListener('scroll', onScrollHandler))
   <section v-memo="[locale]" class="experience w-full h-600vh bg-gradient-to-b from-zinc-800 to-zinc-600">
     <div ref="container" class="fixed left-0 top-0 w-full h-100vh flex flex-nowrap overflow-hidden whitespace-nowrap">
       <!--title-->
-      <div class="w-full h-100vh flex items-center justify-center flex-shrink-0 font-bold text-white text-16">
+      <div
+        class="w-full h-100vh flex items-center justify-center flex-shrink-0 font-bold text-white text-10 lg:text-16"
+      >
         <h1 v-t="'section.experience.title'" class="experience__title hidden translate-y-40vh" />
       </div>
       <!--works-->

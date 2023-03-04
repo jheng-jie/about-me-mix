@@ -40,15 +40,23 @@ watch(scrollProgress, () => {
           <!--box-->
           <div
             :style="{ backgroundImage: `url(${bg[index]})` }"
-            class="h-100vh w-full flex flex-col items-center justify-center font-medium text-4.5 bg-center bg-cover"
+            class="h-100vh w-full flex flex-col items-center justify-center font-medium text-4 lg:text-5 bg-center bg-cover"
           >
-            <img :class="{ 'brightness-0 invert-100': !index }" class="w-auto h-50 mb-5" :src="icon" alt="" />
+            <!--icon-->
+            <img
+              :class="{ 'brightness-0 invert-100': !index }"
+              class="w-auto h-28 lg:h-40 mb-4 lg:mb-6"
+              :src="icon"
+              alt=""
+            />
+            <!--title-->
             <h1
               v-t="'section.opening.title'"
               :class="!index ? 'text-white' : 'text-black'"
-              class="text-9 font-black mb-4"
+              class="text-5 lg:text-7 font-black mb-2 lg:mb-4"
             />
-            <p v-t="'section.opening.desc'" :class="!index ? 'text-gray-400' : 'text-gray-600'" class="mb-4" />
+            <!--desc-->
+            <p v-t="'section.opening.desc'" :class="!index ? 'text-gray-400' : 'text-gray-600'" class="mb-2 lg:mb-4" />
             <p
               v-t="{ path: 'section.opening.target', args: ['Nuxt 3'] }"
               :class="!index ? 'text-gray-400' : 'text-gray-600'"

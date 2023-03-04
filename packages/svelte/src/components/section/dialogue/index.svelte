@@ -44,14 +44,14 @@
 </script>
 
 <section class="min-h-400vh relative">
-  <div bind:this={container} class="dialogue w-full h-100vh sticky top-0 text-8 overflow-hidden">
+  <div bind:this={container} class="dialogue w-full h-100vh sticky top-0 text-4 lg:text-6 overflow-hidden">
     <!--line bg-->
     {#each Array(5) as _, index (index)}
       <div key={index} class="dialogue__bg w-0 h-21vh -mb-1 bg-zinc-800 rounded-br-50px" />
     {/each}
     <!--user icon-->
-    <div class="absolute w-65 h-65 left-1/2 top-3.5/10 -translate-x-1/2 -translate-y-1/2">
-      <div class="dialogue__avatar hidden opacity-0 scale-50 w-65 h-65">
+    <div class="absolute w-40 h-40 lg:w-65 lg:h-65 left-1/2 top-3.5/10 -translate-x-1/2 -translate-y-1/2">
+      <div class="dialogue__avatar hidden opacity-0 scale-50 w-full h-full">
         <div
           class="absolute animate-ping rounded-full w-full h-full bg-zinc-700 animate-delay-0.1s animate-duration-3s"
         />
@@ -69,7 +69,7 @@
       <div class="dialogue__popup hidden">
         <!--svelte i18n 無法識別物件 -->
         {#each contents as row, idx (idx)}
-          <p style:padding-left={`${idx}rem`}>
+          <p style:padding-left={`${idx}rem`} class="mb-2">
             {#each row as char, cIdx (`${idx}_${cIdx}`)}
               <span class="dialogue__char whitespace-pre inline-block opacity-0 scale-50">
                 {char}

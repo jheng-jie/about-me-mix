@@ -9,11 +9,11 @@ defineProps({
 <template>
   <div
     :data-group="details.group"
-    :class="{ 'ml-24 -mt-20 text-6 pr-3': details.category, 'text-5': !details.category }"
+    :class="{ 'ml-24 -mt-20 text-5 lg:text-6 pr-1 lg:pr-3': details.category, 'text-4 lg:text-5': !details.category }"
     class="work flex items-start text-white relative"
   >
     <!--left line-->
-    <div v-if="!details.category" class="work__line relative w-6 h-0 border-t-4 mt-5" />
+    <div v-if="!details.category" class="work__line relative w-3 lg:w-6 h-0 border-t-4 mt-4 lg:mt-5" />
 
     <div class="flex-1">
       <!--name-->
@@ -45,7 +45,7 @@ defineProps({
         <span
           v-for="item in details.technology"
           :key="item"
-          class="work__tag text-3.5 text-bold px-2 py-0.5 rounded mr-2 mb-2"
+          class="work__tag lg:text-3.5 text-bold px-2 py-0.5 rounded mr-2 mb-2"
         >
           {{ item }}
         </span>
@@ -53,7 +53,10 @@ defineProps({
     </div>
 
     <!--right line-->
-    <div v-if="details.count" class="work__line relative w-6 h-16.5 rounded-rt-2 border-t-4 border-r-4 mt-5.5">
+    <div
+      v-if="details.count"
+      class="work__line relative w-4 lg:w-6 h-16.5 rounded-rt-2 border-t-4 border-r-4 mt-4.5 lg:mt-5.5"
+    >
       <span
         class="work__line-end w-4 h-4 border-l-4 border-b-4 inline-block absolute -right-4 -bottom-4 rounded-lb-2"
       />
