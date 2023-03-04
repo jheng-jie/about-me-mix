@@ -69,7 +69,7 @@ const onScrollHandler = () => {
 
   // 加速度計算
   const distance = window.scrollY - prevSpeed
-  rotate = max(-3, min(3, rotate - max(-0.25, min(0.25, distance * 0.01))))
+  rotate = max(-5, min(5, rotate - max(-0.5, min(0.5, distance * 0.01))))
 
   // 恢復平衡
   !running && enterFrame()
@@ -81,17 +81,17 @@ onUnmounted(() => window.removeEventListener('scroll', onScrollHandler))
 
 <template>
   <section v-memo="[locale]" class="experience w-full h-600vh bg-gradient-to-b from-zinc-800 to-zinc-600">
-    <!--<div class="experience w-full h-100vh sticky top-0">-->
     <div ref="container" class="fixed left-0 top-0 w-full h-100vh flex flex-nowrap overflow-hidden whitespace-nowrap">
+      <!--title-->
       <div class="w-full h-100vh flex items-center justify-center flex-shrink-0 font-bold text-white text-16">
-        <h1 v-t="'section.experience.title'" class="experience__title" />
+        <h1 v-t="'section.experience.title'" class="experience__title hidden" />
       </div>
-      <!--content-->
-      <div v-for="(work, wIdx) in experience" :key="wIdx" class="flex-shrink-0 inline-block pt-1/4">
-        <Point class="experience__work origin-left-top" :details="work" />
+      <!--works-->
+      <div v-for="(work, wIdx) in experience" :key="wIdx" class="flex-shrink-0 inline-block pt-40vh">
+        <Point :details="work" />
       </div>
+      <!--finish-->
       <div class="w-full h-100vh flex items-center justify-center flex-shrink-0" />
     </div>
-    <!--</div>-->
   </section>
 </template>

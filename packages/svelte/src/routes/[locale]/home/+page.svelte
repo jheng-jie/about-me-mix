@@ -6,6 +6,7 @@
   import { browser } from '$app/environment'
   import SectionOpening from '@/components/section/opening/index.svelte'
   import SectionDialogue from '@/components/section/dialogue/index.svelte'
+  import SectionExperience from '@/components/section/experience/index.svelte'
 
   // progress cache
   let childrenProgressData: ElementPositionProgress[]
@@ -26,10 +27,14 @@
   // listen scroll
   onMount(() => browser && window.addEventListener('scroll', onScrollHandler))
   onDestroy(() => browser && window.removeEventListener('scroll', onScrollHandler))
+
+  // section
+  const section = [SectionOpening, SectionDialogue, SectionExperience]
 </script>
 
 <!--Home Page-->
 <main bind:this={main}>
-  <SectionOpening progress={childrenProgressData?.[0]} />
-  <SectionDialogue progress={childrenProgressData?.[1]} />
+  {#each section as Component, index (index)}
+    <Component progress={childrenProgressData?.[index]} />
+  {/each}
 </main>

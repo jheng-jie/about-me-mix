@@ -42,7 +42,11 @@ defineProps({
 
       <!--details.technology-->
       <div v-if="details.technology" class="pl-8 max-w-70 flex flex-wrap">
-        <span v-for="item in details.technology" class="work__tag text-3.5 text-bold px-2 py-0.5 rounded mr-2 mb-2">
+        <span
+          v-for="item in details.technology"
+          :key="item"
+          class="work__tag text-3.5 text-bold px-2 py-0.5 rounded mr-2 mb-2"
+        >
           {{ item }}
         </span>
       </div>

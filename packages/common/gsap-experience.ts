@@ -31,7 +31,8 @@ export const createTween = (container: HTMLDivElement): TweenTimeLine => {
   // title
   const title = container.querySelector('.experience__title')
   tl.from(title, { y: '40vh', duration: 20, opacity: 0 }, 0)
-  tl.to(title, { duration: 20, opacity: 0, scale: 0, ease: Back.easeInOut.config(5) })
+  tl.to(title, { display: 'block' }, 0)
+  tl.to(title, { display: 'none', duration: 20, opacity: 0, scale: 0, ease: Back.easeInOut.config(5) }, 20)
 
   // scroll
   let progress = { value: 0 }
