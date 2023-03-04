@@ -26,12 +26,12 @@ watch([main, sizeUpdateTimestamp], cacheChildrenPosition)
 // listen scroll
 onBeforeMount(() => window.addEventListener('scroll', onScrollHandler))
 onUnmounted(() => window.removeEventListener('scroll', onScrollHandler))
+
+const section = [SectionOpening, SectionDialogue, SectionExperience]
 </script>
 
 <template>
   <main ref="main">
-    <SectionOpening :progress="childrenProgressData?.[0]" />
-    <SectionDialogue :progress="childrenProgressData?.[1]" />
-    <SectionExperience :progress="childrenProgressData?.[2]" />
+    <Component v-for="(comp, index) in section" :is="comp" :key="index" :progress="childrenProgressData?.[index]" />
   </main>
 </template>
