@@ -40,8 +40,8 @@ defineProps({
         />
       </div>
 
-      <!--details.technology-->
-      <div v-if="details.technology" class="pl-8 max-w-70 flex flex-wrap">
+      <!--technology-->
+      <div v-if="details.technology?.length" class="pl-8 max-w-70 flex flex-wrap">
         <span
           v-for="item in details.technology"
           :key="item"

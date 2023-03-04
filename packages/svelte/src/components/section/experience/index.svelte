@@ -43,7 +43,7 @@
   const experience: Work[] = EXPERIENCES.map(({ date, label, works = [] }, group) => [
     { date, label, group, category: true, count: works.length },
     ...works.map(work => ({ ...work, group })),
-  ]).flat() as Work[]
+  ]).flat()
 
   // fps
   let running = false
@@ -84,7 +84,7 @@
   >
     <!--title-->
     <div class=" w-full h-100vh flex items-center justify-center flex-shrink-0 font-bold text-white text-16">
-      <h1 class="experience__title hidden">{$t('section.experience.title')}</h1>
+      <h1 class="experience__title hidden translate-y-40vh">{$t('section.experience.title')}</h1>
     </div>
     <!--works-->
     {#each experience as work, index (index)}

@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux'
 import { getChildrenRect, getElementProgressData } from '@about-me-mix/common/scroll-progess'
 import SectionOpening from '@/components/section/opening'
 import SectionDialogue from '@/components/section/dialogue'
+import SectionExperience from '@/components/section/experience'
 import { getStaticPaths, getStaticProps } from '@/core/i18n'
 export { getStaticPaths, getStaticProps }
 
@@ -37,10 +38,13 @@ export default () => {
     }
   }, [])
 
+  const section = [SectionOpening, SectionDialogue, SectionExperience]
+
   return (
     <main ref={main}>
-      <SectionOpening progress={childrenProgressData?.[0]} />
-      <SectionDialogue progress={childrenProgressData?.[1]} />
+      {section.map((Component, index) => (
+        <Component key={index} progress={childrenProgressData?.[index]} />
+      ))}
     </main>
   )
 }

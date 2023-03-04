@@ -39,12 +39,11 @@ watch(scrollProgress, () => {
 })
 
 // experience
-const experience = computed<Work[]>(
-  () =>
-    EXPERIENCES.map(({ date, label, works = [] }, group) => [
-      { date, label, group, category: true, count: works.length },
-      ...works.map(work => ({ ...work, group })),
-    ]).flat() as Work[],
+const experience = computed<Work[]>(() =>
+  EXPERIENCES.map(({ date, label, works = [] }, group) => [
+    { date, label, group, category: true, count: works.length },
+    ...works.map(work => ({ ...work, group })),
+  ]).flat(),
 )
 
 // fps
@@ -84,7 +83,7 @@ onUnmounted(() => window.removeEventListener('scroll', onScrollHandler))
     <div ref="container" class="fixed left-0 top-0 w-full h-100vh flex flex-nowrap overflow-hidden whitespace-nowrap">
       <!--title-->
       <div class="w-full h-100vh flex items-center justify-center flex-shrink-0 font-bold text-white text-16">
-        <h1 v-t="'section.experience.title'" class="experience__title hidden" />
+        <h1 v-t="'section.experience.title'" class="experience__title hidden translate-y-40vh" />
       </div>
       <!--works-->
       <div v-for="(work, wIdx) in experience" :key="wIdx" class="flex-shrink-0 inline-block pt-40vh">

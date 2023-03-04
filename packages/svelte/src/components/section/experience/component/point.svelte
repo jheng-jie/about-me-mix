@@ -41,7 +41,7 @@
       </div>
     {/if}
 
-    <!--details?.technology-->
+    <!--technology-->
     {#if details?.technology?.length}
       <div class="pl-8 max-w-70 flex flex-wrap">
         {#each details?.technology as item, index (index)}

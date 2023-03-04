@@ -18,7 +18,7 @@ export type Work = {
   // 前後端
   end?: number
   // tag
-  technology?: string | undefined
+  technology?: string[]
 }
 
 /**
@@ -30,13 +30,14 @@ export const createTween = (container: HTMLDivElement): TweenTimeLine => {
 
   // title
   const title = container.querySelector('.experience__title')
-  tl.from(title, { y: '40vh', duration: 20, opacity: 0 }, 0)
-  tl.to(title, { display: 'block' }, 0)
+  tl.to(title, { display: 'block', opacity: 1, duration: 20, y: 0 }, 0)
   tl.to(title, { display: 'none', duration: 20, opacity: 0, scale: 0, ease: Back.easeInOut.config(5) }, 20)
 
   // scroll
   let progress = { value: 0 }
-  const onUpdate = () => (container.scrollLeft = (container.scrollWidth - window.innerWidth) * progress.value)
+  const onUpdate = () => {
+    container.scrollLeft = (container.scrollWidth - window.innerWidth) * progress.value
+  }
   tl.to(progress, { value: 1, onUpdate, duration: 70, ease: Power0.easeNone }, 30)
 
   return tl
