@@ -35,6 +35,6 @@
 <!--Home Page-->
 <main bind:this={main}>
   {#each section as Component, index (index)}
-    <Component progress={childrenProgressData?.[index]} />
+    <svelte:component this={Component} progress={childrenProgressData?.[index]} />
   {/each}
 </main>
