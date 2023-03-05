@@ -39,7 +39,7 @@ export default () => {
   /**
    * @desc on switch language
    */
-  const onLocaleSelect = (event: MouseEvent<HTMLDivElement>, locale: string) => {
+  const onLocaleSelect = (event: MouseEvent<HTMLButtonElement>, locale: string) => {
     onDropdownClose(event)
 
     // set new pathname
@@ -54,7 +54,7 @@ export default () => {
 
   // 下拉選單
   const [show, setShow] = useState(false)
-  const onDropdownClose = (event: MouseEvent<HTMLDivElement>) => {
+  const onDropdownClose = (event: MouseEvent<HTMLButtonElement>) => {
     // 事件穿透
     event?.preventDefault()
     event?.stopPropagation()
@@ -63,11 +63,15 @@ export default () => {
   }
 
   return (
-    <div onClick={() => setShow(true)} className="h-full flex items-center cursor-pointer relative select-none">
+    <div
+      onClick={() => setShow(true)}
+      onKeyUp={() => false}
+      className="h-full flex items-center cursor-pointer relative select-none"
+    >
       {/*current locale*/}
       <Image src={icon} alt="" className="w-6 h-6 mx-1.5" />
       {/*mask*/}
-      {show && <div onClick={onDropdownClose} className="fixed left-0 top-0 w-full h-full z-0" />}
+      {show && <button onClick={onDropdownClose} className="fixed left-0 top-0 w-full h-full z-0" />}
       {/*dropdown*/}
       <motion.div
         initial="hidden"
@@ -78,13 +82,13 @@ export default () => {
         <div className="bg-white rounded-1.5 py-1 shadow-md">
           {/*locale list*/}
           {config.SUPPORTS_LOCALES.map(locale => (
-            <div
+            <button
               onClick={event => onLocaleSelect(event, locale)}
               key={locale}
               className="hover:bg-gray-200 transition-colors p-1.5"
             >
               <Image src={iconMap.get(locale) || ''} alt="" className="w-6 h-6" />
-            </div>
+            </button>
           ))}
         </div>
       </motion.div>

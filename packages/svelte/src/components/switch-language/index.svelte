@@ -28,13 +28,19 @@
   const dropdownTransition = { duration: 300 }
 </script>
 
-<div class="h-full flex items-center cursor-pointer relative select-none" on:click={() => (show = true)}>
+<div
+  class="h-full flex items-center cursor-pointer relative select-none"
+  tabindex="0"
+  role="button"
+  on:click={() => (show = true)}
+  on:keyup={() => false}
+>
   <!--current locale-->
   <img src={icon} alt="" class="w-6 h-6 mx-1.5" />
 
   {#if show}
     <!--mask-->
-    <div
+    <button
       v-if="show"
       class="fixed left-0 top-0 w-full h-full z-0"
       on:click|preventDefault|stopPropagation={() => (show = false)}
@@ -43,13 +49,13 @@
     <div class="absolute top-0 right-0 pt-11.5 z-10" transition:fade={dropdownTransition}>
       <div class="bg-white rounded-1.5 py-1 shadow-md">
         {#each $locales as item, i}
-          <div
+          <button
             on:click|preventDefault|stopPropagation={() => onSelectLocale(item)}
             :key="item"
             class="hover:bg-gray-200 transition-colors p-1.5"
           >
             <img src={iconMap.get(item) || ''} alt="" class="w-6 h-6" />
-          </div>
+          </button>
         {/each}
       </div>
     </div>

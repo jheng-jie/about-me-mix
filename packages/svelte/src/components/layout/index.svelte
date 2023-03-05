@@ -12,7 +12,7 @@
 </script>
 
 {#if Layout}
-  <Layout>
+  <svelte:component this={Layout}>
     <slot />
-  </Layout>
+  </svelte:component>
 {/if}
