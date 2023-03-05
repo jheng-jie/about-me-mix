@@ -2,6 +2,20 @@ import gsap, { Power0, Back } from 'gsap'
 
 export type TweenTimeLine = gsap.core.Timeline
 
+/**
+ * @desc 遞歸移除樣式
+ */
+const removeStyles = (el: HTMLElement) => {
+  el.removeAttribute('style')
+
+  if (el.childNodes.length > 0) {
+    for (let child in el.childNodes) {
+      /* filter element nodes only */
+      if (el.childNodes[child].nodeType == 1) removeStyles(el.childNodes[child] as HTMLElement)
+    }
+  }
+}
+
 // Animate Vars
 const AnimateVarsDialogueShow = {
   display: 'inline-block',
@@ -20,6 +34,9 @@ const AnimateVarsCodeHidden = { display: 'none', height: 0, stagger: 1, duration
  */
 export const createTween = (container: HTMLDivElement): TweenTimeLine => {
   const tl = gsap.timeline({ paused: true })
+
+  // clear all style
+  removeStyles(container.querySelector('.coding__code-box'))
 
   // step 0
   tl.to(container.querySelectorAll(`.coding__dialogue[data-step='0']`), AnimateVarsDialogueHidden, 0)

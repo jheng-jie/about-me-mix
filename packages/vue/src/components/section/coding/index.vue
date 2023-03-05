@@ -75,8 +75,12 @@ watch(scrollProgress, () => {
           </p>
         </div>
         <!--code-->
-        <Code class="flex-1" />
+        <Code class="flex-1 coding__code-box" />
       </div>
     </div>
   </section>
 </template>
+
+<style lang="scss">
+@import '@about-me-mix/common/gsap-coding';
+</style>
