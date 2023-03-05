@@ -40,5 +40,9 @@ export const createTween = (container: HTMLDivElement): TweenTimeLine => {
   }
   tl.to(progress, { value: 1, onUpdate, duration: 70, ease: Power0.easeNone }, 30)
 
+  // coding title
+  const coding = container.querySelector('.experience__title-coding')
+  tl.from(coding, { duration: 20, opacity: 0, scale: 0, ease: Back.easeInOut.config(1.2) }, tl.totalDuration() - 15)
+
   return tl
 }

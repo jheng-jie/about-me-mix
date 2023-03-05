@@ -17,6 +17,7 @@
       "title": "學經歷"
     },
     "coding": {
+      "title": "代碼風格",
       "message": [
         "快速了解我寫程式時的習慣",
         "使用 Prettier 排版",

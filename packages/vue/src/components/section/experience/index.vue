@@ -85,14 +85,18 @@ onUnmounted(() => window.removeEventListener('scroll', onScrollHandler))
       <div
         class="w-full h-100vh flex items-center justify-center flex-shrink-0 font-bold text-white text-10 lg:text-16"
       >
-        <h1 v-t="'section.experience.title'" class="experience__title hidden translate-y-40vh" />
+        <h1 v-t="'section.experience.title'" class="experience__title hidden opacity-0 translate-y-40vh" />
       </div>
       <!--works-->
       <div v-for="(work, wIdx) in experience" :key="wIdx" class="flex-shrink-0 inline-block pt-40vh">
         <Point :details="work" />
       </div>
       <!--finish-->
-      <div class="w-full h-100vh flex items-center justify-center flex-shrink-0" />
+      <div
+        class="w-full h-100vh flex items-center justify-center flex-shrink-0 font-bold text-white text-10 lg:text-16"
+      >
+        <h1 v-t="'section.coding.title'" class="experience__title-coding" />
+      </div>
     </div>
   </section>
 </template>
