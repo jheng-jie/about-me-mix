@@ -5,6 +5,7 @@ import { useWebsite } from '@/stores'
 import SectionOpening from '@/components/section/opening/index.vue'
 import SectionDialogue from '@/components/section/dialogue/index.vue'
 import SectionExperience from '@/components/section/experience/index.vue'
+import SectionCoding from '@/components/section/coding/index.vue'
 
 // progress cache
 const childrenProgressData = ref<ElementPositionProgress[]>([])
@@ -27,7 +28,7 @@ watch([main, sizeUpdateTimestamp], cacheChildrenPosition)
 onBeforeMount(() => window.addEventListener('scroll', onScrollHandler))
 onUnmounted(() => window.removeEventListener('scroll', onScrollHandler))
 
-const section = [SectionOpening, SectionDialogue, SectionExperience]
+const section = [SectionOpening, SectionDialogue, SectionExperience, SectionCoding]
 </script>
 
 <template>
