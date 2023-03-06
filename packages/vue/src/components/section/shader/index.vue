@@ -13,9 +13,7 @@ const props = defineProps({
 // update shadow params
 const shader = ref<TweenShader>()
 const updateShaderProgress = () => {
-  const progress = scrollProgress.value!.progress * 0.6
-  const overlappingEnter = scrollProgress.value!.overlappingEnter * 0.4
-  shader.value?.progress(progress + overlappingEnter)
+  shader.value?.progress(scrollProgress.value!.progress)
 }
 onUnmounted(() => shader.value?.kill())
 const sizeUpdateTimestamp = computed(() => useWebsite().sizeUpdateTimestamp)
