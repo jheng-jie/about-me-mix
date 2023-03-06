@@ -20,11 +20,7 @@
 
   // 快取子層位置，避免一直計算
   let main: HTMLElement
-  const cacheChildrenPosition = () => {
-    if (!main) return
-    childrenProgressData = getChildrenRect(main)
-  }
-  $: if ($sizeUpdateTimestamp || main) cacheChildrenPosition()
+  $: if ($sizeUpdateTimestamp && main) childrenProgressData = getChildrenRect(main)
 
   // listen scroll
   onMount(() => browser && window.addEventListener('scroll', onScrollHandler))

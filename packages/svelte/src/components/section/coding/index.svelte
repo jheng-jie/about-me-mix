@@ -1,44 +1,32 @@
 <script lang="ts">
   import type { ElementPositionProgress } from '@about-me-mix/common/scroll-progess'
-  import type { TweenTimeLine } from '@about-me-mix/common/gsap-coding'
   import avatar from '@about-me-mix/common/assets/avatar.png?url'
   import Code from './component/code.svelte'
   import { t } from '@/core/i18n'
   import { createTween } from '@about-me-mix/common/gsap-coding'
-  import { onDestroy } from 'svelte'
-  import '@about-me-mix/common/gsap-coding.scss' // FIXME: @apply bug
-
-  // gsap timeline
-  let tween: TweenTimeLine
-  onDestroy(() => tween?.kill())
-  const updateTweenProgress = () => {
-    tween?.progress(Math.min(progress.progress, progress.overlappingEnter))
-  }
-
-  // box
-  let container: HTMLDivElement
-  let prevContainer: HTMLDivElement
-  $: if (container && prevContainer !== container) {
-    prevContainer = container
-    tween?.kill()
-    tween = createTween(container)
-  }
 
   // progress data
   export let progress: ElementPositionProgress
-  let prevProgress: ElementPositionProgress
-  $: if (container && progress && prevProgress !== progress) {
-    prevProgress = progress
-    // hidden
-    if (container) container.style.display = progress.hidden ? 'none' : ''
-    // update tween
-    if (!progress.hidden) updateTweenProgress()
+
+  const initialize = (container: HTMLDivElement) => {
+    const tween = createTween(container)
+    return {
+      // on progress update
+      update({ hidden, progress, overlappingEnter }: ElementPositionProgress) {
+        if (hidden) return
+        tween?.progress(Math.min(progress, overlappingEnter))
+      },
+      destroy() {
+        tween?.kill()
+      },
+    }
   }
 </script>
 
 <section class="h-400vh bg-gradient-to-b from-zinc-600 to-neutral-500">
   <div
-    bind:this={container}
+    use:initialize={progress}
+    style:display={progress?.hidden ? 'none' : ''}
     class="coding h-100vh w-full px-2 pb-2 sticky top-0 flex flex-col items-center justify-start lg:justify-center"
   >
     <!--dialogue-->

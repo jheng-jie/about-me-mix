@@ -4,43 +4,35 @@
   import { createShader } from '@about-me-mix/common/twgl-shader'
   import noise from '@about-me-mix/common/assets/noise.jpg?url'
   import { sizeUpdateTimestamp } from '@/stores/'
-  import { onDestroy } from 'svelte'
   import { t } from '@/core/i18n'
-
-  // update shadow params
-  let shader: TweenShader
-  const updateShaderProgress = () => {
-    shader?.progress(progress!.progress)
-  }
-  $: if ($sizeUpdateTimestamp) shader?.resetSize()
-  onDestroy(() => shader?.kill())
-
-  // box
-  let container: HTMLDivElement
-  let prevContainer: HTMLDivElement
-  $: if (container && prevContainer !== container && container?.querySelector('canvas')) {
-    prevContainer = container
-    createShader(container?.querySelector('canvas'), { bg: '#737373', noise }).then(tween => {
-      shader?.kill()
-      shader = tween
-      updateShaderProgress()
-    })
-  }
 
   // progress data
   export let progress: ElementPositionProgress
-  let prevProgress: ElementPositionProgress
-  $: if (container && progress && prevProgress !== progress) {
-    prevProgress = progress
-    // hidden
-    if (container) container.style.display = progress.hidden ? 'none' : ''
-    // update tween
-    if (!progress.hidden) updateShaderProgress()
+
+  // update shadow params
+  let shader: TweenShader
+  $: if ($sizeUpdateTimestamp) shader?.resetSize()
+
+  const initialize = (container: HTMLDivElement) => {
+    createShader(container?.querySelector('canvas'), { bg: '#737373', noise }).then(tween => {
+      shader?.kill()
+      shader = tween
+    })
+    return {
+      // on progress update
+      update({ hidden, progress }: ElementPositionProgress) {
+        if (hidden) return
+        shader?.progress(progress)
+      },
+      destroy() {
+        shader?.kill()
+      },
+    }
   }
 </script>
 
 <section class="h-200vh">
-  <div bind:this={container}>
+  <div use:initialize={progress} style:display={progress?.hidden ? 'none' : ''}>
     <canvas class="h-100vh w-full sticky top-0 z-10" />
     <div
       class="w-full h-100vh relative z-0 flex items-center justify-center font-bold text-white text-10 lg:text-16 drop-shadow-xl"
