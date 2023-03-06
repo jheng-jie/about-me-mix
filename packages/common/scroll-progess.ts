@@ -55,9 +55,13 @@ export const getElementProgressData = (list: ElementPositionProgress[]) => {
     const [x, y] = [top, top + height]
 
     // 重疊相對範圍
-    const overlappingEnter = max(0, min(1, (y2 - x) / screenHeight))
-    const overlappingLeave = max(0, min(1, (y - x2) / screenHeight))
-    const hidden = overlappingEnter + overlappingLeave === 1
+    const enter = (y2 - x) / screenHeight
+    const leave = (y - x2) / screenHeight
+    const overlappingEnter = max(0, min(1, enter))
+    const overlappingLeave = max(0, min(1, leave))
+
+    // hidden
+    const hidden = enter < -0.5 || leave < -0.5
 
     // 進度
     const progress = max(0, min(1, (scrollY - top) / (height - screenHeight)))

@@ -16,10 +16,11 @@ export default ({ progress: scrollProgress }: { progress: ElementPositionProgres
   // tween shader
   const shader = useRef<TweenShader>()
   const initScrollProgressData = useRef<ElementPositionProgress>()
-  const canvas = useRef<HTMLCanvasElement>(null)
+  const container = useRef<HTMLDivElement>(null)
   useEffect(() => {
-    if (!canvas.current) return
-    createShader(canvas.current, { bg: '#737373', noise: noise.src }).then(tween => {
+    const canvas = container.current?.querySelector('canvas')
+    if (!canvas) return
+    createShader(canvas, { bg: '#737373', noise: noise.src }).then(tween => {
       shader.current = tween
       if (initScrollProgressData.current) tween.progress(initScrollProgressData.current.progress)
     })
@@ -40,7 +41,7 @@ export default ({ progress: scrollProgress }: { progress: ElementPositionProgres
     // cache before init
     if (!shader.current) initScrollProgressData.current = scrollProgress
     // hidden
-    if (canvas.current) canvas.current.style.display = scrollProgress.hidden ? 'none' : ''
+    if (container.current) container.current.style.display = scrollProgress.hidden ? 'none' : ''
     // update tween
     if (!scrollProgress.hidden) shader.current?.progress(scrollProgress!.progress)
   }, [scrollProgress])
@@ -48,9 +49,11 @@ export default ({ progress: scrollProgress }: { progress: ElementPositionProgres
   return useMemo(
     () => (
       <section className="h-200vh">
-        <canvas ref={canvas} className="h-100vh w-full sticky top-0 z-10" />
-        <div className="w-full h-100vh relative z-0 flex items-center justify-center font-bold text-white text-10 lg:text-16">
-          {t('thank')}
+        <div ref={container}>
+          <canvas className="h-100vh w-full sticky top-0 z-10" />
+          <div className="w-full h-100vh relative z-0 flex items-center justify-center font-bold text-white text-10 lg:text-16">
+            {t('thank')}
+          </div>
         </div>
       </section>
     ),

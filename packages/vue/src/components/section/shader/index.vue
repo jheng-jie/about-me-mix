@@ -20,11 +20,12 @@ const sizeUpdateTimestamp = computed(() => useWebsite().sizeUpdateTimestamp)
 watch(sizeUpdateTimestamp, () => shader.value?.resetSize())
 
 // box
-const canvas = ref<HTMLCanvasElement>()
-watch(canvas, async () => {
-  if (!canvas.value) return
+const container = ref<HTMLDivElement>()
+watch(container, async () => {
+  const canvas = container.value?.querySelector('canvas')
+  if (!canvas) return
   shader.value?.kill()
-  shader.value = await createShader(canvas.value, { bg: '#737373', noise })
+  shader.value = await createShader(canvas, { bg: '#737373', noise })
 })
 
 // set timeline progress
@@ -32,7 +33,7 @@ const scrollProgress = toRef(props, 'progress')
 watch([scrollProgress, shader], () => {
   if (!scrollProgress.value) return
   // hidden
-  if (canvas.value) canvas.value.style.display = scrollProgress.value.hidden ? 'none' : ''
+  if (container.value) container.value.style.display = scrollProgress.value.hidden ? 'none' : ''
   // update tween
   if (!scrollProgress.value.hidden) updateShaderProgress()
 })
@@ -40,10 +41,12 @@ watch([scrollProgress, shader], () => {
 
 <template>
   <section v-memo="[locale]" class="h-200vh">
-    <canvas ref="canvas" class="h-100vh w-full sticky top-0 z-10" />
-    <div
-      class="w-full h-100vh relative z-0 flex items-center justify-center font-bold text-white text-10 lg:text-16 drop-shadow-xl"
-      v-t="'thank'"
-    />
+    <div ref="container">
+      <canvas class="h-100vh w-full sticky top-0 z-10" />
+      <div
+        class="w-full h-100vh relative z-0 flex items-center justify-center font-bold text-white text-10 lg:text-16 drop-shadow-xl"
+        v-t="'thank'"
+      />
+    </div>
   </section>
 </template>
