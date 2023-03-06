@@ -40,11 +40,10 @@ watch([scrollProgress, shader], () => {
 
 <template>
   <section v-memo="[locale]" class="h-200vh">
-    <canvas class="h-100vh w-full sticky top-0 z-10" ref="canvas" />
+    <canvas ref="canvas" class="h-100vh w-full sticky top-0 z-10" />
     <div
-      class="w-full h-100vh relative z-0 flex items-center justify-center font-bold text-6 lg:text-20 text-white drop-shadow-xl"
-    >
-      Thanks for watching
-    </div>
+      class="w-full h-100vh relative z-0 flex items-center justify-center font-bold text-white text-10 lg:text-16 drop-shadow-xl"
+      v-t="'thank'"
+    />
   </section>
 </template>

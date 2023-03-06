@@ -36,7 +36,7 @@
       <div class="absolute top-0 left-0 w-full h-full overflow-hidden">
         <!--box-->
         <div
-          style:background-image={`url(${bg[index]})`}
+          style:background-image={index === 1 ? `url(${bg[index]})` : ''}
           class="h-100vh w-full flex flex-col items-center justify-center font-medium text-4 lg:text-5 bg-center bg-cover"
         >
           <!--icon-->

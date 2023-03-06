@@ -1,5 +1,5 @@
 <template>
-  <div class="flex-1 overflow-x-auto overflow-y-hidden overflow-x-auto overflow-y-hidden">
+  <div class="overflow-x-auto overflow-y-hidden overflow-x-auto overflow-y-hidden">
     <!--註解-->
     <p data-show="3" data-g>/**</p>
     <p data-show="3" data-g>

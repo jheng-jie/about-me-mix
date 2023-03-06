@@ -7,6 +7,8 @@
   import SectionOpening from '@/components/section/opening/index.svelte'
   import SectionDialogue from '@/components/section/dialogue/index.svelte'
   import SectionExperience from '@/components/section/experience/index.svelte'
+  import SectionCoding from '@/components/section/coding/index.svelte'
+  import SectionShader from '@/components/section/shader/index.svelte'
 
   // progress cache
   let childrenProgressData: ElementPositionProgress[]
@@ -29,7 +31,7 @@
   onDestroy(() => browser && window.removeEventListener('scroll', onScrollHandler))
 
   // section
-  const section = [SectionOpening, SectionDialogue, SectionExperience]
+  const section = [SectionOpening, SectionDialogue, SectionExperience, SectionCoding, SectionShader]
 </script>
 
 <!--Home Page-->

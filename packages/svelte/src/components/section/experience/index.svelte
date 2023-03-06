@@ -84,7 +84,7 @@
   >
     <!--title-->
     <div class="w-full h-100vh flex items-center justify-center flex-shrink-0 font-bold text-white text-10 lg:text-16">
-      <h1 class="experience__title hidden translate-y-40vh">{$t('section.experience.title')}</h1>
+      <h1 class="experience__title hidden opacity-0 translate-y-40vh">{$t('section.experience.title')}</h1>
     </div>
     <!--works-->
     {#each experience as work, index (index)}
@@ -93,6 +93,8 @@
       </div>
     {/each}
     <!--finish-->
-    <div class="w-full h-100vh flex items-center justify-center flex-shrink-0" />
+    <div class="w-full h-100vh flex items-center justify-center flex-shrink-0 font-bold text-white text-10 lg:text-16">
+      <h1 class="experience__title-coding">{$t('section.coding.title')}</h1>
+    </div>
   </div>
 </section>
