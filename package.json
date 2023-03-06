@@ -19,6 +19,7 @@
     "gsap": "^3.11.4",
     "lodash": "^4.17.21",
     "prettier": "^2.8.4",
-    "prettier-plugin-svelte": "^2.9.0"
+    "prettier-plugin-svelte": "^2.9.0",
+    "twgl.js": "^5.3.0"
   }
 }
