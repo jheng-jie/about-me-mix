@@ -12,36 +12,33 @@ const props = defineProps({
 
 // update shadow params
 const shader = ref<TweenShader>()
-const updateShaderProgress = () => {
-  shader.value?.progress(scrollProgress.value!.progress)
-}
-onUnmounted(() => shader.value?.kill())
-const sizeUpdateTimestamp = computed(() => useWebsite().sizeUpdateTimestamp)
-watch(sizeUpdateTimestamp, () => shader.value?.resetSize())
-
-// box
 const container = ref<HTMLDivElement>()
-watch(container, async () => {
+onMounted(async () => {
   const canvas = container.value?.querySelector('canvas')
   if (!canvas) return
-  shader.value?.kill()
   shader.value = await createShader(canvas, { bg: '#737373', noise })
 })
+onUnmounted(() => shader.value?.kill())
+
+// on resize
+const sizeUpdateTimestamp = computed(() => useWebsite().sizeUpdateTimestamp)
+watch(sizeUpdateTimestamp, () => shader.value?.resetSize())
 
 // set timeline progress
 const scrollProgress = toRef(props, 'progress')
 watch([scrollProgress, shader], () => {
   if (!scrollProgress.value) return
+  const { hidden, progress } = scrollProgress.value
   // hidden
-  if (container.value) container.value.style.display = scrollProgress.value.hidden ? 'none' : ''
+  if (container.value) container.value.style.display = hidden ? 'none' : ''
   // update tween
-  if (!scrollProgress.value.hidden) updateShaderProgress()
+  if (!hidden) shader.value?.progress(progress)
 })
 </script>
 
 <template>
-  <section v-memo="[locale]" class="h-200vh">
-    <div ref="container">
+  <section class="h-200vh">
+    <div v-once ref="container">
       <canvas class="h-100vh w-full sticky top-0 z-10" />
       <div
         class="w-full h-100vh relative z-0 flex items-center justify-center font-bold text-white text-10 lg:text-16 drop-shadow-xl"

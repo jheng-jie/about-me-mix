@@ -40,30 +40,24 @@ const experience = computed<Work[]>(() =>
   ]).flat(),
 )
 
-// fps
-let running = false
+let [running, rotate, prevSpeed] = [false, 0, 0]
+
+// 角度控制
 const enterFrame = () => {
-  // update dom
-  if (container.value) {
-    running = true
-    container.value.style.transform = `rotate(${(rotate *= 0.75).toFixed(2)}deg)`
-  }
-  // next
-  if (Math.abs(rotate) > 0.01) return requestAnimationFrame(enterFrame)
   // finish
-  running = false
+  if (!container.value || Math.abs(rotate) < 0.01) return (running = false)
+  // run
+  running = true
+  container.value.style.transform = `rotate(${(rotate *= 0.75).toFixed(2)}deg)`
+  requestAnimationFrame(enterFrame)
 }
 
-// 加速度
-let [rotate, prevSpeed] = [0, 0]
+// 監聽捲軸
 const onScrollHandler = () => {
-  if (!scrollProgress.value) return
-  if (scrollProgress.value.hidden) return
-
+  if (!scrollProgress.value || scrollProgress.value.hidden) return
   // 加速度計算
   const distance = window.scrollY - prevSpeed
   rotate = max(-5, min(5, rotate - max(-0.5, min(0.5, distance * 0.01))))
-
   // 恢復平衡
   !running && enterFrame()
   prevSpeed = window.scrollY
@@ -73,8 +67,12 @@ onUnmounted(() => window.removeEventListener('scroll', onScrollHandler))
 </script>
 
 <template>
-  <section v-memo="[locale]" class="experience w-full h-600vh bg-gradient-to-b from-zinc-800 to-zinc-600">
-    <div ref="container" class="fixed left-0 top-0 w-full h-100vh flex flex-nowrap overflow-hidden whitespace-nowrap">
+  <section class="experience w-full h-600vh bg-gradient-to-b from-zinc-800 to-zinc-600">
+    <div
+      v-once
+      ref="container"
+      class="fixed left-0 top-0 w-full h-100vh flex flex-nowrap overflow-hidden whitespace-nowrap"
+    >
       <!--title-->
       <div
         class="w-full h-100vh flex items-center justify-center flex-shrink-0 font-bold text-white text-10 lg:text-16"

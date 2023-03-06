@@ -11,34 +11,28 @@ const props = defineProps({
 
 // gsap timeline
 const tween = ref<TweenTimeLine>()
-onUnmounted(() => tween?.value?.kill())
-const updateTweenProgress = () => {
-  const { progress, overlappingEnter } = scrollProgress.value!
-  tween.value?.progress(Math.min(progress, overlappingEnter))
-}
-
-// box
 const container = ref<HTMLDivElement>()
-watch([container], async () => {
-  if (!container.value) return
-  tween.value?.kill()
+onMounted(() => {
   tween.value = createTween(container.value!)
 })
+onUnmounted(() => tween?.value?.kill())
 
 // set timeline progress
 const scrollProgress = toRef(props, 'progress')
 watch(scrollProgress, () => {
   if (!scrollProgress.value) return
+  const { hidden, progress, overlappingEnter } = scrollProgress.value
   // hidden
   if (container.value) container.value.style.display = scrollProgress.value.hidden ? 'none' : ''
   // update tween
-  if (!scrollProgress.value.hidden) updateTweenProgress()
+  if (!hidden) tween.value?.progress(Math.min(progress, overlappingEnter))
 })
 </script>
 
 <template>
-  <section v-memo="[locale]" class="h-400vh bg-gradient-to-b from-zinc-600 to-neutral-500">
+  <section class="h-400vh bg-gradient-to-b from-zinc-600 to-neutral-500">
     <div
+      v-once
       ref="container"
       class="coding h-100vh w-full px-2 pb-2 sticky top-0 flex flex-col items-center justify-start lg:justify-center"
     >
@@ -75,12 +69,8 @@ watch(scrollProgress, () => {
           </p>
         </div>
         <!--code-->
-        <Code class="coding__code-box" />
+        <Code />
       </div>
     </div>
   </section>
 </template>
-
-<style lang="scss">
-@import '@about-me-mix/common/gsap-coding';
-</style>

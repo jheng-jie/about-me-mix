@@ -11,29 +11,21 @@ const props = defineProps({
 
 // gsap timeline
 const tween = ref<TweenTimeLine>()
-onUnmounted(() => tween?.value?.kill())
-const updateTweenProgress = () => {
-  const progress = scrollProgress.value!.progress * 0.8
-  const overlappingEnter = scrollProgress.value!.overlappingEnter * 0.2
-  tween.value?.progress(progress + overlappingEnter)
-}
-
-// box
 const container = ref<HTMLDivElement>()
-watch(container, async () => {
-  if (!container.value) return
-  tween.value?.kill()
-  tween.value = createTween(container.value)
+onMounted(() => {
+  tween.value = createTween(container.value!)
 })
+onUnmounted(() => tween?.value?.kill())
 
 // set timeline progress
 const scrollProgress = toRef(props, 'progress')
 watch(scrollProgress, () => {
   if (!scrollProgress.value) return
+  const { hidden, progress, overlappingEnter } = scrollProgress.value
   // hidden
-  if (container.value) container.value.style.display = scrollProgress.value.hidden ? 'none' : ''
+  if (container.value) container.value.style.display = hidden ? 'none' : ''
   // update tween
-  if (!scrollProgress.value.hidden) updateTweenProgress()
+  if (!hidden) tween.value?.progress(progress * 0.8 + overlappingEnter * 0.2)
 })
 
 // popup content
@@ -41,8 +33,8 @@ const contents = computed(() => tm<string>('section.dialogue'))
 </script>
 
 <template>
-  <section v-memo="[locale]" class="min-h-400vh relative">
-    <div ref="container" class="dialogue w-full h-100vh sticky top-0 text-4 lg:text-6 overflow-hidden">
+  <section class="min-h-400vh relative">
+    <div v-once ref="container" class="dialogue w-full h-100vh sticky top-0 text-4 lg:text-6 overflow-hidden">
       <!--line bg-->
       <div
         v-for="i in 5"

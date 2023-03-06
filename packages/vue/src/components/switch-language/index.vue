@@ -51,7 +51,7 @@ const onSelectLocale = (locale: string) => {
   </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .fade {
   &-enter-active,
   &-leave-active {

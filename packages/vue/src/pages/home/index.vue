@@ -11,19 +11,17 @@ import SectionShader from '@/components/section/shader/index.vue'
 // progress cache
 const childrenProgressData = ref<ElementPositionProgress[]>([])
 
+// 快取子層位置，避免一直計算
+const main = ref<HTMLElement>()
+const sizeUpdateTimestamp = computed(() => useWebsite().sizeUpdateTimestamp)
+watch([main, sizeUpdateTimestamp], () => {
+  if (main.value) childrenProgressData.value = getChildrenRect(main.value)
+})
+
 // 子層相對捲軸位置計算
 const onScrollHandler = () => {
   childrenProgressData.value = getElementProgressData(childrenProgressData.value)
 }
-
-// 快取子層位置，避免一直計算
-const main = ref<HTMLElement>()
-const cacheChildrenPosition = () => {
-  if (!main.value) return
-  childrenProgressData.value = getChildrenRect(main.value)
-}
-const sizeUpdateTimestamp = computed(() => useWebsite().sizeUpdateTimestamp)
-watch([main, sizeUpdateTimestamp], cacheChildrenPosition)
 
 // listen scroll
 onBeforeMount(() => window.addEventListener('scroll', onScrollHandler))
@@ -34,6 +32,11 @@ const section = [SectionOpening, SectionDialogue, SectionExperience, SectionCodi
 
 <template>
   <main ref="main">
-    <Component v-for="(comp, index) in section" :is="comp" :key="index" :progress="childrenProgressData?.[index]" />
+    <Component
+      v-for="(component, index) in section"
+      :is="component"
+      :key="index"
+      :progress="childrenProgressData?.[index]"
+    />
   </main>
 </template>

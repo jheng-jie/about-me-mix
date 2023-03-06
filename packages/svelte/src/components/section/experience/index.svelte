@@ -23,12 +23,12 @@
 
     // 角度控制
     const enterFrame = () => {
+      // finish
+      if (Math.abs(rotate) < 0.01) return (running = false)
+      // run
       running = true
       container.style.transform = `rotate(${(rotate *= 0.75).toFixed(2)}deg)`
-      // next
-      if (Math.abs(rotate) > 0.01) return requestAnimationFrame(enterFrame)
-      // finish
-      running = false
+      requestAnimationFrame(enterFrame)
     }
 
     // 監聽捲軸

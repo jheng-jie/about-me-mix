@@ -4,34 +4,31 @@ import Repeat from './component/repeat.vue'
 import bg from '@about-me-mix/common/assets/polygon-1412486.jpg?url'
 import icon from '@about-me-mix/common/assets/nuxt.png?url'
 
+const { locale } = useI18n()
 const props = defineProps({
   progress: Object as PropType<ElementPositionProgress>,
 })
 
-const { locale } = useI18n()
-
 // update mask height
 const container = ref<HTMLDivElement>()
-const resetMaskHeight = (percent: number) => {
-  const mask = container.value?.children?.[1] as HTMLDivElement
-  if (!mask) return
-  mask.style.height = `${percent}%`
-}
 
 // computed progress
 const scrollProgress = toRef(props, 'progress')
 watch(scrollProgress, () => {
   if (!scrollProgress.value) return
+  if (!container.value) return
+  const { progress, hidden } = scrollProgress.value
   // hidden
-  if (container.value) container.value.style.display = scrollProgress.value.hidden ? 'none' : ''
+  container.value.style.display = hidden ? 'none' : ''
   // update progress
-  if (!scrollProgress.value.hidden) resetMaskHeight((1 - scrollProgress.value.progress) * 100)
+  const mask = container.value?.children?.[1] as HTMLDivElement
+  if (!hidden && mask) mask.style.height = `${(1 - progress) * 100}%`
 })
 </script>
 
 <template>
-  <section v-memo="[locale]" class="h-200vh w-full relative">
-    <div ref="container" class="sticky top-0 left-0 h-100vh w-full">
+  <section class="h-200vh w-full relative">
+    <div v-once ref="container" class="sticky top-0 left-0 h-100vh w-full">
       <Repeat v-slot="{ index }" :count="2" :key="locale">
         <!--mask-->
         <div class="absolute top-0 left-0 w-full h-full overflow-hidden">
