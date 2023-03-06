@@ -37,7 +37,7 @@ watch(scrollProgress, () => {
 </script>
 
 <template>
-  <section v-memo="[locale]" class="h-400vh bg-gradient-to-b from-zinc-600 to-zinc-800">
+  <section v-memo="[locale]" class="h-400vh bg-gradient-to-b from-zinc-600 to-neutral-500">
     <div
       ref="container"
       class="coding h-100vh w-full sticky top-0 flex flex-col items-center justify-start lg:justify-center"

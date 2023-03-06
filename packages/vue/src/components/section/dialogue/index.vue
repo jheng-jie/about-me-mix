@@ -44,7 +44,11 @@ const contents = computed(() => tm<string>('section.dialogue'))
   <section v-memo="[locale]" class="min-h-400vh relative">
     <div ref="container" class="dialogue w-full h-100vh sticky top-0 text-4 lg:text-6 overflow-hidden">
       <!--line bg-->
-      <div v-for="i in 5" :key="i" class="dialogue__bg w-0 h-21vh -mb-1 bg-zinc-800 rounded-br-50px" />
+      <div
+        v-for="i in 5"
+        :key="i"
+        class="dialogue__bg w-0 h-21vh -mb-1 bg-zinc-800 rounded-br-50px first:rounded-tr-50px"
+      />
       <!--user icon-->
       <div class="absolute w-40 h-40 lg:w-65 lg:h-65 left-1/2 top-3.5/10 -translate-x-1/2 -translate-y-1/2">
         <div class="dialogue__avatar hidden opacity-0 scale-50 w-full h-full">

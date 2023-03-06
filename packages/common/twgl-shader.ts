@@ -1,14 +1,6 @@
 import * as TwGL from 'twgl.js'
-const {
-  m4,
-  primitives,
-  drawBufferInfo,
-  createProgramInfo,
-  setBuffersAndAttributes,
-  resizeCanvasToDisplaySize,
-  setUniforms,
-  createTextures,
-} = TwGL
+const { v3, m4, primitives, drawBufferInfo, createProgramInfo, setBuffersAndAttributes, setUniforms, createTextures } =
+  TwGL
 
 export type TweenShader = { resetSize: () => void; kill: () => void; progress: (n: number) => void }
 
@@ -16,25 +8,26 @@ export const fragment = `
 precision mediump float;
 
 // 背景
-varying vec2 vBgTexCoord;
-uniform sampler2D uBg;
+// varying vec2 vBgTexCoord;
+// uniform sampler2D uBg;
 
 // 溶解判斷圖
 varying vec2 vNoiseTexCoord;
 uniform sampler2D uNoise;
 
 // 0.0 ~ 1.0
-uniform float progress;
+uniform float uProgress;
+uniform vec3 uBgColor;
 
 void main() {
 	// 溶解效果 
   // 清除低於進度值的顏色
   // RGB灰階圖，三色同數值，也介於 0 ~ 1 之間，剛好當做進度值
   vec4 noise = texture2D(uNoise, vNoiseTexCoord);
-  if (noise.r <= progress) discard;
+  if ((noise.r + noise.g + noise.b) / 3.0 <= uProgress) discard;
   
   // 沒被過濾的顏色
-  gl_FragColor = texture2D(uBg, vBgTexCoord);
+  gl_FragColor = vec4(uBgColor, 1.0); // texture2D(uBg, vBgTexCoord);
 }
 `
 
@@ -44,17 +37,17 @@ attribute vec4 position;
 uniform mat4 matrix;
 
 // 相對視窗比
-uniform mat4 bgRatio;
-uniform mat4 noiseRatio;
+// uniform mat4 uuBgRatio;
+uniform mat4 uNoiseRatio;
 
 // 傳遞給著色器的資訊
-varying vec2 vBgTexCoord;
+// varying vec2 vBgTexCoord;
 varying vec2 vNoiseTexCoord;
 
 void main () {
   gl_Position = matrix * position;
-  vBgTexCoord = (bgRatio * position).xy;
-  vNoiseTexCoord = (noiseRatio * position).xy;
+  // vBgTexCoord = (uuBgRatio * position).xy;
+  vNoiseTexCoord = (uNoiseRatio * position).xy;
 }
 `
 
@@ -77,17 +70,24 @@ export const createShader = async (
   // 容器
   const matrix = m4.identity()
 
+  // 純色背景
+  const hex = Array.from(bg.replace(/^#/, ''))
+  const hexToRgb = Array.from({ length: 3 })
+    .map((_, index) => index)
+    .reduce((res: string[], i: number) => [...res, parseInt(hex.slice(i * 2, i * 2 + 2).join(''), 16) / 255], [])
+  const uBgColor = v3.create.apply(null, hexToRgb)
+
   // 計算素材比例
-  let bgRatio = m4.identity()
-  let noiseRatio = m4.identity()
+  // let uBgRatio = m4.identity()
+  let uNoiseRatio = m4.identity()
 
   // load texture
   return new Promise<TweenShader>((resolve, reject) => {
-    createTextures(webgl, { bg: { src: bg }, noise: { src: noise } }, (err, textures, sources) => {
+    createTextures(webgl, { noise: { src: noise } }, (err, textures, sources) => {
       if (err) return reject(err)
       let progressValue = 0
-      const { bg, noise } = sources as { [key: string]: HTMLImageElement }
-      const { bg: uBg, noise: uNoise } = textures
+      const { noise } = sources as { [key: string]: HTMLImageElement }
+      const { noise: uNoise } = textures
 
       // 計算視窗尺寸
       let windowRate = window.innerWidth / window.innerHeight
@@ -111,33 +111,34 @@ export const createShader = async (
         m4.scale(matrix, [width, height, 1], matrix)
 
         // bg
-        {
-          bgRatio = m4.identity()
-          const ratio = windowRate / (bg.width / bg.height)
-          const scale = [min(1, ratio), min(1, 1 / ratio), 1]
-          const translate = [(1 - scale[0]) * 0.5, (1 - scale[1]) * 0.5, 0]
-          m4.scale(bgRatio, scale, bgRatio)
-          m4.translate(bgRatio, translate, bgRatio)
-        }
+        // {
+        //   uBgRatio = m4.identity()
+        //   const ratio = windowRate / (bg.width / bg.height)
+        //   const scale = [min(1, ratio), min(1, 1 / ratio), 1]
+        //   const translate = [(1 - scale[0]) * 0.5, (1 - scale[1]) * 0.5, 0]
+        //   m4.scale(uBgRatio, scale, uBgRatio)
+        //   m4.translate(uBgRatio, translate, uBgRatio)
+        // }
 
         // noise
         {
-          noiseRatio = m4.identity()
+          uNoiseRatio = m4.identity()
           const ratio = windowRate / (noise.width / noise.height)
           const scale = [min(1, ratio), min(1, 1 / ratio), 1]
-          const translate = [(1 - scale[0]) * 0.5, (1 - scale[1]) * 0.5, 0]
-          m4.scale(noiseRatio, scale, noiseRatio)
-          m4.translate(noiseRatio, translate, noiseRatio)
+          const translate = [0.5 / scale[0] - 0.5, 0.5 / scale[1] - 0.5, 0]
+          m4.scale(uNoiseRatio, scale, uNoiseRatio)
+          m4.translate(uNoiseRatio, translate, uNoiseRatio)
         }
 
         progress(progressValue)
       }
 
       // update
-      const progress = (progress: number) => {
-        progressValue = progress
+      const progress = (uProgress: number) => {
+        progressValue = uProgress
         // draw
-        setUniforms(programInfo, { matrix, uBg, bgRatio, uNoise, noiseRatio, progress })
+        // setUniforms(programInfo, { matrix, uBg, uBgRatio, uNoise, uNoiseRatio, uProgress })
+        setUniforms(programInfo, { uBgColor, matrix, uNoise, uNoiseRatio, uProgress })
         drawBufferInfo(webgl, bufferInfo)
       }
 
@@ -145,7 +146,7 @@ export const createShader = async (
       const kill = () => {
         webgl.deleteProgram(programInfo.program)
         webgl.deleteBuffer(bufferInfo.indices)
-        webgl.deleteTexture(uBg)
+        // webgl.deleteTexture(uBg)
         webgl.deleteTexture(uNoise)
       }
 

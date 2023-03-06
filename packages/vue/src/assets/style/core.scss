@@ -12,7 +12,8 @@ html[lang='en'] {
 
 html,
 body {
-  @apply bg-black;
+  @apply bg-black bg-fixed bg-cover bg-center;
+  background-image: url('@about-me-mix/common/assets/polygon-1412485.jpg');
 }
 
 canvas {

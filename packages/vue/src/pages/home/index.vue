@@ -29,7 +29,7 @@ watch([main, sizeUpdateTimestamp], cacheChildrenPosition)
 onBeforeMount(() => window.addEventListener('scroll', onScrollHandler))
 onUnmounted(() => window.removeEventListener('scroll', onScrollHandler))
 
-const section = [SectionShader, SectionOpening, SectionDialogue, SectionExperience, SectionCoding]
+const section = [SectionOpening, SectionDialogue, SectionExperience, SectionCoding, SectionShader]
 </script>
 
 <template>

@@ -39,7 +39,7 @@ watch(scrollProgress, () => {
         <div class="absolute top-0 left-0 w-full h-full overflow-hidden">
           <!--box-->
           <div
-            :style="{ backgroundImage: `url(${bg[index]})` }"
+            :style="index === 1 ? { backgroundImage: `url(${bg[index]})` } : {}"
             class="h-100vh w-full flex flex-col items-center justify-center font-medium text-4 lg:text-5 bg-center bg-cover"
           >
             <!--icon-->

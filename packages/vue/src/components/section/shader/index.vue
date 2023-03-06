@@ -2,7 +2,6 @@
 import type { ElementPositionProgress } from '@about-me-mix/common/scroll-progess'
 import type { TweenShader } from '@about-me-mix/common/twgl-shader'
 import { createShader } from '@about-me-mix/common/twgl-shader'
-import bg from '@about-me-mix/common/assets/polygon-1412486.jpg?url'
 import noise from '@about-me-mix/common/assets/noise.jpg?url'
 import { useWebsite } from '~/stores'
 
@@ -14,7 +13,9 @@ const props = defineProps({
 // update shadow params
 const shader = ref<TweenShader>()
 const updateShaderProgress = () => {
-  shader.value?.progress(scrollProgress.value!.progress)
+  const progress = scrollProgress.value!.progress * 0.6
+  const overlappingEnter = scrollProgress.value!.overlappingEnter * 0.4
+  shader.value?.progress(progress + overlappingEnter)
 }
 onUnmounted(() => shader.value?.kill())
 const sizeUpdateTimestamp = computed(() => useWebsite().sizeUpdateTimestamp)
@@ -25,7 +26,7 @@ const canvas = ref<HTMLCanvasElement>()
 watch(canvas, async () => {
   if (!canvas.value) return
   shader.value?.kill()
-  shader.value = await createShader(canvas.value, { bg, noise })
+  shader.value = await createShader(canvas.value, { bg: '#737373', noise })
 })
 
 // set timeline progress
@@ -40,7 +41,12 @@ watch([scrollProgress, shader], () => {
 </script>
 
 <template>
-  <section v-memo="[locale]" class="h-200vh to-zinc-800">
-    <canvas class="h-100vh w-full sticky top-0" ref="canvas" />
+  <section v-memo="[locale]" class="h-200vh">
+    <canvas class="h-100vh w-full sticky top-0 z-10" ref="canvas" />
+    <div
+      class="w-full h-100vh relative z-0 flex items-center justify-center font-bold text-6 lg:text-20 text-white drop-shadow-xl"
+    >
+      Thanks for watching
+    </div>
   </section>
 </template>
