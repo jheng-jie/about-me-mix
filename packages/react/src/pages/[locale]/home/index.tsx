@@ -30,13 +30,9 @@ export default () => {
 
   // 子層相對捲軸位置計算
   const onScrollHandler = () => setChildrenProgressData(getElementProgressData(childrenElement.current))
-
-  // listen scroll
   useEffect(() => {
-    // mounted
     window.addEventListener('scroll', onScrollHandler)
     return () => {
-      // unmounted
       window.removeEventListener('scroll', onScrollHandler)
     }
   }, [])

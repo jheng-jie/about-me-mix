@@ -1,5 +1,5 @@
 import type { ElementPositionProgress } from '@about-me-mix/common/scroll-progess'
-import { useCallback, useEffect, useMemo, useRef } from 'react'
+import { useEffect, useMemo, useRef } from 'react'
 import Repeat from './component/repeat'
 import Content from './component/content'
 import { useTranslation } from 'next-i18next'
@@ -13,20 +13,16 @@ export default ({ progress: scrollProgress }: { progress: ElementPositionProgres
   // box
   const container = useRef<HTMLDivElement>(null)
 
-  // set mask height
-  const resetMaskHeight = useCallback((percent: number) => {
-    const mask = container.current?.children?.[1] as HTMLDivElement
-    if (!mask) return
-    mask.style.height = `${percent}%`
-  }, [])
-
   // on progress update
   useEffect(() => {
     if (!scrollProgress) return
+    if (!container.current) return
+    const { progress, hidden } = scrollProgress
     // hidden
-    if (container.current) container.current.style.display = scrollProgress.hidden ? 'none' : ''
+    container.current.style.display = hidden ? 'none' : ''
     // update progress
-    if (!scrollProgress.hidden) resetMaskHeight((1 - scrollProgress.progress) * 100)
+    const mask = container.current?.children?.[1] as HTMLDivElement
+    if (!hidden && mask) mask.style.height = `${(1 - progress) * 100}%`
   }, [scrollProgress])
 
   return useMemo(

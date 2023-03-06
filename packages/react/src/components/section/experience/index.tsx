@@ -3,7 +3,7 @@ import type { TweenTimeLine } from '@about-me-mix/common/gsap-experience'
 import { createTween, Work } from '@about-me-mix/common/gsap-experience'
 import config from '@about-me-mix/common/config.json'
 import { useTranslation } from 'next-i18next'
-import { useEffect, useMemo, useRef } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import Point from './component/point'
 
 // experience
@@ -20,45 +20,28 @@ export default ({ progress: scrollProgress }: { progress: ElementPositionProgres
   const { max, min } = Math
 
   // gsap timeline
-  const tween = useRef<TweenTimeLine>()
+  const [tween, setTween] = useState<TweenTimeLine>()
+  useEffect(() => {
+    return () => {
+      tween?.kill()
+    }
+  }, [tween])
+
+  // box
   const container = useRef<HTMLDivElement>(null)
   useEffect(() => {
     if (!container.current) return
-    tween.current = createTween(container.current)
-    return () => {
-      tween.current?.kill()
-    }
-  }, [])
+    setTween(createTween(container.current))
 
-  // on progress update
-  useEffect(() => {
-    if (!scrollProgress) return
-    const { progress, overlappingEnter, overlappingLeave, hidden } = scrollProgress
-    // hidden
-    if (container.current) container.current.style.display = hidden ? 'none' : ''
-    // update tween
-    if (!hidden)
-      tween.current?.progress(
-        progress * 0.7 + max(0, overlappingEnter / 0.8) * 0.15 + min(1, 1 - overlappingLeave) * 0.15,
-      )
-  }, [scrollProgress])
-
-  // 傾斜計算
-  const handlerScrollRotate = () => {
+    // 角度控制
     let [running, rotate, prevSpeed] = [false, 0, 0]
-
-    // 動畫處理
     const enterFrame = () => {
-      // update dom
-      if (container.current) {
-        running = true
-        container.current.style.transform = `rotate(${(rotate *= 0.75).toFixed(2)}deg)`
-      }
-      // next
-      if (Math.abs(rotate) > 0.01) return requestAnimationFrame(enterFrame)
-      // finish
-      running = false
+      if (!container.current || Math.abs(rotate) < 0.01) return (running = false)
+      running = true
+      container.current.style.transform = `rotate(${(rotate *= 0.75).toFixed(2)}deg)`
+      requestAnimationFrame(enterFrame)
     }
+
     // 監聽捲軸
     const onScrollHandler = () => {
       if (container.current?.style?.display === 'none') return
@@ -74,8 +57,24 @@ export default ({ progress: scrollProgress }: { progress: ElementPositionProgres
     return () => {
       window.removeEventListener('scroll', onScrollHandler)
     }
-  }
-  useEffect(handlerScrollRotate, [])
+  }, [])
+
+  // 捲軸歸位
+  useEffect(() => {
+    if (!container.current) return
+    container.current.scrollLeft = 0
+  }, [t])
+
+  // on progress update
+  useEffect(() => {
+    if (!scrollProgress) return
+    const { progress, overlappingEnter, overlappingLeave, hidden } = scrollProgress
+    // hidden
+    if (container.current) container.current.style.display = hidden ? 'none' : ''
+    // update tween
+    if (!hidden)
+      tween?.progress(progress * 0.7 + max(0, overlappingEnter / 0.8) * 0.15 + min(1, 1 - overlappingLeave) * 0.15)
+  }, [scrollProgress])
 
   return useMemo(
     () => (

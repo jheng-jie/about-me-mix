@@ -1,6 +1,6 @@
 import type { TweenShader } from '@about-me-mix/common/twgl-shader'
 import type { ElementPositionProgress } from '@about-me-mix/common/scroll-progess'
-import { useEffect, useMemo, useRef } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { useTranslation } from 'next-i18next'
 import { createShader } from '@about-me-mix/common/twgl-shader'
 import noise from '@about-me-mix/common/assets/noise.jpg'
@@ -14,36 +14,40 @@ export default ({ progress: scrollProgress }: { progress: ElementPositionProgres
   const { t } = useTranslation()
 
   // tween shader
-  const shader = useRef<TweenShader>()
-  const initScrollProgressData = useRef<ElementPositionProgress>()
+  const [shader, setShader] = useState<TweenShader>()
+  useEffect(() => {
+    shader?.resetSize(scrollProgress?.progress)
+    return () => {
+      shader?.kill()
+    }
+  }, [shader])
+
+  // box
   const container = useRef<HTMLDivElement>(null)
   useEffect(() => {
     const canvas = container.current?.querySelector('canvas')
     if (!canvas) return
-    createShader(canvas, { bg: '#737373', noise: noise.src }).then(tween => {
-      shader.current = tween
-      if (initScrollProgressData.current) tween.progress(initScrollProgressData.current.progress)
-    })
+    let destroyed = false
+    createShader(canvas, { bg: '#737373', noise: noise.src }, false).then(tween => !destroyed && setShader(tween))
     return () => {
-      shader.current?.kill()
+      destroyed = true
     }
   }, [])
 
   // resize
   const sizeUpdateTimestamp = useSelector((state: RootState) => state.sizeUpdateTimestamp)
   useEffect(() => {
-    shader.current?.resetSize()
+    shader?.resetSize()
   }, [sizeUpdateTimestamp])
 
   // on progress update
   useEffect(() => {
     if (!scrollProgress) return
-    // cache before init
-    if (!shader.current) initScrollProgressData.current = scrollProgress
+    const { hidden, progress } = scrollProgress
     // hidden
-    if (container.current) container.current.style.display = scrollProgress.hidden ? 'none' : ''
+    if (container.current) container.current.style.display = hidden ? 'none' : ''
     // update tween
-    if (!scrollProgress.hidden) shader.current?.progress(scrollProgress!.progress)
+    if (!hidden) shader?.progress(progress)
   }, [scrollProgress])
 
   return useMemo(

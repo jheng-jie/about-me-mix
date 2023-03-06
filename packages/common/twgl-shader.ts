@@ -2,7 +2,7 @@ import * as TwGL from 'twgl.js'
 const { v3, m4, primitives, drawBufferInfo, createProgramInfo, setBuffersAndAttributes, setUniforms, createTextures } =
   TwGL
 
-export type TweenShader = { resetSize: () => void; kill: () => void; progress: (n: number) => void }
+export type TweenShader = { resetSize: (progress?: number) => void; kill: () => void; progress: (n: number) => void }
 
 export const fragment = `
 precision mediump float;
@@ -57,6 +57,7 @@ void main () {
 export const createShader = async (
   canvas: HTMLCanvasElement,
   { bg, noise }: { bg: string; noise: string },
+  init = true,
 ): Promise<TweenShader> => {
   if (!canvas) return Promise.reject('canvas not exist.')
   const webgl: WebGLRenderingContext = canvas.getContext('webgl') as WebGLRenderingContext
@@ -92,7 +93,7 @@ export const createShader = async (
 
       // 計算視窗尺寸
       let windowRate = window.innerWidth / window.innerHeight
-      const resetSize = () => {
+      const resetSize = (setProgress?: number) => {
         const { min } = Math
 
         // canvas size
@@ -131,7 +132,7 @@ export const createShader = async (
           m4.translate(uNoiseRatio, translate, uNoiseRatio)
         }
 
-        requestAnimationFrame(() => progress(progressValue))
+        requestAnimationFrame(() => progress(setProgress || progressValue))
       }
 
       // update
@@ -152,7 +153,7 @@ export const createShader = async (
       }
 
       // init
-      resetSize()
+      init && resetSize()
 
       resolve({ resetSize, kill, progress })
     })

@@ -1,7 +1,7 @@
 import type { TweenTimeLine } from '@about-me-mix/common/gsap-coding'
 import type { ElementPositionProgress } from '@about-me-mix/common/scroll-progess'
 import avatar from '@about-me-mix/common/assets/avatar.png'
-import { useEffect, useMemo, useRef } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { useTranslation } from 'next-i18next'
 import Code from './component/code'
 import { createTween } from '@about-me-mix/common/gsap-coding'
@@ -13,26 +13,28 @@ export default ({ progress: scrollProgress }: { progress: ElementPositionProgres
   const { t } = useTranslation()
 
   // gsap timeline
-  const tween = useRef<TweenTimeLine>()
+  const [tween, setTween] = useState<TweenTimeLine>()
+  useEffect(() => {
+    return () => {
+      tween?.kill()
+    }
+  }, [tween])
+
+  // box
   const container = useRef<HTMLDivElement>(null)
   useEffect(() => {
     if (!container.current) return
-    tween.current = createTween(container.current)
-    return () => {
-      tween.current?.kill()
-    }
+    setTween(createTween(container.current))
   }, [])
 
   // on progress update
   useEffect(() => {
     if (!scrollProgress) return
+    const { hidden, progress, overlappingEnter } = scrollProgress
     // hidden
-    if (container.current) container.current.style.display = scrollProgress.hidden ? 'none' : ''
+    if (container.current) container.current.style.display = hidden ? 'none' : ''
     // update tween
-    if (!scrollProgress.hidden) {
-      const { progress, overlappingEnter } = scrollProgress!
-      tween.current?.progress(Math.min(progress, overlappingEnter))
-    }
+    if (!hidden) tween?.progress(Math.min(progress, overlappingEnter))
   }, [scrollProgress])
 
   // code lines
