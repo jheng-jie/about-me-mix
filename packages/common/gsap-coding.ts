@@ -36,7 +36,7 @@ export const createTween = (container: HTMLDivElement): TweenTimeLine => {
   const tl = gsap.timeline({ paused: true })
 
   // clear all style
-  removeStyles(container.querySelector('.coding__code-box'))
+  removeStyles(container?.querySelector('.coding__code-box') as HTMLElement)
 
   // step 0
   tl.to(container.querySelectorAll(`.coding__dialogue[data-step='0']`), AnimateVarsDialogueHidden, 0)

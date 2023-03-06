@@ -20,7 +20,7 @@ uniform float uProgress;
 uniform vec3 uBgColor;
 
 void main() {
-	// 溶解效果 
+	// 溶解效果
   // 清除低於進度值的顏色
   // RGB灰階圖，三色同數值，也介於 0 ~ 1 之間，剛好當做進度值
   vec4 noise = texture2D(uNoise, vNoiseTexCoord);
@@ -58,7 +58,8 @@ export const createShader = async (
   canvas: HTMLCanvasElement,
   { bg, noise }: { bg: string; noise: string },
 ): Promise<TweenShader> => {
-  const webgl: WebGLRenderingContext = canvas.getContext('webgl')
+  if (!canvas) return Promise.reject('canvas not exist.')
+  const webgl: WebGLRenderingContext = canvas.getContext('webgl') as WebGLRenderingContext
   const programInfo = createProgramInfo(webgl, [vertex, fragment])
   webgl.useProgram(programInfo.program)
 
@@ -74,8 +75,8 @@ export const createShader = async (
   const hex = Array.from(bg.replace(/^#/, ''))
   const hexToRgb = Array.from({ length: 3 })
     .map((_, index) => index)
-    .reduce((res: string[], i: number) => [...res, parseInt(hex.slice(i * 2, i * 2 + 2).join(''), 16) / 255], [])
-  const uBgColor = v3.create.apply(null, hexToRgb)
+    .reduce((res, i: number) => [...res, parseInt(hex.slice(i * 2, i * 2 + 2).join(''), 16) / 255], [] as number[])
+  const uBgColor = v3.create(hexToRgb[0], hexToRgb[1], hexToRgb[2])
 
   // 計算素材比例
   // let uBgRatio = m4.identity()
@@ -92,7 +93,7 @@ export const createShader = async (
       // 計算視窗尺寸
       let windowRate = window.innerWidth / window.innerHeight
       const resetSize = () => {
-        const { min, max } = Math
+        const { min } = Math
 
         // canvas size
         windowRate = window.innerWidth / window.innerHeight
@@ -130,7 +131,7 @@ export const createShader = async (
           m4.translate(uNoiseRatio, translate, uNoiseRatio)
         }
 
-        progress(progressValue)
+        requestAnimationFrame(() => progress(progressValue))
       }
 
       // update
@@ -145,7 +146,7 @@ export const createShader = async (
       // destroyed
       const kill = () => {
         webgl.deleteProgram(programInfo.program)
-        webgl.deleteBuffer(bufferInfo.indices)
+        webgl.deleteBuffer(bufferInfo.indices as WebGLBuffer)
         // webgl.deleteTexture(uBg)
         webgl.deleteTexture(uNoise)
       }

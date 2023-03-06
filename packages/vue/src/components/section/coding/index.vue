@@ -75,7 +75,7 @@ watch(scrollProgress, () => {
           </p>
         </div>
         <!--code-->
-        <Code class="flex-1 coding__code-box" />
+        <Code class="coding__code-box" />
       </div>
     </div>
   </section>

@@ -95,7 +95,7 @@ onUnmounted(() => window.removeEventListener('scroll', onScrollHandler))
       <div
         class="w-full h-100vh flex items-center justify-center flex-shrink-0 font-bold text-white text-10 lg:text-16"
       >
-        <h1 v-t="'section.coding.title'" class="experience__title-coding" />
+        <h1 v-t="'section.coding.title'" class="experience__title-coding hidden opacity-0 scale-0" />
       </div>
     </div>
   </section>

@@ -6,6 +6,8 @@ import { getChildrenRect, getElementProgressData } from '@about-me-mix/common/sc
 import SectionOpening from '@/components/section/opening'
 import SectionDialogue from '@/components/section/dialogue'
 import SectionExperience from '@/components/section/experience'
+import SectionCoding from '@/components/section/coding'
+import SectionShader from '@/components/section/shader'
 import { getStaticPaths, getStaticProps } from '@/core/i18n'
 export { getStaticPaths, getStaticProps }
 
@@ -23,6 +25,7 @@ export default () => {
   useEffect(() => {
     if (!main.current) return
     childrenElement.current = getChildrenRect(main.current)
+    onScrollHandler()
   }, [main, sizeUpdateTimestamp])
 
   // 子層相對捲軸位置計算
@@ -38,7 +41,7 @@ export default () => {
     }
   }, [])
 
-  const section = [SectionOpening, SectionDialogue, SectionExperience]
+  const section = [SectionOpening, SectionDialogue, SectionExperience, SectionCoding, SectionShader]
 
   return (
     <main ref={main}>

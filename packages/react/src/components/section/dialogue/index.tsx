@@ -13,13 +13,6 @@ export default ({ progress: scrollProgress }: { progress: ElementPositionProgres
 
   // gsap timeline
   const tween = useRef<TweenTimeLine>()
-  const updateTweenProgress = () => {
-    const progress = scrollProgress!.progress * 0.8
-    const overlappingEnter = scrollProgress!.overlappingEnter * 0.2
-    tween.current?.progress(progress + overlappingEnter)
-  }
-
-  // box
   const container = useRef<HTMLDivElement>(null)
   useEffect(() => {
     if (!container.current) return
@@ -27,28 +20,33 @@ export default ({ progress: scrollProgress }: { progress: ElementPositionProgres
     return () => {
       tween.current?.kill()
     }
-  }, [container])
+  }, [])
 
-  // set timeline progress
+  // on progress update
   useEffect(() => {
     if (!scrollProgress) return
     // hidden
     if (container.current) container.current.style.display = scrollProgress.hidden ? 'none' : ''
     // update tween
-    if (!scrollProgress.hidden) updateTweenProgress()
+    if (!scrollProgress.hidden) {
+      const { progress, overlappingEnter } = scrollProgress!
+      tween.current?.progress(progress * 0.8 + overlappingEnter * 0.2)
+    }
   }, [scrollProgress])
 
   // line bg
   const bg = useMemo(
     () =>
       Array.from({ length: 5 }).map((_, index) => (
-        <div key={index} className="dialogue__bg w-0 h-21vh -mb-1 bg-zinc-800 rounded-br-50px" />
+        <div key={index} className="dialogue__bg w-0 h-21vh -mb-1 bg-zinc-800 rounded-br-50px first:rounded-tr-50px" />
       )),
     [],
   )
 
   return useMemo(() => {
     const content: string[] = t('section.dialogue', { returnObjects: true })
+
+    // 對話內容
     const dialogue = content.map((row: string, idx) => (
       <p key={idx} style={{ paddingLeft: `${idx}rem` }} className="mb-2">
         {Array.from(row).map((char, cIdx) => (

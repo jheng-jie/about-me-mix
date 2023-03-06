@@ -71,7 +71,7 @@
       <div class="flex-shrink-0 hidden lg:block mr-2 border-r-2 border-zinc-700 pr-2">
         {#each Array(20) as _, index (index)}
           <p class="text-zinc-600">
-            <span class="w-5 text-right inline-block">{index}</span>
+            <span class="w-5 text-right inline-block">{index + 1}</span>
           </p>
         {/each}
       </div>

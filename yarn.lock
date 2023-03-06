@@ -1361,12 +1361,12 @@
     "@unocss/core" "0.50.1"
     unconfig "^0.3.7"
 
-"@unocss/config@0.50.2":
-  version "0.50.2"
-  resolved "https://registry.yarnpkg.com/@unocss/config/-/config-0.50.2.tgz#1eac3cfee99185b3f4bca52edca08ac6d40b3d8d"
-  integrity sha512-WUpXjJkP14aCKoATXLWlQj1dZb242SB76uk5lV+klz5wiSAHa91/y8fpZ0kRkXVKKHxhQ2GjB6uMGab1Mun5RQ==
+"@unocss/config@0.50.4":
+  version "0.50.4"
+  resolved "https://registry.yarnpkg.com/@unocss/config/-/config-0.50.4.tgz#17c92a5063370b31433f758c987a5629b6dcee86"
+  integrity sha512-5Nvlvu3RHoZFqaxJwaN/pr9bWHg2PZ4omD90y/xe0CXWHjX9n3BJHcXqQQm0Iai6uF1IZDPOC5nj2UU2oKFxMg==
   dependencies:
-    "@unocss/core" "0.50.2"
+    "@unocss/core" "0.50.4"
     unconfig "^0.3.7"
 
 "@unocss/core@0.49.4":
@@ -1379,10 +1379,10 @@
   resolved "https://registry.yarnpkg.com/@unocss/core/-/core-0.50.1.tgz#ad4659b7abc43b77458aa29214d83ad0e687da9c"
   integrity sha512-jnWClMMGybzyXcRX4DY+g/DJ4JrH9w8YN/H6OTHt0WyrNfR1V3ebJtEc6gbqCkZCh2XmqSA5F49QPhTbErYePg==
 
-"@unocss/core@0.50.2":
-  version "0.50.2"
-  resolved "https://registry.yarnpkg.com/@unocss/core/-/core-0.50.2.tgz#e8f39b7a5305018909cc51678cda6ae26893a314"
-  integrity sha512-Z8m7uRDr3cM8y/Q/LKabNZc37GHJJYFjrp0vYNn8FJhzILqVNZCb4BnJNmGgaiGGSmfQVguK8Gqvs1jdb7RqeA==
+"@unocss/core@0.50.4":
+  version "0.50.4"
+  resolved "https://registry.yarnpkg.com/@unocss/core/-/core-0.50.4.tgz#f6d0ed9ea60db3661f750e2ef117ffab553fea1c"
+  integrity sha512-k/8CdnO4w7f+QdvCpS3U5y6xApC4odiErkBKCCaGgBqOWkuTSL92TiBnffSEA2WepGm1+Mv4urIk20ocKYxbUQ==
 
 "@unocss/inspector@0.49.4":
   version "0.49.4"
@@ -1420,13 +1420,13 @@
     "@unocss/webpack" "0.49.4"
     unocss "0.49.4"
 
-"@unocss/postcss@^0.50.2":
-  version "0.50.2"
-  resolved "https://registry.yarnpkg.com/@unocss/postcss/-/postcss-0.50.2.tgz#b1ac9ff0e4afad969ef97f5922cc1aed324e98b5"
-  integrity sha512-S/3ccT/paDejRCD8t+/kOUSfLhJUT3UcUslrvEqPd7D3HmPMM3ykBV4Pm6Orkr7KdoFPPuR4BCxSuD0Sc9Z4/g==
+"@unocss/postcss@^0.50.4":
+  version "0.50.4"
+  resolved "https://registry.yarnpkg.com/@unocss/postcss/-/postcss-0.50.4.tgz#5fded0cf54973be44c22e54e3505fb57b6017f57"
+  integrity sha512-Gri+EqIOs/yKk0YHel5XLHQCRD1BzKdQHF82zizJUyqaRStR2qvR8ECInYsirXL/eUEvx2zT8iQKCXkiApTuQw==
   dependencies:
-    "@unocss/config" "0.50.2"
-    "@unocss/core" "0.50.2"
+    "@unocss/config" "0.50.4"
+    "@unocss/core" "0.50.4"
     css-tree "^2.3.1"
     fast-glob "^3.2.12"
     magic-string "^0.30.0"

@@ -21,13 +21,6 @@ export default ({ progress: scrollProgress }: { progress: ElementPositionProgres
 
   // gsap timeline
   const tween = useRef<TweenTimeLine>()
-  const updateTweenProgress = () => {
-    const progress = scrollProgress!.progress * 0.8
-    const overlappingEnter = max(0, (scrollProgress!.overlappingEnter - 0.2) / 0.8) * 0.2
-    tween.current?.progress(progress + overlappingEnter)
-  }
-
-  // box
   const container = useRef<HTMLDivElement>(null)
   useEffect(() => {
     if (!container.current) return
@@ -35,21 +28,25 @@ export default ({ progress: scrollProgress }: { progress: ElementPositionProgres
     return () => {
       tween.current?.kill()
     }
-  }, [container])
+  }, [])
 
-  // set timeline progress
+  // on progress update
   useEffect(() => {
     if (!scrollProgress) return
     // hidden
     if (container.current) container.current.style.display = scrollProgress.hidden ? 'none' : ''
     // update tween
-    if (!scrollProgress.hidden) updateTweenProgress()
+    if (!scrollProgress.hidden) {
+      const { progress, overlappingEnter } = scrollProgress
+      tween.current?.progress(progress * 0.8 + max(0, (overlappingEnter - 0.2) / 0.8) * 0.2)
+    }
   }, [scrollProgress])
 
   // 傾斜計算
-  useEffect(() => {
-    // fps
-    let running = false
+  const handlerScrollRotate = () => {
+    let [running, rotate, prevSpeed] = [false, 0, 0]
+
+    // 動畫處理
     const enterFrame = () => {
       // update dom
       if (container.current) {
@@ -61,8 +58,7 @@ export default ({ progress: scrollProgress }: { progress: ElementPositionProgres
       // finish
       running = false
     }
-    // 加速度
-    let [rotate, prevSpeed] = [0, 0]
+    // 監聽捲軸
     const onScrollHandler = () => {
       if (container.current?.style?.display === 'none') return
       // 加速度計算
@@ -73,10 +69,12 @@ export default ({ progress: scrollProgress }: { progress: ElementPositionProgres
       prevSpeed = window.scrollY
     }
     window.addEventListener('scroll', onScrollHandler)
+
     return () => {
       window.removeEventListener('scroll', onScrollHandler)
     }
-  }, [])
+  }
+  useEffect(handlerScrollRotate, [])
 
   return useMemo(
     () => (
@@ -87,7 +85,7 @@ export default ({ progress: scrollProgress }: { progress: ElementPositionProgres
         >
           {/*title*/}
           <div className="w-full h-100vh flex items-center justify-center flex-shrink-0 font-bold text-white text-10 lg:text-16">
-            <h1 className="experience__title hidden translate-y-40vh">{t('section.experience.title')}</h1>
+            <h1 className="experience__title hidden opacity-0 translate-y-40vh">{t('section.experience.title')}</h1>
           </div>
           {/*works*/}
           {experience.map((work, index) => (
@@ -96,7 +94,9 @@ export default ({ progress: scrollProgress }: { progress: ElementPositionProgres
             </div>
           ))}
           {/*finish*/}
-          <div className="w-full h-100vh flex items-center justify-center flex-shrink-0" />
+          <div className="w-full h-100vh flex items-center justify-center flex-shrink-0 font-bold text-white text-10 lg:text-16">
+            <h1 className="experience__title-coding hidden opacity-0 scale-0">{t('section.coding.title')}</h1>
+          </div>
         </div>
       </section>
     ),

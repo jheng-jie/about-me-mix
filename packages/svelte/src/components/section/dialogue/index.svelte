@@ -47,7 +47,7 @@
   <div bind:this={container} class="dialogue w-full h-100vh sticky top-0 text-4 lg:text-6 overflow-hidden">
     <!--line bg-->
     {#each Array(5) as _, index (index)}
-      <div key={index} class="dialogue__bg w-0 h-21vh -mb-1 bg-zinc-800 rounded-br-50px" />
+      <div key={index} class="dialogue__bg w-0 h-21vh -mb-1 bg-zinc-800 rounded-br-50px first:rounded-tr-50px" />
     {/each}
     <!--user icon-->
     <div class="absolute w-40 h-40 lg:w-65 lg:h-65 left-1/2 top-3.5/10 -translate-x-1/2 -translate-y-1/2">

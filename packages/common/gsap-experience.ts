@@ -42,7 +42,11 @@ export const createTween = (container: HTMLDivElement): TweenTimeLine => {
 
   // coding title
   const coding = container.querySelector('.experience__title-coding')
-  tl.from(coding, { duration: 20, opacity: 0, scale: 0, ease: Back.easeInOut.config(1.2) }, tl.totalDuration() - 15)
+  tl.to(
+    coding,
+    { display: 'block', duration: 20, opacity: 1, scale: 1, ease: Back.easeInOut.config(5) },
+    tl.totalDuration() - 15,
+  )
 
   return tl
 }

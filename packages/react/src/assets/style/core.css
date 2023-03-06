@@ -1,0 +1,20 @@
+@unocss;
+
+@font-face {
+    font-family: betazed;
+    src: url('/react/font/betazed.otf') format('woff2'), url('/vue/react/betazed.otf') format('woff');
+}
+
+html,
+body {
+    background-image: url('/react/img/polygon-1412485.jpg');
+    @apply bg-black bg-fixed bg-cover bg-center;
+}
+
+html[lang='en'] {
+    font-family: betazed, sans-serif;
+}
+
+canvas {
+    @apply w-full h-full;
+}
