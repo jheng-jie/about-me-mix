@@ -65,7 +65,7 @@ export default ({ progress: scrollProgress }: { progress: ElementPositionProgres
       <section className="h-400vh bg-gradient-to-b from-zinc-600 to-neutral-500">
         <div
           ref={container}
-          className="coding h-100vh w-full sticky top-0 flex flex-col items-center justify-start lg:justify-center"
+          className="coding h-100vh w-full px-2 pb-2 sticky top-0 flex flex-col items-center justify-start lg:justify-center"
         >
           {/*dialogue*/}
           <div className="flex items-center justify-center flex-col lg:flex-row pt-18 lg:pt-5 pb-7 lg:pb-5 flex-shrink-0 w-full">
@@ -83,7 +83,7 @@ export default ({ progress: scrollProgress }: { progress: ElementPositionProgres
             </div>
           </div>
           {/*code range*/}
-          <div className="text-3 lg:text-4 flex text-white w-full h-130 lg:max-w-180 p-2 lg:p-5 flex-1 lg:flex-none rounded-0 lg:rounded-2 bg-zinc-800">
+          <div className="text-3 overflow-hidden lg:text-4 flex text-white w-full h-130 lg:max-w-180 p-2 lg:p-5 flex-1 lg:flex-none rounded-1 lg:rounded-2 bg-zinc-800">
             {/*line*/}
             {line}
             {/*code*/}

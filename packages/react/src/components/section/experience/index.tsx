@@ -33,13 +33,14 @@ export default ({ progress: scrollProgress }: { progress: ElementPositionProgres
   // on progress update
   useEffect(() => {
     if (!scrollProgress) return
+    const { progress, overlappingEnter, overlappingLeave, hidden } = scrollProgress
     // hidden
-    if (container.current) container.current.style.display = scrollProgress.hidden ? 'none' : ''
+    if (container.current) container.current.style.display = hidden ? 'none' : ''
     // update tween
-    if (!scrollProgress.hidden) {
-      const { progress, overlappingEnter } = scrollProgress
-      tween.current?.progress(progress * 0.8 + max(0, (overlappingEnter - 0.2) / 0.8) * 0.2)
-    }
+    if (!hidden)
+      tween.current?.progress(
+        progress * 0.7 + max(0, overlappingEnter / 0.8) * 0.15 + min(1, 1 - overlappingLeave) * 0.15,
+      )
   }, [scrollProgress])
 
   // 傾斜計算
@@ -85,7 +86,7 @@ export default ({ progress: scrollProgress }: { progress: ElementPositionProgres
         >
           {/*title*/}
           <div className="w-full h-100vh flex items-center justify-center flex-shrink-0 font-bold text-white text-10 lg:text-16">
-            <h1 className="experience__title hidden opacity-0 translate-y-40vh">{t('section.experience.title')}</h1>
+            <h1 className="experience__title hidden opacity-0 scale-50">{t('section.experience.title')}</h1>
           </div>
           {/*works*/}
           {experience.map((work, index) => (
@@ -95,7 +96,7 @@ export default ({ progress: scrollProgress }: { progress: ElementPositionProgres
           ))}
           {/*finish*/}
           <div className="w-full h-100vh flex items-center justify-center flex-shrink-0 font-bold text-white text-10 lg:text-16">
-            <h1 className="experience__title-coding hidden opacity-0 scale-0">{t('section.coding.title')}</h1>
+            <h1 className="experience__title-coding">{t('section.coding.title')}</h1>
           </div>
         </div>
       </section>

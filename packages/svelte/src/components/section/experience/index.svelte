@@ -12,31 +12,25 @@
 
   // box
   let container: HTMLDivElement
-  let prevContainer: HTMLDivElement
-  $: if (container && prevContainer !== container) {
-    prevContainer = container
+  onMount(() => {
     tween?.kill()
     tween = createTween(container)
-  }
+  })
 
   // gsap timeline
   let tween: TweenTimeLine
   onDestroy(() => tween?.kill())
-  const updateTweenProgress = () => {
-    const _progress = progress.progress * 0.8
-    const overlappingEnter = max(0, (progress.overlappingEnter - 0.2) / 0.8) * 0.2
-    tween?.progress(_progress + overlappingEnter)
-  }
 
   // progress data
   export let progress: ElementPositionProgress
   let prevProgress: ElementPositionProgress
-  $: if (container && progress && prevProgress !== progress) {
+  $: if (progress && prevProgress !== progress) {
+    const { progress: p, overlappingEnter, overlappingLeave, hidden } = progress
     prevProgress = progress
     // hidden
     if (container) container.style.display = progress.hidden ? 'none' : ''
     // update tween
-    if (!progress.hidden) updateTweenProgress()
+    if (!hidden) tween?.progress(p * 0.7 + max(0, overlappingEnter / 0.8) * 0.15 + min(1, 1 - overlappingLeave) * 0.15)
   }
 
   // experience
@@ -84,7 +78,7 @@
   >
     <!--title-->
     <div class="w-full h-100vh flex items-center justify-center flex-shrink-0 font-bold text-white text-10 lg:text-16">
-      <h1 class="experience__title hidden opacity-0 translate-y-40vh">{$t('section.experience.title')}</h1>
+      <h1 class="experience__title hidden opacity-0 scale-50">{$t('section.experience.title')}</h1>
     </div>
     <!--works-->
     {#each experience as work, index (index)}
@@ -94,7 +88,7 @@
     {/each}
     <!--finish-->
     <div class="w-full h-100vh flex items-center justify-center flex-shrink-0 font-bold text-white text-10 lg:text-16">
-      <h1 class="experience__title-coding hidden opacity-0 scale-0">{$t('section.coding.title')}</h1>
+      <h1 class="experience__title-coding">{$t('section.coding.title')}</h1>
     </div>
   </div>
 </section>

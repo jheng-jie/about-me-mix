@@ -39,7 +39,7 @@
 <section class="h-400vh bg-gradient-to-b from-zinc-600 to-neutral-500">
   <div
     bind:this={container}
-    class="coding h-100vh w-full sticky top-0 flex flex-col items-center justify-start lg:justify-center"
+    class="coding h-100vh w-full px-2 pb-2 sticky top-0 flex flex-col items-center justify-start lg:justify-center"
   >
     <!--dialogue-->
     <div class="flex items-center justify-center flex-col lg:flex-row pt-18 lg:pt-5 pb-7 lg:pb-5 flex-shrink-0 w-full">
@@ -65,7 +65,7 @@
     </div>
     <!--code range-->
     <div
-      class="text-3 lg:text-4 flex text-white w-full h-130 lg:max-w-180 p-2 lg:p-5 flex-1 lg:flex-none rounded-0 lg:rounded-2 bg-zinc-800"
+      class="text-3 overflow-hidden lg:text-4 flex text-white w-full h-130 lg:max-w-180 p-2 lg:p-5 flex-1 lg:flex-none rounded-1 lg:rounded-2 bg-zinc-800"
     >
       <!--line-->
       <div class="flex-shrink-0 hidden lg:block mr-2 border-r-2 border-zinc-700 pr-2">

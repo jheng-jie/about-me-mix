@@ -13,29 +13,23 @@ const props = defineProps({
 
 // gsap timeline
 const tween = ref<TweenTimeLine>()
-onUnmounted(() => tween?.value?.kill())
-const updateTweenProgress = () => {
-  const progress = scrollProgress.value!.progress * 0.8
-  const overlappingEnter = max(0, (scrollProgress.value!.overlappingEnter - 0.2) / 0.8) * 0.2
-  tween.value?.progress(progress + overlappingEnter)
-}
-
-// box
 const container = ref<HTMLDivElement>()
-watch(container, () => {
+onMounted(() => {
   if (!container.value) return
-  tween.value?.kill()
   tween.value = createTween(container.value)
 })
+onUnmounted(() => tween?.value?.kill())
 
 // set timeline progress
 const scrollProgress = toRef(props, 'progress')
 watch(scrollProgress, () => {
   if (!scrollProgress.value) return
+  const { progress, overlappingEnter, overlappingLeave, hidden } = scrollProgress.value!
   // hidden
-  if (container.value) container.value.style.display = scrollProgress.value.hidden ? 'none' : ''
+  if (container.value) container.value.style.display = hidden ? 'none' : ''
   // update tween
-  if (!scrollProgress.value.hidden) updateTweenProgress()
+  if (!hidden)
+    tween.value?.progress(progress * 0.7 + max(0, overlappingEnter / 0.8) * 0.15 + min(1, 1 - overlappingLeave) * 0.15)
 })
 
 // experience
@@ -85,7 +79,7 @@ onUnmounted(() => window.removeEventListener('scroll', onScrollHandler))
       <div
         class="w-full h-100vh flex items-center justify-center flex-shrink-0 font-bold text-white text-10 lg:text-16"
       >
-        <h1 v-t="'section.experience.title'" class="experience__title hidden opacity-0 translate-y-40vh" />
+        <h1 v-t="'section.experience.title'" class="experience__title hidden opacity-0 scale-50" />
       </div>
       <!--works-->
       <div v-for="(work, wIdx) in experience" :key="wIdx" class="flex-shrink-0 inline-block pt-40vh">
@@ -95,7 +89,7 @@ onUnmounted(() => window.removeEventListener('scroll', onScrollHandler))
       <div
         class="w-full h-100vh flex items-center justify-center flex-shrink-0 font-bold text-white text-10 lg:text-16"
       >
-        <h1 v-t="'section.coding.title'" class="experience__title-coding hidden opacity-0 scale-0" />
+        <h1 v-t="'section.coding.title'" class="experience__title-coding" />
       </div>
     </div>
   </section>

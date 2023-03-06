@@ -30,22 +30,21 @@ export const createTween = (container: HTMLDivElement): TweenTimeLine => {
 
   // title
   const title = container.querySelector('.experience__title')
-  tl.to(title, { display: 'block', opacity: 1, duration: 20, y: 0 }, 0)
-  tl.to(title, { display: 'none', duration: 20, opacity: 0, scale: 0, ease: Back.easeInOut.config(5) }, 20)
+  tl.to(title, { display: 'block', opacity: 1, duration: 16, scale: 1, ease: Back.easeInOut.config(5) }, 0)
 
   // scroll
   let progress = { value: 0 }
   const onUpdate = () => {
     container.scrollLeft = (container.scrollWidth - window.innerWidth) * progress.value
   }
-  tl.to(progress, { value: 1, onUpdate, duration: 70, ease: Power0.easeNone }, 30)
+  tl.to(progress, { value: 1, onUpdate, duration: 70, ease: Power0.easeNone }, 16)
 
   // coding title
   const coding = container.querySelector('.experience__title-coding')
   tl.to(
     coding,
-    { display: 'block', duration: 20, opacity: 1, scale: 1, ease: Back.easeInOut.config(5) },
-    tl.totalDuration() - 15,
+    { display: 'none', opacity: 0, duration: 16, scale: 0.5, ease: Back.easeInOut.config(5) },
+    tl.totalDuration(),
   )
 
   return tl
