@@ -1,20 +1,24 @@
 @unocss;
 
 @font-face {
-    font-family: betazed;
-    src: url('/react/font/betazed.otf') format('woff2'), url('/vue/react/betazed.otf') format('woff');
+  font-family: betazed;
+  src: url('/react/font/betazed.otf') format('woff2'), url('/vue/react/betazed.otf') format('woff');
 }
 
-html,
-body {
+html {
+  @apply bg-zinc-900;
+  /*字體*/
+  font-family: 'Nunito', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+    'Noto Color Emoji';
+}
+html[lang='en'] * {
+  font-family: betazed, sans-serif;
+}
+
+@media (min-width: 1024px) {
+  body {
     background-image: url('/react/img/polygon-1412485.jpg');
-    @apply bg-black bg-fixed bg-cover bg-center;
-}
-
-html[lang='en'] {
-    font-family: betazed, sans-serif;
-}
-
-canvas {
-    @apply w-full h-full;
+    @apply bg-fixed bg-cover bg-center;
+  }
 }

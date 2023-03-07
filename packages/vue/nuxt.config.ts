@@ -18,6 +18,17 @@ export default defineNuxtConfig({
   // 二級目錄
   app: {
     baseURL: '/vue',
+    head: {
+      link: [
+        { href: 'https://fonts.googleapis.com', rel: 'preconnect' },
+        // @ts-ignore
+        { href: 'https://fonts.gstatic.com', rel: 'preconnect', crossOrigin: true },
+        {
+          href: 'https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap',
+          rel: 'stylesheet',
+        },
+      ],
+    },
   },
 
   // UnoCSS use reset TailwindCSS

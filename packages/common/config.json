@@ -1,4 +1,7 @@
 {
+  "MENU_LINK_VUE": "/vue/{0}/home/",
+  "MENU_LINK_REACT": "/react/{0}/home/",
+  "MENU_LINK_SVELTE": "/svelte/{0}/home/",
   "DEFAULT_LOCALE": "zh",
   "SUPPORTS_LOCALES": ["en", "zh"],
   "EXPERIENCES": [

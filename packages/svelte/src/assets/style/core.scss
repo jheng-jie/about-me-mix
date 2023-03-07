@@ -3,19 +3,20 @@
   src: url('/svelte/font/betazed.otf') format('woff2'), url('/svelte/font/betazed.otf') format('woff');
 }
 
-// 外星文
-html[lang='en'] {
-  * {
+html {
+  @apply bg-zinc-900;
+  //字體
+  font-family: 'Nunito', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+    'Noto Color Emoji';
+  &[lang='en'] * {
     font-family: betazed, sans-serif;
   }
 }
 
-html,
 body {
-  background-image: url('/svelte/img/polygon-1412485.jpg');
-  @apply bg-black bg-fixed bg-cover bg-center;
-}
-
-canvas {
-  @apply w-full h-full;
+  @media (min-width: 1024px) {
+    background-image: url('/svelte/img/polygon-1412485.jpg');
+    @apply bg-fixed bg-cover bg-center;
+  }
 }
