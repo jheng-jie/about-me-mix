@@ -5,5 +5,8 @@
   "private": true,
   "scripts": {
     "random": "node random-locale.mjs"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
   }
 }

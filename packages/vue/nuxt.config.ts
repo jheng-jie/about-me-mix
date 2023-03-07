@@ -2,6 +2,8 @@ import { DEFAULT_LOCALE, SUPPORTS_LOCALES } from '@about-me-mix/common/config.js
 import { messages } from './src/core/i18n'
 import transformerDirectives from '@unocss/transformer-directives'
 import unoPreset from '@unocss/preset-uno'
+import path from 'path'
+import { StaticServicePlugin } from '@about-me-mix/common/static-service'
 
 /**
  * @desc https://nuxt.com/docs/api/configuration/nuxt-config
@@ -82,6 +84,16 @@ export default defineNuxtConfig({
     build: {
       target: 'es2015',
     },
+    plugins: [
+      // 自製靜態目錄代理
+      StaticServicePlugin({
+        paths: {
+          '/assets': path.resolve('../common/assets'),
+          '/react': path.resolve('../../release/react'),
+          '/svelte': path.resolve('../../release/svelte'),
+        },
+      }),
+    ],
   },
 
   // 各模組引用位置, srcDir 為根目錄，此專案不需要
