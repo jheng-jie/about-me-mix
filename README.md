@@ -18,9 +18,9 @@
 
 - ✅ 持久化數據 `store`
 
-- 🚸 動畫 `transitions`
+- ✅ 動畫 `transitions`
 
-- ✅ 靜態路由 `SSG`
+- ✅ 靜態路由 `router` `SSG`
 
 - ⚠️ 相容性 `browser compatibility`
 
@@ -107,7 +107,7 @@
 
 ## Vue SSG Project
 
-> nuxt3 + vite [官網](https://nuxt.com/docs/getting-started/installation)
+> `vite` [nuxt3](https://nuxt.com/docs/getting-started/installation)
 
 - 建立專案
 
@@ -125,13 +125,15 @@
   }
   ```
 
+- [README](./packages/vue/README.md)
+
 ###
 
 ---
 
 ## React SSG Project
 
-> next13 + webpack
+> `webpack` `[next13](https://nextjs.org/docs/getting-started)
 
 - 建立專案
 
@@ -148,10 +150,14 @@
     version: '1.0.0',
   }
   ```
+  
+- [README](./packages/react/README.md)
 
 ---
 
 ## Svelte SSG Project
+
+> `vite` [sveltekit](https://kit.svelte.dev/docs/introduction)
 
 - 建立專案
 
@@ -169,13 +175,15 @@
   }
   ```
 
+- [README](./packages/svelte/README.md)
+
 ---
 
 ## Common Project
 
 > 放置共用腳本
 
-- 各專案 `loader` 依舊是獨立的，需要注意寫法是否衝突
+- 各專案 `loader` 依舊是獨立的，需要注意寫法是否符合各自標準
 
 - 建立專案
 
