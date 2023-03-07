@@ -8,6 +8,7 @@
     "vue": "yarn workspace @about-me-mix/vue dev",
     "react": "yarn workspace @about-me-mix/react dev",
     "svelte": "yarn workspace @about-me-mix/svelte dev",
+    "random-en": "yarn workspace @about-me-mix/common random",
     "dev": "sh ./shell/dev.sh",
     "build": "sh ./shell/build.sh"
   },

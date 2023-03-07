@@ -8,69 +8,89 @@
   },
   "section": {
     "opening": {
-      "title": "這是個簡單的自介網頁",
-      "desc": "上方選單切換不同框架，呈現效果一致",
-      "target": "現在是 {0} 框架"
+      "title": "rLTIOkzBtCZDEvykGOXQ",
+      "desc": "XGZhKLNLOQQxnqzNZiDW，yWRXBgGIBozx",
+      "target": "jqurGI {0} fdOA"
     },
-    "dialogue": ["嗨，我是 Jie", "目前是一位前端 Web 工程師", "有 3 年全端及 4 年前端工作經驗"],
+    "dialogue": [
+      "Mm，aWtF Jie",
+      "QjrHpPuEAERDUH Web MmDIUr",
+      "MD 3 KPZrWjNJ 4 YTqyBsltxWlpwq"
+    ],
     "experience": {
-      "title": "學經歷"
+      "title": "muCDil"
     },
     "coding": {
+      "title": "IWjSBhMdsN",
       "message": [
-        "快速了解我寫程式時的習慣",
-        "使用 Prettier 排版",
-        "簡化代碼行數，保持乾淨",
-        "加上註解的習慣",
-        "優化，思考更好的寫法",
-        "當然，公司規範為首要考量"
+        "KMlOJxfHrRMPknGdmnjflktZ",
+        "DTRY Prettier Yczu",
+        "cxDeOMapgPpLjT，wVAjneHo",
+        "bmgQcoZdJYnWNR",
+        "xRJq，vyprFQDdtHrhCK",
+        "YaSB，ghKwsxmEkCbzFKIxmk"
       ],
-      "desc": "獲取密碼強度",
-      "param": "驗證密碼等級",
-      "return": "0=無, 1=弱, 2=中, >=3=強",
-      "comment": ["長度不足", "包含數字", "包含小寫英文", "包含大寫英文", "包含特殊符號", "簡潔寫法"]
+      "desc": "WaoCkFRNTAFx",
+      "param": "ychSCNNJXdmw",
+      "return": "0=fH, 1=PD, 2=OC, >=3=fO",
+      "comment": [
+        "EonlZMro",
+        "pXltJPrx",
+        "CWUbMVvgeBui",
+        "EyqZMcvfuwBo",
+        "zyKboUJXEnBk",
+        "uoFBKHfv"
+      ]
     }
   },
-  "end": ["全端", "後端", "前端"],
-  "team": ["團隊", "個人"],
+  "end": [
+    "Ikgl",
+    "Peld",
+    "hnoo"
+  ],
+  "team": [
+    "taUk",
+    "lkmh"
+  ],
   "experience": {
-    "department": {
-      "title": "資管系畢業",
-      "topic": "資管系專題第一名"
-    },
     "2015": {
-      "company": "家家有",
-      "maintain": "維護原有專案",
-      "cart": "購物商城",
-      "soap": "協助外包商串接 API"
+      "company": "mgpWvT",
+      "maintain": "yOpuxeBnzUDH",
+      "cart": "EfbBDFVQ",
+      "soap": "zTinrbYoUPeGuI API"
     },
     "2016": {
-      "company": "校園文化",
-      "flash": "全面淘汰 Flash",
-      "app": "校園 APP",
-      "dm": "DM 網站",
-      "test": "考題系統",
-      "manage": "業務管理系統",
-      "textbook": "校園教材中心",
-      "online": "線上資訊教材"
+      "company": "iehfXcPV",
+      "flash": "LmPVoCYh Flash",
+      "app": "MPQU APP",
+      "dm": "DM sFWQ",
+      "test": "fxRewRIy",
+      "manage": "tUKwEpiUpnLh",
+      "textbook": "pupNWJHXgNoP",
+      "online": "oZckllgEHSJV"
     },
     "2019": {
-      "company": "遊戲大麥/萌萌噠",
-      "pay": "聚合式金流串接",
-      "source": "Vue 開獎網",
-      "forum": "Vue 資訊論壇",
-      "react_h5": "React 包網 H5 版",
-      "website": "React 遊戲大麥官方網站",
-      "chat": "直播 APP 聊天微服務",
-      "vue_h5": "包網 H5 重構為 Vue 版",
-      "ci": "App 自動化編譯工具",
-      "handover": "交接文件"
+      "company": "lFiPQsZe/UyouUB",
+      "pay": "OicnvmKRLBHcUd",
+      "source": "Vue knxnwq",
+      "forum": "Vue RlBUVYsh",
+      "react_h5": "React ADig H5 lV",
+      "website": "React JrJIQxyxuEAImzJp",
+      "chat": "JhEA APP xjoZHcsaFW",
+      "vue_h5": "Yzvr H5 iuiErC Vue Hz",
+      "ci": "App ozNoCxOpRSPRMJ",
+      "handover": "wlalCtMy"
     },
     "2022": {
-      "company": "順鴻科技",
-      "sport": "Vue 體育PC包網",
-      "chat": "Vue 聊天管理系統"
+      "company": "hEjiFzkb",
+      "sport": "Vue hmwyPCcCSD",
+      "chat": "Vue EqfdpFYvayar"
     },
-    "leave": "離職"
-  }
+    "department": {
+      "title": "cPFEnrWCrq",
+      "topic": "gPkbhNVCzeXvdMQG"
+    },
+    "leave": "mAak"
+  },
+  "thank": "LzhHFLuJ"
 }

@@ -2,5 +2,8 @@
   "name": "@about-me-mix/common",
   "version": "1.0.0",
   "license": "MIT",
-  "private": true
+  "private": true,
+  "scripts": {
+    "random": "node random-locale.mjs"
+  }
 }
