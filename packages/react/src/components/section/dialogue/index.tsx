@@ -3,7 +3,6 @@ import type { TweenTimeLine } from '@about-me-mix/common/gsap-dialogue'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { useTranslation } from 'next-i18next'
 import { createTween } from '@about-me-mix/common/gsap-dialogue'
-import avatar from '@about-me-mix/common/assets/avatar.png'
 
 /**
  * @desc Home 對話動畫
@@ -70,7 +69,7 @@ export default ({ progress: scrollProgress }: { progress: ElementPositionProgres
               <div className="absolute animate-ping rounded-full w-full h-full bg-zinc-700 animate-delay-0.1s animate-duration-3s" />
               <div className="absolute animate-ping rounded-full w-full h-full bg-zinc-600 animate-delay-0.3s animate-duration-3s" />
               <div className="absolute animate-ping rounded-full w-full h-full bg-zinc-500 animate-delay-0.5s animate-duration-3s" />
-              <img src={avatar.src} alt="" className="w-full h-full relative z-10" />
+              <img src={`/assets/avatar.png`} alt="" className="w-full h-full relative z-10" />
             </div>
           </div>
           {/*dialogue*/}

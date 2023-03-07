@@ -1,7 +1,6 @@
 <script lang="ts">
   import type { ElementPositionProgress } from '@about-me-mix/common/scroll-progess'
   import { createTween } from '@about-me-mix/common/gsap-dialogue'
-  import avatar from '@about-me-mix/common/assets/avatar.png?url'
   import { t } from '@/core/i18n'
 
   // progress data
@@ -44,7 +43,7 @@
         <div
           class="absolute animate-ping rounded-full w-full h-full bg-zinc-500 animate-delay-0.5s animate-duration-3s"
         />
-        <img src={avatar} alt="" class="w-full h-full relative z-10" />
+        <img src={`/assets/avatar.png`} alt="" class="w-full h-full relative z-10" />
       </div>
     </div>
     <!--dialogue-->

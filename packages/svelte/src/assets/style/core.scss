@@ -1,6 +1,6 @@
 @font-face {
   font-family: betazed;
-  src: url('/svelte/font/betazed.otf') format('woff2'), url('/svelte/font/betazed.otf') format('woff');
+  src: url('/assets/font/betazed.otf') format('woff2'), url('/assets/font/betazed.otf') format('woff');
 }
 
 html {
@@ -16,7 +16,7 @@ html {
 
 body {
   @media (min-width: 1024px) {
-    background-image: url('/svelte/img/polygon-1412485.jpg');
+    background-image: url('/assets/polygon-1412485.jpg');
     @apply bg-fixed bg-cover bg-center;
   }
 }

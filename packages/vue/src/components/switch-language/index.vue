@@ -1,7 +1,4 @@
 <script lang="ts" setup>
-import enUS from '@about-me-mix/common/assets/en-US.png?url'
-import zhCHT from '@about-me-mix/common/assets/zh-CHT.png?url'
-
 // locale
 const { t, locale, locales } = useI18n()
 const router = useRouter()
@@ -9,8 +6,8 @@ const switchLocalePath = useSwitchLocalePath()
 
 // icon
 const iconMap = new Map([
-  ['en', enUS],
-  ['zh', zhCHT],
+  ['en', `/assets/en-US.png`],
+  ['zh', `/assets/zh-CHT.png`],
 ])
 const icon = computed(() => iconMap.get(locale.value) || '')
 
@@ -29,12 +26,12 @@ const onSelectLocale = (locale: string) => {
 <template>
   <div class="h-full flex items-center cursor-pointer relative select-none" @keyup="() => false" @click="show = true">
     <!--current locale-->
-    <img :src="icon" alt="" class="w-6 h-6 mx-1.5" />
+    <img :src="icon" alt="" class="w-9 h-9 mx-1.5" />
     <!--mask-->
     <button v-if="show" class="fixed left-0 top-0 w-full h-full z-0" @click.prevent.stop="show = false" />
     <!--dropdown-->
     <transition name="fade">
-      <div v-show="show" class="absolute top-0 right-0 pt-11.5 z-10">
+      <div v-show="show" class="absolute top-0 right-0 pt-13 z-10">
         <div class="bg-white rounded-1.5 py-1 shadow-md">
           <!--locale list-->
           <button
@@ -43,7 +40,7 @@ const onSelectLocale = (locale: string) => {
             :key="item"
             class="hover:bg-gray-200 transition-colors p-1.5"
           >
-            <img :src="iconMap.get(item)" alt="" class="w-6 h-6" />
+            <img :src="iconMap.get(item)" alt="" class="w-9 h-9" />
           </button>
         </div>
       </div>

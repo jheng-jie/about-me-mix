@@ -3,13 +3,11 @@ import config from '@about-me-mix/common/config.json'
 import { useRouter } from 'next/router'
 import { MouseEvent, useMemo, useState } from 'react'
 import { motion } from 'framer-motion'
-import enUS from '@about-me-mix/common/assets/en-US.png'
-import zhCHT from '@about-me-mix/common/assets/zh-CHT.png'
 
 // icons
 const iconMap = new Map([
-  ['en', enUS],
-  ['zh', zhCHT],
+  ['en', `/assets/en-US.png`],
+  ['zh', `/assets/zh-CHT.png`],
 ])
 
 // for motion
@@ -69,7 +67,7 @@ export default () => {
       className="h-full flex items-center cursor-pointer relative select-none"
     >
       {/*current locale*/}
-      <Image src={icon} alt="" className="w-6 h-6 mx-1.5" />
+      <Image src={icon} alt="" className="w-9 h-9 mx-1.5" />
       {/*mask*/}
       {show && <button onClick={onDropdownClose} className="fixed left-0 top-0 w-full h-full z-0" />}
       {/*dropdown*/}
@@ -77,7 +75,7 @@ export default () => {
         initial="hidden"
         animate={show ? 'visible' : 'hidden'}
         variants={dropdownVariants}
-        className="absolute top-0 right-0 pt-11.5 z-10"
+        className="absolute top-0 right-0 pt-13 z-10"
       >
         <div className="bg-white rounded-1.5 py-1 shadow-md">
           {/*locale list*/}
@@ -87,7 +85,7 @@ export default () => {
               key={locale}
               className="hover:bg-gray-200 transition-colors p-1.5"
             >
-              <Image src={iconMap.get(locale) || ''} alt="" className="w-6 h-6" />
+              <Image src={iconMap.get(locale) || ''} alt="" className="w-9 h-9" />
             </button>
           ))}
         </div>

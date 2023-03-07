@@ -1,6 +1,6 @@
 @font-face {
   font-family: betazed;
-  src: url('/vue/font/betazed.otf') format('woff2'), url('/vue/font/betazed.otf') format('woff');
+  src: url('/assets/font/betazed.otf') format('woff2'), url('/assets/font/betazed.otf') format('woff');
 }
 
 html {
@@ -16,7 +16,7 @@ html {
 
 body {
   @media (min-width: 1024px) {
-    background-image: url('@about-me-mix/common/assets/polygon-1412485.jpg');
+    background-image: url('/assets/polygon-1412485.jpg');
     @apply bg-fixed bg-cover bg-center;
   }
 }

@@ -42,6 +42,11 @@ export default {
     }),
     // routes
     prerender: {
+      handleHttpError: ({ path, message }) => {
+        // 無視路徑檢測
+        if (/^\/assets\//.test(path)) return
+        throw new Error(message)
+      },
       entries: [
         // default locale
         ...scanRoutesResult.map(route => route.replace(/\/\[locale]/, '')),

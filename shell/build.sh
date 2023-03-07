@@ -20,6 +20,10 @@ if [ ! -d "./$dist" ]; then
   mkdir $dist
 fi
 
+# copy static assets
+rm -rf $dist/assets
+cp -a ./packages/common/assets $dist/assets
+
 # next react
 if [ "$target" = "all" ] || [ "$target" = "react" ]; then
   echo '--- react ---\n'

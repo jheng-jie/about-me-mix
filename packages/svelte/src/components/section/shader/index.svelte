@@ -2,7 +2,6 @@
   import type { ElementPositionProgress } from '@about-me-mix/common/scroll-progess'
   import type { TweenShader } from '@about-me-mix/common/twgl-shader'
   import { createShader } from '@about-me-mix/common/twgl-shader'
-  import noise from '@about-me-mix/common/assets/noise.jpg?url'
   import { sizeUpdateTimestamp } from '@/stores/'
   import { t } from '@/core/i18n'
 
@@ -14,7 +13,7 @@
   $: if ($sizeUpdateTimestamp) shader?.resetSize()
 
   const initialize = (container: HTMLDivElement) => {
-    createShader(container?.querySelector('canvas'), { bg: '#737373', noise }).then(tween => {
+    createShader(container?.querySelector('canvas'), { bg: '#737373', noise: `/assets/noise.jpg` }).then(tween => {
       shader?.kill()
       shader = tween
     })

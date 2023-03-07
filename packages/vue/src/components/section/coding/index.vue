@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import Code from './component/code.vue'
-import avatar from '@about-me-mix/common/assets/avatar.png?url'
 import { ElementPositionProgress } from '@about-me-mix/common/scroll-progess'
 import { createTween, TweenTimeLine } from '@about-me-mix/common/gsap-coding'
 
@@ -41,7 +40,7 @@ watch(scrollProgress, () => {
         class="flex items-center justify-center flex-col lg:flex-row pt-18 lg:pt-5 pb-7 lg:pb-5 flex-shrink-0 w-full"
       >
         <!--icon-->
-        <img :src="avatar" alt="" class="w-20 h-20 mb-3 lg:mb-0 lg:w-30 lg:h-30 shadow-lg rounded-full" />
+        <img :src="`/assets/avatar.png`" alt="" class="w-20 h-20 mb-3 lg:mb-0 lg:w-30 lg:h-30 shadow-lg rounded-full" />
         <!--message-->
         <div class="flex-shrink-0 max-w-100 flex-none lg:flex-1 lg:ml-10 text-4 lg:text-5 relative">
           <p

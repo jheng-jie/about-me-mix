@@ -3,7 +3,6 @@ import type { ElementPositionProgress } from '@about-me-mix/common/scroll-proges
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { useTranslation } from 'next-i18next'
 import { createShader } from '@about-me-mix/common/twgl-shader'
-import noise from '@about-me-mix/common/assets/noise.jpg'
 import { useSelector } from 'react-redux'
 import { RootState } from '@/stores'
 
@@ -28,7 +27,9 @@ export default ({ progress: scrollProgress }: { progress: ElementPositionProgres
     const canvas = container.current?.querySelector('canvas')
     if (!canvas) return
     let destroyed = false
-    createShader(canvas, { bg: '#737373', noise: noise.src }, false).then(tween => !destroyed && setShader(tween))
+    createShader(canvas, { bg: '#737373', noise: `/assets/noise.jpg` }, false).then(
+      tween => !destroyed && setShader(tween),
+    )
     return () => {
       destroyed = true
     }

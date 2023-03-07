@@ -2,7 +2,6 @@
 import type { ElementPositionProgress } from '@about-me-mix/common/scroll-progess'
 import type { TweenShader } from '@about-me-mix/common/twgl-shader'
 import { createShader } from '@about-me-mix/common/twgl-shader'
-import noise from '@about-me-mix/common/assets/noise.jpg?url'
 import { useWebsite } from '~/stores'
 
 const { locale } = useI18n()
@@ -16,7 +15,7 @@ const container = ref<HTMLDivElement>()
 onMounted(async () => {
   const canvas = container.value?.querySelector('canvas')
   if (!canvas) return
-  shader.value = await createShader(canvas, { bg: '#737373', noise })
+  shader.value = await createShader(canvas, { bg: '#737373', noise: '/assets/noise.jpg' })
 })
 onUnmounted(() => shader.value?.kill())
 

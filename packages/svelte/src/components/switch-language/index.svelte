@@ -2,13 +2,11 @@
   import { fade } from 'svelte/transition'
   import { locales, locale } from '@/core/i18n'
   import { goto } from '$app/navigation'
-  import enUS from '@about-me-mix/common/assets/en-US.png?url'
-  import zhCHT from '@about-me-mix/common/assets/zh-CHT.png?url'
 
   // icon
   const iconMap = new Map([
-    ['en', enUS],
-    ['zh', zhCHT],
+    ['en', `/assets/en-US.png`],
+    ['zh', `/assets/zh-CHT.png`],
   ])
   let icon
   $: {
@@ -36,7 +34,7 @@
   on:keyup={() => false}
 >
   <!--current locale-->
-  <img src={icon} alt="" class="w-6 h-6 mx-1.5" />
+  <img src={icon} alt="" class="w-9 h-9 mx-1.5" />
 
   {#if show}
     <!--mask-->
@@ -46,7 +44,7 @@
       on:click|preventDefault|stopPropagation={() => (show = false)}
     />
     <!--dropdown-->
-    <div class="absolute top-0 right-0 pt-11.5 z-10" transition:fade={dropdownTransition}>
+    <div class="absolute top-0 right-0 pt-13 z-10" transition:fade={dropdownTransition}>
       <div class="bg-white rounded-1.5 py-1 shadow-md">
         {#each $locales as item, i}
           <button
@@ -54,7 +52,7 @@
             :key="item"
             class="hover:bg-gray-200 transition-colors p-1.5"
           >
-            <img src={iconMap.get(item) || ''} alt="" class="w-6 h-6" />
+            <img src={iconMap.get(item) || ''} alt="" class="w-9 h-9" />
           </button>
         {/each}
       </div>
