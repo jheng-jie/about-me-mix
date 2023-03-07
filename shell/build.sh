@@ -13,27 +13,28 @@ echo "Select one env using up/down keys and enter to confirm:"
 select_option "${menu[@]}"
 choice=$?
 target=${menu[$choice]}
+dist=./release
 
-# create docs folder
-if [ ! -d "./docs" ]; then
-  mkdir docs
+# create dist folder
+if [ ! -d "./$dist" ]; then
+  mkdir $dist
 fi
 
 # next react
 if [ "$target" = "all" ] || [ "$target" = "react" ]; then
   echo '--- react ---\n'
-  rm -rf ./docs/react
+  rm -rf ./$dist/react
   yarn workspace @about-me-mix/react generate
-  mv ./packages/react/output ./docs/react
+  mv ./packages/react/output ./$dist/react
 fi
 
 
 # nuxt vue
 if [ "$target" = "all" ] || [ "$target" = "vue" ]; then
   echo '--- vue ---\n'
-  rm -rf ./docs/vue
+  rm -rf ./$dist/vue
   yarn workspace @about-me-mix/vue generate
-  mv ./packages/vue/.output/public ./docs/vue
+  mv ./packages/vue/.output/public ./$dist/vue
 
   # remove dist
   rm -f ./packages/vue/dist
@@ -43,8 +44,8 @@ fi
 # vite svelte
 if [ "$target" = "all" ] || [ "$target" = "svelte" ]; then
   echo '--- svelte ---\n'
-  rm -rf ./docs/svelte
+  rm -rf ./$dist/svelte
   yarn workspace @about-me-mix/svelte build
-  mv ./packages/svelte/output ./docs/svelte
+  mv ./packages/svelte/output ./$dist/svelte
 fi
 

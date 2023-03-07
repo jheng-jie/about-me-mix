@@ -16,13 +16,18 @@
     <h1 class="font-medium text-4 leading-10">{$t('header.title')}</h1>
     <!--menu-->
     <div class="flex items-center font-medium select-none">
-      <a on:click={() => (location.href = link.vue)} class="cursor-pointer h-10 pt-0.5 mx-3 relative leading-9.5 group">
+      <button
+        on:keyup={() => false}
+        on:click={() => (location.href = link.vue)}
+        class="cursor-pointer h-10 pt-0.5 mx-3 relative leading-9.5 group"
+      >
         Vue
         <span
           class="bg-emerald-500 inline-block h-0 group-hover:h-1 w-7 transition-height rounded-t-2 absolute bottom-0 left-1/2 -translate-x-1/2"
         />
-      </a>
-      <a
+      </button>
+      <button
+        on:keyup={() => false}
         on:click={() => (location.href = link.react)}
         class="cursor-pointer h-10 pt-0.5 mx-3 relative leading-9.5 group"
       >
@@ -30,8 +35,9 @@
         <span
           class="bg-sky-500 inline-block h-0 group-hover:h-1 w-7 transition-height rounded-t-2 absolute bottom-0 left-1/2 -translate-x-1/2"
         />
-      </a>
-      <a
+      </button>
+      <button
+        on:keyup={() => false}
         on:click={() => (location.href = link.svelte)}
         class="cursor-pointer h-10 pt-0.5 ml-3 mr-5 relative leading-9.5 group color-rose-600"
       >
@@ -39,7 +45,7 @@
         <span
           class="bg-rose-600 inline-block h-1 group-hover:h-2 w-7 transition-height rounded-t-2 absolute bottom-0 left-1/2 -translate-x-1/2"
         />
-      </a>
+      </button>
       <!--language-->
       <SwitchLanguage />
     </div>
