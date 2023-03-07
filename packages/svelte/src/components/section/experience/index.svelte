@@ -1,10 +1,9 @@
 <script lang="ts">
-  import type { ElementPositionProgress } from '@about-me-mix/common/scroll-progess'
-  import type { Work } from '@about-me-mix/common/gsap-experience'
-  import { createTween } from '@about-me-mix/common/gsap-experience'
+  import type { Work, ElementPositionProgress } from '@about-me-mix/common'
+  import { t, locale } from '@/core/i18n'
+  import { createExperienceTween } from '@about-me-mix/common'
   import { EXPERIENCES } from '@about-me-mix/common/config.json'
   import Point from './component/point.svelte'
-  import { t, locale } from '@/core/i18n'
 
   const { max, min } = Math
 
@@ -18,7 +17,7 @@
   export let progress: ElementPositionProgress
 
   const initialize = (container: HTMLDivElement) => {
-    const tween = createTween(container)
+    const tween = createExperienceTween(container)
     let [running, rotate, prevSpeed] = [false, 0, 0]
 
     // 角度控制

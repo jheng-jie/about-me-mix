@@ -1,7 +1,6 @@
 <script lang="ts" setup>
-import type { ElementPositionProgress } from '@about-me-mix/common/scroll-progess'
-import type { TweenTimeLine, Work } from '@about-me-mix/common/gsap-experience'
-import { createTween } from '@about-me-mix/common/gsap-experience'
+import type { TweenTimeLine, Work, ElementPositionProgress } from '@about-me-mix/common'
+import { createExperienceTween } from '@about-me-mix/common'
 import { EXPERIENCES } from '@about-me-mix/common/config.json'
 import Point from './component/point.vue'
 
@@ -16,7 +15,7 @@ const tween = ref<TweenTimeLine>()
 const container = ref<HTMLDivElement>()
 onMounted(() => {
   if (!container.value) return
-  tween.value = createTween(container.value)
+  tween.value = createExperienceTween(container.value)
 })
 onUnmounted(() => tween?.value?.kill())
 

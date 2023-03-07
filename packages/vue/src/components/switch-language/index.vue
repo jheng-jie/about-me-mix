@@ -6,8 +6,8 @@ const switchLocalePath = useSwitchLocalePath()
 
 // icon
 const iconMap = new Map([
-  ['en', `/assets/en-US.png`],
-  ['zh', `/assets/zh-CHT.png`],
+  ['en', `/assets/lang/en-US.png`],
+  ['zh', `/assets/lang/zh-CHT.png`],
 ])
 const icon = computed(() => iconMap.get(locale.value) || '')
 

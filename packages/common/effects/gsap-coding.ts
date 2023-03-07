@@ -1,6 +1,7 @@
 import gsap, { Power0, Back } from 'gsap'
 
-export type TweenTimeLine = gsap.core.Timeline
+// style
+import '@about-me-mix/common/effects/gsap-coding.scss'
 
 /**
  * @desc 遞歸移除樣式
@@ -32,7 +33,7 @@ const AnimateVarsCodeHidden = { display: 'none', height: 0, stagger: 1, duration
  * @desc 建立動畫
  * @desc BEM 命名 `coding`
  */
-export const createTween = (container: HTMLDivElement): TweenTimeLine => {
+export const createCodingTween = (container: HTMLDivElement): gsap.core.Timeline => {
   const tl = gsap.timeline({ paused: true })
 
   // clear all style

@@ -1,9 +1,8 @@
-import type { ElementPositionProgress } from '@about-me-mix/common/scroll-progess'
-import type { TweenTimeLine } from '@about-me-mix/common/gsap-experience'
-import { createTween, Work } from '@about-me-mix/common/gsap-experience'
-import config from '@about-me-mix/common/config.json'
-import { useTranslation } from 'next-i18next'
+import type { Work, TweenTimeLine, ElementPositionProgress } from '@about-me-mix/common'
 import { useEffect, useMemo, useRef, useState } from 'react'
+import { useTranslation } from 'next-i18next'
+import { createExperienceTween } from '@about-me-mix/common'
+import config from '@about-me-mix/common/config.json'
 import Point from './component/point'
 
 // experience
@@ -31,7 +30,7 @@ export default ({ progress: scrollProgress }: { progress: ElementPositionProgres
   const container = useRef<HTMLDivElement>(null)
   useEffect(() => {
     if (!container.current) return
-    setTween(createTween(container.current))
+    setTween(createExperienceTween(container.current))
 
     // 角度控制
     let [running, rotate, prevSpeed] = [false, 0, 0]

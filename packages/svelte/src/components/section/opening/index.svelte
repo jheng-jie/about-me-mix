@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { ElementPositionProgress } from '@about-me-mix/common/scroll-progess'
+  import type { ElementPositionProgress } from '@about-me-mix/common'
   import Repeat from './component/repeat.svelte'
   import { t } from '@/core/i18n'
 
@@ -29,13 +29,13 @@
       <div class="absolute top-0 left-0 w-full h-full overflow-hidden">
         <!--box-->
         <div
-          style:background-image={index === 1 ? `url(/assets/polygon-1412486.jpg)` : ''}
+          style:background-image={index === 1 ? `url(/assets/polygon-white.jpg)` : ''}
           class="h-100vh w-full flex flex-col items-center justify-center font-medium text-4 lg:text-5 bg-center bg-cover"
         >
           <!--icon-->
           <img
             class={`w-auto h-28 lg:h-40 mb-4 lg:mb-6 ${!index && 'brightness-0 invert-100'}`}
-            src={`/assets/icon/svelte.png`}
+            src={`/assets/icon/svelte.svg`}
             alt=""
           />
           <!--title-->

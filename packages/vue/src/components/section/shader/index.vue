@@ -1,7 +1,6 @@
 <script lang="ts" setup>
-import type { ElementPositionProgress } from '@about-me-mix/common/scroll-progess'
-import type { TweenShader } from '@about-me-mix/common/twgl-shader'
-import { createShader } from '@about-me-mix/common/twgl-shader'
+import type { TweenShader, ElementPositionProgress } from '@about-me-mix/common'
+import { createShaderTween } from '@about-me-mix/common'
 import { useWebsite } from '~/stores'
 
 const { locale } = useI18n()
@@ -15,7 +14,7 @@ const container = ref<HTMLDivElement>()
 onMounted(async () => {
   const canvas = container.value?.querySelector('canvas')
   if (!canvas) return
-  shader.value = await createShader(canvas, { bg: '#737373', noise: '/assets/noise.jpg' })
+  shader.value = await createShaderTween(canvas, { bg: '#737373', noise: '/assets/noise.jpg' })
 })
 onUnmounted(() => shader.value?.kill())
 

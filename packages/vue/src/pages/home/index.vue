@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import type { ElementPositionProgress } from '@about-me-mix/common/scroll-progess'
-import { getElementProgressData, getChildrenRect } from '@about-me-mix/common/scroll-progess'
+import type { ElementPositionProgress } from '@about-me-mix/common'
+import { getElementProgressData, getChildrenRect } from '@about-me-mix/common'
 import { useWebsite } from '@/stores'
 import SectionOpening from '@/components/section/opening/index.vue'
 import SectionDialogue from '@/components/section/dialogue/index.vue'

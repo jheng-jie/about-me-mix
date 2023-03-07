@@ -1,7 +1,7 @@
 <script lang="ts" setup>
+import type { TweenTimeLine, ElementPositionProgress } from '@about-me-mix/common'
 import Code from './component/code.vue'
-import { ElementPositionProgress } from '@about-me-mix/common/scroll-progess'
-import { createTween, TweenTimeLine } from '@about-me-mix/common/gsap-coding'
+import { createCodingTween } from '@about-me-mix/common'
 
 const { locale } = useI18n()
 const props = defineProps({
@@ -12,7 +12,7 @@ const props = defineProps({
 const tween = ref<TweenTimeLine>()
 const container = ref<HTMLDivElement>()
 onMounted(() => {
-  tween.value = createTween(container.value!)
+  tween.value = createCodingTween(container.value!)
 })
 onUnmounted(() => tween?.value?.kill())
 

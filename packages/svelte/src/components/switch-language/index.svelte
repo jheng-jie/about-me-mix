@@ -5,8 +5,8 @@
 
   // icon
   const iconMap = new Map([
-    ['en', `/assets/en-US.png`],
-    ['zh', `/assets/zh-CHT.png`],
+    ['en', `/assets/lang/en-US.png`],
+    ['zh', `/assets/lang/zh-CHT.png`],
   ])
   let icon
   $: {

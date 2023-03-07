@@ -1,8 +1,7 @@
-import type { TweenShader } from '@about-me-mix/common/twgl-shader'
-import type { ElementPositionProgress } from '@about-me-mix/common/scroll-progess'
+import type { TweenShader, ElementPositionProgress } from '@about-me-mix/common'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { useTranslation } from 'next-i18next'
-import { createShader } from '@about-me-mix/common/twgl-shader'
+import { createShaderTween } from '@about-me-mix/common'
 import { useSelector } from 'react-redux'
 import { RootState } from '@/stores'
 
@@ -27,7 +26,7 @@ export default ({ progress: scrollProgress }: { progress: ElementPositionProgres
     const canvas = container.current?.querySelector('canvas')
     if (!canvas) return
     let destroyed = false
-    createShader(canvas, { bg: '#737373', noise: `/assets/noise.jpg` }, false).then(
+    createShaderTween(canvas, { bg: '#737373', noise: `/assets/noise.jpg` }, false).then(
       tween => !destroyed && setShader(tween),
     )
     return () => {

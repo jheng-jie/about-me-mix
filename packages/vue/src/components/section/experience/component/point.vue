@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Work } from '@about-me-mix/common/gsap-experience'
+import type { Work } from '@about-me-mix/common'
 
 defineProps({
   details: Object as PropType<Work>,
@@ -10,7 +10,7 @@ defineProps({
   <div
     :data-group="details.group"
     :class="{ 'ml-24 -mt-20 text-5 lg:text-6 pr-1 lg:pr-3': details.category, 'text-4 lg:text-5': !details.category }"
-    class="work flex items-start text-white relative"
+    class="experience__work flex items-start text-white relative"
   >
     <!--left line-->
     <div v-if="!details.category" class="work__line relative w-3 lg:w-6 h-0 border-t-4 mt-4 lg:mt-5" />
@@ -63,7 +63,3 @@ defineProps({
     </div>
   </div>
 </template>
-
-<style lang="scss" scoped>
-@import '@about-me-mix/common/gsap-experience';
-</style>

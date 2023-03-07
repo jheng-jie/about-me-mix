@@ -1,12 +1,10 @@
 import gsap, { Power1, Back } from 'gsap'
 
-export type TweenTimeLine = gsap.core.Timeline
-
 /**
  * @desc 建立動畫
  * @desc BEM 命名 `dialogue`
  */
-export const createTween = (container: HTMLDivElement): TweenTimeLine => {
+export const createDialogueTween = (container: HTMLDivElement): gsap.core.Timeline => {
   const tl = gsap.timeline({ paused: true })
 
   const [bg, avatar, char, popup] = [

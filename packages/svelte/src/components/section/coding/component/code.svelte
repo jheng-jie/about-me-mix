@@ -1,5 +1,4 @@
 <script lang="ts">
-  import '@about-me-mix/common/gsap-coding.scss'
   import { t } from '@/core/i18n'
 </script>
 

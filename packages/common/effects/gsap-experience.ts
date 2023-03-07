@@ -1,6 +1,7 @@
 import gsap, { Back, Power0 } from 'gsap'
 
-export type TweenTimeLine = gsap.core.Timeline
+// style
+import '@about-me-mix/common/effects/gsap-experience.scss'
 
 export type Work = {
   // 分類
@@ -25,7 +26,7 @@ export type Work = {
  * @desc 建立動畫
  * @desc BEM 命名 `experience`
  */
-export const createTween = (container: HTMLDivElement): TweenTimeLine => {
+export const createExperienceTween = (container: HTMLDivElement): gsap.core.Timeline => {
   const tl = gsap.timeline({ paused: true })
 
   // title

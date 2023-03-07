@@ -1,4 +1,4 @@
-import type { ElementPositionProgress } from '@about-me-mix/common/scroll-progess'
+import type { ElementPositionProgress } from '@about-me-mix/common'
 import { useEffect, useMemo, useRef } from 'react'
 import Repeat from './component/repeat'
 import Content from './component/content'

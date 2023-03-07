@@ -1,6 +1,6 @@
 <script lang="ts">
-  import type { ElementPositionProgress } from '@about-me-mix/common/scroll-progess'
-  import { getChildrenRect, getElementProgressData } from '@about-me-mix/common/scroll-progess'
+  import type { ElementPositionProgress } from '@about-me-mix/common'
+  import { getChildrenRect, getElementProgressData } from '@about-me-mix/common'
   import { sizeUpdateTimestamp } from '@/stores'
   import { onDestroy, onMount } from 'svelte'
   import { browser } from '$app/environment'

@@ -1,6 +1,6 @@
 $group-color: #881337, #831843, #701a75, #581c87, #4c1d95, #312e81; //, #1e3a8a, #164e63, #134e4a;
 
-.work {
+.experience__work {
   @each $color in $group-color {
     &[data-group='#{index($group-color, $color) - 1}'] {
       .work {

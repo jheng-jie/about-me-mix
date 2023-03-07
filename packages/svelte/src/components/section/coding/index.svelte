@@ -1,14 +1,14 @@
 <script lang="ts">
-  import type { ElementPositionProgress } from '@about-me-mix/common/scroll-progess'
+  import type { ElementPositionProgress } from '@about-me-mix/common'
   import Code from './component/code.svelte'
   import { t } from '@/core/i18n'
-  import { createTween } from '@about-me-mix/common/gsap-coding'
+  import { createCodingTween } from '@about-me-mix/common'
 
   // progress data
   export let progress: ElementPositionProgress
 
   const initialize = (container: HTMLDivElement) => {
-    const tween = createTween(container)
+    const tween = createCodingTween(container)
     return {
       // on progress update
       update({ hidden, progress, overlappingEnter }: ElementPositionProgress) {

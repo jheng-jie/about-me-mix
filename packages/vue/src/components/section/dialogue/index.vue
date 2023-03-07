@@ -1,7 +1,6 @@
 <script lang="ts" setup>
-import type { ElementPositionProgress } from '@about-me-mix/common/scroll-progess'
-import type { TweenTimeLine } from '@about-me-mix/common/gsap-dialogue'
-import { createTween } from '@about-me-mix/common/gsap-dialogue'
+import type { TweenTimeLine, ElementPositionProgress } from '@about-me-mix/common'
+import { createDialogueTween } from '@about-me-mix/common'
 
 const { rt, tm, locale } = useI18n()
 const props = defineProps({
@@ -12,7 +11,7 @@ const props = defineProps({
 const tween = ref<TweenTimeLine>()
 const container = ref<HTMLDivElement>()
 onMounted(() => {
-  tween.value = createTween(container.value!)
+  tween.value = createDialogueTween(container.value!)
 })
 onUnmounted(() => tween?.value?.kill())
 

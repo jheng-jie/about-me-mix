@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { ElementPositionProgress } from '@about-me-mix/common/scroll-progess'
+import type { ElementPositionProgress } from '@about-me-mix/common'
 import Repeat from './component/repeat.vue'
 
 const { locale } = useI18n()
@@ -32,14 +32,14 @@ watch(scrollProgress, () => {
         <div class="absolute top-0 left-0 w-full h-full overflow-hidden">
           <!--box-->
           <div
-            :style="index === 1 ? { backgroundImage: `url(/assets/polygon-1412486.jpg)` } : {}"
+            :style="index === 1 ? { backgroundImage: `url(/assets/polygon-white.jpg)` } : {}"
             class="h-100vh w-full flex flex-col items-center justify-center font-medium text-4 lg:text-5 bg-center bg-cover"
           >
             <!--icon-->
             <img
               :class="{ 'brightness-0 invert-100': !index }"
               class="w-auto h-28 lg:h-40 mb-4 lg:mb-6"
-              :src="'/assets/icon/nuxt.png'"
+              :src="'/assets/icon/vue.svg'"
               alt=""
             />
             <!--title-->

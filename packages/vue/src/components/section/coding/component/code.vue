@@ -187,7 +187,3 @@
     <p>}</p>
   </div>
 </template>
-
-<style lang="scss">
-@import '@about-me-mix/common/gsap-coding';
-</style>

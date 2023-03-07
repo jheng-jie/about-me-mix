@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import config from '@about-me-mix/common/config.json'
 import { useRouter } from 'next/router'
 import { MouseEvent, useMemo, useState } from 'react'
@@ -6,8 +5,8 @@ import { motion } from 'framer-motion'
 
 // icons
 const iconMap = new Map([
-  ['en', `/assets/en-US.png`],
-  ['zh', `/assets/zh-CHT.png`],
+  ['en', `/assets/lang/en-US.png`],
+  ['zh', `/assets/lang/zh-CHT.png`],
 ])
 
 // for motion
@@ -67,7 +66,7 @@ export default () => {
       className="h-full flex items-center cursor-pointer relative select-none"
     >
       {/*current locale*/}
-      <Image src={icon} alt="" className="w-9 h-9 mx-1.5" />
+      <img src={icon} alt="" className="w-9 h-9 mx-1.5" />
       {/*mask*/}
       {show && <button onClick={onDropdownClose} className="fixed left-0 top-0 w-full h-full z-0" />}
       {/*dropdown*/}
@@ -85,7 +84,7 @@ export default () => {
               key={locale}
               className="hover:bg-gray-200 transition-colors p-1.5"
             >
-              <Image src={iconMap.get(locale) || ''} alt="" className="w-9 h-9" />
+              <img src={iconMap.get(locale) || ''} alt="" className="w-9 h-9" />
             </button>
           ))}
         </div>

@@ -1,12 +1,12 @@
 <script lang="ts">
-  import type { Work } from '@about-me-mix/common/gsap-experience'
+  import type { Work } from '@about-me-mix/common'
   import { t } from '@/core/i18n'
   export let details: Work = {}
 </script>
 
 <div
   data-group={details?.group}
-  class={`work flex items-start text-white relative ${
+  class={`experience__work flex items-start text-white relative ${
     details?.category ? 'ml-24 -mt-20 text-5 lg:text-6 pr-1 lg:pr-3' : 'text-4 lg:text-5'
   }`}
 >
@@ -64,7 +64,3 @@
     </div>
   {/if}
 </div>
-
-<style lang="scss">
-  @import '@about-me-mix/common/gsap-experience';
-</style>

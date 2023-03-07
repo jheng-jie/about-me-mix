@@ -1,6 +1,6 @@
 import * as TwGL from 'twgl.js'
-const { v3, m4, primitives, drawBufferInfo, createProgramInfo, setBuffersAndAttributes, setUniforms, createTextures } =
-  TwGL
+const { v3, m4, primitives } = TwGL
+const { drawBufferInfo, createProgramInfo, setBuffersAndAttributes, setUniforms, createTextures } = TwGL
 
 export type TweenShader = { resetSize: (progress?: number) => void; kill: () => void; progress: (n: number) => void }
 
@@ -54,7 +54,7 @@ void main () {
 /**
  * @desc 用 pixijs 寫更輕鬆，但是太肥了
  */
-export const createShader = async (
+export const createShaderTween = async (
   canvas: HTMLCanvasElement,
   { bg, noise }: { bg: string; noise: string },
   init = true,

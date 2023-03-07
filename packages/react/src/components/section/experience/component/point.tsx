@@ -1,5 +1,4 @@
-import type { Work } from '@about-me-mix/common/gsap-experience'
-import '@about-me-mix/common/gsap-experience.scss'
+import type { Work } from '@about-me-mix/common'
 import { useTranslation } from 'next-i18next'
 
 /**
@@ -11,7 +10,7 @@ export default ({ details }: { details: Work }) => {
   return (
     <div
       data-group={details.group}
-      className={`work flex items-start text-white relative ${
+      className={`experience__work flex items-start text-white relative ${
         details.category ? 'ml-24 -mt-20 text-5 lg:text-6 pr-1 lg:pr-3' : 'text-4 lg:text-5'
       }`}
     >

@@ -1,5 +1,4 @@
 import { useTranslation } from 'next-i18next'
-import '@about-me-mix/common/gsap-coding.scss'
 
 /**
  * @desc 程式碼區塊

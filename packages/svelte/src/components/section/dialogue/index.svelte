@@ -1,13 +1,13 @@
 <script lang="ts">
-  import type { ElementPositionProgress } from '@about-me-mix/common/scroll-progess'
-  import { createTween } from '@about-me-mix/common/gsap-dialogue'
+  import type { ElementPositionProgress } from '@about-me-mix/common'
+  import { createDialogueTween } from '@about-me-mix/common'
   import { t } from '@/core/i18n'
 
   // progress data
   export let progress: ElementPositionProgress
 
   const initialize = (container: HTMLDivElement) => {
-    const tween = createTween(container)
+    const tween = createDialogueTween(container)
     return {
       // on progress update
       update({ hidden, progress, overlappingEnter }: ElementPositionProgress) {

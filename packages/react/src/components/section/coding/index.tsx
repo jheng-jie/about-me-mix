@@ -1,9 +1,8 @@
-import type { TweenTimeLine } from '@about-me-mix/common/gsap-coding'
-import type { ElementPositionProgress } from '@about-me-mix/common/scroll-progess'
+import type { TweenTimeLine, ElementPositionProgress } from '@about-me-mix/common'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { useTranslation } from 'next-i18next'
 import Code from './component/code'
-import { createTween } from '@about-me-mix/common/gsap-coding'
+import { createCodingTween } from '@about-me-mix/common'
 
 /**
  * @desc Home 代碼風格
@@ -23,7 +22,7 @@ export default ({ progress: scrollProgress }: { progress: ElementPositionProgres
   const container = useRef<HTMLDivElement>(null)
   useEffect(() => {
     if (!container.current) return
-    setTween(createTween(container.current))
+    setTween(createCodingTween(container.current))
   }, [])
 
   // on progress update
