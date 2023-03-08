@@ -53,3 +53,4 @@ if [ "$target" = "all" ] || [ "$target" = "svelte" ]; then
   mv ./packages/svelte/output ./$dist/svelte
 fi
 
+echo '<meta http-equiv="refresh" content="0;url=/react/zh/home/">' >> ./release/index.html
