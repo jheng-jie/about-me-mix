@@ -53,4 +53,7 @@ if [ "$target" = "all" ] || [ "$target" = "svelte" ]; then
   mv ./packages/svelte/output ./$dist/svelte
 fi
 
+# redirect
 echo '<meta http-equiv="refresh" content="0;url=/about-me-mix/react/zh/home/">' > ./about-me-mix/index.html
+# fix github nojeky
+echo '' > ./docs/.nojekyll
