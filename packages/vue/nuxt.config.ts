@@ -43,6 +43,9 @@ export default defineNuxtConfig({
     baseURL: `${MIX_BASE_URL}/vue`,
     head: {
       link: [
+        // icon
+        { href: `${MIX_ASSETS_URL}/icon/vue.svg`, rel: 'icon', type: 'svg' },
+        { href: `${MIX_ASSETS_URL}/icon/nuxt.ico`, rel: 'shortcut icon', type: 'image/x-icon' },
         { href: 'https://fonts.googleapis.com', rel: 'preconnect' },
         // @ts-ignore
         { href: 'https://fonts.gstatic.com', rel: 'preconnect', crossOrigin: true },
