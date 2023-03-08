@@ -14,12 +14,34 @@
   const goto = (path: string) => {
     location.href = path
   }
+
+  // 頂部進度條
+  const scroll = (progress: HTMLDivElement) => {
+    if (!progress) return
+
+    const onScrollHandler = () => {
+      // 整體視窗捲軸進度
+      const scrollHeight = document.body.clientHeight
+      const windowProgress = Math.max(0, Math.min(1, scrollY / (scrollHeight - window.innerHeight))) * 100
+      progress.style.width = `${windowProgress}%`
+    }
+    window.addEventListener('scroll', onScrollHandler)
+
+    return {
+      destroy() {
+        window.removeEventListener('scroll', onScrollHandler)
+      },
+    }
+  }
 </script>
 
-<div class="fixed w-full top-0 z-50 h-10 lg:h-12 shadow-lg px-3 bg-white">
-  <div class="max-w-256 w-full h-full flex justify-end lg:justify-between mx-auto">
+<div class="fixed w-full top-0 z-50 h-10 lg:h-12 shadow-lg bg-white">
+  <!--top progress-->
+  <div use:scroll class="top-0 absolute h-0.75 rounded-r w-0 bg-rose-600" />
+
+  <div class="max-w-256 w-full h-full flex justify-end sm:justify-between mx-auto relative z-10 px-3">
     <!--title-->
-    <h1 class="font-medium text-4 hidden lg:inline-block leading-12">{$t('header.title')}</h1>
+    <h1 class="font-medium text-4 hidden sm:inline-block leading-10 lg:leading-12">{$t('header.title')}</h1>
     <!--menu-->
     <div class="flex items-center font-medium select-none">
       <button

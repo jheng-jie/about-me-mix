@@ -13,14 +13,28 @@ const link = computed(() => ({
 const goto = (path: string) => {
   location.href = path
 }
+
+// 頂部進度條
+const progress = ref<HTMLDivElement>()
+const onScrollHandler = () => {
+  if (!progress.value) return
+  // 整體視窗捲軸進度
+  const scrollHeight = document.body.clientHeight
+  const windowProgress = Math.max(0, Math.min(1, scrollY / (scrollHeight - window.innerHeight))) * 100
+  progress.value.style.width = `${windowProgress}%`
+}
+onBeforeMount(() => window.addEventListener('scroll', onScrollHandler))
+onUnmounted(() => window.removeEventListener('scroll', onScrollHandler))
 </script>
 
 <template>
-  <div class="fixed w-full top-0 z-50 h-10 lg:h-12 shadow-lg px-3 bg-white">
-    <div class="max-w-256 w-full h-full flex justify-end lg:justify-between mx-auto">
-      <!--title-->
-      <h1 class="font-medium text-4 hidden lg:inline-block leading-12" v-t="'header.title'" />
+  <div class="fixed w-full top-0 z-50 h-10 lg:h-12 shadow-lg bg-white">
+    <!--top progress-->
+    <div ref="progress" class="top-0 absolute h-0.75 rounded-r w-0 bg-emerald-500" />
 
+    <div class="max-w-256 w-full h-full flex justify-end sm:justify-between mx-auto relative z-10 px-3">
+      <!--title-->
+      <h1 class="font-medium text-4 hidden sm:inline-block leading-10 lg:leading-12" v-t="'header.title'" />
       <!--menu-->
       <div class="flex items-center font-medium select-none">
         <button @click="goto(link.vue)" class="cursor-pointer h-10 lg:h-12 mx-3 relative group color-emerald-500">

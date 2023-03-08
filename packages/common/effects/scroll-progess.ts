@@ -42,10 +42,6 @@ export const getElementProgressData = (list: ElementPositionProgress[]) => {
   const scrollY = window.scrollY
   const screenHeight = window.innerHeight
 
-  // 整體視窗捲軸進度
-  // const scrollHeight = document.body.clientHeight
-  // const windowProgress = parseFloat(Math.max(0, Math.min(1, scrollY / (scrollHeight - screenHeight))).toFixed(2))
-
   // 子層範圍計算
   const [x2, y2] = [scrollY, scrollY + screenHeight]
 
