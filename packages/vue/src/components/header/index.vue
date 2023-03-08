@@ -35,7 +35,7 @@ onUnmounted(() => window.removeEventListener('scroll', onScrollHandler))
     <div class="max-w-256 w-full h-full flex justify-between mx-auto relative z-10 px-3">
       <!--title-->
       <a :href="config.GIT_PATH" target="_black" class="font-medium text-4 leading-10 lg:leading-12 flex items-center">
-        <img src="/assets/icon/github.png" alt="" class="w-9 h-9 mr-2" />
+        <img :src="`/assets/icon/github.png`" alt="" class="w-9 h-9 mr-2" />
         <span class="hidden sm:inline-block" v-t="'header.title'" />
       </a>
       <!--menu-->

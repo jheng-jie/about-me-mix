@@ -26,11 +26,11 @@
 
   1. ✅ `react` `swc` 真香
   
-  2. ❌ `vue`
+  2. ❌ `vue` `vite 目前只支援 tpye module`
   
-  3. ❌ `svelte`
+  3. ❌ `svelte` `vite 目前只支援 tpye module`
 
-- 🚸 發佈 `github page`
+- ✅ 發佈 `github page`
 
 ---
 
@@ -199,5 +199,11 @@
   yarn workspace @about-me-mix/react add @about-me-mix/common@^1.0.0
   yarn workspace @about-me-mix/svelte add @about-me-mix/common@^1.0.0
   ```
+
+---
+
+## TODO
+
+- 技能樹
 
 ---

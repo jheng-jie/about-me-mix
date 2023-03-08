@@ -1,0 +1,1 @@
+import{a as e,G as t,o as n,b as o}from"./entry.796d9176.js";const r={class:"fixed w-full h-full left-0 top-0 bg-gray-100 text-gray-500 font-bold flex items-center justify-center"},f=e({__name:"index",setup(s){return t({meta:[{"http-equiv":"refresh",content:"0;url=/vue/home/"}]}),(a,c)=>(n(),o("span",r," redirect... "))}});export{f as default};
