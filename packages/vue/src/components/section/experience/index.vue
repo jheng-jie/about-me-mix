@@ -1,14 +1,13 @@
 <script lang="ts" setup>
-import type { TweenTimeLine, Work, ElementPositionProgress } from '@about-me-mix/common'
+import type { TweenTimeLine, Work } from '@about-me-mix/common'
 import { createExperienceTween } from '@about-me-mix/common'
 import { EXPERIENCES } from '@about-me-mix/common/config.json'
 import Point from './component/point.vue'
+import useProgress from '../use-progress'
 
 const { rt, tm, locale } = useI18n()
 const { max, min } = Math
-const props = defineProps({
-  progress: Object as PropType<ElementPositionProgress>,
-})
+const props = defineProps({ index: { default: 0 } })
 
 // gsap timeline
 const tween = ref<TweenTimeLine>()
@@ -19,11 +18,8 @@ onMounted(() => {
 })
 onUnmounted(() => tween?.value?.kill())
 
-// set timeline progress
-const scrollProgress = toRef(props, 'progress')
-watch(scrollProgress, () => {
-  if (!scrollProgress.value) return
-  const { progress, overlappingEnter, overlappingLeave, hidden } = scrollProgress.value!
+// on position update
+const { position } = useProgress(props.index, ({ progress, overlappingEnter, overlappingLeave, hidden }) => {
   // hidden
   if (container.value) container.value.style.display = hidden ? 'none' : ''
   // update tween
@@ -53,7 +49,7 @@ const enterFrame = () => {
 
 // 監聽捲軸
 const onScrollHandler = () => {
-  if (!scrollProgress.value || scrollProgress.value.hidden) return
+  if (!position.value || position.value.hidden) return
   // 加速度計算
   const distance = window.scrollY - prevSpeed
   rotate = max(-5, min(5, rotate - max(-0.5, min(0.5, distance * 0.01))))

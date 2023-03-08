@@ -1,12 +1,11 @@
 <script lang="ts" setup>
-import type { TweenShader, ElementPositionProgress } from '@about-me-mix/common'
+import type { TweenShader } from '@about-me-mix/common'
 import { createShaderTween } from '@about-me-mix/common'
 import { useWebsite } from '~/stores'
+import useProgress from '../use-progress'
 
 const { locale } = useI18n()
-const props = defineProps({
-  progress: Object as PropType<ElementPositionProgress>,
-})
+const props = defineProps({ index: { default: 0 } })
 
 // update shadow params
 const shader = ref<TweenShader>()
@@ -22,11 +21,8 @@ onUnmounted(() => shader.value?.kill())
 const sizeUpdateTimestamp = computed(() => useWebsite().sizeUpdateTimestamp)
 watch(sizeUpdateTimestamp, () => shader.value?.resetSize())
 
-// set timeline progress
-const scrollProgress = toRef(props, 'progress')
-watch([scrollProgress, shader], () => {
-  if (!scrollProgress.value) return
-  const { hidden, progress } = scrollProgress.value
+// on position update
+useProgress(props.index, ({ hidden, progress }) => {
   // hidden
   if (container.value) container.value.style.display = hidden ? 'none' : ''
   // update tween

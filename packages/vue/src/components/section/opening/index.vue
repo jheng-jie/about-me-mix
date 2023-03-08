@@ -1,21 +1,16 @@
 <script lang="ts" setup>
-import type { ElementPositionProgress } from '@about-me-mix/common'
 import Repeat from './component/repeat.vue'
+import useProgress from '../use-progress'
 
 const { locale } = useI18n()
-const props = defineProps({
-  progress: Object as PropType<ElementPositionProgress>,
-})
+const props = defineProps({ index: { default: 0 } })
 
 // update mask height
 const container = ref<HTMLDivElement>()
 
-// computed progress
-const scrollProgress = toRef(props, 'progress')
-watch(scrollProgress, () => {
-  if (!scrollProgress.value) return
+// on position update
+useProgress(props.index, ({ hidden, progress }) => {
   if (!container.value) return
-  const { progress, hidden } = scrollProgress.value
   // hidden
   container.value.style.display = hidden ? 'none' : ''
   // update progress

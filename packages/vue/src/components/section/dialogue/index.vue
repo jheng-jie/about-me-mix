@@ -1,11 +1,10 @@
 <script lang="ts" setup>
-import type { TweenTimeLine, ElementPositionProgress } from '@about-me-mix/common'
+import type { TweenTimeLine } from '@about-me-mix/common'
 import { createDialogueTween } from '@about-me-mix/common'
+import useProgress from '../use-progress'
 
 const { rt, tm, locale } = useI18n()
-const props = defineProps({
-  progress: Object as PropType<ElementPositionProgress>,
-})
+const props = defineProps({ index: { default: 0 } })
 
 // gsap timeline
 const tween = ref<TweenTimeLine>()
@@ -15,11 +14,8 @@ onMounted(() => {
 })
 onUnmounted(() => tween?.value?.kill())
 
-// set timeline progress
-const scrollProgress = toRef(props, 'progress')
-watch(scrollProgress, () => {
-  if (!scrollProgress.value) return
-  const { hidden, progress, overlappingEnter } = scrollProgress.value
+// on position update
+useProgress(props.index, ({ hidden, progress, overlappingEnter }) => {
   // hidden
   if (container.value) container.value.style.display = hidden ? 'none' : ''
   // update tween
