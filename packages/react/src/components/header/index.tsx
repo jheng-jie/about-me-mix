@@ -25,23 +25,24 @@ export default () => {
 
   return useMemo(
     () => (
-      <div className="fixed w-full top-0 z-50 h-12 shadow-lg px-3 bg-white">
-        <div className="max-w-256 w-full h-full flex justify-between mx-auto">
+      <div className="fixed w-full top-0 z-50 h-10 lg:h-12 shadow-lg px-3 bg-white">
+        <div className="max-w-256 w-full h-full flex justify-end lg:justify-between mx-auto">
           {/*title*/}
-          <h1 className="font-medium text-4 leading-12" onClick={() => router.push('/forbidden')}>
-            {t('header.title')}
-          </h1>
+          <h1 className="font-medium text-4 hidden lg:inline-block leading-12">{t('header.title')}</h1>
           {/*menu*/}
           <div className="flex items-center font-medium select-none">
-            <button onClick={() => goto(link.vue)} className="cursor-pointer mx-3 relative h-12 group">
+            <button onClick={() => goto(link.vue)} className="cursor-pointer mx-3 relative h-10 lg:h-12 group">
               Vue
               <span className="bg-emerald-500 inline-block h-0 group-hover:h-1 w-7 transition-height rounded-t-2 absolute bottom-0 left-1/2 -translate-x-1/2" />
             </button>
-            <button onClick={() => goto(link.react)} className="cursor-pointer mx-3 relative h-12 group color-sky-500">
+            <button
+              onClick={() => goto(link.react)}
+              className="cursor-pointer mx-3 relative h-10 lg:h-12 group color-sky-500"
+            >
               React
               <span className="bg-sky-500 inline-block h-1 group-hover:h-2 w-7 transition-height rounded-t-2 absolute bottom-0 left-1/2 -translate-x-1/2" />
             </button>
-            <button onClick={() => goto(link.svelte)} className="cursor-pointer ml-3 mr-5 relative h-12 group">
+            <button onClick={() => goto(link.svelte)} className="cursor-pointer ml-3 mr-5 relative h-10 lg:h-12 group">
               Svelte
               <span className="bg-rose-600 inline-block h-0 group-hover:h-1 w-7 transition-height rounded-t-2 absolute bottom-0 left-1/2 -translate-x-1/2" />
             </button>

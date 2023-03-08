@@ -61,12 +61,12 @@ export default () => {
 
   return (
     <div
-      onClick={() => setShow(true)}
+      onClick={() => setShow(show => !show)}
       onKeyUp={() => false}
       className="h-full flex items-center cursor-pointer relative select-none"
     >
       {/*current locale*/}
-      <img src={icon} alt="" className="w-9 h-9 mx-1.5" />
+      <img src={icon} alt="" className="w-8 lg:w-9 h-8 lg:h-9 lg:mx-1.5" />
       {/*mask*/}
       {show && <button onClick={onDropdownClose} className="fixed left-0 top-0 w-full h-full z-0" />}
       {/*dropdown*/}
@@ -74,7 +74,7 @@ export default () => {
         initial="hidden"
         animate={show ? 'visible' : 'hidden'}
         variants={dropdownVariants}
-        className="absolute top-0 right-0 pt-13 z-10"
+        className="absolute top-0 right-0 pt-13 z-10 w-12"
       >
         <div className="bg-white rounded-1.5 py-1 shadow-md">
           {/*locale list*/}

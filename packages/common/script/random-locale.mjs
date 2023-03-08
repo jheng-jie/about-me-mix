@@ -12,7 +12,7 @@ const en = await fs.promises.readFile(enFilePath).then(res => JSON.parse(res.toS
 const charArray = Array.from(new Array(26))
   .map((_, index) => [String.fromCharCode(65 + index), String.fromCharCode(97 + index)])
   .flat()
-const randomStr = length =>
+const randomStr = (length = 1) =>
   Array.from({ length })
     .map(() => charArray[Math.floor(Math.random() * charArray.length)])
     .join('')
@@ -35,7 +35,7 @@ const deepRandomValue = data => {
         break
       }
       case 'string': {
-        result[key] = Array.from(deepData).map(char => /[\u4E00-\u9FA5]/.test(char) ? randomStr(2) : char).join('')
+        result[key] = Array.from(deepData).map(char => /[\u4E00-\u9FA5]/.test(char) ? randomStr() : char).join('')
         break
       }
       case 'symbol':
