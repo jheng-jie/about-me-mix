@@ -44,21 +44,21 @@
     }
     window.addEventListener('scroll', onScrollHandler)
 
-    // 捲軸歸位
-    const unSubscribeLocale = locale.subscribe(() => {
-      container.scrollLeft = 0
-    })
-
     return {
       // on progress update
       update({ hidden, progress, overlappingEnter, overlappingLeave }: ElementPositionProgress) {
-        if (hidden) return
+        if (hidden) {
+          if (container.style.display === 'none') return
+          container.scrollLeft = 0
+          container.style.display = 'none'
+          return
+        }
+        if (container.style.display === 'none') container.style.display = ''
         tween?.progress(progress * 0.7 + max(0, overlappingEnter / 0.8) * 0.15 + min(1, 1 - overlappingLeave) * 0.15)
       },
       destroy() {
         tween?.kill()
         window.removeEventListener('scroll', onScrollHandler)
-        unSubscribeLocale()
       },
     }
   }
@@ -67,7 +67,6 @@
 <section class="experience w-full h-600vh bg-gradient-to-b from-zinc-800 to-zinc-600">
   <div
     use:initialize={$progress}
-    style:display={$progress?.hidden ? 'none' : ''}
     class="fixed left-0 top-0 w-full h-100vh flex flex-nowrap overflow-hidden whitespace-nowrap"
   >
     <!--title-->
