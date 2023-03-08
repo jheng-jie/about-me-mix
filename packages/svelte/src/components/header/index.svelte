@@ -39,9 +39,12 @@
   <!--top progress-->
   <div use:scroll class="top-0 absolute h-0.75 rounded-r w-0 bg-rose-600" />
 
-  <div class="max-w-256 w-full h-full flex justify-end sm:justify-between mx-auto relative z-10 px-3">
+  <div class="max-w-256 w-full h-full flex justify-between mx-auto relative z-10 px-3">
     <!--title-->
-    <h1 class="font-medium text-4 hidden sm:inline-block leading-10 lg:leading-12">{$t('header.title')}</h1>
+    <a href={config.GIT_PATH} target="_black" class="font-medium text-4 leading-10 lg:leading-12 flex items-center">
+      <img src="/assets/icon/github.png" alt="" class="w-9 h-9 mr-2" />
+      <span class="hidden sm:inline-block">{$t('header.title')}</span>
+    </a>
     <!--menu-->
     <div class="flex items-center font-medium select-none">
       <button

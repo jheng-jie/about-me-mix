@@ -32,9 +32,12 @@ onUnmounted(() => window.removeEventListener('scroll', onScrollHandler))
     <!--top progress-->
     <div ref="progress" class="top-0 absolute h-0.75 rounded-r w-0 bg-emerald-500" />
 
-    <div class="max-w-256 w-full h-full flex justify-end sm:justify-between mx-auto relative z-10 px-3">
+    <div class="max-w-256 w-full h-full flex justify-between mx-auto relative z-10 px-3">
       <!--title-->
-      <h1 class="font-medium text-4 hidden sm:inline-block leading-10 lg:leading-12" v-t="'header.title'" />
+      <a :href="config.GIT_PATH" target="_black" class="font-medium text-4 leading-10 lg:leading-12 flex items-center">
+        <img src="/assets/icon/github.png" alt="" class="w-9 h-9 mr-2" />
+        <span class="hidden sm:inline-block" v-t="'header.title'" />
+      </a>
       <!--menu-->
       <div class="flex items-center font-medium select-none">
         <button @click="goto(link.vue)" class="cursor-pointer h-10 lg:h-12 mx-3 relative group color-emerald-500">
