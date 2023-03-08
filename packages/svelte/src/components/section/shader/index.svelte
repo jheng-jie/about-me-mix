@@ -9,16 +9,16 @@
   export let index = 0
   let progress = useProgress(index)
 
-  // update shadow params
-  let shader: TweenShader
-  $: if ($sizeUpdateTimestamp) shader?.resetSize()
-
   const initialize = (container: HTMLDivElement) => {
+    // update shadow params
+    let shader: TweenShader
+
     createShaderTween(container?.querySelector('canvas'), { bg: '#737373', noise: `/assets/noise.jpg` }).then(tween => {
       shader?.kill()
       shader = tween
       shader.progress($progress?.progress || 0)
     })
+    const unSubscribe = sizeUpdateTimestamp.subscribe(() => shader?.resetSize())
     return {
       // on progress update
       update({ hidden, progress }: ElementPositionProgress) {
@@ -27,6 +27,7 @@
       },
       destroy() {
         shader?.kill()
+        unSubscribe()
       },
     }
   }
