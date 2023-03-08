@@ -12,7 +12,7 @@ export default (props: DocumentProps) => {
     <Html lang={lang}>
       <Head>
         <link rel="icon" type="image/svg" href={`${process.env.MIX_ASSETS_URL}/icon/react.svg`} />
-        <link rel="shortcut icon" type="image/x-icon" href={`${process.env.MIX_ASSETS_URL}/icon/react.ico`} />
+        <link rel="shortcut icon" type="image/x-icon" href={`${process.env.MIX_ASSETS_URL}/icon/next.ico`} />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         {/*@ts-ignore*/}
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
