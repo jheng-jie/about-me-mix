@@ -2,9 +2,11 @@
   import type { ElementPositionProgress } from '@about-me-mix/common'
   import { createDialogueTween } from '@about-me-mix/common'
   import { t } from '@/core/i18n'
+  import useProgress from '@/components/section/use-progress'
 
   // progress data
-  export let progress: ElementPositionProgress
+  export let index = 0
+  let progress = useProgress(index)
 
   const initialize = (container: HTMLDivElement) => {
     const tween = createDialogueTween(container)
@@ -23,8 +25,8 @@
 
 <section class="min-h-400vh relative">
   <div
-    use:initialize={progress}
-    style:display={progress?.hidden ? 'none' : ''}
+    use:initialize={$progress}
+    style:display={$progress?.hidden ? 'none' : ''}
     class="dialogue w-full h-100vh sticky top-0 text-4 lg:text-6 overflow-hidden"
   >
     <!--line bg-->

@@ -1,4 +1,4 @@
-import { ElementPositionProgress } from '@about-me-mix/common'
+import type { ElementPositionProgress } from '@about-me-mix/common'
 
 /**
  * @desc 保存頁面捲軸進度

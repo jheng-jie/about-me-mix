@@ -3,9 +3,11 @@
   import Code from './component/code.svelte'
   import { t } from '@/core/i18n'
   import { createCodingTween } from '@about-me-mix/common'
+  import useProgress from '@/components/section/use-progress'
 
   // progress data
-  export let progress: ElementPositionProgress
+  export let index = 0
+  let progress = useProgress(index)
 
   const initialize = (container: HTMLDivElement) => {
     const tween = createCodingTween(container)
@@ -24,8 +26,8 @@
 
 <section class="h-400vh bg-gradient-to-b from-zinc-600 to-neutral-500">
   <div
-    use:initialize={progress}
-    style:display={progress?.hidden ? 'none' : ''}
+    use:initialize={$progress}
+    style:display={$progress?.hidden ? 'none' : ''}
     class="coding h-100vh w-full px-2 pb-2 sticky top-0 flex flex-col items-center justify-start lg:justify-center"
   >
     <!--dialogue-->

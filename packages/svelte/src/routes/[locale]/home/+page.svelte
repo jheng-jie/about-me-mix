@@ -9,22 +9,23 @@
   import SectionExperience from '@/components/section/experience/index.svelte'
   import SectionCoding from '@/components/section/coding/index.svelte'
   import SectionShader from '@/components/section/shader/index.svelte'
+  import { setSectionProgress } from '@/stores/progress'
 
   // progress cache
-  let childrenProgressData: ElementPositionProgress[]
+  let childrenProgressData: ElementPositionProgress[] = []
 
-  // 子層相對捲軸位置計算
-  const onScrollHandler = () => {
-    childrenProgressData = getElementProgressData(childrenProgressData)
-  }
+  // 保存位置資訊位置
+  const onScrollHandler = () => setSectionProgress(getElementProgressData(childrenProgressData))
+  onMount(() => browser && window.addEventListener('scroll', onScrollHandler))
+  onDestroy(() => browser && window.removeEventListener('scroll', onScrollHandler))
+  $: if ($sizeUpdateTimestamp) onScrollHandler()
 
   // 快取子層位置，避免一直計算
   let main: HTMLElement
-  $: if ($sizeUpdateTimestamp && main) childrenProgressData = getChildrenRect(main)
-
-  // listen scroll
-  onMount(() => browser && window.addEventListener('scroll', onScrollHandler))
-  onDestroy(() => browser && window.removeEventListener('scroll', onScrollHandler))
+  $: if (main) {
+    childrenProgressData = getChildrenRect(main)
+    onScrollHandler()
+  }
 
   // section
   const section = [SectionOpening, SectionDialogue, SectionExperience, SectionCoding, SectionShader]
@@ -33,6 +34,6 @@
 <!--Home Page-->
 <main bind:this={main}>
   {#each section as Component, index (index)}
-    <svelte:component this={Component} progress={childrenProgressData?.[index]} />
+    <svelte:component this={Component} {index} />
   {/each}
 </main>

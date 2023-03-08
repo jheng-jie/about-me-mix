@@ -1,10 +1,12 @@
 <script lang="ts">
   import type { ElementPositionProgress } from '@about-me-mix/common'
   import Repeat from './component/repeat.svelte'
+  import useProgress from '../use-progress'
   import { t } from '@/core/i18n'
 
   // progress data
-  export let progress: ElementPositionProgress
+  export let index = 0
+  let progress = useProgress(index)
 
   const initialize = (container: HTMLDivElement) => {
     const mask = container?.children?.[1] as HTMLDivElement
@@ -20,8 +22,8 @@
 
 <section class="h-200vh w-full relative">
   <div
-    use:initialize={progress}
-    style:display={progress?.hidden ? 'none' : ''}
+    use:initialize={$progress}
+    style:display={$progress?.hidden ? 'none' : ''}
     class="sticky top-0 left-0 h-100vh w-full"
   >
     <Repeat let:index count={2}>

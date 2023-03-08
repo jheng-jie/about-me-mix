@@ -4,6 +4,7 @@
   import { createExperienceTween } from '@about-me-mix/common'
   import { EXPERIENCES } from '@about-me-mix/common/config.json'
   import Point from './component/point.svelte'
+  import useProgress from '@/components/section/use-progress'
 
   const { max, min } = Math
 
@@ -14,7 +15,8 @@
   ]).flat()
 
   // progress data
-  export let progress: ElementPositionProgress
+  export let index = 0
+  let progress = useProgress(index)
 
   const initialize = (container: HTMLDivElement) => {
     const tween = createExperienceTween(container)
@@ -32,7 +34,7 @@
 
     // 監聽捲軸
     const onScrollHandler = () => {
-      if (progress?.hidden) return
+      if ($progress?.hidden) return
       // 加速度計算
       const distance = window.scrollY - prevSpeed
       rotate = max(-5, min(5, rotate - max(-0.5, min(0.5, distance * 0.01))))
@@ -64,8 +66,8 @@
 
 <section class="experience w-full h-600vh bg-gradient-to-b from-zinc-800 to-zinc-600">
   <div
-    use:initialize={progress}
-    style:display={progress?.hidden ? 'none' : ''}
+    use:initialize={$progress}
+    style:display={$progress?.hidden ? 'none' : ''}
     class="fixed left-0 top-0 w-full h-100vh flex flex-nowrap overflow-hidden whitespace-nowrap"
   >
     <!--title-->
