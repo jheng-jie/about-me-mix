@@ -1,9 +1,8 @@
-import type { RootState } from '@/stores'
-import { useEffect, useMemo, useRef } from 'react'
+import { useMemo, useRef } from 'react'
 import Repeat from './component/repeat'
 import Content from './component/content'
 import { useTranslation } from 'next-i18next'
-import { useSelector } from 'react-redux'
+import useProgress from '../use-progress'
 
 /**
  * @desc Home 開場
@@ -15,17 +14,14 @@ export default ({ index = 0 }: { index?: number } = {}) => {
   const container = useRef<HTMLDivElement>(null)
 
   // on position update
-  const position = useSelector((state: RootState) => state.progress.position?.[index])
-  useEffect(() => {
-    if (!position) return
+  useProgress(index, ({ progress, hidden }) => {
     if (!container.current) return
-    const { progress, hidden } = position
     // hidden
     container.current.style.display = hidden ? 'none' : ''
     // update progress
     const mask = container.current?.children?.[1] as HTMLDivElement
     if (!hidden && mask) mask.style.height = `${(1 - progress) * 100}%`
-  }, [position])
+  })
 
   return useMemo(
     () => (

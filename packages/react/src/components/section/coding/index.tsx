@@ -1,10 +1,9 @@
 import type { TweenTimeLine } from '@about-me-mix/common'
-import type { RootState } from '@/stores'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { useTranslation } from 'next-i18next'
 import Code from './component/code'
 import { createCodingTween } from '@about-me-mix/common'
-import { useSelector } from 'react-redux'
+import useProgress from '../use-progress'
 
 /**
  * @desc Home 代碼風格
@@ -28,15 +27,12 @@ export default ({ index = 0 }: { index?: number } = {}) => {
   }, [])
 
   // on position update
-  const position = useSelector((state: RootState) => state.progress.position?.[index])
-  useEffect(() => {
-    if (!position) return
-    const { hidden, progress, overlappingEnter } = position
+  useProgress(index, ({ hidden, progress, overlappingEnter }) => {
     // hidden
     if (container.current) container.current.style.display = hidden ? 'none' : ''
     // update tween
     if (!hidden) tween?.progress(Math.min(progress, overlappingEnter))
-  }, [position])
+  })
 
   // code lines
   const line = useMemo(

@@ -14,6 +14,7 @@ onMounted(async () => {
   const canvas = container.value?.querySelector('canvas')
   if (!canvas) return
   shader.value = await createShaderTween(canvas, { bg: '#737373', noise: '/assets/noise.jpg' })
+  shader.value?.progress(position.value.progress)
 })
 onUnmounted(() => shader.value?.kill())
 
@@ -22,7 +23,7 @@ const sizeUpdateTimestamp = computed(() => useWebsite().sizeUpdateTimestamp)
 watch(sizeUpdateTimestamp, () => shader.value?.resetSize())
 
 // on position update
-useProgress(props.index, ({ hidden, progress }) => {
+const { position } = useProgress(props.index, ({ hidden, progress }) => {
   // hidden
   if (container.value) container.value.style.display = hidden ? 'none' : ''
   // update tween

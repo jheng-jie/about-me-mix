@@ -1,11 +1,10 @@
 import type { Work, TweenTimeLine } from '@about-me-mix/common'
-import type { RootState } from '@/stores'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { useTranslation } from 'next-i18next'
 import { createExperienceTween } from '@about-me-mix/common'
 import config from '@about-me-mix/common/config.json'
 import Point from './component/point'
-import { useSelector } from 'react-redux'
+import useProgress from '../use-progress'
 
 // experience
 const experience: Work[] = config.EXPERIENCES.map(({ date, label, works = [] }, group) => [
@@ -60,23 +59,14 @@ export default ({ index = 0 }: { index?: number } = {}) => {
     }
   }, [])
 
-  // 捲軸歸位
-  useEffect(() => {
-    if (!container.current) return
-    container.current.scrollLeft = 0
-  }, [t])
-
   // on position update
-  const position = useSelector((state: RootState) => state.progress.position?.[index])
-  useEffect(() => {
-    if (!position) return
-    const { progress, overlappingEnter, overlappingLeave, hidden } = position
+  useProgress(index, ({ progress, overlappingEnter, overlappingLeave, hidden }) => {
     // hidden
     if (container.current) container.current.style.display = hidden ? 'none' : ''
     // update tween
     if (!hidden)
       tween?.progress(progress * 0.7 + max(0, overlappingEnter / 0.8) * 0.15 + min(1, 1 - overlappingLeave) * 0.15)
-  }, [position])
+  })
 
   return useMemo(
     () => (

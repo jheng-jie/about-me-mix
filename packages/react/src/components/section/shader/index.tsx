@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import { useTranslation } from 'next-i18next'
 import { createShaderTween } from '@about-me-mix/common'
 import { useSelector } from 'react-redux'
+import useProgress from '../use-progress'
 
 /**
  * @desc Home WebGL
@@ -14,6 +15,7 @@ export default ({ index = 0 }: { index?: number } = {}) => {
   // tween shader
   const [shader, setShader] = useState<TweenShader>()
   useEffect(() => {
+    // 嚴格模式導致需要手動初始化
     shader?.resetSize(position?.progress)
     return () => {
       shader?.kill()
@@ -41,15 +43,12 @@ export default ({ index = 0 }: { index?: number } = {}) => {
   }, [sizeUpdateTimestamp])
 
   // on position update
-  const position = useSelector((state: RootState) => state.progress.position?.[index])
-  useEffect(() => {
-    if (!position) return
-    const { hidden, progress } = position
+  const { position } = useProgress(index, ({ hidden, progress }) => {
     // hidden
     if (container.current) container.current.style.display = hidden ? 'none' : ''
     // update tween
     if (!hidden) shader?.progress(progress)
-  }, [position])
+  })
 
   return useMemo(
     () => (
