@@ -1,10 +1,24 @@
-import config from '@about-me-mix/common/config.json'
 import { messages } from './src/core/i18n'
 import transformerDirectives from '@unocss/transformer-directives'
 import unoPreset from '@unocss/preset-uno'
 import path from 'path'
 import { StaticServicePlugin } from '@about-me-mix/common/static-service'
-const { BASE_URL, DEFAULT_LOCALE, SUPPORTS_LOCALES } = config
+import dotenv from 'dotenv'
+
+// load
+dotenv.config({ path: path.resolve('../../.env') })
+
+// env
+const {
+  MIX_BASE_URL,
+  MIX_ASSETS_URL,
+  MIX_MENU_LINK_VUE,
+  MIX_MENU_LINK_REACT,
+  MIX_MENU_LINK_SVELTE,
+  MIX_DEFAULT_LOCALE,
+  MIX_SUPPORTS_LOCALES,
+  MIX_GIT_PATH,
+} = process.env
 
 /**
  * @desc https://nuxt.com/docs/api/configuration/nuxt-config
@@ -13,14 +27,20 @@ export default defineNuxtConfig({
   runtimeConfig: {
     // client env
     public: {
-      ...config,
-      BASE_URL: `${BASE_URL}/vue`,
+      MIX_ASSETS_URL,
+      MIX_MENU_LINK_VUE,
+      MIX_MENU_LINK_REACT,
+      MIX_MENU_LINK_SVELTE,
+      MIX_DEFAULT_LOCALE,
+      MIX_SUPPORTS_LOCALES,
+      MIX_GIT_PATH,
+      MIX_BASE_URL,
     },
   },
 
   // 二級目錄
   app: {
-    baseURL: `${BASE_URL}/vue`,
+    baseURL: `${MIX_BASE_URL}/vue`,
     head: {
       link: [
         { href: 'https://fonts.googleapis.com', rel: 'preconnect' },
@@ -68,15 +88,15 @@ export default defineNuxtConfig({
 
   // 語系設定
   i18n: {
-    defaultLocale: DEFAULT_LOCALE, // 預設語系
+    defaultLocale: MIX_DEFAULT_LOCALE, // 預設語系
     strategy: 'prefix_and_default', // 預設語系也產出 static
-    locales: SUPPORTS_LOCALES, // 語系列表
+    locales: String(MIX_SUPPORTS_LOCALES).split(','), // 語系列表
     // useI18n
     vueI18n: {
       legacy: false,
       messages,
-      locale: DEFAULT_LOCALE,
-      fallbackLocale: DEFAULT_LOCALE,
+      locale: MIX_DEFAULT_LOCALE,
+      fallbackLocale: MIX_DEFAULT_LOCALE,
     },
     trailingSlash: true,
   },
@@ -89,16 +109,16 @@ export default defineNuxtConfig({
       // 自製靜態目錄代理
       StaticServicePlugin({
         paths: {
-          [`${BASE_URL}/assets`]: path.resolve('../common/assets'),
-          [`${BASE_URL}/react`]: path.resolve('../../about-me-mix/react'),
-          [`${BASE_URL}/svelte`]: path.resolve('../../about-me-mix/svelte'),
+          [`${MIX_ASSETS_URL}`]: path.resolve('../common/assets'),
+          [`${MIX_BASE_URL}/react`]: path.resolve('../../about-me-mix/react'),
+          [`${MIX_BASE_URL}/svelte`]: path.resolve('../../about-me-mix/svelte'),
         },
       }),
     ],
     css: {
       preprocessorOptions: {
         scss: {
-          additionalData: `$assets_url: '${BASE_URL}/assets';`,
+          additionalData: `$assets_url: '${MIX_ASSETS_URL}';`, // 自動引用
         },
       },
     },

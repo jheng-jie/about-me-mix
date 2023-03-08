@@ -12,12 +12,12 @@ export default ({ index }: { index: number }) => {
     <div key={index} className="absolute top-0 left-0 w-full h-full overflow-hidden">
       {/*box*/}
       <div
-        style={index === 1 ? { backgroundImage: `url(${process.env.ASSETS_URL}/polygon-white.jpg)` } : {}}
+        style={index === 1 ? { backgroundImage: `url(${process.env.MIX_ASSETS_URL}/polygon-white.jpg)` } : {}}
         className="h-100vh w-full flex flex-col items-center justify-center font-medium text-4 lg:text-5 bg-center bg-cover"
       >
         {/*icon*/}
         <img
-          src={`${process.env.ASSETS_URL}/icon/react.svg`}
+          src={`${process.env.MIX_ASSETS_URL}/icon/react.svg`}
           className={`w-auto h-28 lg:h-40 mb-4 lg:mb-6 ${!index && 'brightness-0 invert-100'}`}
           alt=""
         />

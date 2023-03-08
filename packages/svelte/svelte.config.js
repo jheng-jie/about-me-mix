@@ -2,12 +2,11 @@ import adapter from '@sveltejs/adapter-static'
 import { vitePreprocess } from '@sveltejs/kit/vite'
 import path from 'path'
 import fs from 'fs'
-import config from '@about-me-mix/common/config.json' assert { type: 'json' }
 
-// 頁面資料夾
+/**
+ * @desc routes 路由掃描
+ */
 const pagesPath = path.resolve('./src/routes/')
-
-// 路由掃描
 const scanRoutes = async (directory, files = new Set([])) => {
   for (const filename of await fs.promises.readdir(directory)) {
     if (/^\./.test(filename)) continue
@@ -23,14 +22,20 @@ const scanRoutes = async (directory, files = new Set([])) => {
 }
 const scanRoutesResult = await scanRoutes(path.resolve(pagesPath, './[locale]')).then(res => [...res])
 
+// overwrite
+const { MIX_BASE_URL, MIX_SUPPORTS_LOCALES, MIX_ASSETS_URL } = process.env
+
 /** @type {import('@sveltejs/kit').Config} */
 export default {
   preprocess: vitePreprocess(),
 
   kit: {
+    env: {
+      publicPrefix: 'MIX_',
+    },
     // 二級目錄
     paths: {
-      base: `${config.BASE_URL}/svelte`,
+      base: `${MIX_BASE_URL}/svelte`,
     },
     // SSG
     adapter: adapter({
@@ -44,16 +49,17 @@ export default {
     prerender: {
       handleHttpError: ({ path, message }) => {
         // 無視路徑檢測
-        if (/\/assets\//.test(path)) return
+        if (String(path).includes(MIX_ASSETS_URL)) return
         throw new Error(message)
       },
       entries: [
         // default locale
         ...scanRoutesResult.map(route => route.replace(/\/\[locale]/, '')),
         // locales
-        ...config.SUPPORTS_LOCALES.map(locale =>
-          scanRoutesResult.map(route => route.replace(/\[locale]/, locale)),
-        ).flat(),
+        ...String(MIX_SUPPORTS_LOCALES)
+          .split(',')
+          .map(locale => scanRoutesResult.map(route => route.replace(/\[locale]/, locale)))
+          .flat(),
       ],
     },
   },

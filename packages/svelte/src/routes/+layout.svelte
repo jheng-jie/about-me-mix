@@ -3,7 +3,7 @@
   import Layout from '@/components/layout/index.svelte'
   import { initialize } from '@/stores'
   import { page } from '$app/stores'
-  import config from '@about-me-mix/common/config.json'
+  import { env } from '$env/dynamic/public'
   import { browser } from '$app/environment'
 
   // route name
@@ -16,7 +16,7 @@
 
   // html lang
   $: if (browser) {
-    document.documentElement.lang = String($locale || config.DEFAULT_LOCALE)
+    document.documentElement.lang = String($locale || env.MIX_DEFAULT_LOCALE)
   }
 
   // store initialize

@@ -6,7 +6,7 @@ import useProgress from '../use-progress'
 
 const { locale } = useI18n()
 const props = defineProps({ index: { default: 0 } })
-const config = useRuntimeConfig()
+const { MIX_ASSETS_URL } = useRuntimeConfig()
 
 // gsap timeline
 const tween = ref<TweenTimeLine>()
@@ -38,7 +38,7 @@ useProgress(props.index, ({ hidden, progress, overlappingEnter }) => {
       >
         <!--icon-->
         <img
-          :src="`${config.ASSETS_URL}/avatar.png`"
+          :src="`${MIX_ASSETS_URL}/avatar.png`"
           alt=""
           class="w-20 h-20 mb-3 lg:mb-0 lg:w-30 lg:h-30 shadow-lg rounded-full"
         />

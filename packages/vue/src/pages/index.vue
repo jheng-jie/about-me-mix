@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-const config = useRuntimeConfig()
+const { MIX_BASE_URL } = useRuntimeConfig()
 
 useHead({
-  meta: [{ 'http-equiv': 'refresh', content: `0;url=${config.BASE_URL}/home/` }],
+  meta: [{ 'http-equiv': 'refresh', content: `0;url=${MIX_BASE_URL}/vue/home/` }],
 })
 
 definePageMeta({

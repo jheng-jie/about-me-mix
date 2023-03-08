@@ -4,7 +4,7 @@
   import { t } from '@/core/i18n'
   import { createCodingTween } from '@about-me-mix/common'
   import useProgress from '@/components/section/use-progress'
-  import { ASSETS_URL } from '@about-me-mix/common/config.json'
+  import { env } from '$env/dynamic/public'
 
   // progress data
   export let index = 0
@@ -35,7 +35,7 @@
     <div class="flex items-center justify-center flex-col lg:flex-row pt-18 lg:pt-5 pb-7 lg:pb-5 flex-shrink-0 w-full">
       <!--icon-->
       <img
-        src={`${ASSETS_URL}/avatar.png`}
+        src={`${env.MIX_ASSETS_URL}/avatar.png`}
         alt=""
         class="w-20 h-20 mb-3 lg:mb-0 lg:w-30 lg:h-30 shadow-lg rounded-full"
       />

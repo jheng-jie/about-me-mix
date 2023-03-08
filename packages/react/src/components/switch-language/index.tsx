@@ -1,12 +1,12 @@
-import config from '@about-me-mix/common/config.json'
+import { i18n } from '@/../next-i18next.config'
 import { useRouter } from 'next/router'
 import { MouseEvent, useMemo, useState } from 'react'
 import { motion } from 'framer-motion'
 
 // icons
 const iconMap = new Map([
-  ['en', `${process.env.ASSETS_URL}/lang/en-US.png`],
-  ['zh', `${process.env.ASSETS_URL}/lang/zh-CHT.png`],
+  ['en', `${process.env.MIX_ASSETS_URL}/lang/en-US.png`],
+  ['zh', `${process.env.MIX_ASSETS_URL}/lang/zh-CHT.png`],
 ])
 
 // for motion
@@ -28,7 +28,7 @@ const dropdownVariants = {
  */
 export default () => {
   const router = useRouter()
-  const locale = String(router?.query?.locale) || config.DEFAULT_LOCALE
+  const locale = String(router?.query?.locale) || String(i18n.defaultLocale)
 
   // current locale icon
   const icon = useMemo(() => iconMap.get(locale) || '', [locale])
@@ -78,7 +78,7 @@ export default () => {
       >
         <div className="bg-white rounded-1.5 py-1 shadow-md">
           {/*locale list*/}
-          {config.SUPPORTS_LOCALES.map(locale => (
+          {i18n.locales.map((locale: string) => (
             <button
               onClick={event => onLocaleSelect(event, locale)}
               key={locale}

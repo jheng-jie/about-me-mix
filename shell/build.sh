@@ -56,4 +56,4 @@ fi
 # redirect
 echo '<meta http-equiv="refresh" content="0;url=/about-me-mix/react/zh/home/">' > ./about-me-mix/index.html
 # fix github nojeky
-echo '' > ./docs/.nojekyll
+echo '' > ./about-me-mix/.nojekyll

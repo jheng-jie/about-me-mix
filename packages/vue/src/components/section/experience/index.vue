@@ -3,11 +3,11 @@ import type { TweenTimeLine, Work } from '@about-me-mix/common'
 import { createExperienceTween } from '@about-me-mix/common'
 import Point from './component/point.vue'
 import useProgress from '../use-progress'
+import { experience as ExperienceConfig } from '@about-me-mix/common/config.json'
 
 const { rt, tm, locale } = useI18n()
 const { max, min } = Math
 const props = defineProps({ index: { default: 0 } })
-const { EXPERIENCES } = useRuntimeConfig()
 
 // gsap timeline
 const tween = ref<TweenTimeLine>()
@@ -29,7 +29,7 @@ const { position } = useProgress(props.index, ({ progress, overlappingEnter, ove
 
 // experience
 const experience = computed<Work[]>(() =>
-  EXPERIENCES.map(({ date, label, works = [] }, group) => [
+  ExperienceConfig.map(({ date, label, works = [] }, group) => [
     { date, label, group, category: true, count: works.length },
     ...works.map(work => ({ ...work, group })),
   ]).flat(),

@@ -71,7 +71,7 @@ export default ({ index = 0 }: { index?: number } = {}) => {
           <div className="flex items-center justify-center flex-col lg:flex-row pt-18 lg:pt-5 pb-7 lg:pb-5 flex-shrink-0 w-full">
             {/*icon*/}
             <img
-              src={`${process.env.ASSETS_URL}/avatar.png`}
+              src={`${process.env.MIX_ASSETS_URL}/avatar.png`}
               alt=""
               className="w-20 h-20 mb-3 lg:mb-0 lg:w-30 lg:h-30 shadow-lg rounded-full"
             />

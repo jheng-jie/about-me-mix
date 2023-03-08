@@ -1,9 +1,8 @@
 import { useTranslation } from 'next-i18next'
 import SwitchLanguage from '@/components/switch-language/index'
 import { useRouter } from 'next/router'
-import config from '@about-me-mix/common/config.json'
 import { useEffect, useMemo, useRef } from 'react'
-import * as process from 'process'
+import { i18n } from '@/../next-i18next.config'
 
 /**
  * @desc App Header
@@ -11,12 +10,12 @@ import * as process from 'process'
 export default () => {
   const router = useRouter()
   const { t } = useTranslation()
-  const locale = String(router?.query?.locale) || config.DEFAULT_LOCALE
+  const locale = String(router?.query?.locale) || String(i18n.defaultLocale)
 
   const link = {
-    vue: config.MENU_LINK_VUE.replace(/\{0}/, locale),
-    react: config.MENU_LINK_REACT.replace(/\{0}/, locale),
-    svelte: config.MENU_LINK_SVELTE.replace(/\{0}/, locale),
+    vue: String(process.env.MIX_MENU_LINK_VUE).replace(/\{0}/, locale),
+    react: String(process.env.MIX_MENU_LINK_REACT).replace(/\{0}/, locale),
+    svelte: String(process.env.MIX_MENU_LINK_SVELTE).replace(/\{0}/, locale),
   }
 
   // 跳轉
@@ -49,11 +48,11 @@ export default () => {
         <div className="max-w-256 w-full h-full flex justify-between mx-auto relative z-10 px-3">
           {/*title*/}
           <a
-            href={config.GIT_PATH}
+            href={String(process.env.MIX_GIT_PATH)}
             target="_black"
             className="font-medium text-4 leading-10 lg:leading-12 flex items-center"
           >
-            <img src={`${process.env.ASSETS_URL}/icon/github.png`} alt="" className="w-9 h-9 mr-2" />
+            <img src={`${process.env.MIX_ASSETS_URL}/icon/github.png`} alt="" className="w-9 h-9 mr-2" />
             <span className="hidden sm:inline-block">{t('header.title')}</span>
           </a>
           {/*menu*/}

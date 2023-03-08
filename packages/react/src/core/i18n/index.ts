@@ -1,14 +1,13 @@
-import config from '@about-me-mix/common/config.json'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { GetStaticPropsContext } from 'next'
 import nextI18NextConfig from '@/../next-i18next.config.js'
 
 // return support locale
 export const supportLocale = (locale: string) =>
-  config.SUPPORTS_LOCALES.includes(locale) ? locale : config.DEFAULT_LOCALE
+  nextI18NextConfig.i18n.locales.includes(locale) ? locale : String(nextI18NextConfig.i18n.defaultLocale)
 
 // locales path
-export const paths = config.SUPPORTS_LOCALES.map(locale => ({ params: { locale } }))
+export const paths = nextI18NextConfig.i18n.locales.map((locale: string) => ({ params: { locale } }))
 
 // 註冊所有語系路由
 export const getStaticPaths = () => ({ paths, fallback: false })

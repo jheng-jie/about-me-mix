@@ -7,10 +7,12 @@ import Point from './component/point'
 import useProgress from '../use-progress'
 
 // experience
-const experience: Work[] = config.EXPERIENCES.map(({ date, label, works = [] }, group) => [
-  { date, label, group, category: true, count: works.length },
-  ...works.map(work => ({ ...work, group })),
-]).flat()
+const experience: Work[] = config.experience
+  .map(({ date, label, works = [] }, group) => [
+    { date, label, group, category: true, count: works.length },
+    ...works.map(work => ({ ...work, group })),
+  ])
+  .flat()
 
 /**
  * @desc Home 學經歷

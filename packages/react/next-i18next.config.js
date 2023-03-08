@@ -1,5 +1,4 @@
 const path = require('path')
-const config = require('@about-me-mix/common/config.json')
 
 /**
  * @see https://www.i18next.com/overview/configuration-options#logging
@@ -7,8 +6,8 @@ const config = require('@about-me-mix/common/config.json')
 module.exports = {
   defaultNS: 'common',
   i18n: {
-    locales: config.SUPPORTS_LOCALES,
-    defaultLocale: config.DEFAULT_LOCALE,
+    locales: String(process.env.MIX_SUPPORTS_LOCALES).split(','),
+    defaultLocale: String(process.env.MIX_DEFAULT_LOCALE),
   },
   // locale file path
   localePath: locale => path.resolve(`../common/locales/${locale}.json`),

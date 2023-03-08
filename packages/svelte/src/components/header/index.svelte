@@ -1,14 +1,13 @@
 <script lang="ts">
   import { t, locale } from '@/core/i18n'
-  import config from '@about-me-mix/common/config.json'
   import SwitchLanguage from '@/components/switch-language/index.svelte'
-  import { ASSETS_URL } from '@about-me-mix/common/config.json'
+  import { env } from '$env/dynamic/public'
 
   let link
   $: link = {
-    vue: config.MENU_LINK_VUE.replace(/\{0}/, $locale),
-    react: config.MENU_LINK_REACT.replace(/\{0}/, $locale),
-    svelte: config.MENU_LINK_SVELTE.replace(/\{0}/, $locale),
+    vue: env.MIX_MENU_LINK_VUE.replace(/\{0}/, $locale),
+    react: env.MIX_MENU_LINK_REACT.replace(/\{0}/, $locale),
+    svelte: env.MIX_MENU_LINK_SVELTE.replace(/\{0}/, $locale),
   }
 
   // 跳轉
@@ -42,8 +41,8 @@
 
   <div class="max-w-256 w-full h-full flex justify-between mx-auto relative z-10 px-3">
     <!--title-->
-    <a href={config.GIT_PATH} target="_black" class="font-medium text-4 leading-10 lg:leading-12 flex items-center">
-      <img src={`${ASSETS_URL}/icon/github.png`} alt="" class="w-9 h-9 mr-2" />
+    <a href={env.MIX_GIT_PATH} target="_black" class="font-medium text-4 leading-10 lg:leading-12 flex items-center">
+      <img src={`${env.MIX_ASSETS_URL}/icon/github.png`} alt="" class="w-9 h-9 mr-2" />
       <span class="hidden sm:inline-block">{$t('header.title')}</span>
     </a>
     <!--menu-->

@@ -1,12 +1,13 @@
 <script lang="ts" setup>
 import SwitchLanguage from '@/components/switch-language/index.vue'
 const { locale } = useI18n()
-const config = useRuntimeConfig()
+const { MIX_GIT_PATH, MIX_ASSETS_URL, MIX_MENU_LINK_VUE, MIX_MENU_LINK_REACT, MIX_MENU_LINK_SVELTE } =
+  useRuntimeConfig()
 
 const link = computed(() => ({
-  vue: config.MENU_LINK_VUE.replace(/\{0}/, locale.value),
-  react: config.MENU_LINK_REACT.replace(/\{0}/, locale.value),
-  svelte: config.MENU_LINK_SVELTE.replace(/\{0}/, locale.value),
+  vue: MIX_MENU_LINK_VUE.replace(/\{0}/, locale.value),
+  react: MIX_MENU_LINK_REACT.replace(/\{0}/, locale.value),
+  svelte: MIX_MENU_LINK_SVELTE.replace(/\{0}/, locale.value),
 }))
 
 // 跳轉
@@ -34,8 +35,8 @@ onUnmounted(() => window.removeEventListener('scroll', onScrollHandler))
 
     <div class="max-w-256 w-full h-full flex justify-between mx-auto relative z-10 px-3">
       <!--title-->
-      <a :href="config.GIT_PATH" target="_black" class="font-medium text-4 leading-10 lg:leading-12 flex items-center">
-        <img :src="`${config.ASSETS_URL}/icon/github.png`" alt="" class="w-9 h-9 mr-2" />
+      <a :href="MIX_GIT_PATH" target="_black" class="font-medium text-4 leading-10 lg:leading-12 flex items-center">
+        <img :src="`${MIX_ASSETS_URL}/icon/github.png`" alt="" class="w-9 h-9 mr-2" />
         <span class="hidden sm:inline-block" v-t="'header.title'" />
       </a>
       <!--menu-->

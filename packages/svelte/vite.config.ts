@@ -3,14 +3,15 @@ import { defineConfig } from 'vite'
 import UnoCSS from 'unocss/vite'
 import { extractorSvelte } from 'unocss'
 import transformerDirectives from '@unocss/transformer-directives'
-import path from 'path'
 import { StaticServicePlugin } from '@about-me-mix/common/static-service'
-import { createRequire } from 'node:module'
+import dotenv from 'dotenv'
+import path from 'path'
+
+// load env
+dotenv.config({ path: path.resolve('../../.env') })
+const { MIX_BASE_URL, MIX_ASSETS_URL } = process.env
 
 export default () => {
-  const require = createRequire(import.meta.url)
-  const config = require('../common/config.json')
-
   return defineConfig({
     plugins: [
       // svelte loader
@@ -26,9 +27,9 @@ export default () => {
       // 自製靜態目錄代理
       StaticServicePlugin({
         paths: {
-          [`${config.BASE_URL}/assets`]: path.resolve('../common/assets'),
-          [`${config.BASE_URL}/react`]: path.resolve('../../about-me-mix/react'),
-          [`${config.BASE_URL}/vue`]: path.resolve('../../about-me-mix/vue'),
+          [`${MIX_ASSETS_URL}`]: path.resolve('../common/assets'),
+          [`${MIX_BASE_URL}/react`]: path.resolve('../../about-me-mix/react'),
+          [`${MIX_BASE_URL}/vue`]: path.resolve('../../about-me-mix/vue'),
         },
       }),
     ],
@@ -48,7 +49,7 @@ export default () => {
     css: {
       preprocessorOptions: {
         scss: {
-          additionalData: `$assets_url: '${config.BASE_URL}/assets';`,
+          additionalData: `$assets_url: '${MIX_ASSETS_URL}';`,
         },
       },
     },

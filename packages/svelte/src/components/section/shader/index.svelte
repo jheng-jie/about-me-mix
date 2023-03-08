@@ -4,7 +4,7 @@
   import { sizeUpdateTimestamp } from '@/stores/'
   import { t } from '@/core/i18n'
   import useProgress from '@/components/section/use-progress'
-  import { ASSETS_URL } from '@about-me-mix/common/config.json'
+  import { env } from '$env/dynamic/public'
 
   // progress data
   export let index = 0
@@ -14,13 +14,14 @@
     // update shadow params
     let shader: TweenShader
 
-    createShaderTween(container?.querySelector('canvas'), { bg: '#737373', noise: `${ASSETS_URL}/noise.jpg` }).then(
-      tween => {
-        shader?.kill()
-        shader = tween
-        shader.progress($progress?.progress || 0)
-      },
-    )
+    createShaderTween(container?.querySelector('canvas'), {
+      bg: '#737373',
+      noise: `${env.MIX_ASSETS_URL}/noise.jpg`,
+    }).then(tween => {
+      shader?.kill()
+      shader = tween
+      shader.progress($progress?.progress || 0)
+    })
     const unSubscribe = sizeUpdateTimestamp.subscribe(() => shader?.resetSize())
     return {
       // on progress update

@@ -29,7 +29,7 @@ export default ({ index = 0 }: { index?: number } = {}) => {
     const canvas = container.current?.querySelector('canvas')
     if (!canvas) return
     let destroyed = false
-    createShaderTween(canvas, { bg: '#737373', noise: `${process.env.ASSETS_URL}/noise.jpg` }, false).then(
+    createShaderTween(canvas, { bg: '#737373', noise: `${process.env.MIX_ASSETS_URL}/noise.jpg` }, false).then(
       tween => !destroyed && setShader(tween),
     )
     return () => {

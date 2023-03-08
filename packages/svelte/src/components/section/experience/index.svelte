@@ -2,14 +2,14 @@
   import type { Work, ElementPositionProgress } from '@about-me-mix/common'
   import { t, locale } from '@/core/i18n'
   import { createExperienceTween } from '@about-me-mix/common'
-  import { EXPERIENCES } from '@about-me-mix/common/config.json'
+  import { experience as ExperienceConfig } from '@about-me-mix/common/config.json'
   import Point from './component/point.svelte'
   import useProgress from '@/components/section/use-progress'
 
   const { max, min } = Math
 
   // experience
-  const experience: Work[] = EXPERIENCES.map(({ date, label, works = [] }, group) => [
+  const experience: Work[] = ExperienceConfig.map(({ date, label, works = [] }, group) => [
     { date, label, group, category: true, count: works.length },
     ...works.map(work => ({ ...work, group })),
   ]).flat()
