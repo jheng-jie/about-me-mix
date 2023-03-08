@@ -5,6 +5,7 @@ import { useTranslation } from 'next-i18next'
 import { createShaderTween } from '@about-me-mix/common'
 import { useSelector } from 'react-redux'
 import useProgress from '../use-progress'
+import process from 'process'
 
 /**
  * @desc Home WebGL
@@ -28,7 +29,7 @@ export default ({ index = 0 }: { index?: number } = {}) => {
     const canvas = container.current?.querySelector('canvas')
     if (!canvas) return
     let destroyed = false
-    createShaderTween(canvas, { bg: '#737373', noise: `/assets/noise.jpg` }, false).then(
+    createShaderTween(canvas, { bg: '#737373', noise: `${process.env.ASSETS_URL}/noise.jpg` }, false).then(
       tween => !destroyed && setShader(tween),
     )
     return () => {

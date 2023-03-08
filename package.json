@@ -11,7 +11,7 @@
     "random-en": "yarn workspace @about-me-mix/common random",
     "dev": "sh ./shell/dev.sh",
     "build": "sh ./shell/build.sh",
-    "deploy": "rm -rf ./docs && cp -a ./release ./docs"
+    "deploy": "rm -rf ./docs && cp -a ./about-me-mix ./docs"
   },
   "workspaces": [
     "packages/*"

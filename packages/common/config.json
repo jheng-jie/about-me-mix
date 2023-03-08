@@ -1,8 +1,10 @@
 {
   "GIT_PATH": "https://github.com/jheng-jie/about-me-mix",
-  "MENU_LINK_VUE": "/vue/{0}/home/",
-  "MENU_LINK_REACT": "/react/{0}/home/",
-  "MENU_LINK_SVELTE": "/svelte/{0}/home/",
+  "BASE_URL": "/about-me-mix",
+  "ASSETS_URL": "/about-me-mix/assets",
+  "MENU_LINK_VUE": "/about-me-mix/vue/{0}/home/",
+  "MENU_LINK_REACT": "/about-me-mix/react/{0}/home/",
+  "MENU_LINK_SVELTE": "/about-me-mix/svelte/{0}/home/",
   "DEFAULT_LOCALE": "zh",
   "SUPPORTS_LOCALES": ["en", "zh"],
   "EXPERIENCES": [

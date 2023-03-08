@@ -1,9 +1,10 @@
-import { DEFAULT_LOCALE, SUPPORTS_LOCALES } from '@about-me-mix/common/config.json'
+import config from '@about-me-mix/common/config.json'
 import { messages } from './src/core/i18n'
 import transformerDirectives from '@unocss/transformer-directives'
 import unoPreset from '@unocss/preset-uno'
 import path from 'path'
 import { StaticServicePlugin } from '@about-me-mix/common/static-service'
+const { BASE_URL, DEFAULT_LOCALE, SUPPORTS_LOCALES } = config
 
 /**
  * @desc https://nuxt.com/docs/api/configuration/nuxt-config
@@ -12,14 +13,14 @@ export default defineNuxtConfig({
   runtimeConfig: {
     // client env
     public: {
-      DEFAULT_LOCALE,
-      SUPPORTS_LOCALES,
+      ...config,
+      BASE_URL: `${BASE_URL}/vue`,
     },
   },
 
   // 二級目錄
   app: {
-    baseURL: '/vue',
+    baseURL: `${BASE_URL}/vue`,
     head: {
       link: [
         { href: 'https://fonts.googleapis.com', rel: 'preconnect' },
@@ -88,12 +89,19 @@ export default defineNuxtConfig({
       // 自製靜態目錄代理
       StaticServicePlugin({
         paths: {
-          '/assets': path.resolve('../common/assets'),
-          '/react': path.resolve('../../release/react'),
-          '/svelte': path.resolve('../../release/svelte'),
+          [`${BASE_URL}/assets`]: path.resolve('../common/assets'),
+          [`${BASE_URL}/react`]: path.resolve('../../about-me-mix/react'),
+          [`${BASE_URL}/svelte`]: path.resolve('../../about-me-mix/svelte'),
         },
       }),
     ],
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: `$assets_url: '${BASE_URL}/assets';`,
+        },
+      },
+    },
   },
 
   // 各模組引用位置, srcDir 為根目錄，此專案不需要

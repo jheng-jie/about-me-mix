@@ -1,13 +1,13 @@
 <script lang="ts" setup>
 import type { TweenTimeLine, Work } from '@about-me-mix/common'
 import { createExperienceTween } from '@about-me-mix/common'
-import { EXPERIENCES } from '@about-me-mix/common/config.json'
 import Point from './component/point.vue'
 import useProgress from '../use-progress'
 
 const { rt, tm, locale } = useI18n()
 const { max, min } = Math
 const props = defineProps({ index: { default: 0 } })
+const { EXPERIENCES } = useRuntimeConfig()
 
 // gsap timeline
 const tween = ref<TweenTimeLine>()

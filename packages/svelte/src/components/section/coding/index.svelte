@@ -4,6 +4,7 @@
   import { t } from '@/core/i18n'
   import { createCodingTween } from '@about-me-mix/common'
   import useProgress from '@/components/section/use-progress'
+  import { ASSETS_URL } from '@about-me-mix/common/config.json'
 
   // progress data
   export let index = 0
@@ -33,7 +34,11 @@
     <!--dialogue-->
     <div class="flex items-center justify-center flex-col lg:flex-row pt-18 lg:pt-5 pb-7 lg:pb-5 flex-shrink-0 w-full">
       <!--icon-->
-      <img src={`/assets/avatar.png`} alt="" class="w-20 h-20 mb-3 lg:mb-0 lg:w-30 lg:h-30 shadow-lg rounded-full" />
+      <img
+        src={`${ASSETS_URL}/avatar.png`}
+        alt=""
+        class="w-20 h-20 mb-3 lg:mb-0 lg:w-30 lg:h-30 shadow-lg rounded-full"
+      />
       <!--message-->
       <div class="flex-shrink-0 max-w-100 flex-none lg:flex-1 lg:ml-10 text-4 lg:text-5 relative">
         <p

@@ -1,0 +1,10 @@
+@font-face {
+  font-family: betazed;
+  src: url('#{$assets_url}/font/betazed.otf') format('woff2'), url('#{$assets_url}/font/betazed.otf') format('woff');
+}
+
+@media (min-width: 1024px) {
+  body {
+    background-image: url('#{$assets_url}/polygon-black.jpg');
+  }
+}

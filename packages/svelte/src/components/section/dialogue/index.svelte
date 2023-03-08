@@ -3,6 +3,7 @@
   import { createDialogueTween } from '@about-me-mix/common'
   import { t } from '@/core/i18n'
   import useProgress from '@/components/section/use-progress'
+  import { ASSETS_URL } from '@about-me-mix/common/config.json'
 
   // progress data
   export let index = 0
@@ -45,7 +46,7 @@
         <div
           class="absolute animate-ping rounded-full w-full h-full bg-zinc-500 animate-delay-0.5s animate-duration-3s"
         />
-        <img src={`/assets/avatar.png`} alt="" class="w-full h-full relative z-10" />
+        <img src={`${ASSETS_URL}/avatar.png`} alt="" class="w-full h-full relative z-10" />
       </div>
     </div>
     <!--dialogue-->

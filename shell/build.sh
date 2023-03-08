@@ -13,7 +13,7 @@ echo "Select one env using up/down keys and enter to confirm:"
 select_option "${menu[@]}"
 choice=$?
 target=${menu[$choice]}
-dist=./release
+dist=./about-me-mix
 
 # create dist folder
 if [ ! -d "./$dist" ]; then
@@ -53,4 +53,4 @@ if [ "$target" = "all" ] || [ "$target" = "svelte" ]; then
   mv ./packages/svelte/output ./$dist/svelte
 fi
 
-echo '<meta http-equiv="refresh" content="0;url=/react/zh/home/">' >> ./release/index.html
+echo '<meta http-equiv="refresh" content="0;url=/about-me-mix/react/zh/home/">' > ./about-me-mix/index.html

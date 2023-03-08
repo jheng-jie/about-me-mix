@@ -18,7 +18,7 @@ export const createRedirectMap = (redirects: Array<{ from: string; to: string }>
       // check route
       const router = useRouter()
       const to = redirectMap[String(router.query?.locale) as keyof typeof redirectMap] || `/zh/home/`
-      redirect.content = `0;url=/react${to}`
+      redirect.content = `0;url=${process.env.BASE_URL}/react${to}`
 
       return (
         <>

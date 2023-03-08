@@ -30,7 +30,7 @@ export default {
   kit: {
     // 二級目錄
     paths: {
-      base: '/svelte',
+      base: `${config.BASE_URL}/svelte`,
     },
     // SSG
     adapter: adapter({
@@ -44,7 +44,7 @@ export default {
     prerender: {
       handleHttpError: ({ path, message }) => {
         // 無視路徑檢測
-        if (/^\/assets\//.test(path)) return
+        if (/\/assets\//.test(path)) return
         throw new Error(message)
       },
       entries: [

@@ -3,11 +3,12 @@
 const { t, locale, locales } = useI18n()
 const router = useRouter()
 const switchLocalePath = useSwitchLocalePath()
+const config = useRuntimeConfig()
 
 // icon
 const iconMap = new Map([
-  ['en', `/assets/lang/en-US.png`],
-  ['zh', `/assets/lang/zh-CHT.png`],
+  ['en', `${config.ASSETS_URL}/lang/en-US.png`],
+  ['zh', `${config.ASSETS_URL}/lang/zh-CHT.png`],
 ])
 const icon = computed(() => iconMap.get(locale.value) || '')
 

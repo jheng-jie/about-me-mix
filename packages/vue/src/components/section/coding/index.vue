@@ -6,6 +6,7 @@ import useProgress from '../use-progress'
 
 const { locale } = useI18n()
 const props = defineProps({ index: { default: 0 } })
+const config = useRuntimeConfig()
 
 // gsap timeline
 const tween = ref<TweenTimeLine>()
@@ -36,7 +37,11 @@ useProgress(props.index, ({ hidden, progress, overlappingEnter }) => {
         class="flex items-center justify-center flex-col lg:flex-row pt-18 lg:pt-5 pb-7 lg:pb-5 flex-shrink-0 w-full"
       >
         <!--icon-->
-        <img :src="`/assets/avatar.png`" alt="" class="w-20 h-20 mb-3 lg:mb-0 lg:w-30 lg:h-30 shadow-lg rounded-full" />
+        <img
+          :src="`${config.ASSETS_URL}/avatar.png`"
+          alt=""
+          class="w-20 h-20 mb-3 lg:mb-0 lg:w-30 lg:h-30 shadow-lg rounded-full"
+        />
         <!--message-->
         <div class="flex-shrink-0 max-w-100 flex-none lg:flex-1 lg:ml-10 text-4 lg:text-5 relative">
           <p

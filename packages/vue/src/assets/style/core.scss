@@ -1,6 +1,6 @@
 @font-face {
   font-family: betazed;
-  src: url('/assets/font/betazed.otf') format('woff2'), url('/assets/font/betazed.otf') format('woff');
+  src: url('#{$assets_url}/font/betazed.otf') format('woff2'), url('#{$assets_url}/font/betazed.otf') format('woff');
 }
 
 html {
@@ -16,7 +16,7 @@ html {
 
 body {
   @media (min-width: 1024px) {
-    background-image: url('/assets/polygon-black.jpg');
+    background-image: url('#{$assets_url}/polygon-black.jpg');
     @apply bg-fixed bg-cover bg-center;
   }
 }

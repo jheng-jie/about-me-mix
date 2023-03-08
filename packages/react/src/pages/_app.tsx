@@ -10,6 +10,7 @@ import { useEffect } from 'react'
 
 // css
 import '@unocss/reset/tailwind.css'
+import '@/assets/style/initialized.scss'
 import '@/assets/style/core.css'
 
 export default appWithTranslation(({ Component, pageProps }: AppProps<{ layout: number }>) => {

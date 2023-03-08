@@ -25,7 +25,7 @@ const nextConfig = {
   // },
 
   // base url
-  basePath: '/react',
+  basePath: `${config.BASE_URL}/react`,
 
   // 內建語系不支援 static 模式，手動搞... https://locize.com/blog/next-i18n-static/
   trailingSlash: true,
@@ -33,6 +33,8 @@ const nextConfig = {
   // sass
   sassOptions: {
     includePaths: [path.join(__dirname, './src/assets/scss')],
+    // 自動 import
+    additionalData: `$assets_url: '${config.ASSETS_URL}';`,
   },
 
   // cancel unoptimized
@@ -54,11 +56,11 @@ module.exports = phase => {
     /**
      * @desc webpack options
      */
-    webpack(config) {
-      config.resolve.fallback = { fs: false, path: false }
-      config.cache = isDevelop
+    webpack(webpackConfig) {
+      webpackConfig.resolve.fallback = { fs: false, path: false }
+      webpackConfig.cache = isDevelop
 
-      return config
+      return webpackConfig
     },
   }
 }

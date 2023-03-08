@@ -5,8 +5,8 @@ import { motion } from 'framer-motion'
 
 // icons
 const iconMap = new Map([
-  ['en', `/assets/lang/en-US.png`],
-  ['zh', `/assets/lang/zh-CHT.png`],
+  ['en', `${process.env.ASSETS_URL}/lang/en-US.png`],
+  ['zh', `${process.env.ASSETS_URL}/lang/zh-CHT.png`],
 ])
 
 // for motion

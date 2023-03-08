@@ -6,6 +6,7 @@ import useProgress from '../use-progress'
 
 const { locale } = useI18n()
 const props = defineProps({ index: { default: 0 } })
+const config = useRuntimeConfig()
 
 // update shadow params
 const shader = ref<TweenShader>()
@@ -13,7 +14,7 @@ const container = ref<HTMLDivElement>()
 onMounted(async () => {
   const canvas = container.value?.querySelector('canvas')
   if (!canvas) return
-  shader.value = await createShaderTween(canvas, { bg: '#737373', noise: '/assets/noise.jpg' })
+  shader.value = await createShaderTween(canvas, { bg: '#737373', noise: `${config.ASSETS_URL}/noise.jpg` })
   shader.value?.progress(position.value.progress)
 })
 onUnmounted(() => shader.value?.kill())
