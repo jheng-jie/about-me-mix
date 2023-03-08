@@ -1,9 +1,11 @@
-import type { Work, TweenTimeLine, ElementPositionProgress } from '@about-me-mix/common'
+import type { Work, TweenTimeLine } from '@about-me-mix/common'
+import type { RootState } from '@/stores'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { useTranslation } from 'next-i18next'
 import { createExperienceTween } from '@about-me-mix/common'
 import config from '@about-me-mix/common/config.json'
 import Point from './component/point'
+import { useSelector } from 'react-redux'
 
 // experience
 const experience: Work[] = config.EXPERIENCES.map(({ date, label, works = [] }, group) => [
@@ -14,9 +16,9 @@ const experience: Work[] = config.EXPERIENCES.map(({ date, label, works = [] }, 
 /**
  * @desc Home 學經歷
  */
-export default ({ progress: scrollProgress }: { progress: ElementPositionProgress }) => {
-  const { t } = useTranslation()
+export default ({ index = 0 }: { index?: number } = {}) => {
   const { max, min } = Math
+  const { t } = useTranslation()
 
   // gsap timeline
   const [tween, setTween] = useState<TweenTimeLine>()
@@ -64,16 +66,17 @@ export default ({ progress: scrollProgress }: { progress: ElementPositionProgres
     container.current.scrollLeft = 0
   }, [t])
 
-  // on progress update
+  // on position update
+  const position = useSelector((state: RootState) => state.progress.position?.[index])
   useEffect(() => {
-    if (!scrollProgress) return
-    const { progress, overlappingEnter, overlappingLeave, hidden } = scrollProgress
+    if (!position) return
+    const { progress, overlappingEnter, overlappingLeave, hidden } = position
     // hidden
     if (container.current) container.current.style.display = hidden ? 'none' : ''
     // update tween
     if (!hidden)
       tween?.progress(progress * 0.7 + max(0, overlappingEnter / 0.8) * 0.15 + min(1, 1 - overlappingLeave) * 0.15)
-  }, [scrollProgress])
+  }, [position])
 
   return useMemo(
     () => (

@@ -1,12 +1,14 @@
-import type { TweenTimeLine, ElementPositionProgress } from '@about-me-mix/common'
+import type { TweenTimeLine } from '@about-me-mix/common'
+import type { RootState } from '@/stores'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { useTranslation } from 'next-i18next'
 import { createDialogueTween } from '@about-me-mix/common'
+import { useSelector } from 'react-redux'
 
 /**
  * @desc Home 對話動畫
  */
-export default ({ progress: scrollProgress }: { progress: ElementPositionProgress }) => {
+export default ({ index = 0 }: { index?: number } = {}) => {
   const { t } = useTranslation(['common'])
 
   // gsap timeline
@@ -24,15 +26,16 @@ export default ({ progress: scrollProgress }: { progress: ElementPositionProgres
     setTween(createDialogueTween(container.current))
   }, [])
 
-  // on progress update
+  // on position update
+  const position = useSelector((state: RootState) => state.progress.position?.[index])
   useEffect(() => {
-    if (!scrollProgress) return
-    const { hidden, progress, overlappingEnter } = scrollProgress
+    if (!position) return
+    const { hidden, progress, overlappingEnter } = position
     // hidden
     if (container.current) container.current.style.display = hidden ? 'none' : ''
     // update tween
     if (!hidden) tween?.progress(progress * 0.8 + overlappingEnter * 0.2)
-  }, [scrollProgress])
+  }, [position])
 
   // line bg
   const bg = useMemo(

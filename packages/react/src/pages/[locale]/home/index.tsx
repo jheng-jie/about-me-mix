@@ -1,7 +1,8 @@
 import type { ElementPositionProgress } from '@about-me-mix/common'
 import type { RootState } from '@/stores'
-import { useState, useRef, useEffect } from 'react'
-import { useSelector } from 'react-redux'
+import { useRef, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { setSectionProgress } from '@/stores/progress'
 import { getChildrenRect, getElementProgressData } from '@about-me-mix/common'
 import SectionOpening from '@/components/section/opening'
 import SectionDialogue from '@/components/section/dialogue'
@@ -15,21 +16,27 @@ export { getStaticPaths, getStaticProps }
  * @desc 首頁
  */
 export default () => {
+  const dispatch = useDispatch()
+
   // progress cache
   const childrenElement = useRef<ElementPositionProgress[]>([])
-  const [childrenProgressData, setChildrenProgressData] = useState<ElementPositionProgress[]>([])
 
-  // 快取子層位置，避免一直計算
+  // on resize
+  const sizeUpdateTimestamp = useSelector((state: RootState) => state.website.sizeUpdateTimestamp)
+  useEffect(() => {
+    onScrollHandler()
+  }, [sizeUpdateTimestamp])
+
+  // init
   const main = useRef<HTMLElement>(null)
-  const sizeUpdateTimestamp = useSelector((state: RootState) => state.sizeUpdateTimestamp)
   useEffect(() => {
     if (!main.current) return
     childrenElement.current = getChildrenRect(main.current)
     onScrollHandler()
-  }, [main, sizeUpdateTimestamp])
+  }, [main])
 
-  // 子層相對捲軸位置計算
-  const onScrollHandler = () => setChildrenProgressData(getElementProgressData(childrenElement.current))
+  // 保存位置資訊位置
+  const onScrollHandler = () => dispatch(setSectionProgress(getElementProgressData(childrenElement.current)))
   useEffect(() => {
     window.addEventListener('scroll', onScrollHandler)
     return () => {
@@ -42,7 +49,7 @@ export default () => {
   return (
     <main ref={main}>
       {section.map((Component, index) => (
-        <Component key={index} progress={childrenProgressData?.[index]} />
+        <Component key={index} index={index} />
       ))}
     </main>
   )

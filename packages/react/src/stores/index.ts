@@ -1,5 +1,8 @@
-import { createSlice, configureStore, createAsyncThunk } from '@reduxjs/toolkit'
+import { createSlice, configureStore, createAsyncThunk, combineReducers } from '@reduxjs/toolkit'
 import throttle from 'lodash/throttle'
+
+// module
+import progress from './progress'
 
 /**
  * @desc 網站數據
@@ -29,11 +32,12 @@ export const { resetScreenSize } = website.actions
 
 // store
 const store = configureStore({
-  reducer: website.reducer,
+  reducer: combineReducers({
+    website: website.reducer,
+    progress: progress.reducer,
+  }),
 })
 export default store
-
-// type
 export type RootState = ReturnType<typeof store.getState>
 
 // 初始化

@@ -1,13 +1,15 @@
-import type { TweenTimeLine, ElementPositionProgress } from '@about-me-mix/common'
+import type { TweenTimeLine } from '@about-me-mix/common'
+import type { RootState } from '@/stores'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { useTranslation } from 'next-i18next'
 import Code from './component/code'
 import { createCodingTween } from '@about-me-mix/common'
+import { useSelector } from 'react-redux'
 
 /**
  * @desc Home 代碼風格
  */
-export default ({ progress: scrollProgress }: { progress: ElementPositionProgress }) => {
+export default ({ index = 0 }: { index?: number } = {}) => {
   const { t } = useTranslation()
 
   // gsap timeline
@@ -25,15 +27,16 @@ export default ({ progress: scrollProgress }: { progress: ElementPositionProgres
     setTween(createCodingTween(container.current))
   }, [])
 
-  // on progress update
+  // on position update
+  const position = useSelector((state: RootState) => state.progress.position?.[index])
   useEffect(() => {
-    if (!scrollProgress) return
-    const { hidden, progress, overlappingEnter } = scrollProgress
+    if (!position) return
+    const { hidden, progress, overlappingEnter } = position
     // hidden
     if (container.current) container.current.style.display = hidden ? 'none' : ''
     // update tween
     if (!hidden) tween?.progress(Math.min(progress, overlappingEnter))
-  }, [scrollProgress])
+  }, [position])
 
   // code lines
   const line = useMemo(

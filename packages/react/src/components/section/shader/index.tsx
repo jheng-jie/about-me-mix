@@ -1,20 +1,20 @@
-import type { TweenShader, ElementPositionProgress } from '@about-me-mix/common'
+import type { TweenShader } from '@about-me-mix/common'
+import type { RootState } from '@/stores'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { useTranslation } from 'next-i18next'
 import { createShaderTween } from '@about-me-mix/common'
 import { useSelector } from 'react-redux'
-import { RootState } from '@/stores'
 
 /**
  * @desc Home WebGL
  */
-export default ({ progress: scrollProgress }: { progress: ElementPositionProgress }) => {
+export default ({ index = 0 }: { index?: number } = {}) => {
   const { t } = useTranslation()
 
   // tween shader
   const [shader, setShader] = useState<TweenShader>()
   useEffect(() => {
-    shader?.resetSize(scrollProgress?.progress)
+    shader?.resetSize(position?.progress)
     return () => {
       shader?.kill()
     }
@@ -35,20 +35,21 @@ export default ({ progress: scrollProgress }: { progress: ElementPositionProgres
   }, [])
 
   // resize
-  const sizeUpdateTimestamp = useSelector((state: RootState) => state.sizeUpdateTimestamp)
+  const sizeUpdateTimestamp = useSelector((state: RootState) => state.website.sizeUpdateTimestamp)
   useEffect(() => {
     shader?.resetSize()
   }, [sizeUpdateTimestamp])
 
-  // on progress update
+  // on position update
+  const position = useSelector((state: RootState) => state.progress.position?.[index])
   useEffect(() => {
-    if (!scrollProgress) return
-    const { hidden, progress } = scrollProgress
+    if (!position) return
+    const { hidden, progress } = position
     // hidden
     if (container.current) container.current.style.display = hidden ? 'none' : ''
     // update tween
     if (!hidden) shader?.progress(progress)
-  }, [scrollProgress])
+  }, [position])
 
   return useMemo(
     () => (
