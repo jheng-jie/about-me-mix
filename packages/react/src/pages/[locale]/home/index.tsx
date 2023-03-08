@@ -23,9 +23,6 @@ export default () => {
 
   // on resize
   const sizeUpdateTimestamp = useSelector((state: RootState) => state.website.sizeUpdateTimestamp)
-  useEffect(() => {
-    onScrollHandler()
-  }, [sizeUpdateTimestamp])
 
   // init
   const main = useRef<HTMLElement>(null)
@@ -33,7 +30,7 @@ export default () => {
     if (!main.current) return
     childrenElement.current = getChildrenRect(main.current)
     onScrollHandler()
-  }, [main])
+  }, [main, sizeUpdateTimestamp])
 
   // 保存位置資訊位置
   const onScrollHandler = () => dispatch(setSectionProgress(getElementProgressData(childrenElement.current)))

@@ -18,11 +18,10 @@
   const onScrollHandler = () => setSectionProgress(getElementProgressData(childrenProgressData))
   onMount(() => browser && window.addEventListener('scroll', onScrollHandler))
   onDestroy(() => browser && window.removeEventListener('scroll', onScrollHandler))
-  $: if ($sizeUpdateTimestamp) onScrollHandler()
 
   // 快取子層位置，避免一直計算
   let main: HTMLElement
-  $: if (main) {
+  $: if (main && $sizeUpdateTimestamp) {
     childrenProgressData = getChildrenRect(main)
     onScrollHandler()
   }

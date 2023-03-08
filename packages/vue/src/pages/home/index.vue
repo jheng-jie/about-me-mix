@@ -19,11 +19,10 @@ onUnmounted(() => window.removeEventListener('scroll', onScrollHandler))
 
 // on resize
 const sizeUpdateTimestamp = computed(() => useWebsite().sizeUpdateTimestamp)
-watch(sizeUpdateTimestamp, onScrollHandler)
 
 // 快取子層位置，避免一直計算
 const main = ref<HTMLElement>()
-watch([main], () => {
+watch([main, sizeUpdateTimestamp], () => {
   if (!main.value) return
   childrenProgressData.value = getChildrenRect(main.value)
   onScrollHandler()
