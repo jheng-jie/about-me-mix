@@ -1,0 +1,1 @@
+import{a as t,j as n,H as o,o as s,b as a}from"./entry.8c04efdf.js";const r={class:"fixed w-full h-full left-0 top-0 bg-gray-100 text-gray-500 font-bold flex items-center justify-center"},u=t({__name:"index",setup(c){const e=n();return o({meta:[{"http-equiv":"refresh",content:`0;url=${e.BASE_URL}/home/`}]}),(f,i)=>(s(),a("span",r," redirect... "))}});export{u as default};
