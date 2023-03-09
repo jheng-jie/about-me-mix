@@ -33,7 +33,9 @@
         <!--box-->
         <div
           style:background-image={index === 1 ? `url(${env.MIX_ASSETS_URL}/polygon-white.jpg)` : ''}
-          class="h-100vh w-full flex flex-col items-center justify-center font-medium text-4 lg:text-5 bg-center bg-cover"
+          class={`${
+            index === 1 ? 'dark:brightness-75 transition-all' : ''
+          } h-100vh w-full flex flex-col items-center justify-center font-medium text-4 lg:text-5 bg-center bg-cover`}
         >
           <!--icon-->
           <img
@@ -41,15 +43,17 @@
             src={`${env.MIX_ASSETS_URL}/icon/svelte.svg`}
             alt=""
           />
-          <!--title-->
-          <h1 class={`text-5 lg:text-7 font-black mb-2 lg:mb-4 ${!index ? 'text-white' : 'text-black'}`}>
-            {$t('section.opening.title')}
-          </h1>
-          <!--desc-->
-          <p class={`mb-2 lg:mb-4 ${!index ? 'text-gray-400' : 'text-gray-600'}`}>{$t('section.opening.desc')}</p>
-          <p class={`${!index ? 'text-gray-400' : 'text-gray-600'}`}>
-            {$t('section.opening.target').replace(/\{0}/, 'SvelteKit')}
-          </p>
+          <div class="h-36 text-center">
+            <!--title-->
+            <h1 class={`text-5 lg:text-7 font-black mb-2 lg:mb-4 ${!index ? 'text-white' : 'text-black'}`}>
+              {$t('section.opening.title')}
+            </h1>
+            <!--desc-->
+            <p class={`mb-2 lg:mb-4 ${!index ? 'text-white' : 'text-gray-700'}`}>{$t('section.opening.desc')}</p>
+            <p class={`${!index ? 'text-white' : 'text-gray-700'}`}>
+              {$t('section.opening.target').replace(/\{0}/, 'SvelteKit')}
+            </p>
+          </div>
         </div>
       </div>
     </Repeat>

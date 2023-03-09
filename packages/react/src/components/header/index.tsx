@@ -1,5 +1,6 @@
 import { useTranslation } from 'next-i18next'
 import SwitchLanguage from '@/components/switch-language/index'
+import DarkMode from '@/components/dark-mode/index'
 import { useRouter } from 'next/router'
 import { useEffect, useMemo, useRef } from 'react'
 import { i18n } from '@/../next-i18next.config'
@@ -41,20 +42,23 @@ export default () => {
 
   return useMemo(
     () => (
-      <div className="fixed w-full top-0 z-50 h-10 lg:h-12 shadow-lg bg-white">
+      <div className="fixed w-full top-0 z-50 h-10 lg:h-12 shadow-lg bg-white dark:bg-#1d1c19 dark:color-#fefddd transition-colors">
         {/*top progress*/}
         <div ref={progress} className="top-0 absolute h-0.75 rounded-r w-0 bg-sky-500" />
 
         <div className="max-w-256 w-full h-full flex justify-between mx-auto relative z-10 px-3">
           {/*title*/}
-          <a
-            href={String(process.env.MIX_GIT_PATH)}
-            target="_black"
-            className="font-medium text-4 leading-10 lg:leading-12 flex items-center"
-          >
-            <img src={`${process.env.MIX_ASSETS_URL}/icon/github.png`} alt="" className="w-9 h-9 mr-2" />
-            <span className="hidden sm:inline-block">{t('header.title')}</span>
-          </a>
+          <div className="flex items-center">
+            <a
+              href={String(process.env.MIX_GIT_PATH)}
+              target="_black"
+              className="font-medium text-4 leading-10 lg:leading-12 flex items-center sm:mr-3"
+            >
+              <img src={`${process.env.MIX_ASSETS_URL}/icon/github.png`} alt="" className="w-9 h-9 mr-2" />
+              <span className="hidden sm:inline-block">{t('header.title')}</span>
+            </a>
+            <DarkMode />
+          </div>
           {/*menu*/}
           <div className="flex items-center font-medium select-none">
             <button onClick={() => goto(link.vue)} className="cursor-pointer mx-3 relative h-10 lg:h-12 group">

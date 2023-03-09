@@ -1,11 +1,10 @@
 import type { TweenShader } from '@about-me-mix/common'
-import type { RootState } from '@/stores'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { useTranslation } from 'next-i18next'
 import { createShaderTween } from '@about-me-mix/common'
-import { useSelector } from 'react-redux'
 import useProgress from '../use-progress'
 import process from 'process'
+import { useAppSelector } from '@/stores'
 
 /**
  * @desc Home WebGL
@@ -38,7 +37,7 @@ export default ({ index = 0 }: { index?: number } = {}) => {
   }, [])
 
   // resize
-  const sizeUpdateTimestamp = useSelector((state: RootState) => state.website.sizeUpdateTimestamp)
+  const sizeUpdateTimestamp = useAppSelector(state => state.website.sizeUpdateTimestamp)
   useEffect(() => {
     shader?.resetSize()
   }, [sizeUpdateTimestamp])

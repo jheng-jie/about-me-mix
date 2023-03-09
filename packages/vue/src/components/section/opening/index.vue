@@ -29,6 +29,7 @@ useProgress(props.index, ({ hidden, progress }) => {
           <!--box-->
           <div
             :style="index === 1 ? { backgroundImage: `url(${MIX_ASSETS_URL}/polygon-white.jpg)` } : {}"
+            :class="index === 1 ? `dark:brightness-75 transition-all` : ''"
             class="h-100vh w-full flex flex-col items-center justify-center font-medium text-4 lg:text-5 bg-center bg-cover"
           >
             <!--icon-->
@@ -38,18 +39,20 @@ useProgress(props.index, ({ hidden, progress }) => {
               :src="`${MIX_ASSETS_URL}/icon/vue.svg`"
               alt=""
             />
-            <!--title-->
-            <h1
-              v-t="'section.opening.title'"
-              :class="!index ? 'text-white' : 'text-black'"
-              class="text-5 lg:text-7 font-black mb-2 lg:mb-4"
-            />
-            <!--desc-->
-            <p v-t="'section.opening.desc'" :class="!index ? 'text-gray-400' : 'text-gray-600'" class="mb-2 lg:mb-4" />
-            <p
-              v-t="{ path: 'section.opening.target', args: ['Nuxt 3'] }"
-              :class="!index ? 'text-gray-400' : 'text-gray-600'"
-            />
+            <div class="h-36 text-center">
+              <!--title-->
+              <h1
+                v-t="'section.opening.title'"
+                :class="!index ? 'text-white' : 'text-black'"
+                class="text-5 lg:text-7 font-black mb-2 lg:mb-4"
+              />
+              <!--desc-->
+              <p v-t="'section.opening.desc'" :class="!index ? 'text-white' : 'text-gray-700'" class="mb-2 lg:mb-4" />
+              <p
+                v-t="{ path: 'section.opening.target', args: ['Nuxt 3'] }"
+                :class="!index ? 'text-white' : 'text-gray-700'"
+              />
+            </div>
           </div>
         </div>
       </Repeat>

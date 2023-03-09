@@ -1,7 +1,7 @@
 import type { ElementPositionProgress } from '@about-me-mix/common'
 import type { RootState } from '@/stores'
 import { useRef, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { setSectionProgress } from '@/stores/progress'
 import { getChildrenRect, getElementProgressData } from '@about-me-mix/common'
 import SectionOpening from '@/components/section/opening'
@@ -10,6 +10,7 @@ import SectionExperience from '@/components/section/experience'
 import SectionCoding from '@/components/section/coding'
 import SectionShader from '@/components/section/shader'
 import { getStaticPaths, getStaticProps } from '@/core/i18n'
+import { useAppSelector } from '@/stores'
 export { getStaticPaths, getStaticProps }
 
 /**
@@ -22,7 +23,7 @@ export default () => {
   const childrenElement = useRef<ElementPositionProgress[]>([])
 
   // on resize
-  const sizeUpdateTimestamp = useSelector((state: RootState) => state.website.sizeUpdateTimestamp)
+  const sizeUpdateTimestamp = useAppSelector(state => state.website.sizeUpdateTimestamp)
 
   // init
   const main = useRef<HTMLElement>(null)

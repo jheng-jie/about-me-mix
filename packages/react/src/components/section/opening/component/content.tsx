@@ -13,7 +13,9 @@ export default ({ index }: { index: number }) => {
       {/*box*/}
       <div
         style={index === 1 ? { backgroundImage: `url(${process.env.MIX_ASSETS_URL}/polygon-white.jpg)` } : {}}
-        className="h-100vh w-full flex flex-col items-center justify-center font-medium text-4 lg:text-5 bg-center bg-cover"
+        className={`${
+          index === 1 ? `dark:brightness-75 transition-all` : ''
+        } h-100vh w-full flex flex-col items-center justify-center font-medium text-4 lg:text-5 bg-center bg-cover`}
       >
         {/*icon*/}
         <img
@@ -21,13 +23,15 @@ export default ({ index }: { index: number }) => {
           className={`w-auto h-28 lg:h-40 mb-4 lg:mb-6 ${!index && 'brightness-0 invert-100'}`}
           alt=""
         />
-        {/*title*/}
-        <h1 className={`text-5 lg:text-7 font-black mb-2 lg:mb-4 ${!index ? 'text-white' : 'text-black'}`}>
-          {t('section.opening.title')}
-        </h1>
-        {/*desc*/}
-        <p className={`mb-2 lg:mb-4 ${!index ? 'text-gray-400' : 'text-gray-600'}`}>{t('section.opening.desc')}</p>
-        <p className={!index ? 'text-gray-400' : 'text-gray-600'}>{t('section.opening.target', ['Next 13'])}</p>
+        <div className="h-36 text-center">
+          {/*title*/}
+          <h1 className={`text-5 lg:text-7 font-black mb-2 lg:mb-4 ${!index ? 'text-white' : 'text-black'}`}>
+            {t('section.opening.title')}
+          </h1>
+          {/*desc*/}
+          <p className={`mb-2 lg:mb-4 ${!index ? 'text-white' : 'text-gray-700'}`}>{t('section.opening.desc')}</p>
+          <p className={!index ? 'text-white' : 'text-gray-700'}>{t('section.opening.target', ['Next 13'])}</p>
+        </div>
       </div>
     </div>
   )

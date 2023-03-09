@@ -1,5 +1,7 @@
-import { createSlice, configureStore, createAsyncThunk, combineReducers } from '@reduxjs/toolkit'
+import { createSlice, configureStore, createAsyncThunk, combineReducers, PayloadAction } from '@reduxjs/toolkit'
 import throttle from 'lodash/throttle'
+import { KEY_DARK_MODE } from '@about-me-mix/common/constant'
+import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
 
 // module
 import progress from './progress'
@@ -13,6 +15,7 @@ const website = createSlice({
     width: 0,
     height: 0,
     sizeUpdateTimestamp: 0,
+    dark: false,
   },
   reducers: {
     // 設定視窗大小
@@ -21,14 +24,26 @@ const website = createSlice({
       state.height = window.innerHeight
       state.sizeUpdateTimestamp = Date.now()
     },
+    // 日夜切換
+    switchDarkMode(state, action: PayloadAction<boolean | undefined>) {
+      state.dark = action?.payload ?? !state.dark
+      try {
+        if (state.dark) {
+          document.documentElement.classList.add('dark')
+          window.localStorage.setItem(KEY_DARK_MODE, '1')
+        } else {
+          document.documentElement.classList.remove('dark')
+          window.localStorage.removeItem(KEY_DARK_MODE)
+        }
+      } catch {
+        // NOTHING
+      }
+    },
   },
   // extraReducers: builder => {
   //   builder.addCase(initialize.fulfilled, (state, action) => {})
   // },
 })
-
-// actions
-export const { resetScreenSize } = website.actions
 
 // store
 const store = configureStore({
@@ -39,12 +54,24 @@ const store = configureStore({
 })
 export default store
 export type RootState = ReturnType<typeof store.getState>
+export const useAppSelector = useSelector as TypedUseSelectorHook<RootState>
+
+// actions
+export const { resetScreenSize, switchDarkMode } = website.actions
+export const useAppDispatch = useDispatch as () => typeof store.dispatch
 
 // 初始化
-export const initialize = createAsyncThunk('website/initialize', async () => {
+export const initialize = createAsyncThunk('website/initialize', async (_, { dispatch }) => {
+  // listen resize
   window.addEventListener(
     'resize',
-    throttle(() => store.dispatch(resetScreenSize()), 333, { leading: true, trailing: true }),
+    throttle(() => dispatch(resetScreenSize()), 333, { leading: true, trailing: true }),
   )
-  store.dispatch(resetScreenSize())
+  dispatch(resetScreenSize())
+  // dark
+  try {
+    dispatch(switchDarkMode(!!window.localStorage.getItem(KEY_DARK_MODE)))
+  } catch {
+    // NOTHING
+  }
 })

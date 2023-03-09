@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import SwitchLanguage from '@/components/switch-language/index.vue'
+import DarkMode from '@/components/dark-mode/index.vue'
 const { locale } = useI18n()
 const { MIX_GIT_PATH, MIX_ASSETS_URL, MIX_MENU_LINK_VUE, MIX_MENU_LINK_REACT, MIX_MENU_LINK_SVELTE } =
   useRuntimeConfig()
@@ -29,16 +30,25 @@ onUnmounted(() => window.removeEventListener('scroll', onScrollHandler))
 </script>
 
 <template>
-  <div class="fixed w-full top-0 z-50 h-10 lg:h-12 shadow-lg bg-white">
+  <div
+    class="fixed w-full top-0 z-50 h-10 lg:h-12 shadow-lg bg-white dark:bg-#1d1c19 dark:color-#fefddd transition-colors"
+  >
     <!--top progress-->
     <div ref="progress" class="top-0 absolute h-0.75 rounded-r w-0 bg-emerald-500" />
 
     <div class="max-w-256 w-full h-full flex justify-between mx-auto relative z-10 px-3">
       <!--title-->
-      <a :href="MIX_GIT_PATH" target="_black" class="font-medium text-4 leading-10 lg:leading-12 flex items-center">
-        <img :src="`${MIX_ASSETS_URL}/icon/github.png`" alt="" class="w-9 h-9 mr-2" />
-        <span class="hidden sm:inline-block" v-t="'header.title'" />
-      </a>
+      <div class="flex items-center">
+        <a
+          :href="MIX_GIT_PATH"
+          target="_black"
+          class="font-medium text-4 leading-10 lg:leading-12 flex items-center sm:mr-3"
+        >
+          <img :src="`${MIX_ASSETS_URL}/icon/github.png`" alt="" class="w-9 h-9 mr-2" />
+          <span class="hidden sm:inline-block" v-t="'header.title'" />
+        </a>
+        <DarkMode />
+      </div>
       <!--menu-->
       <div class="flex items-center font-medium select-none">
         <button @click="goto(link.vue)" class="cursor-pointer h-10 lg:h-12 mx-3 relative group color-emerald-500">

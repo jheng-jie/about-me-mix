@@ -1,6 +1,7 @@
 <script lang="ts">
   import { t, locale } from '@/core/i18n'
   import SwitchLanguage from '@/components/switch-language/index.svelte'
+  import DarkMode from '@/components/dark-mode/index.svelte'
   import { env } from '$env/dynamic/public'
 
   let link
@@ -35,16 +36,25 @@
   }
 </script>
 
-<div class="fixed w-full top-0 z-50 h-10 lg:h-12 shadow-lg bg-white">
+<div
+  class="fixed w-full top-0 z-50 h-10 lg:h-12 shadow-lg bg-white dark:bg-#1d1c19 dark:color-#fefddd transition-colors"
+>
   <!--top progress-->
   <div use:scroll class="top-0 absolute h-0.75 rounded-r w-0 bg-rose-600" />
 
   <div class="max-w-256 w-full h-full flex justify-between mx-auto relative z-10 px-3">
     <!--title-->
-    <a href={env.MIX_GIT_PATH} target="_black" class="font-medium text-4 leading-10 lg:leading-12 flex items-center">
-      <img src={`${env.MIX_ASSETS_URL}/icon/github.png`} alt="" class="w-9 h-9 mr-2" />
-      <span class="hidden sm:inline-block">{$t('header.title')}</span>
-    </a>
+    <div class="flex items-center">
+      <a
+        href={env.MIX_GIT_PATH}
+        target="_black"
+        class="font-medium text-4 leading-10 lg:leading-12 flex items-center sm:mr-3"
+      >
+        <img src={`${env.MIX_ASSETS_URL}/icon/github.png`} alt="" class="w-9 h-9 mr-2" />
+        <span class="hidden sm:inline-block">{$t('header.title')}</span>
+      </a>
+      <DarkMode />
+    </div>
     <!--menu-->
     <div class="flex items-center font-medium select-none">
       <button
