@@ -1,5 +1,4 @@
 import type { ElementPositionProgress } from '@about-me-mix/common'
-import type { RootState } from '@/stores'
 import { useRef, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { setSectionProgress } from '@/stores/progress'

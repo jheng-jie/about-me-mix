@@ -76,6 +76,10 @@ export default defineNuxtConfig({
 
   // CSS 原子設計模式
   unocss: {
+    shortcuts: {
+      'text-white': 'text-white dark:text-#fefddd',
+      'bg-white': 'bg-white dark:bg-#fefddd',
+    },
     transformers: [
       // for --at-apply
       transformerDirectives(),

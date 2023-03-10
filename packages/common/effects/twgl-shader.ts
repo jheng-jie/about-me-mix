@@ -27,7 +27,7 @@ void main() {
   if ((noise.r + noise.g + noise.b) / 3.0 <= uProgress) discard;
   
   // 沒被過濾的顏色
-  gl_FragColor = vec4(uBgColor + (1.0 - uBgColor) * uProgress, 1.0); // texture2D(uBg, vBgTexCoord);
+  gl_FragColor = vec4(uBgColor, 1.0); // texture2D(uBg, vBgTexCoord);
 }
 `
 

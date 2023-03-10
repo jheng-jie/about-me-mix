@@ -49,11 +49,12 @@
       update({ hidden, progress, overlappingEnter, overlappingLeave }: ElementPositionProgress) {
         if (hidden) {
           if (container.style.display === 'none') return
-          container.scrollLeft = 0
           container.style.display = 'none'
           return
+        } else if (container.style.display === 'none') {
+          container.style.display = ''
+          container.scrollLeft = overlappingEnter * 9999
         }
-        if (container.style.display === 'none') container.style.display = ''
         tween?.progress(progress * 0.7 + max(0, overlappingEnter / 0.8) * 0.15 + min(1, 1 - overlappingLeave) * 0.15)
       },
       destroy() {

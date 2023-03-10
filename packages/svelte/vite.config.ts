@@ -18,6 +18,10 @@ export default () => {
       sveltekit(),
       // atomic css
       UnoCSS({
+        shortcuts: {
+          'text-white': 'text-white dark:text-#fefddd',
+          'bg-white': 'bg-white dark:bg-#fefddd',
+        },
         transformers: [
           // for --at-apply:
           transformerDirectives() as any,
