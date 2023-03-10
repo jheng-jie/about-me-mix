@@ -4,7 +4,6 @@ import { useTranslation } from 'next-i18next'
 import Code from './component/code'
 import { createCodingTween } from '@about-me-mix/common'
 import useProgress from '../use-progress'
-import process from 'process'
 
 /**
  * @desc Home 代碼風格

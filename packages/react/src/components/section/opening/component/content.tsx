@@ -1,5 +1,4 @@
 import { useTranslation } from 'next-i18next'
-import process from 'process'
 
 /**
  * @desc Repeat 子層必須使用 Function Component
@@ -14,15 +13,23 @@ export default ({ index }: { index: number }) => {
       <div
         style={index === 1 ? { backgroundImage: `url(${process.env.MIX_ASSETS_URL}/polygon-white.jpg)` } : {}}
         className={`${
-          index === 1 ? `dark:brightness-75 transition-all` : ''
+          index ? `dark:brightness-75 transition-all` : ''
         } h-100vh w-full flex flex-col items-center justify-center font-medium text-4 lg:text-5 bg-center bg-cover`}
       >
         {/*icon*/}
-        <img
-          src={`${process.env.MIX_ASSETS_URL}/icon/react.svg`}
-          className={`w-auto h-28 lg:h-40 mb-4 lg:mb-6 ${!index && 'brightness-0 invert-100'}`}
-          alt=""
-        />
+        <svg
+          className={`w-auto h-28 lg:h-40 mb-4 lg:mb-6`}
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="-11.5 -10.23174 23 20.46348"
+        >
+          <title>React Logo</title>
+          <circle cx="0" cy="0" r="2.05" className={`${index ? 'fill-#61dafb' : 'fill-white dark:fill-#fefddd'}`} />
+          <g className={`${index ? 'stroke-#61dafb' : 'stroke-white dark:stroke-#fefddd'}`} strokeWidth="1" fill="none">
+            <ellipse rx="11" ry="4.2" />
+            <ellipse rx="11" ry="4.2" transform="rotate(60)" />
+            <ellipse rx="11" ry="4.2" transform="rotate(120)" />
+          </g>
+        </svg>
         <div className="h-36 text-center">
           {/*title*/}
           <h1 className={`text-5 lg:text-7 font-black mb-2 lg:mb-4 ${!index ? 'text-white' : 'text-black'}`}>

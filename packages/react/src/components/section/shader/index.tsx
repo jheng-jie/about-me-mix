@@ -3,7 +3,6 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import { useTranslation } from 'next-i18next'
 import { createShaderTween } from '@about-me-mix/common'
 import useProgress from '../use-progress'
-import process from 'process'
 import { useAppSelector } from '@/stores'
 
 /**

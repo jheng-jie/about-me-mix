@@ -28,17 +28,25 @@ useProgress(props.index, ({ hidden, progress }) => {
         <div class="absolute top-0 left-0 w-full h-full overflow-hidden">
           <!--box-->
           <div
-            :style="index === 1 ? { backgroundImage: `url(${MIX_ASSETS_URL}/polygon-white.jpg)` } : {}"
-            :class="index === 1 ? `dark:brightness-75 transition-all` : ''"
+            :style="index ? { backgroundImage: `url(${MIX_ASSETS_URL}/polygon-white.jpg)` } : {}"
+            :class="index ? `dark:brightness-75 transition-all` : ''"
             class="h-100vh w-full flex flex-col items-center justify-center font-medium text-4 lg:text-5 bg-center bg-cover"
           >
             <!--icon-->
-            <img
-              :class="{ 'brightness-0 invert-100': !index }"
-              class="w-auto h-28 lg:h-40 mb-4 lg:mb-6"
-              :src="`${MIX_ASSETS_URL}/icon/vue.svg`"
-              alt=""
-            />
+            <svg class="w-auto h-28 lg:h-40 mb-4 lg:mb-6" viewBox="0 0 261.76 226.69" xml:space="preserve">
+              <g transform="matrix(1.3333 0 0 -1.3333 -76.311 313.34)">
+                <polygon
+                  :class="index ? 'fill-#41B883' : 'fill-white dark:fill-#fefddd'"
+                  points="216.88,235.01 155.39,128.5 93.9,235.01 57.23,235.01 155.39,64.99 253.55,235.01 	"
+                />
+                <g transform="translate(178.06 235.01)">
+                  <path
+                    :class="index ? 'fill-#34495E' : 'fill-white dark:fill-#fefddd'"
+                    d="M0,0l-22.67-39.26L-45.34,0h-36.23l58.9-102.01L36.23,0H0z"
+                  />
+                </g>
+              </g>
+            </svg>
             <div class="h-36 text-center">
               <!--title-->
               <h1
