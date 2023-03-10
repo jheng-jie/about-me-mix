@@ -16,7 +16,9 @@
 
     createShaderTween(container?.querySelector('canvas'), {
       bg: '#737373',
+      bg2: '#fcd34d',
       noise: `${env.MIX_ASSETS_URL}/noise.jpg`,
+      noise2: `${env.MIX_ASSETS_URL}/noise2.jpg`,
     }).then(tween => {
       shader?.kill()
       shader = tween
@@ -37,12 +39,11 @@
   }
 </script>
 
-<section class="h-200vh">
-  <div use:initialize={$progress} style:display={$progress?.hidden ? 'none' : ''}>
+<section class="h-300vh">
+  <div use:initialize={$progress} style:display={$progress?.hidden ? 'none' : ''} class="h-full">
     <canvas class="h-100vh w-full sticky top-0 z-10" />
-    <div
-      class="w-full h-100vh relative z-0 flex items-center justify-center font-bold text-white text-10 lg:text-16 drop-shadow-xl"
-    >
+    <div class="h-100vh" />
+    <div class="w-full h-100vh relative z-0 flex items-center justify-center font-bold text-white text-10 lg:text-16">
       {$t('thank')}
     </div>
   </div>

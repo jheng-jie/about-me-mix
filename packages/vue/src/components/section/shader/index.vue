@@ -14,7 +14,12 @@ const container = ref<HTMLDivElement>()
 onMounted(async () => {
   const canvas = container.value?.querySelector('canvas')
   if (!canvas) return
-  shader.value = await createShaderTween(canvas, { bg: '#737373', noise: `${MIX_ASSETS_URL}/noise.jpg` })
+  shader.value = await createShaderTween(canvas, {
+    bg: '#737373',
+    bg2: '#fcd34d',
+    noise: `${MIX_ASSETS_URL}/noise.jpg`,
+    noise2: `${MIX_ASSETS_URL}/noise2.jpg`,
+  })
   shader.value?.progress(position.value.progress)
 })
 onUnmounted(() => shader.value?.kill())
@@ -33,11 +38,12 @@ const { position } = useProgress(props.index, ({ hidden, progress }) => {
 </script>
 
 <template>
-  <section class="h-200vh">
-    <div v-once ref="container">
+  <section class="h-300vh">
+    <div v-once ref="container" class="h-full">
       <canvas class="h-100vh w-full sticky top-0 z-10" />
+      <div class="h-100vh" />
       <div
-        class="w-full h-100vh relative z-0 flex items-center justify-center font-bold text-white text-10 lg:text-16 drop-shadow-xl"
+        class="w-full h-100vh relative z-0 flex items-center justify-center font-bold text-white text-10 lg:text-16"
         v-t="'thank'"
       />
     </div>

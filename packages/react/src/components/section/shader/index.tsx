@@ -28,9 +28,16 @@ export default ({ index = 0 }: { index?: number } = {}) => {
     const canvas = container.current?.querySelector('canvas')
     if (!canvas) return
     let destroyed = false
-    createShaderTween(canvas, { bg: '#737373', noise: `${process.env.MIX_ASSETS_URL}/noise.jpg` }, false).then(
-      tween => !destroyed && setShader(tween),
-    )
+    createShaderTween(
+      canvas,
+      {
+        bg: '#737373',
+        bg2: '#fcd34d',
+        noise: `${process.env.MIX_ASSETS_URL}/noise.jpg`,
+        noise2: `${process.env.MIX_ASSETS_URL}/noise2.jpg`,
+      },
+      false,
+    ).then(tween => !destroyed && setShader(tween))
     return () => {
       destroyed = true
     }
@@ -52,9 +59,10 @@ export default ({ index = 0 }: { index?: number } = {}) => {
 
   return useMemo(
     () => (
-      <section className="h-200vh">
-        <div ref={container}>
-          <canvas className="h-100vh w-full sticky top-0 z-10" />
+      <section className="h-300vh">
+        <div ref={container} className="h-full">
+          <canvas className="h-100vh w-full sticky top-0 z-10 pointer-events-none" />
+          <div className="h-100vh" />
           <div className="w-full h-100vh relative z-0 flex items-center justify-center font-bold text-white text-10 lg:text-16">
             {t('thank')}
           </div>
