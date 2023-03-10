@@ -10,6 +10,28 @@
 
 ---
 
+## CLI
+
+- 開發
+
+  ```sh
+  yarn dev # 開發選單
+  ```
+  
+- 編譯
+
+  ```sh
+  yarn build # 編譯選單
+  ```
+  
+- 靜態測試，專案根目錄執行，直接模擬 `github page` 二級目錄
+
+  ```sh
+  anywhere -p 8888
+  ```
+
+---
+
 ## 預計研究項目
 
 - ✅ 每個框架都使用 `sass` + `atomic css`
