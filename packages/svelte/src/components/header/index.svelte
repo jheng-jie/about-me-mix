@@ -55,8 +55,9 @@
         href={env.MIX_GIT_PATH}
         target="_black"
         class="font-medium text-4 leading-10 lg:leading-12 flex items-center sm:mr-3"
+        aria-label="github"
       >
-        <img src={`${env.MIX_ASSETS_URL}/icon/github.png`} alt="" class="w-9 h-9 mr-2" />
+        <img src={`${env.MIX_ASSETS_URL}/icon/github.png`} alt="" class="w-auto h-9 mr-2" />
         <span class="hidden sm:inline-block">{$t('header.title')}</span>
       </a>
       <DarkMode />
@@ -105,10 +106,11 @@
       <button
         on:click={() => (toggle = !toggle)}
         class="flex md:hidden ml-2 w-8 h-8 flex-col items-center justify-center cursor-pointer"
+        aria-label="menu"
       >
-        <div class="w-5 h-0.75 bg-#1d1c19 dark:bg-#fefddd rounded" />
-        <div class="w-5 h-0.75 bg-#1d1c19 dark:bg-#fefddd rounded my-1" />
-        <div class="w-5 h-0.75 bg-#1d1c19 dark:bg-#fefddd rounded" />
+        <span class="w-5 h-0.75 bg-#1d1c19 dark:bg-#fefddd rounded" />
+        <span class="w-5 h-0.75 bg-#1d1c19 dark:bg-#fefddd rounded my-1" />
+        <span class="w-5 h-0.75 bg-#1d1c19 dark:bg-#fefddd rounded" />
       </button>
     </div>
   </div>
