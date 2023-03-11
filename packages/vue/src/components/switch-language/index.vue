@@ -25,14 +25,18 @@ const onSelectLocale = (locale: string) => {
 </script>
 
 <template>
-  <div class="h-full flex items-center cursor-pointer relative select-none" @keyup="() => false" @click="show = !show">
+  <div
+    class="flex items-center justify-center cursor-pointer relative select-none"
+    @keyup="() => false"
+    @click="show = !show"
+  >
     <!--current locale-->
-    <img :src="icon" alt="" class="w-8 lg:w-9 h-8 lg:h-9 lg:mx-1.5" />
+    <img :src="icon" alt="" class="w-8 lg:w-9 h-8 lg:h-9" />
     <!--mask-->
     <button v-if="show" class="fixed left-0 top-0 w-full h-full z-0" @click.prevent.stop="show = false" />
     <!--dropdown-->
     <transition name="fade">
-      <div v-show="show" class="absolute top-0 right-0 pt-13 z-10 w-12">
+      <div v-show="show" class="absolute top-0 left-1/2 -translate-x-1/2 pt-12 md:pt-11 lg:pt-12 z-10 w-12">
         <div class="bg-white rounded-1.5 py-1 shadow-md">
           <!--locale list-->
           <button

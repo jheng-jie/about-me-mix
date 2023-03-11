@@ -34,15 +34,21 @@
       },
     }
   }
+
+  // mobile
+  let toggle = false
+  $: if ($locale) {
+    toggle = false
+  }
 </script>
 
 <div
-  class="fixed w-full top-0 z-50 h-10 lg:h-12 shadow-lg bg-white dark:bg-#1d1c19 dark:color-#fefddd transition-colors"
+  class="fixed w-full top-0 z-50 h-10 lg:h-12 shadow-lg bg-#ffffff dark:bg-#1d1c19 dark:color-#fefddd transition-colors"
 >
   <!--top progress-->
   <div use:scroll class="top-0 absolute h-0.75 rounded-r w-0 bg-rose-600" />
 
-  <div class="max-w-256 w-full h-full flex justify-between mx-auto relative z-10 px-3">
+  <div class="max-w-256 w-full h-full flex justify-between mx-auto relative z-10 px-2 md:px-3">
     <!--title-->
     <div class="flex items-center">
       <a
@@ -57,38 +63,53 @@
     </div>
     <!--menu-->
     <div class="flex items-center font-medium select-none">
-      <button
-        on:keyup={() => false}
-        on:click={() => goto(link.vue)}
-        class="cursor-pointer h-10 lg:h-12  mx-3 relative group"
+      <div
+        class={`${
+          toggle ? 'flex' : 'hidden'
+        } shadow-lg md:shadow-none fixed left-0 top-10 w-full pb-3 md:pb-0 md:w-unset md:static bg-#ffffff dark:bg-#1d1c19 dark:md:bg-transparent md:bg-transparent md:flex flex-col md:flex-row items-center`}
       >
-        Vue
-        <span
-          class="bg-emerald-500 inline-block h-0 group-hover:h-1 w-7 transition-height rounded-t-2 absolute bottom-0 left-1/2 -translate-x-1/2"
-        />
-      </button>
+        <button
+          on:keyup={() => false}
+          on:click={() => goto(link.vue)}
+          class="cursor-pointer h-10 lg:h-12  mx-3 relative group"
+        >
+          Vue
+          <span
+            class="hidden md:inline-block bg-emerald-500 h-0 group-hover:h-1 w-7 transition-height rounded-t-2 absolute bottom-0 left-1/2 -translate-x-1/2"
+          />
+        </button>
+        <button
+          on:keyup={() => false}
+          on:click={() => goto(link.react)}
+          class="cursor-pointer h-10 lg:h-12  mx-3 relative group"
+        >
+          React
+          <span
+            class="hidden md:inline-block bg-sky-500 h-0 group-hover:h-1 w-7 transition-height rounded-t-2 absolute bottom-0 left-1/2 -translate-x-1/2"
+          />
+        </button>
+        <button
+          on:keyup={() => false}
+          on:click={() => goto(link.svelte)}
+          class="cursor-pointer h-10 lg:h-12  mx-3 relative group color-rose-600"
+        >
+          Svelte
+          <span
+            class="hidden md:inline-block bg-rose-600 h-1 group-hover:h-2 w-7 transition-height rounded-t-2 absolute bottom-0 left-1/2 -translate-x-1/2"
+          />
+        </button>
+        <!--language-->
+        <SwitchLanguage class="w-8 h-8 md:w-10 md:h-10 mt-1 md:mt-0 md:ml-2" />
+      </div>
+      <!--mobile menu-->
       <button
-        on:keyup={() => false}
-        on:click={() => goto(link.react)}
-        class="cursor-pointer h-10 lg:h-12  mx-3 relative group"
+        on:click={() => (toggle = !toggle)}
+        class="flex md:hidden ml-2 w-8 h-8 flex-col items-center justify-center cursor-pointer"
       >
-        React
-        <span
-          class="bg-sky-500 inline-block h-0 group-hover:h-1 w-7 transition-height rounded-t-2 absolute bottom-0 left-1/2 -translate-x-1/2"
-        />
+        <div class="w-5 h-0.75 bg-#1d1c19 dark:bg-#fefddd rounded" />
+        <div class="w-5 h-0.75 bg-#1d1c19 dark:bg-#fefddd rounded my-1" />
+        <div class="w-5 h-0.75 bg-#1d1c19 dark:bg-#fefddd rounded" />
       </button>
-      <button
-        on:keyup={() => false}
-        on:click={() => goto(link.svelte)}
-        class="cursor-pointer h-10 lg:h-12  ml-3 mr-5 relative group color-rose-600"
-      >
-        Svelte
-        <span
-          class="bg-rose-600 inline-block h-1 group-hover:h-2 w-7 transition-height rounded-t-2 absolute bottom-0 left-1/2 -translate-x-1/2"
-        />
-      </button>
-      <!--language-->
-      <SwitchLanguage />
     </div>
   </div>
 </div>
