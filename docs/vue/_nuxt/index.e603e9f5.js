@@ -1,0 +1,1 @@
+import{a as t,j as n,H as s,o,b as a}from"./entry.5c3a2e12.js";const r={class:"fixed w-full h-full left-0 top-0 bg-gray-100 text-gray-500 font-bold flex items-center justify-center"},i=t({__name:"index",setup(c){const{MIX_BASE_URL:e}=n();return s({meta:[{"http-equiv":"refresh",content:`0;url=${e}/vue/home/`}]}),(f,l)=>(o(),a("span",r," redirect... "))}});export{i as default};

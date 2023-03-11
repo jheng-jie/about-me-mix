@@ -1,1 +1,0 @@
-import{r as e}from"./index.1de1fe79.js";import{b as o}from"./paths.e2647b13.js";import{e as r}from"./public.8ffdc7ed.js";function t(){throw e(302,`${o}/${r.MIX_DEFAULT_LOCALE}/home/`)}const i=Object.freeze(Object.defineProperty({__proto__:null,load:t},Symbol.toStringTag,{value:"Module"}));export{i as _,t as l};
