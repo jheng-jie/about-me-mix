@@ -3,6 +3,8 @@ import Header from '@/components/header'
 </script>
 
 <template>
-  <Header />
-  <slot />
+  <div class="layout">
+    <Header />
+    <slot />
+  </div>
 </template>

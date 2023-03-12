@@ -20,7 +20,7 @@ onMounted(async () => {
     noise: `${MIX_ASSETS_URL}/noise.jpg`,
     noise2: `${MIX_ASSETS_URL}/noise2.jpg`,
   })
-  shader.value?.progress(position.value.progress)
+  shader.value?.progress(position.value?.progress || 0)
 })
 onUnmounted(() => shader.value?.kill())
 

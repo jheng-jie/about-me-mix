@@ -11,13 +11,13 @@
   },
   "devDependencies": {
     "@nuxtjs/i18n": "^8.0.0-beta.10",
-    "@unocss/nuxt": "0.49.4",
+    "@pinia/nuxt": "^0.4.7",
+    "@unocss/nuxt": "^0.50.4",
     "nuxt": "^3.2.3",
     "sass": "^1.58.3"
   },
   "dependencies": {
     "@about-me-mix/common": "^1.0.0",
-    "@pinia/nuxt": "^0.4.7",
     "pinia": "^2.0.32"
   }
 }

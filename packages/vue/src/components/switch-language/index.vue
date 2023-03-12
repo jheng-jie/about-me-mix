@@ -3,7 +3,7 @@
 const { t, locale, locales } = useI18n()
 const router = useRouter()
 const switchLocalePath = useSwitchLocalePath()
-const { MIX_ASSETS_URL } = useRuntimeConfig()
+const { MIX_BASE_URL, MIX_ASSETS_URL } = useRuntimeConfig()
 
 // icon
 const iconMap = new Map([
@@ -19,8 +19,7 @@ const show = ref(false)
  * @desc on select locale
  */
 const onSelectLocale = (locale: string) => {
-  show.value = false
-  router.push(switchLocalePath(locale))
+  location.href = `${MIX_BASE_URL}/vue${switchLocalePath(locale)}`
 }
 </script>
 
@@ -52,16 +51,3 @@ const onSelectLocale = (locale: string) => {
     </transition>
   </div>
 </template>
-
-<style lang="scss" scoped>
-.fade {
-  &-enter-active,
-  &-leave-active {
-    transition: opacity 0.3s;
-  }
-  &-enter-from,
-  &-leave-to {
-    opacity: 0;
-  }
-}
-</style>

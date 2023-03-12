@@ -10,6 +10,7 @@ dotenv.config({ path: path.resolve('../../.env') })
 
 // env
 const {
+  NODE_ENV,
   MIX_BASE_URL,
   MIX_ASSETS_URL,
   MIX_MENU_LINK_VUE,
@@ -55,6 +56,8 @@ export default defineNuxtConfig({
         },
       ],
     },
+    pageTransition: { name: 'page', mode: 'out-in' },
+    layoutTransition: { name: 'layout', mode: 'out-in' },
   },
 
   // UnoCSS use reset TailwindCSS
@@ -81,7 +84,7 @@ export default defineNuxtConfig({
       'bg-white': 'bg-white dark:bg-#fefddd',
     },
     transformers: [
-      // for --at-apply
+      // @ts-ignore
       transformerDirectives(),
     ],
     presets: [unoPreset()],
@@ -96,7 +99,7 @@ export default defineNuxtConfig({
   // 語系設定
   i18n: {
     defaultLocale: MIX_DEFAULT_LOCALE, // 預設語系
-    strategy: 'prefix_and_default', // 預設語系也產出 static
+    strategy: NODE_ENV === 'production' ? 'prefix_and_default' : 'prefix_except_default', // 預設語系也產出 static
     locales: String(MIX_SUPPORTS_LOCALES).split(','), // 語系列表
     // useI18n
     vueI18n: {

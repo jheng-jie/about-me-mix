@@ -71,6 +71,8 @@ yarn add -D sass
     },
   })
   ```
+  
+- 開發模式下 `prefix_and_default` 無法正確跳轉，`prefix_except_default` 正常
 
 ---
 
