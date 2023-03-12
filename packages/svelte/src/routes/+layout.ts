@@ -1,4 +1,4 @@
-import type { LayoutLoadEvent } from './$types'
+import type { LayoutLoad } from './$types'
 import { env } from '$env/dynamic/public'
 import { loadTranslations, locale } from '@/core/i18n'
 import { base } from '$app/paths'
@@ -15,10 +15,14 @@ export const trailingSlash = 'always'
 /**
  * @desc Layout Load
  */
-export const load = async ({ url }: LayoutLoadEvent) => {
+export const load: LayoutLoad = async ({ url }) => {
   const { pathname } = url
   const path = pathname.replace(base, '')
   const lang = path?.match?.(/^\/(\w{2})\/?/)?.[1] || env.MIX_DEFAULT_LOCALE
   locale.update(() => lang)
   await loadTranslations(lang, pathname)
+
+  return {
+    pathname: pathname.replace(/(.*)\/\w{2}\//, ''),
+  }
 }

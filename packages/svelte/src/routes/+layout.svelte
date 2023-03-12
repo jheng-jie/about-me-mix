@@ -21,6 +21,8 @@
 
   // store initialize
   initialize()
+
+  export let data
 </script>
 
 <svelte:head>
@@ -30,6 +32,6 @@
   <meta name="description" content={$t('website.description').replace(/\{0}/, site)} />
 </svelte:head>
 
-<Layout>
+<Layout {...data}>
   <slot />
 </Layout>

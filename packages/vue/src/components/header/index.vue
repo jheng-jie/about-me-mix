@@ -63,9 +63,9 @@ watch(locale, () => (toggle.value = false))
           class="shadow-lg md:shadow-none fixed left-0 top-10 w-full pb-3 md:pb-0 md:w-unset md:static bg-#ffffff dark:bg-#1d1c19 dark:md:bg-transparent md:bg-transparent md:flex flex-col md:flex-row items-center"
         >
           <!--router-->
-          <button @click="router.push(localePath('/empty'))">Empty</button>
+          <button @click="router.push(localePath('/empty'))" class="md:mx-3">Empty</button>
           <!--divide-->
-          <div class="w-0.5 h-4 bg-gray-100 mx-3" />
+          <div class="w-full md:w-0.5 h-0.5 md:h-4 mt-2 md:mt-0 md:mx-3 bg-gray-100 dark:bg-zinc-700" />
           <!--framework-->
           <button @click="goto(link.vue)" class="cursor-pointer h-10 lg:h-12 mx-3 relative group color-emerald-500">
             Vue

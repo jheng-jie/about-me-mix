@@ -3,6 +3,8 @@
   import SwitchLanguage from '@/components/switch-language/index.svelte'
   import DarkMode from '@/components/dark-mode/index.svelte'
   import { env } from '$env/dynamic/public'
+  import { goto as push } from '$app/navigation'
+  import { base } from '$app/paths'
 
   let link
   $: link = {
@@ -69,6 +71,10 @@
           toggle ? 'flex' : 'hidden'
         } shadow-lg md:shadow-none fixed left-0 top-10 w-full pb-3 md:pb-0 md:w-unset md:static bg-#ffffff dark:bg-#1d1c19 dark:md:bg-transparent md:bg-transparent md:flex flex-col md:flex-row items-center`}
       >
+        <!--router-->
+        <button on:click={() => push(`${base}/${$locale}/empty/`)} class="md:mx-3">Empty</button>
+        <!--divide-->
+        <div class="w-full md:w-0.5 h-0.5 md:h-4 mt-2 md:mt-0 md:mx-3 bg-gray-100 dark:bg-zinc-700" />
         <button
           on:keyup={() => false}
           on:click={() => goto(link.vue)}
