@@ -48,9 +48,9 @@
 
   1. ✅ `react` `swc` 真香
   
-  2. ❌ `vue` `vite 目前只支援 tpye module`
+  2. ❌ `vue` `vite 目前只支援 type module`
   
-  3. ❌ `svelte` `vite 目前只支援 tpye module`
+  3. ❌ `svelte` `vite 目前只支援 type module`
 
 - ✅ 發佈 `github page`
 
