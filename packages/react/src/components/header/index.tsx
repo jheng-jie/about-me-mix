@@ -73,6 +73,13 @@ export default () => {
                 toggle ? 'flex' : 'hidden'
               } shadow-lg md:shadow-none fixed left-0 top-10 w-full pb-3 md:pb-0 md:w-unset md:static bg-#ffffff dark:bg-#1d1c19 dark:md:bg-transparent md:bg-transparent md:flex flex-col md:flex-row items-center`}
             >
+              {/*router*/}
+              <button onClick={() => router.push(`/${locale}/empty/`).catch(console.warn)} className="md:mx-3">
+                Empty
+              </button>
+              {/*divide*/}
+              <div className="w-full md:w-0.5 h-0.5 md:h-4 mt-2 md:mt-0 md:mx-3 bg-gray-100 dark:bg-zinc-700" />
+              {/*framework*/}
               <button onClick={() => goto(link.vue)} className="cursor-pointer mx-3 relative h-10 lg:h-12 group">
                 Vue
                 <span className="hidden md:inline-block bg-emerald-500 h-0 group-hover:h-1 w-7 transition-height rounded-t-2 absolute bottom-0 left-1/2 -translate-x-1/2" />

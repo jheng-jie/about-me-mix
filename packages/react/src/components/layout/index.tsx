@@ -1,4 +1,5 @@
 import { LAYOUT } from '@about-me-mix/common/constant'
+import LayoutTransition from '@/components/transition/layout'
 import LayoutSingle from '@/layouts/single'
 import LayoutDefault from '@/layouts/default'
 import React from 'react'
@@ -8,5 +9,9 @@ import React from 'react'
  */
 export default ({ layout, children }: { layout: number; children: React.ReactNode }) => {
   const Layout = layout === LAYOUT.SINGLE ? LayoutSingle : LayoutDefault
-  return <Layout>{children}</Layout>
+  return (
+    <LayoutTransition layout={layout || LAYOUT.DEFAULT}>
+      <Layout>{children}</Layout>
+    </LayoutTransition>
+  )
 }
