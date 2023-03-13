@@ -1,9 +1,7 @@
+import type { PageLoad } from './$types'
 import { LAYOUT } from '@about-me-mix/common/constant'
 
-/**
- * @desc Server Page Load
- */
-export async function load() {
+export const load: PageLoad = () => {
   return {
     layout: LAYOUT.SINGLE,
   }
