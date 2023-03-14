@@ -1,17 +1,25 @@
 <script lang="ts">
-  export let ref
+  import { blur, enter } from './constant'
+  import { createEventDispatcher } from 'svelte'
+
+  // forward ref
+  export let action = () => {}
+
+  // class
   let clazz = ''
   export { clazz as class }
 
-  // 模糊
-  const blur = (_, { duration = 300, delay = 0 }) => ({
-    delay,
-    duration,
-    css: t => `filter: blur(${(1 - t) * 0.25}rem); opacity: ${t}`,
-  })
-  const enter = { delay: 300 }
+  // emit
+  const dispatch = createEventDispatcher()
 </script>
 
-<main class={`${clazz}`} bind:this={ref} in:blur|local={enter} out:blur|local>
+<main
+  use:action
+  class={`${clazz}`}
+  in:blur|local={enter}
+  out:blur|local
+  on:introstart={() => dispatch('introstart')}
+  on:introend={() => dispatch('introend')}
+>
   <slot />
 </main>

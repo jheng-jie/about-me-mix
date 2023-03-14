@@ -22,17 +22,20 @@
 
   // 快取子層位置，避免一直計算
   let main: HTMLElement
-  $: if (main && $sizeUpdateTimestamp) {
+  const initialize = async () => {
+    await new Promise(requestAnimationFrame)
     childrenProgressData = getChildrenRect(main)
     onScrollHandler()
   }
+  const action = dom => (main = dom)
+  $: if (main && $sizeUpdateTimestamp) initialize()
 
   // section
   const section = [SectionOpening, SectionDialogue, SectionExperience, SectionCoding, SectionShader]
 </script>
 
 <!--Home Page-->
-<Page bind:ref={main}>
+<Page {action} on:introstart={initialize} on:introend={onScrollHandler}>
   {#each section as Component, index (index)}
     <svelte:component this={Component} {index} />
   {/each}

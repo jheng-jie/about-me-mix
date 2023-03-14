@@ -1,0 +1,1 @@
+const a=(e,{duration:t=300,delay:s=0})=>({delay:s,duration:t,css:o=>`filter: blur(${(1-o)*.25}rem); opacity: ${o}`}),r={delay:300},n=e=>{var t,s;(s=(t=e.target)==null?void 0:t.classList)==null||s.add("contents")},c=e=>{var t,s;(s=(t=e.target)==null?void 0:t.classList)==null||s.remove("contents")};export{a as b,r as e,n as i,c as o};
