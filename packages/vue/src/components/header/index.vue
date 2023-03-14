@@ -52,7 +52,7 @@ watch(locale, () => (toggle.value = false))
           aria-label="github"
         >
           <img :src="`${MIX_ASSETS_URL}/icon/github.png`" alt="" class="w-auto h-9 mr-2" />
-          <span class="hidden sm:inline-block" v-t="'header.title'" />
+          <span class="hidden sm:inline-block whitespace-pre" v-t="'header.title'" />
         </a>
         <DarkMode />
       </div>

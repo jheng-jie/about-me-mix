@@ -21,16 +21,28 @@ body {
   }
 }
 
+#__nuxt {
+  @apply contents;
+}
+.layout {
+  @apply contents;
+
+  &.layout-enter-active,
+  &.layout-leave-active {
+    display: block;
+  }
+}
+
 .page,
 .layout {
   &-enter-active,
   &-leave-active {
-    transition: all 0.4s;
+    transition: all 0.3s linear;
   }
   &-enter-from,
   &-leave-to {
     opacity: 0;
-    filter: blur(1rem);
+    filter: blur(0.25rem);
   }
 }
 

@@ -62,7 +62,7 @@ export default () => {
               aria-label="github"
             >
               <img src={`${process.env.MIX_ASSETS_URL}/icon/github.png`} alt="" className="w-auto h-9 mr-2" />
-              <span className="hidden sm:inline-block">{t('header.title')}</span>
+              <span className="hidden sm:inline-block whitespace-pre">{t('header.title')}</span>
             </a>
             <DarkMode />
           </div>
@@ -74,7 +74,10 @@ export default () => {
               } shadow-lg md:shadow-none fixed left-0 top-10 w-full pb-3 md:pb-0 md:w-unset md:static bg-#ffffff dark:bg-#1d1c19 dark:md:bg-transparent md:bg-transparent md:flex flex-col md:flex-row items-center`}
             >
               {/*router*/}
-              <button onClick={() => router.push(`/${locale}/empty/`).catch(console.warn)} className="md:mx-3">
+              <button
+                onClick={() => router.push(`/${locale}/empty/`, undefined, { scroll: false }).catch(console.warn)}
+                className="md:mx-3"
+              >
                 Empty
               </button>
               {/*divide*/}

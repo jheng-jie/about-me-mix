@@ -21,8 +21,4 @@ export const load: LayoutLoad = async ({ url }) => {
   const lang = path?.match?.(/^\/(\w{2})\/?/)?.[1] || env.MIX_DEFAULT_LOCALE
   locale.update(() => lang)
   await loadTranslations(lang, pathname)
-
-  return {
-    pathname: pathname.replace(/(.*)\/\w{2}\//, ''),
-  }
 }

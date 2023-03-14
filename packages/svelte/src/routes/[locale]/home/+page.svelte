@@ -4,6 +4,7 @@
   import { sizeUpdateTimestamp } from '@/stores'
   import { onDestroy, onMount } from 'svelte'
   import { browser } from '$app/environment'
+  import Page from '@/components/transition/page.svelte'
   import SectionOpening from '@/components/section/opening/index.svelte'
   import SectionDialogue from '@/components/section/dialogue/index.svelte'
   import SectionExperience from '@/components/section/experience/index.svelte'
@@ -31,8 +32,8 @@
 </script>
 
 <!--Home Page-->
-<main bind:this={main}>
+<Page bind:ref={main}>
   {#each section as Component, index (index)}
     <svelte:component this={Component} {index} />
   {/each}
-</main>
+</Page>
