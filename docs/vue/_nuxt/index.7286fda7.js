@@ -1,0 +1,1 @@
+import{a as e,o as t,b as n}from"./entry.1d6f5e67.js";const o={class:"fixed w-full h-full left-0 top-0 bg-gray-100 text-gray-500 font-bold flex items-center justify-center"},l=e({__name:"index",setup(s){return(a,r)=>(t(),n("span",o," 🚧🚧🚧 "))}});export{l as default};
