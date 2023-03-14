@@ -1,3 +1,4 @@
+import type { MetaTag } from 'next-seo/lib/types'
 import { useRouter } from 'next/router'
 import { NextSeo } from 'next-seo'
 import React from 'react'
@@ -13,7 +14,7 @@ export const createRedirectMap = (redirects: Array<{ from: string; to: string }>
     // redirect component
     Redirect: React.memo(() => {
       // default redirect
-      const redirect = { httpEquiv: 'refresh', content: '' }
+      const redirect: MetaTag = { httpEquiv: 'refresh', content: '' }
 
       // check route
       const router = useRouter()
@@ -23,7 +24,7 @@ export const createRedirectMap = (redirects: Array<{ from: string; to: string }>
       return (
         <>
           {/*meta refresh*/}
-          <NextSeo additionalMetaTags={[redirect as any]} />
+          <NextSeo additionalMetaTags={[redirect]} />
 
           <main className="fixed w-full h-full left-0 top-0 flex items-center justify-center text-6 font-bold gray-100 text-gray-500">
             redirect...

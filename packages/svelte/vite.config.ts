@@ -24,7 +24,7 @@ export default () => {
         },
         transformers: [
           // for --at-apply:
-          transformerDirectives() as any,
+          transformerDirectives(),
         ],
         extractors: [extractorSvelte],
       }),

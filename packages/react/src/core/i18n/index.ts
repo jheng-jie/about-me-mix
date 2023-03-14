@@ -18,7 +18,7 @@ export const getStaticProps = async (ctx: GetStaticPropsContext) => ({
 })
 
 // 合併: 需要額外參數時
-export const combineStaticProps = (props: { [key: string]: any }) => {
+export const combineStaticProps = (props: { [key: string]: string | number }) => {
   return async (ctx: GetStaticPropsContext) => ({
     props: {
       ...props,
