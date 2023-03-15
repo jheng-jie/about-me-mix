@@ -1,6 +1,6 @@
 import type { LayoutLoad } from './$types'
 import { env } from '$env/dynamic/public'
-import { loadTranslations, locale } from '@/core/i18n'
+import { loadTranslations, locale, locales } from '@/core/i18n'
 import { base } from '$app/paths'
 
 // uno css
@@ -17,8 +17,8 @@ export const trailingSlash = 'always'
  */
 export const load: LayoutLoad = async ({ url }) => {
   const { pathname } = url
-  const path = pathname.replace(base, '')
-  const lang = path?.match?.(/^\/(\w{2})\/?/)?.[1] || env.MIX_DEFAULT_LOCALE
+  const pathLocale = pathname.replace(base, '')?.match?.(/^\/(\w{2})\/?/)?.[1] || ''
+  const lang = locales.get().includes(pathLocale) ? pathLocale : env.MIX_DEFAULT_LOCALE
   locale.update(() => lang)
   await loadTranslations(lang, pathname)
 }
