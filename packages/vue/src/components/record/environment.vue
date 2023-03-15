@@ -1,9 +1,10 @@
 <template>
-  <!--測試環境-->
   <h2 class="mb-2 font-bold underline underline-offset-4">
-    <span class="bg-zinc-700 dark:bg-#fefddd dark:color-black color-#fff inline-block px-2 py-1 rounded-1.5">
-      測試環境
-    </span>
+    <!--測試環境-->
+    <span
+      class="bg-zinc-700 dark:bg-#fefddd dark:color-black color-#fff inline-block px-2 py-1 rounded-1.5"
+      v-t="'record.test_env'"
+    />
   </h2>
   <ul class="pl-6 md:pl-10 list-decimal">
     <li>

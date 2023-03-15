@@ -1,12 +1,17 @@
+import { useTranslation } from 'next-i18next'
+
 /**
  * @desc Record Page 測試環境
  */
 export default () => {
+  const { t } = useTranslation()
+
   return (
     <>
       <h2 className="mb-2 font-bold underline underline-offset-4">
+        {/*測試環境*/}
         <span className="bg-zinc-700 dark:bg-#fefddd dark:color-black color-#fff inline-block px-2 py-1 rounded-1.5">
-          測試環境
+          {t('record.test_env')}
         </span>
       </h2>
       <ul className="pl-6 md:pl-10 list-decimal">

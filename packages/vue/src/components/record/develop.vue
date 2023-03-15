@@ -1,22 +1,28 @@
+<script lang="ts" setup>
+import config from '@about-me-mix/common/config.json'
+const { html, css, file, build, js } = config.record
+</script>
+
 <template>
   <!--開發比較-->
   <h2 class="mb-2 font-bold underline underline-offset-4">
-    <span class="bg-zinc-700 dark:bg-#fefddd dark:color-black color-#fff inline-block px-2 py-1 rounded-1.5">
-      開發比較
-    </span>
+    <span
+      class="bg-zinc-700 dark:bg-#fefddd dark:color-black color-#fff inline-block px-2 py-1 rounded-1.5"
+      v-t="'record.dev_compare.title'"
+    />
   </h2>
-  <p class="mb-2 pl-0.5">以下主觀意識強烈</p>
+  <p class="mb-2 pl-0.5" v-t="'record.dev_compare.desc'" />
   <ul class="pl-6 md:pl-10 list-decimal mb-2">
     <li>
-      <h2 class="underline underline-offset-4">框架選擇</h2>
-      <p>Next > Nuxt = SvelteKit，現階段相容性大於一切</p>
+      <h2 class="underline underline-offset-4" v-t="'record.dev_compare.list_title.0'" />
+      <p>Next > Nuxt = SvelteKit</p>
     </li>
     <li>
-      <h2 class="underline underline-offset-4">開發爽度</h2>
+      <h2 class="underline underline-offset-4" v-t="'record.dev_compare.list_title.1'" />
       <p>Nuxt > SvelteKit > Next</p>
     </li>
     <li>
-      <h2 class="underline underline-offset-4">難易度</h2>
+      <h2 class="underline underline-offset-4" v-t="'record.dev_compare.list_title.2'" />
       <p>Next > SvelteKit > Nuxt</p>
     </li>
   </ul>
@@ -41,7 +47,7 @@
           </td>
         </tr>
         <tr>
-          <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">依賴</td>
+          <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2" v-t="'record.dev_compare.rely'" />
           <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">
             🟢 i18next, next-i18next, react-i18next
           </td>
@@ -49,16 +55,37 @@
           <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">🟢 sveltekit-i18n</td>
         </tr>
         <tr>
-          <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">無語系的路由</td>
-          <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">🟡 需手動跳轉</td>
-          <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">🟢 內建，依預設語系編譯</td>
-          <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">🟢 內建，meta refresh</td>
+          <td
+            class="border-b border-gray-300 dark:border-gray-700 px-3 py-2"
+            v-t="'record.dev_compare.none_route.title'"
+          />
+          <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">
+            🟡
+            <span v-t="'record.dev_compare.none_route.td.0'" />
+          </td>
+          <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">
+            🟢
+            <span v-t="'record.dev_compare.none_route.td.1'" />
+          </td>
+          <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">
+            🟢
+            <span v-t="'record.dev_compare.none_route.td.2'" />
+          </td>
         </tr>
         <tr>
-          <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">語系路由</td>
-          <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">🟡 需要額外使用動態路由實現</td>
-          <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">🟢 內建</td>
-          <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">🟡 需要額外使用動態路由實現</td>
+          <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2" v-t="'record.dev_compare.route.title'" />
+          <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">
+            🟡
+            <span v-t="'record.dev_compare.route.td.0'" />
+          </td>
+          <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">
+            🟢
+            <span v-t="'record.dev_compare.route.td.1'" />
+          </td>
+          <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">
+            🟡
+            <span v-t="'record.dev_compare.route.td.2'" />
+          </td>
         </tr>
 
         <!--css-->
@@ -72,14 +99,24 @@
         </tr>
         <tr>
           <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">SASS</td>
-          <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">🟢 隨插即用</td>
-          <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">🟢 隨插即用</td>
-          <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">🟢 隨插即用</td>
+          <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">
+            🟢
+            <span v-t="'record.dev_compare.plug_and_play'" />
+          </td>
+          <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">
+            🟢
+            <span v-t="'record.dev_compare.plug_and_play'" />
+          </td>
+          <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">
+            🟢
+            <span v-t="'record.dev_compare.plug_and_play'" />
+          </td>
         </tr>
         <tr>
           <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">UnoCSS</td>
           <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">
-            🟡 @unocss/postcss，實驗性依賴，即使使用 webpack 版的也無法使用 apply
+            🟡
+            <span v-t="'record.dev_compare.react_unocss'" />
             <br />
             <a class="color-blue-500" href="https://github.com/unocss/unocss/issues/2195" target="_blank">#2195</a>
           </td>
@@ -97,10 +134,15 @@
           </td>
         </tr>
         <tr>
-          <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">持久化數據</td>
+          <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">
+            <span v-t="'record.dev_compare.store'" />
+          </td>
           <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">🟢 Redux Toolkit</td>
           <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">🟢 Pinia</td>
-          <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">🟢 內建</td>
+          <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">
+            🟢
+            <span v-t="'record.dev_compare.preset'" />
+          </td>
         </tr>
 
         <!--動畫-->
@@ -113,17 +155,36 @@
           </td>
         </tr>
         <tr>
-          <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">Dropdown 彈窗特效</td>
+          <td
+            class="border-b border-gray-300 dark:border-gray-700 px-3 py-2"
+            v-t="'record.dev_compare.transition.dropdown'"
+          />
           <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">🟢 Framer Motion</td>
-          <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">🟢 內建</td>
-          <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">🟢 內建</td>
+          <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">
+            🟢
+            <span v-t="'record.dev_compare.preset'" />
+          </td>
+          <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">
+            🟢
+            <span v-t="'record.dev_compare.preset'" />
+          </td>
         </tr>
         <tr>
-          <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">Route 切頁動畫</td>
-          <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">🟡 Framer Motion，需要自製容器</td>
-          <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">🟢 內建</td>
+          <td
+            class="border-b border-gray-300 dark:border-gray-700 px-3 py-2"
+            v-t="'record.dev_compare.transition.route'"
+          />
           <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">
-            🟡 內建，需要自製容器且無法 out-in，只能使用 delay，導致兩頁重疊，衍生一系列跳轉後問題
+            🟡
+            <span v-t="'record.dev_compare.transition.route_td.0'" />
+          </td>
+          <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">
+            🟢
+            <span v-t="'record.dev_compare.transition.route_td.1'" />
+          </td>
+          <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">
+            🟡
+            <span v-t="'record.dev_compare.transition.route_td.2'" />
           </td>
         </tr>
 
@@ -132,20 +193,24 @@
           <td
             colspan="4"
             class="border-b border-gray-300 dark:border-gray-700 text-center bg-gray-200 dark:bg-zinc-800"
-          >
-            相容性
-          </td>
+            v-t="'record.dev_compare.compatibility'"
+          />
         </tr>
         <tr>
-          <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">編譯</td>
+          <td
+            class="border-b border-gray-300 dark:border-gray-700 px-3 py-2"
+            v-t="'record.dev_compare.compile.build'"
+          />
           <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">🟢 SWC</td>
           <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">
-            🔴 慘不忍睹
+            🔴
+            <span v-t="'record.dev_compare.gg'" />
             <br />
             <a class="color-blue-500" href="https://github.com/nuxt/nuxt/issues/11642" target="_blank">#11642</a>
           </td>
           <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">
-            🔴 慘不忍睹
+            🔴
+            <span v-t="'record.dev_compare.gg'" />
             <br />
             <a class="color-blue-500" href="https://github.com/sveltejs/kit/issues/12" target="_blank">#12</a>
           </td>
@@ -157,38 +222,38 @@
             colspan="4"
             class="border-b border-gray-300 dark:border-gray-700 text-center bg-gray-200 dark:bg-zinc-800"
           >
-            編譯，next 包含兼容版本，無法比較
+            <span v-t="'record.dev_compare.compile.build'" />
           </td>
         </tr>
         <tr>
-          <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">檔案/字元</td>
-          <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">🔴 30 / 5595</td>
-          <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">🟢 23 / 4278</td>
-          <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">🟡 25 / 4464</td>
+          <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2" v-t="'record.dev_compare.compile.file'" />
+          <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">{{ file.react }}</td>
+          <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">{{ file.vue }}</td>
+          <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">{{ file.svelte }}</td>
         </tr>
         <tr>
-          <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">編譯時間</td>
-          <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">🔴 13.45s</td>
-          <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">🟡 8.20s</td>
-          <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">🟢 5.33s</td>
+          <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2" v-t="'record.dev_compare.compile.time'" />
+          <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">{{ build.react }}</td>
+          <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">{{ build.vue }}</td>
+          <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">{{ build.svelte }}</td>
         </tr>
         <tr>
           <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">JS</td>
-          <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">🔴 632.44 / 210.38 KB</td>
-          <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">🟡 395.76 / 147.98 KB</td>
-          <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">🟢 293.83 / 124.72 KB</td>
+          <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">{{ js.react }}</td>
+          <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">{{ js.vue }}</td>
+          <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">{{ js.svelte }}</td>
         </tr>
         <tr>
           <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">CSS</td>
-          <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">🟢 26.59 / 7.24 KB</td>
-          <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">🔴 37.85 / 8.88 KB</td>
-          <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">🟡 36.08 / 8.40 KB</td>
+          <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">{{ css.react }}</td>
+          <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">{{ css.vue }}</td>
+          <td class="border-b border-gray-300 dark:border-gray-700 px-3 py-2">{{ css.svelte }}</td>
         </tr>
         <tr>
           <td class="px-3 py-2">HTML</td>
-          <td class="px-3 py-2">🔴 58.07 / 8.84 KB</td>
-          <td class="px-3 py-2">🟢 46.26 / 6.39 KB</td>
-          <td class="px-3 py-2">🟡 54.39 / 8.17 KB</td>
+          <td class="px-3 py-2">{{ html.react }}</td>
+          <td class="px-3 py-2">{{ html.vue }}</td>
+          <td class="px-3 py-2">{{ html.svelte }}</td>
         </tr>
       </tbody>
     </table>

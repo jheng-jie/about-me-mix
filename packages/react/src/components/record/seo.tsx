@@ -1,11 +1,16 @@
+import { useTranslation } from 'next-i18next'
+
 /**
  * @desc Record Page SEO
  */
 export default () => {
+  const { t } = useTranslation()
+
   return (
     <>
       <h2 className="mb-2 font-bold underline underline-offset-4">SEO</h2>
-      <p className="mb-2">優於 SPA 的 SEO，非動態路由的 SPA 還是可以使用 MPA 架構模擬 SEO，但 SSG 較輕鬆</p>
+      {/*優於 SPA 的 SEO，非動態路由的 SPA 還是可以使用 MPA 架構模擬 SEO，但 SSG 較輕鬆*/}
+      <p className="mb-2">{t('record.ssg.seo.desc')}</p>
       <table className="table-fixed w-full border border-gray-300 dark:border-gray-700 rounded-2 border-separate">
         <thead>
           <tr>
@@ -17,13 +22,15 @@ export default () => {
         </thead>
         <tbody>
           <tr>
-            <td className="border-b border-gray-300 dark:border-gray-700 px-3 py-2">路由獨立 SEO</td>
+            {/*路由獨立*/}
+            <td className="border-b border-gray-300 dark:border-gray-700 px-3 py-2">{t('record.ssg.seo.route')} SEO</td>
             <td className="border-b border-gray-300 dark:border-gray-700 px-3 py-2">✅</td>
             <td className="border-b border-gray-300 dark:border-gray-700 px-3 py-2">✅</td>
             <td className="border-b border-gray-300 dark:border-gray-700 px-3 py-2">✅</td>
           </tr>
           <tr>
-            <td className="px-3 py-2">SEO 區分語系</td>
+            {/*區分語系*/}
+            <td className="px-3 py-2">SEO {t('record.ssg.seo.locale')}</td>
             <td className="px-3 py-2">✅</td>
             <td className="px-3 py-2">✅</td>
             <td className="px-3 py-2">✅</td>

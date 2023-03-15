@@ -1,11 +1,17 @@
+import { useTranslation } from 'next-i18next'
+
 /**
  * @desc Record Page 開發比較
  */
 export default () => {
+  const { t } = useTranslation()
+
   return (
     <>
-      <h2 className="mb-2 font-bold underline underline-offset-4">初始化渲染</h2>
-      <p className="mb-2">速度快，快樂表 Performance 分數高</p>
+      {/*初始化渲染*/}
+      <h2 className="mb-2 font-bold underline underline-offset-4">{t('record.ssg.init.title')}</h2>
+      {/*速度快，快樂表 Performance 分數高*/}
+      <p className="mb-2">{t('record.ssg.init.desc')}</p>
       <div className="overflow-x-auto border border-gray-300 dark:border-gray-700 rounded-2">
         <table className="min-w-200 table-fixed w-full text-left">
           <thead>
@@ -21,9 +27,8 @@ export default () => {
               <td className="px-3 py-2">
                 Gitdub Page
                 <br />
-                視窗1920*1080
-                <br />
-                高度20520px的首頁
+                {/*視窗1920*1080，高度20520px的首頁*/}
+                {t('record.ssg.init.window')}
               </td>
               <td className="px-3 py-2">
                 <img
