@@ -173,8 +173,8 @@ export const createShaderTween = async (
       const kill = () => {
         webgl.deleteProgram(programInfo.program)
         webgl.deleteBuffer(bufferInfo.indices as WebGLBuffer)
-        // webgl.deleteTexture(uBg)
         webgl.deleteTexture(uNoise)
+        webgl.deleteTexture(uNoise2)
       }
 
       // init

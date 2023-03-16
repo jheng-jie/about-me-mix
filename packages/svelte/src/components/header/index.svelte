@@ -4,18 +4,11 @@
   import DarkMode from '@/components/dark-mode/index.svelte'
   import { env } from '$env/dynamic/public'
   import { base } from '$app/paths'
-
-  let link
-  $: link = {
-    vue: env.MIX_MENU_LINK_VUE.replace(/\{0}/, $locale),
-    react: env.MIX_MENU_LINK_REACT.replace(/\{0}/, $locale),
-    svelte: env.MIX_MENU_LINK_SVELTE.replace(/\{0}/, $locale),
-  }
+  import { page } from '$app/stores'
+  const { MIX_GIT_PATH, MIX_MENU_LINK_SVELTE, MIX_MENU_LINK_VUE, MIX_MENU_LINK_REACT } = env
 
   // 跳轉
-  const goto = (path: string) => {
-    location.href = path
-  }
+  const push = (path: string) => (location.href = path + $page.url.pathname.replace(MIX_MENU_LINK_SVELTE, ''))
 
   // 頂部進度條
   const scroll = (progress: HTMLDivElement) => {
@@ -86,12 +79,28 @@
         } shadow-lg md:shadow-none fixed left-0 top-10 w-full pb-3 md:pb-0 md:w-unset md:static bg-#ffffff dark:bg-#1d1c19 dark:md:bg-transparent md:bg-transparent md:flex flex-col md:flex-row items-center`}
       >
         <!--router-->
-        <a data-sveltekit-noscroll href={`${base}/${$locale}/empty/`} class="md:mx-3">Empty</a>
+        <a
+          data-sveltekit-noscroll
+          href={`${base}/${$locale}/empty/`}
+          class="md:mx-3 h-10 lg:h-12 leading-10 lg:leading-12"
+        >
+          Empty
+        </a>
+        <a
+          data-sveltekit-noscroll
+          href={`${base}/${$locale}/record/`}
+          on:click={() => (toggle = false)}
+          class={`${
+            /\/record(\/?)/.test($page.url.pathname) ? 'color-rose-600' : ''
+          } md:mx-3 h-10 lg:h-12 mx-3 relative group md:mx-3 leading-10 lg:leading-12`}
+        >
+          Record
+        </a>
         <!--divide-->
-        <div class="w-full md:w-0.5 h-0.5 md:h-4 mt-2 md:mt-0 md:mx-3 bg-gray-100 dark:bg-zinc-700" />
+        <div class="w-full md:w-0.5 h-0.5 mb-2 md:mb-0 md:h-4 mt-2 md:mt-0 md:mx-3 bg-gray-100 dark:bg-zinc-700" />
         <button
           on:keyup={() => false}
-          on:click={() => goto(link.vue)}
+          on:click={() => push(MIX_MENU_LINK_VUE)}
           class="cursor-pointer h-10 lg:h-12  mx-3 relative group"
         >
           Vue
@@ -101,7 +110,7 @@
         </button>
         <button
           on:keyup={() => false}
-          on:click={() => goto(link.react)}
+          on:click={() => push(MIX_MENU_LINK_REACT)}
           class="cursor-pointer h-10 lg:h-12  mx-3 relative group"
         >
           React
@@ -109,18 +118,21 @@
             class="hidden md:inline-block bg-sky-500 h-0 group-hover:h-1 w-7 transition-height rounded-t-2 absolute bottom-0 left-1/2 -translate-x-1/2"
           />
         </button>
-        <button
-          on:keyup={() => false}
-          on:click={() => goto(link.svelte)}
-          class="cursor-pointer h-10 lg:h-12  mx-3 relative group color-rose-600"
+        <a
+          data-sveltekit-noscroll
+          href={`${base}/${$locale}/home/`}
+          on:click={() => (toggle = false)}
+          class={`${
+            /\/home(\/?)/.test($page.url.pathname) ? 'color-rose-600' : ''
+          } cursor-pointer h-10 lg:h-12  mx-3 relative group leading-10 lg:leading-12`}
         >
           Svelte
           <span
             class="hidden md:inline-block bg-rose-600 h-1 group-hover:h-2 w-7 transition-height rounded-t-2 absolute bottom-0 left-1/2 -translate-x-1/2"
           />
-        </button>
+        </a>
         <!--language-->
-        <SwitchLanguage class="w-8 h-8 md:w-10 md:h-10 mt-1 md:mt-0 md:ml-2" />
+        <SwitchLanguage class="w-8 h-8 md:w-10 md:h-10 md:ml-2 my-2 md:my-0" />
       </div>
       <!--mobile menu-->
       <button

@@ -13,7 +13,7 @@
     const mask = container?.children?.[1] as HTMLDivElement
     return {
       // on progress update
-      update({ hidden, progress }: ElementPositionProgress) {
+      update({ hidden, progress, top, height }: ElementPositionProgress) {
         if (!mask || hidden) return
         mask.style.height = `${(1 - progress) * 100}%`
       },

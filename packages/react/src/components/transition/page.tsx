@@ -9,9 +9,10 @@ import { PageVariants } from '@/components/transition/constant'
  */
 export default function ({ children }: { children: React.ReactNode }) {
   const router = useRouter()
+  const toTop = () => window.scrollTo(0, 0)
 
   return (
-    <AnimatePresence mode="wait" initial={false}>
+    <AnimatePresence mode="wait" initial={false} onExitComplete={toTop}>
       <motion.div key={router.pathname} initial={'initial'} animate={'animate'} exit={'exit'} variants={PageVariants}>
         {children}
       </motion.div>

@@ -22,14 +22,15 @@ onMounted(async () => {
   })
   shader.value?.progress(position.value?.progress || 0)
 })
-onUnmounted(() => shader.value?.kill())
+onBeforeUnmount(() => shader.value?.kill())
 
 // on resize
 const sizeUpdateTimestamp = computed(() => useWebsite().sizeUpdateTimestamp)
 watch(sizeUpdateTimestamp, () => shader.value?.resetSize())
 
 // on position update
-const { position } = useProgress(props.index, ({ hidden, progress }) => {
+const { position } = useProgress(props.index, ({ height, hidden, progress }) => {
+  if (height === 0) return
   // hidden
   if (container.value) container.value.style.display = hidden ? 'none' : ''
   // update tween

@@ -11,6 +11,10 @@
 
   // emit
   const dispatch = createEventDispatcher()
+
+  const outroend = () => {
+    window.scrollTo(0, 0)
+  }
 </script>
 
 <main
@@ -20,6 +24,7 @@
   out:blur|local
   on:introstart={() => dispatch('introstart')}
   on:introend={() => dispatch('introend')}
+  on:outroend={outroend}
 >
   <slot />
 </main>

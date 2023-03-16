@@ -13,15 +13,11 @@ export default () => {
   const { t } = useTranslation()
   const locale = String(router?.query?.locale) || String(i18n.defaultLocale)
 
-  const link = {
-    vue: String(process.env.MIX_MENU_LINK_VUE).replace(/\{0}/, locale),
-    react: String(process.env.MIX_MENU_LINK_REACT).replace(/\{0}/, locale),
-    svelte: String(process.env.MIX_MENU_LINK_SVELTE).replace(/\{0}/, locale),
-  }
-
   // 跳轉
-  const goto = (path: string) => {
-    location.href = path
+  const goto = (path: string) => (location.href = path + router.asPath)
+  const push = (path: string) => {
+    router.push(path, undefined, { scroll: false }).catch(console.warn)
+    setToggle(false)
   }
 
   // 頂部進度條
@@ -89,32 +85,45 @@ export default () => {
               } shadow-lg md:shadow-none fixed left-0 top-10 w-full pb-3 md:pb-0 md:w-unset md:static bg-#ffffff dark:bg-#1d1c19 dark:md:bg-transparent md:bg-transparent md:flex flex-col md:flex-row items-center`}
             >
               {/*router*/}
-              <button
-                onClick={() => router.push(`/${locale}/empty/`, undefined, { scroll: false }).catch(console.warn)}
-                className="md:mx-3"
-              >
+              <button onClick={() => push(`/${locale}/empty/`)} className="md:mx-3 h-10 lg:h-12">
                 Empty
               </button>
+              <button
+                onClick={() => push(`/${locale}/record/`)}
+                className={`${
+                  /\/record(\/?)/.test(router.pathname) ? 'color-sky-500' : ''
+                } h-10 lg:h-12 mx-3 relative group md:mx-3`}
+              >
+                Record
+              </button>
               {/*divide*/}
-              <div className="w-full md:w-0.5 h-0.5 md:h-4 mt-2 md:mt-0 md:mx-3 bg-gray-100 dark:bg-zinc-700" />
+              <div className="w-full md:w-0.5 h-0.5 mb-2 md:mb-0 md:h-4 mt-2 md:mt-0 md:mx-3 bg-gray-100 dark:bg-zinc-700" />
               {/*framework*/}
-              <button onClick={() => goto(link.vue)} className="cursor-pointer mx-3 relative h-10 lg:h-12 group">
+              <button
+                onClick={() => goto(String(process.env.MIX_MENU_LINK_VUE))}
+                className="cursor-pointer mx-3 relative h-10 lg:h-12 group"
+              >
                 Vue
                 <span className="hidden md:inline-block bg-emerald-500 h-0 group-hover:h-1 w-7 transition-height rounded-t-2 absolute bottom-0 left-1/2 -translate-x-1/2" />
               </button>
               <button
-                onClick={() => goto(link.react)}
-                className="cursor-pointer mx-3 relative h-10 lg:h-12 group color-sky-500"
+                onClick={() => push(`/${locale}/home/`)}
+                className={`${
+                  /\/home(\/?)/.test(router.pathname) ? 'color-sky-500' : ''
+                } cursor-pointer mx-3 relative h-10 lg:h-12 group`}
               >
                 React
                 <span className="hidden md:inline-block bg-sky-500 h-1 group-hover:h-2 w-7 transition-height rounded-t-2 absolute bottom-0 left-1/2 -translate-x-1/2" />
               </button>
-              <button onClick={() => goto(link.svelte)} className="cursor-pointer mx-3 relative h-10 lg:h-12 group">
+              <button
+                onClick={() => goto(String(process.env.MIX_MENU_LINK_SVELTE))}
+                className="cursor-pointer mx-3 relative h-10 lg:h-12 group"
+              >
                 Svelte
                 <span className="hidden md:inline-block bg-rose-600 h-0 group-hover:h-1 w-7 transition-height rounded-t-2 absolute bottom-0 left-1/2 -translate-x-1/2" />
               </button>
               {/*language*/}
-              <SwitchLanguage className="w-8 h-8 md:w-10 md:h-10 mt-1 md:mt-0 md:ml-2" />
+              <SwitchLanguage className="w-8 h-8 md:w-10 md:h-10 my-2 md:my-0 md:ml-2" />
             </div>
             {/*mobile menu*/}
             <button

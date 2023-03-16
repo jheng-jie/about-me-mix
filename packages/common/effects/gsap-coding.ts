@@ -1,21 +1,8 @@
 import gsap, { Power0, Back } from 'gsap'
+import { removeStyles } from './utils'
 
 // style
 import '@about-me-mix/common/effects/gsap-coding.scss'
-
-/**
- * @desc 遞歸移除樣式
- */
-const removeStyles = (el: HTMLElement) => {
-  el.removeAttribute('style')
-
-  if (el.childNodes.length > 0) {
-    for (let child in el.childNodes) {
-      /* filter element nodes only */
-      if (el.childNodes[child].nodeType == 1) removeStyles(el.childNodes[child] as HTMLElement)
-    }
-  }
-}
 
 // Animate Vars
 const AnimateVarsDialogueShow = {

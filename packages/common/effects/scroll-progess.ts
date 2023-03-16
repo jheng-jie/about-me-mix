@@ -26,11 +26,10 @@ export const DEFAULT_PROGRESS_DATA: ElementPositionProgress = {
  * @desc 快取子容器尺寸資訊
  */
 export const getChildrenRect = (main: HTMLElement): ElementPositionProgress[] => {
-  const offsetY = main.offsetTop
   const result = []
   for (let index = 0; index < main.children.length; ++index) {
     const { offsetTop: top, offsetHeight: height } = main.children[index] as HTMLElement
-    result.push(Object.assign({ ...DEFAULT_PROGRESS_DATA }, { top: top - offsetY, height: height }))
+    result.push(Object.assign({ ...DEFAULT_PROGRESS_DATA }, { top, height }))
   }
   return getElementProgressData(result)
 }

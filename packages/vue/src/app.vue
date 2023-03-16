@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import { useWebsite } from '~/stores'
+
 const { t, locale } = useI18n()
 const route = useRoute()
 const size = computed(() => route.path.replace(/(\/\w{2}\/)|(^\/)|(\/$)/g, '').toUpperCase())
@@ -21,10 +23,13 @@ watch(locale, () => {
     htmlAttrs: { lang: locale.value },
   })
 })
+
+// 通知動畫結束
+const onAfterEnter = () => useWebsite().updatePageTransition()
 </script>
 
 <template>
   <NuxtLayout>
-    <NuxtPage />
+    <NuxtPage :transition="{ onAfterEnter }" />
   </NuxtLayout>
 </template>

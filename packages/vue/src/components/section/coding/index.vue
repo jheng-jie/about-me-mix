@@ -10,14 +10,16 @@ const { MIX_ASSETS_URL } = useRuntimeConfig()
 
 // gsap timeline
 const tween = ref<TweenTimeLine>()
-const container = ref<HTMLDivElement>()
-onMounted(() => {
-  tween.value = createCodingTween(container.value!)
-})
 onUnmounted(() => tween?.value?.kill())
 
+// container
+const container = ref<HTMLDivElement>()
+
 // on position update
-useProgress(props.index, ({ hidden, progress, overlappingEnter }) => {
+useProgress(props.index, ({ height, hidden, progress, overlappingEnter }) => {
+  if (height === 0) return
+  // create animate
+  if (!tween.value && container.value) tween.value = createCodingTween(container.value)
   // hidden
   if (container.value) container.value.style.display = hidden ? 'none' : ''
   // update tween

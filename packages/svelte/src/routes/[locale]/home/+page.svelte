@@ -35,7 +35,7 @@
 </script>
 
 <!--Home Page-->
-<Page {action} on:introstart={initialize} on:introend={onScrollHandler}>
+<Page {action} on:introstart={initialize} on:introend={initialize}>
   {#each section as Component, index (index)}
     <svelte:component this={Component} {index} />
   {/each}

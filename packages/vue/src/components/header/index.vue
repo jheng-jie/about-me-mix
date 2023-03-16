@@ -2,19 +2,18 @@
 import SwitchLanguage from '@/components/switch-language/index.vue'
 import DarkMode from '@/components/dark-mode/index.vue'
 const { locale } = useI18n()
-const { MIX_GIT_PATH, MIX_MENU_LINK_VUE, MIX_MENU_LINK_REACT, MIX_MENU_LINK_SVELTE } = useRuntimeConfig()
-
-const link = computed(() => ({
-  vue: MIX_MENU_LINK_VUE.replace(/\{0}/, locale.value),
-  react: MIX_MENU_LINK_REACT.replace(/\{0}/, locale.value),
-  svelte: MIX_MENU_LINK_SVELTE.replace(/\{0}/, locale.value),
-}))
+const { MIX_GIT_PATH, MIX_MENU_LINK_REACT, MIX_MENU_LINK_SVELTE } = useRuntimeConfig()
 
 // 跳轉
 const localePath = useLocalePath()
+const route = useRoute()
 const router = useRouter()
-const goto = (path: string) => {
-  location.href = path
+// location href
+const goto = (path: string) => (location.href = path + route.path)
+// history push
+const push = (path: string) => {
+  router.push(path)
+  toggle.value = false
 }
 
 // 頂部進度條
@@ -77,30 +76,41 @@ watch(locale, () => (toggle.value = false))
           class="shadow-lg md:shadow-none fixed left-0 top-10 w-full pb-3 md:pb-0 md:w-unset md:static bg-#ffffff dark:bg-#1d1c19 dark:md:bg-transparent md:bg-transparent md:flex flex-col md:flex-row items-center"
         >
           <!--router-->
-          <button @click="router.push(localePath('/empty'))" class="md:mx-3">Empty</button>
+          <button @click="push(localePath('/empty'))" class="md:mx-3 h-10 lg:h-12">Empty</button>
+          <button
+            @click="push(localePath('/record/'))"
+            :class="{ 'color-emerald-500': /\/record(\/?)/.test(route.path) }"
+            class="h-10 lg:h-12 mx-3 relative group md:mx-3"
+          >
+            Record
+          </button>
           <!--divide-->
-          <div class="w-full md:w-0.5 h-0.5 md:h-4 mt-2 md:mt-0 md:mx-3 bg-gray-100 dark:bg-zinc-700" />
+          <div class="w-full md:w-0.5 h-0.5 mb-2 md:mb-0 md:h-4 mt-2 md:mt-0 md:mx-3 bg-gray-100 dark:bg-zinc-700" />
           <!--framework-->
-          <button @click="goto(link.vue)" class="cursor-pointer h-10 lg:h-12 mx-3 relative group color-emerald-500">
+          <button
+            @click="push(localePath('/home/'))"
+            :class="{ 'color-emerald-500': /\/home(\/?)/.test(route.path) }"
+            class="cursor-pointer h-10 lg:h-12 mx-3 relative group"
+          >
             Vue
             <span
               class="hidden md:inline-block bg-emerald-500 h-1 group-hover:h-2 w-7 transition-height rounded-t-2 absolute bottom-0 left-1/2 -translate-x-1/2"
             />
           </button>
-          <button @click="goto(link.react)" class="cursor-pointer h-10 lg:h-12 mx-3 relative group">
+          <button @click="goto(MIX_MENU_LINK_REACT)" class="cursor-pointer h-10 lg:h-12 mx-3 relative group">
             React
             <span
               class="hidden md:inline-block bg-sky-500 h-0 group-hover:h-1 w-7 transition-height rounded-t-2 absolute bottom-0 left-1/2 -translate-x-1/2"
             />
           </button>
-          <button @click="goto(link.svelte)" class="cursor-pointer h-10 lg:h-12 ml-3 mx-3 relative group">
+          <button @click="goto(MIX_MENU_LINK_SVELTE)" class="cursor-pointer h-10 lg:h-12 ml-3 mx-3 relative group">
             Svelte
             <span
               class="hidden md:inline-block bg-rose-600 h-0 group-hover:h-1 w-7 transition-height rounded-t-2 absolute bottom-0 left-1/2 -translate-x-1/2"
             />
           </button>
           <!--language-->
-          <SwitchLanguage class="w-8 h-8 md:w-10 md:h-10 mt-1 md:mt-0 md:ml-2" />
+          <SwitchLanguage class="w-8 h-8 md:w-10 md:h-10 my-2 md:my-0 md:ml-2" />
         </div>
         <!--mobile menu-->
         <button

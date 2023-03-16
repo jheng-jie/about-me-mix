@@ -11,15 +11,16 @@ const props = defineProps({ index: { default: 0 } })
 
 // gsap timeline
 const tween = ref<TweenTimeLine>()
-const container = ref<HTMLDivElement>()
-onMounted(() => {
-  if (!container.value) return
-  tween.value = createExperienceTween(container.value)
-})
 onUnmounted(() => tween?.value?.kill())
 
+// container
+const container = ref<HTMLDivElement>()
+
 // on position update
-const { position } = useProgress(props.index, ({ progress, overlappingEnter, overlappingLeave, hidden }) => {
+const { position } = useProgress(props.index, ({ height, progress, overlappingEnter, overlappingLeave, hidden }) => {
+  if (height === 0) return
+  // create animate
+  if (!tween.value && container.value) tween.value = createExperienceTween(container.value)
   // hidden
   if (container.value) container.value.style.display = hidden ? 'none' : ''
   // update tween

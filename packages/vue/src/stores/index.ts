@@ -10,6 +10,7 @@ export const useWebsite = defineStore('website', {
     height: 0,
     sizeUpdateTimestamp: 0,
     dark: false,
+    pageTransitionTimestamp: 0,
   }),
   actions: {
     // 初始化
@@ -49,6 +50,11 @@ export const useWebsite = defineStore('website', {
       } catch {
         // NOTHING
       }
+    },
+
+    // 動畫結束
+    updatePageTransition() {
+      this.pageTransitionTimestamp = Date.now()
     },
   },
 })

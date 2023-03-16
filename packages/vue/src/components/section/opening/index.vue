@@ -10,8 +10,8 @@ const { MIX_ASSETS_URL } = useRuntimeConfig()
 const container = ref<HTMLDivElement>()
 
 // on position update
-useProgress(props.index, ({ hidden, progress }) => {
-  if (!container.value) return
+useProgress(props.index, ({ hidden, progress, top, height }) => {
+  if (!container.value || height === 0) return
   // hidden
   container.value.style.display = hidden ? 'none' : ''
   // update progress
