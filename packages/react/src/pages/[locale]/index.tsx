@@ -8,7 +8,7 @@ const { getStaticPaths, Redirect } = createRedirectMap([
   { from: '/zh', to: '/zh/home' },
   { from: '/home', to: '/zh/home' },
   { from: '/record', to: '/zh/record' },
-  { from: '/forbidden', to: '/zh/forbidden' },
+  { from: '/empty', to: '/zh/empty' },
 ])
 export { getStaticPaths }
 
