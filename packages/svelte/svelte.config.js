@@ -1,57 +1,42 @@
 import adapter from '@sveltejs/adapter-static'
 import { vitePreprocess } from '@sveltejs/kit/vite'
-import path from 'path'
-import fs from 'fs'
+import { scanRoutesResult } from './script/prerender.mjs'
 
-/**
- * @desc routes 路由掃描
- */
-const pagesPath = path.resolve('./src/routes/')
-const scanRoutes = async (directory, files = new Set([])) => {
-  for (const filename of await fs.promises.readdir(directory)) {
-    if (/^\./.test(filename)) continue
-    const filePath = path.resolve(directory, filename)
-    const stat = await fs.promises.stat(filePath)
-    if (stat.isDirectory()) {
-      await scanRoutes(filePath, files)
-    } else if (/\+page\.(svelte|ts)/.test(filePath)) {
-      files.add(filePath.replace(pagesPath, '').replace(/\+page\.(svelte|ts)/, ''))
-    }
-  }
-  return files
-}
-const scanRoutesResult = await scanRoutes(path.resolve(pagesPath, './[locale]')).then(res => [...res])
-
-// overwrite
-const { MIX_BASE_URL, MIX_SUPPORTS_LOCALES, MIX_ASSETS_URL } = process.env
+const { MIX_MENU_LINK_SVELTE, MIX_SUPPORTS_LOCALES, MIX_ASSETS_URL } = process.env
 
 /** @type {import('@sveltejs/kit').Config} */
 export default {
+  // 預處理器
   preprocess: vitePreprocess(),
 
   kit: {
+    // 註冊前綴為 MIX_ 的屬性
     env: {
       publicPrefix: 'MIX_',
     },
+
     // 二級目錄
     paths: {
-      base: `${MIX_BASE_URL}/svelte`,
+      base: MIX_MENU_LINK_SVELTE,
     },
-    // SSG
+
+    // SSG adapter
     adapter: adapter({
+      // 輸出位置
       pages: 'output',
       assets: 'output',
-      fallback: null,
+      // 不需要 gzip，Github Page 的 nginx 支援自動壓縮
       precompress: false,
+      // 嚴格模式，會自動檢測 href 路徑是否存在
       strict: true,
     }),
+
     // routes
     prerender: {
-      handleHttpError: ({ path, message }) => {
-        // 無視路徑檢測
-        if (String(path).includes(MIX_ASSETS_URL)) return
-        throw new Error(message)
-      },
+      // 無視靜態資源路徑檢測
+      handleHttpError: ({ path, message }) =>
+        !String(path).includes(MIX_ASSETS_URL) && Promise.reject(new Error(message)),
+      // 註冊所有靜態路由
       entries: [
         // default locale
         ...scanRoutesResult.map(route => route.replace(/\/\[locale]/, '')),

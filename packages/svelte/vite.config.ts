@@ -7,11 +7,11 @@ import { StaticServicePlugin } from '@about-me-mix/common/static-service'
 import dotenv from 'dotenv'
 import path from 'path'
 
-// load env
-dotenv.config({ path: path.resolve('../../.env') })
-const { MIX_BASE_URL, MIX_ASSETS_URL } = process.env
-
 export default () => {
+  // load env
+  dotenv.config({ path: path.resolve('../../.env') })
+  const { MIX_ASSETS_URL, MIX_MENU_LINK_REACT, MIX_MENU_LINK_VUE } = process.env
+
   return defineConfig({
     plugins: [
       // svelte loader
@@ -32,8 +32,8 @@ export default () => {
       StaticServicePlugin({
         paths: {
           [`${MIX_ASSETS_URL}`]: path.resolve('../common/assets'),
-          [`${MIX_BASE_URL}/react`]: path.resolve('../../about-me-mix/react'),
-          [`${MIX_BASE_URL}/vue`]: path.resolve('../../about-me-mix/vue'),
+          [`${MIX_MENU_LINK_REACT}`]: path.resolve('../../about-me-mix/react'),
+          [`${MIX_MENU_LINK_VUE}`]: path.resolve('../../about-me-mix/vue'),
         },
       }),
     ],
@@ -53,6 +53,7 @@ export default () => {
     css: {
       preprocessorOptions: {
         scss: {
+          // sass global import
           additionalData: `$assets_url: '${MIX_ASSETS_URL}';`,
         },
       },
