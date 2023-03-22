@@ -3,12 +3,13 @@ export const PageVariants = {
   initial: {
     '--blur': '0.25rem',
     opacity: 0,
-    filter: 'blur(var(--blur))',
+    filter: 'none',
     display: 'block',
   },
   animate: {
     '--blur': '0',
     opacity: 1,
+    filter: 'blur(var(--blur))',
     transition: {
       duration: 0.3,
     },
