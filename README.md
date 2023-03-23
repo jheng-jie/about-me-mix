@@ -10,6 +10,12 @@
 
 ---
 
+## Demo
+
+- [GitHub Page](https://jheng-jie.github.io/about-me-mix/react/zh/home/)
+
+---
+
 ## CLI
 
 - 開發
@@ -212,6 +218,16 @@
   ```sh
   mkdir -p packages/common/ && cd packages/common/
   yarn init
+  ```
+
+- `packages/vue/package.json`
+
+  ```json5
+  // 修改專案名稱，加上版號
+  {
+    name: '@about-me-mix/common',
+    version: '1.0.0',
+  }
   ```
 
 - 每個專案都安裝此依賴
