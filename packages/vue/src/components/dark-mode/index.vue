@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { useWebsite } from '~/stores'
-const { MIX_ASSETS_URL } = useRuntimeConfig()
+const { MIX_ASSETS_URL } = useRuntimeConfig().public
 
 const toggle = computed(() => useWebsite().dark)
 const switchDarkMode = () => useWebsite().switchDarkMode()

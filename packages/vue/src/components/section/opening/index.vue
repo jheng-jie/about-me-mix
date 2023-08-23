@@ -4,7 +4,7 @@ import useProgress from '../use-progress'
 
 const { locale } = useI18n()
 const props = defineProps({ index: { default: 0 } })
-const { MIX_ASSETS_URL } = useRuntimeConfig()
+const { MIX_ASSETS_URL } = useRuntimeConfig().public
 
 // update mask height
 const container = ref<HTMLDivElement>()

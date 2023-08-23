@@ -3,7 +3,7 @@
 const { t, locale, locales } = useI18n()
 const router = useRouter()
 const switchLocalePath = useSwitchLocalePath()
-const { MIX_BASE_URL, MIX_ASSETS_URL } = useRuntimeConfig()
+const { MIX_BASE_URL, MIX_ASSETS_URL } = useRuntimeConfig().public
 
 // icon
 const iconMap = new Map([

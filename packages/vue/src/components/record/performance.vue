@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const { MIX_ASSETS_URL } = useRuntimeConfig()
+const { MIX_ASSETS_URL } = useRuntimeConfig().public
 </script>
 
 <template>

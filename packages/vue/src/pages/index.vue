@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const { MIX_BASE_URL } = useRuntimeConfig()
+const { MIX_BASE_URL } = useRuntimeConfig().public
 
 useHead({
   meta: [{ 'http-equiv': 'refresh', content: `0;url=${MIX_BASE_URL}/vue/home/` }],

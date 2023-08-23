@@ -2,7 +2,7 @@
 import SwitchLanguage from '@/components/switch-language/index.vue'
 import DarkMode from '@/components/dark-mode/index.vue'
 const { locale } = useI18n()
-const { MIX_GIT_PATH, MIX_MENU_LINK_REACT, MIX_MENU_LINK_SVELTE } = useRuntimeConfig()
+const { MIX_GIT_PATH, MIX_MENU_LINK_REACT, MIX_MENU_LINK_SVELTE } = useRuntimeConfig().public
 
 // 跳轉
 const localePath = useLocalePath()
