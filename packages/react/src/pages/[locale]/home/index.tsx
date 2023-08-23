@@ -1,3 +1,4 @@
+'use client'
 import type { ElementPositionProgress } from '@about-me-mix/common'
 import { useRef, useEffect } from 'react'
 import { useDispatch } from 'react-redux'

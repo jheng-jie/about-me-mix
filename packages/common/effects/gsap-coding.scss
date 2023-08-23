@@ -1,16 +1,9 @@
-// FIXME: next13 unocss 無法解析 @apply
-// FIXME: svelte unocss 無法解析冒號
-
 .coding__code-box {
   i {
-    //@apply not-italic inline-block;
-    font-style: normal;
-    display: inline-block;
+    @apply not-italic inline-block;
   }
   b {
-    //@apply inline-block w-0;
-    display: inline-block;
-    width: 0;
+    @apply inline-block w-0;
 
     &:before {
       content: '';
@@ -18,16 +11,10 @@
   }
   p,
   i {
-    //@apply h-5 lg:h-6 leading-5 lg:leading-6 overflow-hidden align-top whitespace-nowrap w-fit;
-    height: 1.25rem;
-    line-height: 1.25rem;
-    overflow: hidden;
-    vertical-align: top;
-    white-space: nowrap;
-    width: fit-content;
+    @apply h-5 lg:h-6 leading-5 lg:leading-6 overflow-hidden align-top whitespace-nowrap w-fit;
 
     &[data-show] {
-      max-height: 0%;
+      max-height: 0;
     }
   }
   $orange: 'export', 'function', 'string', 'number', 'let', 'if', 'return';
@@ -64,56 +51,42 @@
   [data-l] {
     &:before {
       content: '';
-      //@apply w-1 inline-block;
-      width: 0.25rem;
-      display: inline-block;
+      @apply w-1 inline-block;
     }
   }
   // 尾空白
   [data-r] {
     &:after {
       content: '';
-      //@apply w-1 inline-block;
-      width: 0.25rem;
-      display: inline-block;
+      @apply w-1 inline-block;
     }
   }
   // 等於
   [data-eq] {
     &:before {
       content: '=';
-      //@apply text-white inline-block mx-1;
-      color: white;
-      display: inline-block;
-      margin: 0 0.25rem;
+      @apply text-white inline-block mx-1;
     }
   }
   // 加等於
   [data-aeq] {
     &:before {
       content: '+=';
-      //@apply text-white inline-block mx-1;
-      color: white;
-      display: inline-block;
-      margin: 0 0.25rem;
+      @apply text-white inline-block mx-1;
     }
   }
   // 小於
   [data-lt] {
     &:before {
       content: '<';
-      //@apply text-white mx-1;
-      color: white;
-      margin: 0 0.25rem;
+      @apply text-white mx-1;
     }
   }
   // 逗號
   [data-co] {
     &:after {
       content: ',';
-      //@apply text-white mr-1;
-      color: white;
-      margin: 0 0.25rem;
+      @apply text-white mr-1;
     }
   }
   // 斜線註解
@@ -121,8 +94,7 @@
     color: #6b7280;
     &:before {
       content: '//';
-      //@apply mr-1;
-      margin-right: 0.25rem;
+      @apply mr-1;
     }
   }
 }
