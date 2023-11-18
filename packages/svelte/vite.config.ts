@@ -14,7 +14,7 @@ export default () => {
   return defineConfig({
     plugins: [
       // svelte loader
-      sveltekit(),
+      sveltekit() as any,
       // atomic css
       UnoCSS({
         shortcuts: {
