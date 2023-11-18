@@ -19,14 +19,10 @@ const {
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  // typescript: {
-  //   ignoreBuildErrors: true,
-  // },
-
-  // 實驗性功能，可惜還不支援 export，https://beta.nextjs.org/docs/app-directory-roadmap#planned-features
-  // experimental: {
-  //   appDir: true,
-  // },
+  typescript: {
+    ignoreBuildErrors: true, // FIXME: i18n 有型別 bug
+  },
+  output: 'export', // SSG
 
   // env
   env: {

@@ -29,9 +29,8 @@ if [ "$target" = "all" ] || [ "$target" = "react" ]; then
   echo '--- react ---\n'
   rm -rf ./$dist/react
   yarn workspace @about-me-mix/react generate
-  mv ./packages/react/output ./$dist/react
+  mv ./packages/react/out ./$dist/react
 fi
-
 
 # nuxt vue
 if [ "$target" = "all" ] || [ "$target" = "vue" ]; then
