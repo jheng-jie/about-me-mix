@@ -12,46 +12,21 @@
       "desc": "nUirxwsOqL，dKxdsh",
       "target": "muD {0} XM"
     },
-    "dialogue": [
-      "Q，kh Jie",
-      "hmbFUmX Web sda",
-      "l 3 IPnQ 4 ezPbiml"
-    ],
+    "dialogue": ["Q，kh Jie", "hmbFUmX Web sda", "l 3 IPnQ 4 ezPbiml"],
     "experience": {
       "title": "bHf"
     },
     "coding": {
       "title": "kxBct",
-      "message": [
-        "ExbbRemejZfB",
-        "kI Prettier WM",
-        "ayxQANH，gfoc",
-        "oUJjFuz",
-        "AW，xTDNres",
-        "UG，keFQYvCOi"
-      ],
+      "message": ["ExbbRemejZfB", "kI Prettier WM", "ayxQANH，gfoc", "oUJjFuz", "AW，xTDNres", "UG，keFQYvCOi"],
       "desc": "YMDXzq",
       "param": "MoQlDX",
       "return": "0=b, 1=s, 2=c, >=3=K",
-      "comment": [
-        "weFP",
-        "gSmf",
-        "MhMnIC",
-        "XNsniD",
-        "YlGfWg",
-        "CvWw"
-      ]
+      "comment": ["weFP", "gSmf", "MhMnIC", "XNsniD", "YlGfWg", "CvWw"]
     }
   },
-  "end": [
-    "BE",
-    "ce",
-    "Kc"
-  ],
-  "team": [
-    "Ff",
-    "hs"
-  ],
+  "end": ["BE", "ce", "Kc"],
+  "team": ["Ff", "hs"],
   "experience": {
     "2015": {
       "company": "EfG",
@@ -119,45 +94,25 @@
     "dev_compare": {
       "title": "Dqsi",
       "desc": "WiLoMJiK",
-      "list_title": [
-        "LICL，JhwHVbBqHg",
-        "QtQW",
-        "BVN"
-      ],
-      "list_desc": [
-        "Next > Nuxt = SvelteKit",
-        "Nuxt > SvelteKit > Next",
-        "Next > SvelteKit > Nuxt"
-      ],
+      "list_title": ["LICL，JhwHVbBqHg", "QtQW", "BVN"],
+      "list_desc": ["Next > Nuxt = SvelteKit", "Nuxt > SvelteKit > Next", "Next > SvelteKit > Nuxt"],
       "plug_and_play": "LYuX",
       "rely": "hU",
       "none_route": {
         "title": "aLguvP",
-        "td": [
-          "Jnwtz",
-          "ea，ovzsjuZ",
-          "Xv，meta refresh"
-        ]
+        "td": ["Jnwtz", "ea，ovzsjuZ", "Xv，meta refresh"]
       },
       "route": {
         "title": "nqdS",
-        "td": [
-          "DXspfjUOjnsW",
-          "tG",
-          "IskSaqhOjkeE"
-        ]
+        "td": ["DXspfjUOjnsW", "tG", "IskSaqhOjkeE"]
       },
-      "react_unocss": "@unocss/postcss，oUxTg，UYRz webpack UIObOao apply",
+      "react_unocss": "unocss postcss，oUxTg，UYRz webpack UIObOao apply",
       "store": "SpdNy",
       "preset": "hx",
       "transition": {
         "dropdown": "zcAU",
         "route": "LdnV",
-        "route_td": [
-          "Framer Motion，YLfMZV",
-          "Yb",
-          "OI，qQWoohMio out-in，yhWL delay，zhHkLi，cjcDwbGdbS"
-        ]
+        "route_td": ["Framer Motion，YLfMZV", "Yb", "OI，qQWoohMio out-in，yhWL delay，zhHkLi，cjcDwbGdbS"]
       },
       "compile": {
         "build": "IE",

@@ -1,4 +1,3 @@
-import { messages } from './src/core/i18n'
 import transformerDirectives from '@unocss/transformer-directives'
 import unoPreset from '@unocss/preset-uno'
 import path from 'path'
@@ -102,12 +101,7 @@ export default defineNuxtConfig({
     strategy: NODE_ENV === 'production' ? 'prefix_and_default' : 'prefix_except_default', // 預設語系也產出 static
     locales: String(MIX_SUPPORTS_LOCALES).split(','), // 語系列表
     // useI18n
-    vueI18n: {
-      legacy: false,
-      messages,
-      locale: MIX_DEFAULT_LOCALE,
-      fallbackLocale: MIX_DEFAULT_LOCALE,
-    },
+    vueI18n: './vue-i18n.config',
     trailingSlash: true,
   },
 

@@ -113,7 +113,7 @@
         "title": "語系路由",
         "td": ["需要額外使用動態路由實現", "內建", "需要額外使用動態路由實現"]
       },
-      "react_unocss": "unocss/postcss，實驗性依賴，即使使用 webpack 版的也無法使用 apply",
+      "react_unocss": "unocss postcss，實驗性依賴，即使使用 webpack 版的也無法使用 apply",
       "store": "持久化數據",
       "preset": "內建",
       "transition": {
