@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { useClientStore } from '~/store/initialize'
+import { useClientStore } from '~/stores/initialize'
 const { MIX_ASSETS_URL } = useRuntimeConfig().public
 
 const dark = computed(() => useClientStore().dark)

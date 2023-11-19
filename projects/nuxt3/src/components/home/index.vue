@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { type ElementPositionProgress, getChildrenRect, getElementProgressData } from '@about-me-mix/communal/store/section-progress'
-import { useSectionProgress } from '~/components/home/store/section-progress'
-import { useClientStore } from '~/store/initialize'
+import { useSectionProgress } from './store/section-progress'
+import { useClientStore } from '~/stores/initialize'
 
 /**
  * @desc Cache Section Position
  */
 const childrenProgressData = ref<ElementPositionProgress[]>([])
-const onScrollHandler = () => useSectionProgress().setSectionProgress(getElementProgressData(childrenProgressData.value))
+const onScrollHandler = () => setSectionProgress(getElementProgressData(childrenProgressData.value))
 onBeforeMount(() => window.addEventListener('scroll', onScrollHandler))
 onUnmounted(() => window.removeEventListener('scroll', onScrollHandler))
 

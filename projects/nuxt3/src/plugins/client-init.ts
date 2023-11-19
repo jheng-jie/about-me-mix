@@ -1,4 +1,4 @@
-import { useClientStore } from '~/store/initialize'
+import { useClientStore } from '~/stores/initialize'
 
 /**
  * @desc 網頁初始化用

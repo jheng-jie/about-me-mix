@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { createShaderTween, type TweenShader } from '@about-me-mix/communal/src/shader'
-import { useClientStore } from '@/store/initialize'
+import { useClientStore } from '@/stores/initialize'
 import useProgress from '../../hook/use-progress'
 
 const { locale } = useI18n()

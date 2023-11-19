@@ -1,6 +1,12 @@
 {
   "references": [
     {
+      "path": "./projects/next14/tsconfig.json"
+    },
+    {
+      "path": "./projects/svelte-kit4/tsconfig.json"
+    },
+    {
       "path": "./projects/nuxt3/tsconfig.json"
     }
   ]
