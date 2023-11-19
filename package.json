@@ -6,6 +6,7 @@
   "private": true,
   "scripts": {
     "nuxt3": "yarn workspace @about-me-mix/nuxt3 dev",
+    "svelte-kit4": "yarn workspace @about-me-mix/svelte-kit4 dev",
     "dev": "sh ./shell/dev.sh",
     "build": "sh ./shell/build.sh",
     "deploy": "rm -rf ./docs && cp -a ./about-me-mix ./docs"
@@ -15,6 +16,7 @@
   ],
   "dependencies": {
     "@types/lodash": "^4.14.191",
+    "@unocss/postcss": "^0.57.5",
     "express": "^4.18.2",
     "gsap": "^3.11.4",
     "lodash": "^4.17.21",

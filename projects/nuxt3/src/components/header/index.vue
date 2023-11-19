@@ -67,6 +67,8 @@ watch(locale, () => (toggle.value = false))
       <!--menu-->
       <div class="flex items-center font-medium select-none">
         <div :class="toggle ? 'flex' : 'hidden'" class="shadow-lg md:shadow-none fixed left-0 top-10 w-full pb-3 md:pb-0 md:w-unset md:static bg-#ffffff dark:bg-#1d1c19 dark:md:bg-transparent md:bg-transparent md:flex flex-col md:flex-row items-center">
+          <!--divide-->
+          <div class="w-full md:w-0.5 h-0.5 mb-2 md:mb-0 md:h-4 mt-2 md:mt-0 md:mx-3 bg-gray-100 dark:bg-zinc-700" />
           <!--framework-->
           <button @click="push(localePath('/home/'))" :class="{ 'color-emerald-500': /\/home(\/?)/.test(route.path) }" class="cursor-pointer h-10 lg:h-12 mx-3 relative group">
             Vue

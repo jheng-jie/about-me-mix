@@ -8,11 +8,11 @@
 
 ## 框架
 
-> [Nuxt 3](./projects/vue/README.md)
+> [Nuxt 3](./projects/nuxt3/README.md)
 
 > [Next 14](./projects/react/README.md)
 
-> [SvelteKit 4](./projects/svelte/README.md)
+> [SvelteKit 4](./projects/svelte-kit4/README.md)
 
 ## 展示
 
@@ -23,11 +23,12 @@
 ```bash
 about-me-mix
 │
-├── docs          # GitHub Page
+├── docs              # GitHub Page
 │
 ├── projects
-│   ├── communal    # 共用的資源或程式
-│   └── nuxt3       # Nuxt 3
+│   ├── communal      # 共用的資源或程式
+│   ├── svelte-kit4   # Svelte Kit 4
+│   └── nuxt3         # Nuxt 3
 │
-└── README.md     # 當前位置
+└── README.md         # 當前位置
 ```

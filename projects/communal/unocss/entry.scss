@@ -20,3 +20,14 @@ body {
   background-image: url('#{$ASSETS_URL}/polygon-black.jpg');
   @apply bg-fixed bg-cover bg-center;
 }
+
+.fade {
+  &-enter-active,
+  &-leave-active {
+    transition: opacity 0.3s;
+  }
+  &-enter-from,
+  &-leave-to {
+    opacity: 0;
+  }
+}

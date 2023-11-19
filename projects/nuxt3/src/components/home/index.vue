@@ -23,11 +23,11 @@ watch([main, sizeUpdateTimestamp], () => {
 })
 
 // Component Child
-import Opening from './component/opening'
-import Dialogue from './component/dialogue'
-import Experience from './component/experience'
-import Coding from './component/coding'
-import Shader from './component/shader'
+import Opening from './components/opening'
+import Dialogue from './components/dialogue'
+import Experience from './components/experience'
+import Coding from './components/coding'
+import Shader from './components/shader'
 const section = [Opening, Dialogue, Experience, Coding, Shader]
 </script>
 
