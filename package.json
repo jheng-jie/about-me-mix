@@ -1,6 +1,6 @@
 {
   "name": "about-me-mix",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "vue, react, svelte SSG(Static Site Generation) experiment",
   "license": "MIT",
   "private": true,

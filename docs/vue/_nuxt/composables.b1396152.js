@@ -1,1 +1,0 @@
-import{O as o,K as e,N as t,P as u,Q as a,R as s}from"./entry.197a0f9b.js";function n(){return o({router:e(),route:t(),i18n:u(a().$i18n)})}function i(){return s({router:e(),route:t(),i18n:u(a().$i18n)})}export{i as a,n as u};
