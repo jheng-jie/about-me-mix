@@ -8,11 +8,11 @@
 
 ## 框架
 
-> [Nuxt 3](./packages/vue/README.md)
+> [Nuxt 3](./projects/vue/README.md)
 
-> [Next 14](./packages/react/README.md)
+> [Next 14](./projects/react/README.md)
 
-> [SvelteKit 4](./packages/svelte/README.md)
+> [SvelteKit 4](./projects/svelte/README.md)
 
 ## 展示
 
@@ -25,11 +25,9 @@ about-me-mix
 │
 ├── docs          # GitHub Page
 │
-├── packages
-│   ├── common    # 共用的資源或程式
-│   ├── react     # Next 14
-│   ├── svelte    # SvelteKit 4
-│   └── vue       # Nuxt 3
+├── projects
+│   ├── communal    # 共用的資源或程式
+│   └── nuxt3       # Nuxt 3
 │
 └── README.md     # 當前位置
 ```

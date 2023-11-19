@@ -1,0 +1,108 @@
+.coding__code-box {
+  i {
+    @apply not-italic inline-block;
+  }
+  b {
+    @apply inline-block w-0;
+
+    &:before {
+      content: '';
+    }
+  }
+  p,
+  i {
+    @apply h-5 lg:h-6 leading-5 lg:leading-6 overflow-hidden align-top whitespace-nowrap w-fit;
+
+    &[data-show] {
+      max-height: 0;
+    }
+  }
+  $orange: 'export', 'function', 'string', 'number', 'let', 'if', 'return';
+  @each $key in $orange {
+    [data-#{$key}] {
+      &:before {
+        color: #f97316;
+        content: $key;
+      }
+    }
+  }
+  [data-test] {
+    &:after {
+      color: #eab308;
+      content: 'test';
+    }
+  }
+  [data-length] {
+    &:after {
+      color: #a78bfa;
+      content: 'length';
+    }
+  }
+  [data-y] {
+    color: #eab308;
+  }
+  [data-b] {
+    color: #38bdf8;
+  }
+  [data-g] {
+    color: #10b981;
+  }
+  // 前空白
+  [data-l] {
+    &:before {
+      content: '';
+      @apply w-1 inline-block;
+    }
+  }
+  // 尾空白
+  [data-r] {
+    &:after {
+      content: '';
+      @apply w-1 inline-block;
+    }
+  }
+  // 等於
+  [data-eq] {
+    &:before {
+      content: '=';
+      @apply text-white inline-block mx-1;
+    }
+  }
+  // 加等於
+  [data-aeq] {
+    &:before {
+      content: '+=';
+      @apply text-white inline-block mx-1;
+    }
+  }
+  // 小於
+  [data-lt] {
+    &:before {
+      content: '<';
+      @apply text-white mx-1;
+    }
+  }
+  // 逗號
+  [data-co] {
+    &:after {
+      content: ',';
+      @apply text-white mr-1;
+    }
+  }
+  // 斜線註解
+  [data-mark] {
+    color: #6b7280;
+    &:before {
+      content: '//';
+      @apply mr-1;
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .coding__code-box p,
+  .coding__code-box i {
+    height: 1.5rem;
+    line-height: 1.5rem;
+  }
+}

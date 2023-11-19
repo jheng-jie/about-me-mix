@@ -1,29 +1,38 @@
 <script lang="ts" setup>
-import SwitchLanguage from '@/components/switch-language/index.vue'
-import DarkMode from '@/components/dark-mode/index.vue'
+import SwitchLanguage from './components/switch-language/index.vue'
+import DarkMode from './components/dark-mode/index.vue'
+
+const route = useRoute()
+const router = useRouter()
 const { locale } = useI18n()
 const { MIX_GIT_PATH, MIX_MENU_LINK_REACT, MIX_MENU_LINK_SVELTE } = useRuntimeConfig().public
 
-// 跳轉
+/**
+ * @desc 跳轉
+ */
 const localePath = useLocalePath()
-const route = useRoute()
-const router = useRouter()
-// location href
-const goto = (path: string) => (location.href = path + route.path)
-// history push
+const goto = (path: string) => (location.href = path + route.path) // location href
 const push = (path: string) => {
   router.push(path)
   toggle.value = false
 }
 
-// 頂部進度條
+/**
+ * @desc 頂部進度條
+ */
 const progress = ref<HTMLDivElement>()
+const header = ref<HTMLDivElement>()
+let prevScrollTop = 0
 const onScrollHandler = () => {
   if (!progress.value) return
   // 整體視窗捲軸進度
   const scrollHeight = document.body.clientHeight
-  const windowProgress = Math.max(0, Math.min(1, scrollY / (scrollHeight - window.innerHeight))) * 100
+  const windowProgress = Math.max(0, Math.min(1, window.scrollY / (scrollHeight - window.innerHeight))) * 100
   progress.value.style.width = `${windowProgress}%`
+  // toggle header
+  if (window.scrollY > prevScrollTop) header.value?.classList?.add('-translate-y-100%')
+  else header.value?.classList?.remove('-translate-y-100%')
+  prevScrollTop = window.scrollY
 }
 onBeforeMount(() => window.addEventListener('scroll', onScrollHandler))
 onUnmounted(() => window.removeEventListener('scroll', onScrollHandler))
@@ -34,29 +43,15 @@ watch(locale, () => (toggle.value = false))
 </script>
 
 <template>
-  <div
-    class="fixed w-full top-0 z-50 h-10 lg:h-12 shadow-lg bg-#ffffff dark:bg-#1d1c19 dark:color-#fefddd transition-colors"
-  >
-    <!--top progress-->
-    <div ref="progress" class="top-0 absolute h-0.75 rounded-r w-0 bg-emerald-500" />
+  <!--top progress-->
+  <div ref="progress" class="fixed top-0 h-0.75 rounded-r w-0 bg-emerald-500 z-60" />
 
+  <div ref="header" class="fixed w-full top-0 z-50 h-10 lg:h-12 shadow-lg bg-#ffffff dark:bg-#1d1c19 dark:color-#fefddd transition-all">
     <div class="max-w-256 w-full h-full flex justify-between mx-auto relative z-10 px-2 md:px-3">
       <!--title-->
       <div class="flex items-center">
-        <a
-          :href="MIX_GIT_PATH"
-          target="_black"
-          class="font-medium text-4 leading-10 lg:leading-12 flex items-center sm:mr-3"
-          aria-label="github"
-        >
-          <svg
-            class="w-auto h-7 md:h-8 mr-2"
-            width="1024"
-            height="1024"
-            viewBox="0 0 1024 1024"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
+        <a :href="MIX_GIT_PATH" target="_black" class="font-medium text-4 leading-10 lg:leading-12 flex items-center sm:mr-3" aria-label="github">
+          <svg class="w-auto h-7 md:h-8 mr-2" width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
               class="fill-#1B1F23 dark:fill-#fefddd"
               fill-rule="evenodd"
@@ -71,53 +66,27 @@ watch(locale, () => (toggle.value = false))
       </div>
       <!--menu-->
       <div class="flex items-center font-medium select-none">
-        <div
-          :class="toggle ? 'flex' : 'hidden'"
-          class="shadow-lg md:shadow-none fixed left-0 top-10 w-full pb-3 md:pb-0 md:w-unset md:static bg-#ffffff dark:bg-#1d1c19 dark:md:bg-transparent md:bg-transparent md:flex flex-col md:flex-row items-center"
-        >
-          <!--router-->
-          <button @click="push(localePath('/empty'))" class="md:mx-3 h-10 lg:h-12">Empty</button>
-          <button
-            @click="push(localePath('/record/'))"
-            :class="{ 'color-emerald-500': /\/record(\/?)/.test(route.path) }"
-            class="h-10 lg:h-12 mx-3 relative group md:mx-3"
-          >
-            Record
-          </button>
-          <!--divide-->
-          <div class="w-full md:w-0.5 h-0.5 mb-2 md:mb-0 md:h-4 mt-2 md:mt-0 md:mx-3 bg-gray-100 dark:bg-zinc-700" />
+        <div :class="toggle ? 'flex' : 'hidden'" class="shadow-lg md:shadow-none fixed left-0 top-10 w-full pb-3 md:pb-0 md:w-unset md:static bg-#ffffff dark:bg-#1d1c19 dark:md:bg-transparent md:bg-transparent md:flex flex-col md:flex-row items-center">
           <!--framework-->
-          <button
-            @click="push(localePath('/home/'))"
-            :class="{ 'color-emerald-500': /\/home(\/?)/.test(route.path) }"
-            class="cursor-pointer h-10 lg:h-12 mx-3 relative group"
-          >
+          <button @click="push(localePath('/home/'))" :class="{ 'color-emerald-500': /\/home(\/?)/.test(route.path) }" class="cursor-pointer h-10 lg:h-12 mx-3 relative group">
             Vue
-            <span
-              class="hidden md:inline-block bg-emerald-500 h-1 group-hover:h-2 w-7 transition-height rounded-t-2 absolute bottom-0 left-1/2 -translate-x-1/2"
-            />
+            <span class="hidden md:inline-block bg-emerald-500 h-1 group-hover:h-2 w-7 transition-height rounded-t-2 absolute bottom-0 left-1/2 -translate-x-1/2" />
           </button>
           <button @click="goto(MIX_MENU_LINK_REACT)" class="cursor-pointer h-10 lg:h-12 mx-3 relative group">
             React
-            <span
-              class="hidden md:inline-block bg-sky-500 h-0 group-hover:h-1 w-7 transition-height rounded-t-2 absolute bottom-0 left-1/2 -translate-x-1/2"
-            />
+            <span class="hidden md:inline-block bg-sky-500 h-0 group-hover:h-1 w-7 transition-height rounded-t-2 absolute bottom-0 left-1/2 -translate-x-1/2" />
           </button>
           <button @click="goto(MIX_MENU_LINK_SVELTE)" class="cursor-pointer h-10 lg:h-12 ml-3 mx-3 relative group">
             Svelte
-            <span
-              class="hidden md:inline-block bg-rose-600 h-0 group-hover:h-1 w-7 transition-height rounded-t-2 absolute bottom-0 left-1/2 -translate-x-1/2"
-            />
+            <span class="hidden md:inline-block bg-rose-600 h-0 group-hover:h-1 w-7 transition-height rounded-t-2 absolute bottom-0 left-1/2 -translate-x-1/2" />
           </button>
+          <!--divide-->
+          <div class="w-full md:w-0.5 h-0.5 mb-2 md:mb-0 md:h-4 mt-2 md:mt-0 md:mx-3 bg-gray-100 dark:bg-zinc-700" />
           <!--language-->
           <SwitchLanguage class="w-8 h-8 md:w-10 md:h-10 my-2 md:my-0 md:ml-2" />
         </div>
         <!--mobile menu-->
-        <button
-          @click="toggle = !toggle"
-          class="flex md:hidden ml-2 w-8 h-8 flex-col items-center justify-center cursor-pointer"
-          aria-label="menu"
-        >
+        <button @click="toggle = !toggle" class="flex md:hidden ml-2 w-8 h-8 flex-col items-center justify-center cursor-pointer" aria-label="menu">
           <span class="w-5 h-0.75 bg-#1d1c19 dark:bg-#fefddd rounded" />
           <span class="w-5 h-0.75 bg-#1d1c19 dark:bg-#fefddd rounded my-1" />
           <span class="w-5 h-0.75 bg-#1d1c19 dark:bg-#fefddd rounded" />

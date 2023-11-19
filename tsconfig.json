@@ -1,13 +1,7 @@
 {
   "references": [
     {
-      "path": "./packages/vue/tsconfig.json"
-    },
-    {
-      "path": "./packages/svelte/tsconfig.json"
-    },
-    {
-      "path": "./packages/react/tsconfig.json"
+      "path": "./projects/nuxt3/tsconfig.json"
     }
   ]
 }

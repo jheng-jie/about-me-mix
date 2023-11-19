@@ -1,0 +1,38 @@
+<script setup lang="ts">
+import { type ElementPositionProgress, getChildrenRect, getElementProgressData } from '@about-me-mix/communal/store/section-progress'
+import { useSectionProgress } from '~/components/home/store/section-progress'
+import { useClientStore } from '~/store/initialize'
+
+/**
+ * @desc Cache Section Position
+ */
+const childrenProgressData = ref<ElementPositionProgress[]>([])
+const onScrollHandler = () => useSectionProgress().setSectionProgress(getElementProgressData(childrenProgressData.value))
+onBeforeMount(() => window.addEventListener('scroll', onScrollHandler))
+onUnmounted(() => window.removeEventListener('scroll', onScrollHandler))
+
+/**
+ * @desc Cache Scroll Data
+ */
+const main = ref<HTMLElement>()
+const sizeUpdateTimestamp = computed(() => useClientStore().sizeUpdateTimestamp) // on resize
+watch([main, sizeUpdateTimestamp], () => {
+  if (!main.value) return
+  childrenProgressData.value = getChildrenRect(main.value)
+  onScrollHandler()
+})
+
+// Component Child
+import Opening from './component/opening'
+import Dialogue from './component/dialogue'
+import Experience from './component/experience'
+import Coding from './component/coding'
+import Shader from './component/shader'
+const section = [Opening, Dialogue, Experience, Coding, Shader]
+</script>
+
+<template>
+  <main ref="main">
+    <Component v-for="(component, index) in section" :is="component" :key="index" :index="index" />
+  </main>
+</template>

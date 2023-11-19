@@ -4,7 +4,7 @@
 source $(dirname "$0")/unit.sh
 
 # menu list
-menu=(vue react svelte)
+menu=(nuxt3)
 
 # select
 echo "Select one env using up/down keys and enter to confirm:"
