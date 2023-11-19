@@ -7,7 +7,7 @@ import { useClientStore } from '~/stores/initialize'
  * @desc Cache Section Position
  */
 const childrenProgressData = ref<ElementPositionProgress[]>([])
-const onScrollHandler = () => setSectionProgress(getElementProgressData(childrenProgressData.value))
+const onScrollHandler = () => useSectionProgress().setSectionProgress(getElementProgressData(childrenProgressData.value))
 onBeforeMount(() => window.addEventListener('scroll', onScrollHandler))
 onUnmounted(() => window.removeEventListener('scroll', onScrollHandler))
 

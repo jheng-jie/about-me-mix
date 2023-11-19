@@ -21,7 +21,7 @@
       // 整體視窗捲軸進度
       const scrollHeight = document.body.clientHeight
       const windowProgress = Math.max(0, Math.min(1, scrollY / (scrollHeight - window.innerHeight))) * 100
-      progress.style.width = `${windowProgress}%`
+      if (progress) progress.style.width = `${windowProgress}%`
       // toggle header
       if (window.scrollY > prevScrollTop) header?.classList?.add('-translate-y-100%')
       else header?.classList?.remove('-translate-y-100%')

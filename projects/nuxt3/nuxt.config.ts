@@ -93,7 +93,7 @@ export default defineNuxtConfig({
   // @nuxtjs/i18n config
   i18n: {
     defaultLocale: MIX_DEFAULT_LOCALE, // 預設語系
-    strategy: NODE_ENV === 'production' ? 'prefix_and_default' : 'prefix_except_default', // 預設語系也產出 static
+    strategy: 'prefix_and_default', // 預設語系也產出 static
     locales: String(MIX_SUPPORTS_LOCALES).split(','), // 語系列表
     // useI18n
     vueI18n: './vue-i18n.config',

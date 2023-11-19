@@ -29,7 +29,7 @@ export default defineConfig({
       paths: {
         [`${MIX_ASSETS_URL}`]: path.resolve('../communal/static/assets'),
         [`${MIX_BASE_URL}/react`]: path.resolve('../../about-me-mix/react'),
-        [`${MIX_BASE_URL}/nuxt3`]: path.resolve('../../about-me-mix/nuxt3'),
+        [`${MIX_BASE_URL}/vue`]: path.resolve('../../about-me-mix/vue'),
       },
     }),
   ],

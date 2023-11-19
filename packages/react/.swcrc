@@ -1,7 +1,0 @@
-{
-  "env": {
-    "targets": {
-      "targets": "> 0.25%, not dead"
-    }
-  },
-}

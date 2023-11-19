@@ -1,7 +1,7 @@
 import adapter from '@sveltejs/adapter-static'
 import { vitePreprocess } from '@sveltejs/kit/vite'
 
-const { MIX_MENU_LINK_SVELTE, MIX_SUPPORTS_LOCALES, MIX_ASSETS_URL } = process.env
+const { MIX_MENU_LINK_SVELTE, MIX_ASSETS_URL } = process.env
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
