@@ -1,4 +1,4 @@
-# Next 13
+# Next 14
 
 > `Next 14` + `Style: UnoCSS` + `i18n: next-i18next + i18next + react-i18next` + `Store: zustand`
 
