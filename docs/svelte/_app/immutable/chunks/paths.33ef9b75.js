@@ -1,1 +1,0 @@
-var s,e;const l=(e=(s=globalThis.__sveltekit_1r8h1jk)==null?void 0:s.base)!=null?e:"/about-me-mix/svelte";var t,a;const b=(a=(t=globalThis.__sveltekit_1r8h1jk)==null?void 0:t.assets)!=null?a:l;export{b as a,l as b};
