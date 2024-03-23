@@ -12,11 +12,11 @@
 
 ## 框架
 
-> [Nuxt 3](./projects/nuxt3/README.md)
+> [Nuxt v3 + Vue3](./projects/nuxt3/README.md)
 
-> [Next 14](./projects/next14/README.md)
+> [Next v14 + Page Router](./projects/next14/README.md)
 
-> [SvelteKit 4](./projects/svelte-kit4/README.md)
+> [SvelteKit v2 + Svelte v4](./projects/svelte-kit2/README.md)
 
 ## Develop
 
@@ -25,9 +25,28 @@
 yarn dev
 # or
 yarn workspace @about-me-mix/nuxt3 dev
-yarn workspace @about-me-mix/svelte-kit4 dev
+yarn workspace @about-me-mix/svelte-kit2 dev
 yarn workspace @about-me-mix/next14 dev
 ```
+
+## Build
+
+```sh
+yarn build
+```
+
+## Start Service
+
+- `任意 Port`
+
+```sh
+# 3000 port example
+http-server . -p 3000
+# or
+anywhere -p 3000
+```
+
+- `http://localhost:3000/about-me-mix`
 
 ## 檔案結構
 
@@ -39,7 +58,7 @@ about-me-mix
 ├── projects
 │   ├── communal      # 共用的資源或程式
 │   ├── next14        # Next 14
-│   ├── svelte-kit4   # Svelte Kit 4
+│   ├── svelte-kit2   # Svelte Kit 4
 │   └── nuxt3         # Nuxt 3
 │
 └── README.md         # 當前位置
