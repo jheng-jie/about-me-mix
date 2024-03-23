@@ -2,10 +2,9 @@
   import { t, locale } from '$lib/i18n'
   import SwitchLanguage from './components/switch-language/index.svelte'
   import DarkMode from './components/dark-mode/index.svelte'
-  import { env } from '$env/dynamic/public'
+  import { MIX_GIT_PATH, MIX_MENU_LINK_SVELTE, MIX_MENU_LINK_VUE, MIX_MENU_LINK_REACT } from '$env/static/public'
   import { base } from '$app/paths'
   import { page } from '$app/stores'
-  const { MIX_GIT_PATH, MIX_MENU_LINK_SVELTE, MIX_MENU_LINK_VUE, MIX_MENU_LINK_REACT } = env
 
   // 跳轉
   const push = (path: string) => (location.href = path + $page.url.pathname.replace(MIX_MENU_LINK_SVELTE, ''))
@@ -51,7 +50,7 @@
     <div class="max-w-256 w-full h-full flex justify-between mx-auto relative z-10 px-2 md:px-3">
       <!--title-->
       <div class="flex items-center">
-        <a href={env.MIX_GIT_PATH} target="_black" class="font-medium text-4 leading-10 lg:leading-12 flex items-center sm:mr-3" aria-label="github">
+        <a href={MIX_GIT_PATH} target="_black" class="font-medium text-4 leading-10 lg:leading-12 flex items-center sm:mr-3" aria-label="github">
           <svg class="w-auto h-7 md:h-8 mr-2" width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
               class="fill-#1B1F23 dark:fill-#fefddd"
@@ -71,11 +70,11 @@
           <!--divide-->
           <div class="w-full md:w-0.5 h-0.5 mb-2 md:mb-0 md:h-4 mt-2 md:mt-0 md:mx-3 bg-gray-100 dark:bg-zinc-700" />
           <!--framework-->
-          <button on:keyup={() => false} on:click={() => push(MIX_MENU_LINK_VUE)} class="cursor-pointer h-10 lg:h-12  mx-3 relative group">
+          <button on:keyup={() => false} on:click={() => push(MIX_MENU_LINK_VUE)} class="cursor-pointer h-10 lg:h-12 mx-3 relative group">
             Vue
             <span class="hidden md:inline-block bg-emerald-500 h-0 group-hover:h-1 w-7 transition-height rounded-t-2 absolute bottom-0 left-1/2 -translate-x-1/2" />
           </button>
-          <button on:keyup={() => false} on:click={() => push(MIX_MENU_LINK_REACT)} class="cursor-pointer h-10 lg:h-12  mx-3 relative group">
+          <button on:keyup={() => false} on:click={() => push(MIX_MENU_LINK_REACT)} class="cursor-pointer h-10 lg:h-12 mx-3 relative group">
             React
             <span class="hidden md:inline-block bg-sky-500 h-0 group-hover:h-1 w-7 transition-height rounded-t-2 absolute bottom-0 left-1/2 -translate-x-1/2" />
           </button>

@@ -6,7 +6,7 @@ source $(dirname "$0")/unit.sh
 echo '------ build start ------\n'
 
 # menu list
-menu=(all nuxt3 svelte-kit4 next14)
+menu=(all nuxt3 svelte-kit2 next14)
 
 # select
 echo "Select one env using up/down keys and enter to confirm:"
@@ -45,9 +45,9 @@ if [ "$target" = "all" ] || [ "$target" = "nuxt3" ]; then
 fi
 
 # vite svelte
-if [ "$target" = "all" ] || [ "$target" = "svelte-kit4" ]; then
+if [ "$target" = "all" ] || [ "$target" = "svelte-kit2" ]; then
   echo '--- svelte kit 4 ---\n'
   rm -rf ./$dist/svelte
-  yarn workspace @about-me-mix/svelte-kit4 build
-  mv ./projects/svelte-kit4/output ./$dist/svelte
+  yarn workspace @about-me-mix/svelte-kit2 build
+  mv ./projects/svelte-kit2/output ./$dist/svelte
 fi

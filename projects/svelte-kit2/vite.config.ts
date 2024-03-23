@@ -23,7 +23,7 @@ export default defineConfig({
 
   plugins: [
     // Svelte Kit
-    sveltekit() as any,
+    sveltekit(),
     // 自製靜態目錄代理
     StaticServicePlugin({
       paths: {

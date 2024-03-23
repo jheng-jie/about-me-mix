@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "nuxt3": "yarn workspace @about-me-mix/nuxt3 dev",
-    "svelte-kit4": "yarn workspace @about-me-mix/svelte-kit4 dev",
+    "svelte-kit2": "yarn workspace @about-me-mix/svelte-kit2 dev",
     "next14": "yarn workspace @about-me-mix/next14 dev",
     "dev": "sh ./shell/dev.sh",
     "build": "sh ./shell/build.sh",
@@ -26,5 +26,8 @@
     "twgl.js": "^5.3.0",
     "typescript": "^5.2.2",
     "unocss": "^0.57.5"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^3.0.2"
   }
 }

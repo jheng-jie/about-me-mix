@@ -1,5 +1,5 @@
 import type { LayoutLoad } from '../../.svelte-kit/types/src/routes/$types'
-import { env } from '$env/dynamic/public'
+import { MIX_DEFAULT_LOCALE } from '$env/static/public'
 import { loadTranslations, locale, locales } from '$lib/i18n'
 import { base } from '$app/paths'
 
@@ -13,7 +13,7 @@ export const trailingSlash = 'always'
 export const load: LayoutLoad = async ({ url }) => {
   const { pathname } = url
   const pathLocale = pathname.replace(base, '')?.match?.(/^\/(\w{2})\/?/)?.[1] || ''
-  const lang = locales.get().includes(pathLocale) ? pathLocale : env.MIX_DEFAULT_LOCALE
+  const lang = locales.get().includes(pathLocale) ? pathLocale : MIX_DEFAULT_LOCALE
   locale.update(() => lang)
   await loadTranslations(lang, pathname)
 }

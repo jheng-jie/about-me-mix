@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { env } from '$env/dynamic/public'
+  import { MIX_ASSETS_URL } from '$env/static/public'
   import { state, switchDarkMode } from '@/stores/initialize'
 
   $: dark = $state.dark
@@ -9,8 +9,8 @@
   <div class="w-full h-6 rounded-full relative">
     <div class:ml-4.5={dark} class="transition-all group-hover:scale-110 dark:bg-#1d1c19 w-6 h-6 bg-gray-50 overflow-hidden rounded-full shadow-md inline-block ml-4.5">
       <div class="w-6 h-6">
-        <img src={`${env.MIX_ASSETS_URL}/icon/sun.svg`} alt="" class:-mt-4={dark} class={`w-4 h-4 m-1 transition-margin -mt-4`} />
-        <img src={`${env.MIX_ASSETS_URL}/icon/moon.svg`} alt="" class="w-4 h-4 m-1" />
+        <img src={`${MIX_ASSETS_URL}/icon/sun.svg`} alt="" class:-mt-4={dark} class={`w-4 h-4 m-1 transition-margin -mt-4`} />
+        <img src={`${MIX_ASSETS_URL}/icon/moon.svg`} alt="" class="w-4 h-4 m-1" />
       </div>
     </div>
   </div>

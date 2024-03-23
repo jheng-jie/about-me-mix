@@ -3,7 +3,7 @@
   import { state } from '../../../../stores/initialize'
   import { t } from '$lib/i18n'
   import useProgress from '../../hook/use-progress'
-  import { env } from '$env/dynamic/public'
+  import { MIX_ASSETS_URL } from '$env/static/public'
 
   // progress data
   export let index = 0
@@ -16,8 +16,8 @@
     createShaderTween(container?.querySelector('canvas'), {
       bg: '#27272a',
       bg2: '#e11d48',
-      noise: `${env.MIX_ASSETS_URL}/noise.jpg`,
-      noise2: `${env.MIX_ASSETS_URL}/noise2.jpg`,
+      noise: `${MIX_ASSETS_URL}/noise.jpg`,
+      noise2: `${MIX_ASSETS_URL}/noise2.jpg`,
     }).then(tween => {
       shader?.kill()
       shader = tween

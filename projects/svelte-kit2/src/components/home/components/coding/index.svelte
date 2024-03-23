@@ -3,7 +3,7 @@
   import { t } from '$lib/i18n'
   import { createCodingTween } from '@about-me-mix/communal/src/coding'
   import useProgress from '../../hook/use-progress'
-  import { env } from '$env/dynamic/public'
+  import { MIX_ASSETS_URL } from '$env/static/public'
   import '@about-me-mix/communal/src/coding/style.scss'
 
   // progress data
@@ -30,7 +30,7 @@
     <!--dialogue-->
     <div class="flex items-center justify-center flex-col lg:flex-row pt-18 lg:pt-5 pb-7 lg:pb-5 flex-shrink-0 w-full">
       <!--icon-->
-      <img src={`${env.MIX_ASSETS_URL}/avatar.png`} alt="" class="w-20 h-20 mb-3 lg:mb-0 lg:w-30 lg:h-30 shadow-lg rounded-full" />
+      <img src={`${MIX_ASSETS_URL}/avatar.png`} alt="" class="w-20 h-20 mb-3 lg:mb-0 lg:w-30 lg:h-30 shadow-lg rounded-full" />
       <!--message-->
       <div class="flex-shrink-0 max-w-100 flex-none lg:flex-1 lg:ml-10 text-4 lg:text-5 relative">
         <p class="coding__dialogue origin-top lg:origin-left bg-white rounded-3 shadow-lg px-3 lg:px-5 leading-10 lg:leading-16 inline-block" data-step="0">

@@ -2,15 +2,15 @@
   import { fade } from 'svelte/transition'
   import { locales, locale } from '$lib/i18n'
   import { goto } from '$app/navigation'
-  import { env } from '$env/dynamic/public'
+  import { MIX_ASSETS_URL } from '$env/static/public'
 
   let clazz = ''
   export { clazz as class }
 
   // icon
   const iconMap = new Map([
-    ['en', `${env.MIX_ASSETS_URL}/lang/en-US.png`],
-    ['zh', `${env.MIX_ASSETS_URL}/lang/zh-CHT.png`],
+    ['en', `${MIX_ASSETS_URL}/lang/en-US.png`],
+    ['zh', `${MIX_ASSETS_URL}/lang/zh-CHT.png`],
   ])
   let icon
   $: {

@@ -2,7 +2,7 @@
   import Repeat from './component/repeat.svelte'
   import useProgress from '../../hook/use-progress'
   import { t } from '$lib/i18n'
-  import { env } from '$env/dynamic/public'
+  import { MIX_ASSETS_URL } from '$env/static/public'
 
   // progress data
   export let index = 0
@@ -26,7 +26,7 @@
       <!--mask-->
       <div class="absolute top-0 left-0 w-full h-full overflow-hidden">
         <!--box-->
-        <div style:background-image={index === 1 ? `url(${env.MIX_ASSETS_URL}/polygon-white.jpg)` : ''} class={`${index === 1 ? 'dark:brightness-75 transition-all' : ''} h-100vh w-full flex flex-col items-center justify-center font-medium text-4 lg:text-5 bg-center bg-cover`}>
+        <div style:background-image={index === 1 ? `url(${MIX_ASSETS_URL}/polygon-white.jpg)` : ''} class={`${index === 1 ? 'dark:brightness-75 transition-all' : ''} h-100vh w-full flex flex-col items-center justify-center font-medium text-4 lg:text-5 bg-center bg-cover`}>
           <!--icon-->
           <svg class={`w-auto h-28 lg:h-40 mb-4 lg:mb-6 ${index ? 'fill-#fb3c01' : 'fill-white dark:fill-#fefddd'}`} viewBox="0 0 24 24" role="img" xmlns="http://www.w3.org/2000/svg">
             <path

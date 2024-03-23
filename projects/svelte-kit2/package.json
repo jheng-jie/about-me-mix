@@ -1,5 +1,5 @@
 {
-  "name": "@about-me-mix/svelte-kit4",
+  "name": "@about-me-mix/svelte-kit2",
   "version": "0.0.1",
   "scripts": {
     "dev": "vite dev",
@@ -13,7 +13,7 @@
     "@neoconfetti/svelte": "^1.0.0",
     "@sveltejs/adapter-auto": "^2.0.0",
     "@sveltejs/adapter-static": "^2.0.3",
-    "@sveltejs/kit": "^1.27.4",
+    "@sveltejs/kit": "^2.5.4",
     "@types/cookie": "^0.5.1",
     "sass": "^1.69.5",
     "svelte": "^4.0.5",

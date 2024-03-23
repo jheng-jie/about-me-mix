@@ -1,11 +1,11 @@
 import { redirect } from '@sveltejs/kit'
 import { base } from '$app/paths'
-import { env } from '$env/dynamic/public'
+import { MIX_DEFAULT_LOCALE } from '$env/static/public'
 
 /**
  * @desc 重定向
  */
 export function load() {
   // 首頁導向
-  throw redirect(302, `${base}/${env.MIX_DEFAULT_LOCALE}/home/`)
+  throw redirect(302, `${base}/${MIX_DEFAULT_LOCALE}/home/`)
 }

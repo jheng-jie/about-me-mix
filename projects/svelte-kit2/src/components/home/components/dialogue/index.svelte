@@ -2,7 +2,7 @@
   import { createDialogueTween } from '@about-me-mix/communal/src/dialogue'
   import { t } from '$lib/i18n'
   import useProgress from '../../hook/use-progress'
-  import { env } from '$env/dynamic/public'
+  import { MIX_ASSETS_URL } from '$env/static/public'
 
   // progress data
   export let index = 0
@@ -35,7 +35,7 @@
         <div class="absolute animate-ping rounded-full w-full h-full bg-zinc-700 animate-delay-0.1s animate-duration-3s" />
         <div class="absolute animate-ping rounded-full w-full h-full bg-zinc-600 animate-delay-0.3s animate-duration-3s" />
         <div class="absolute animate-ping rounded-full w-full h-full bg-zinc-500 animate-delay-0.5s animate-duration-3s" />
-        <img src={`${env.MIX_ASSETS_URL}/avatar.png`} alt="" class="w-full h-full relative z-10" />
+        <img src={`${MIX_ASSETS_URL}/avatar.png`} alt="" class="w-full h-full relative z-10" />
       </div>
     </div>
     <!--dialogue-->
