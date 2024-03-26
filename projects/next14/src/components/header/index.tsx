@@ -52,7 +52,7 @@ export default () => {
     () => (
       <>
         {/*top progress*/}
-        <div ref={progress} className="top-0 absolute h-0.75 rounded-r w-0 bg-sky-500" />
+        <div ref={progress} className="fixed top-0 h-0.75 rounded-r w-0 bg-sky-500 z-60" />
 
         <div ref={header} className="fixed w-full top-0 z-50 h-10 lg:h-12 shadow-lg bg-#ffffff dark:bg-#1d1c19 dark:color-#fefddd transition-all">
           <div className="max-w-256 w-full h-full flex justify-between mx-auto relative z-10 px-2 md:px-3">
