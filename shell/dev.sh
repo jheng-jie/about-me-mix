@@ -4,7 +4,7 @@
 source $(dirname "$0")/unit.sh
 
 # menu list
-menu=(nuxt3 svelte-kit2 next14)
+menu=(nuxt3 svelte-kit2 next14 angular17)
 
 # select
 echo "Select one env using up/down keys and enter to confirm:"

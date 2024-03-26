@@ -1,0 +1,7 @@
+{
+  "/about-me-mix": {
+    "target": "http://localhost:4199",
+    "secure": false,
+    "changeOrigin": true
+  }
+}
