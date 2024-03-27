@@ -1,8 +1,8 @@
 import { Component } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { map, Observable } from 'rxjs'
-import { environment } from '../../../environments/environment'
-import { StoreService } from '../../../stores/store.service'
+import { environment } from '@/environments/environment'
+import { StoreService } from '@/stores/store.service'
 
 @Component({
   selector: 'dark-mode',

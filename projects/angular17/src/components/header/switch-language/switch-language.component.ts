@@ -1,9 +1,9 @@
 import { Component } from '@angular/core'
-import { environment } from '../../../environments/environment'
+import { environment } from '@/environments/environment'
 import { animate, state, style, transition, trigger, AnimationEvent } from '@angular/animations'
 import { CommonModule } from '@angular/common'
-import { LocaleIconMap, Locales } from '../../../lib/constant'
-import { StoreService } from '../../../stores/store.service'
+import { LocaleIconMap, Locales } from '@/lib/constant'
+import { StoreService } from '@/stores/store.service'
 
 @Component({
   selector: 'app-switch-language',

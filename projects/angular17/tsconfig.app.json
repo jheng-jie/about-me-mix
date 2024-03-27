@@ -3,7 +3,11 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "./out-tsc/app",
-    "types": ["node", "@angular/localize"]
+    "types": ["node", "@angular/localize"],
+    "paths": {
+      "@about-me-mix/communal/*": ["../communal/*"],
+      "@/*": ["./src/*"]
+    }
   },
   "files": ["src/main.ts", "src/main.server.ts", "server.ts"],
   "include": ["src/**/*.d.ts", "../communal/**/*"]

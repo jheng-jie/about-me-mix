@@ -6,9 +6,9 @@ import { ExperienceComponent } from './components/experience/experience.componen
 import { CodingComponent } from './components/coding/coding.component'
 import { ShaderComponent } from './components/shader/shader.component'
 import { ElementPositionProgress, getChildrenRect, getElementProgressData } from '@about-me-mix/communal/store/section-progress'
-import { environment } from '../../environments/environment'
+import { environment } from '@/environments/environment'
 import { ProgressService } from './service/progress.service'
-import { StoreService } from '../../stores/store.service'
+import { StoreService } from '@/stores/store.service'
 
 @Component({
   selector: 'app-home',

@@ -1,9 +1,9 @@
 import { Component, ElementRef, HostListener, ViewChild } from '@angular/core'
-import { environment } from '../../environments/environment'
+import { environment } from '@/environments/environment'
 import { CommonModule } from '@angular/common'
 import { DarkModeComponent } from './dark-mode/dark-mode.component'
 import { SwitchLanguageComponent } from './switch-language/switch-language.component'
-import { StoreService } from '../../stores/store.service'
+import { StoreService } from '@/stores/store.service'
 
 @Component({
   selector: 'app-header',

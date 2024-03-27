@@ -1,4 +1,4 @@
-import { environment } from '../environments/environment'
+import { environment } from '@/environments/environment'
 
 export const LocaleIconMap = new Map([
   ['en', `${environment.MIX_ASSETS_URL}/lang/en-US.png`],

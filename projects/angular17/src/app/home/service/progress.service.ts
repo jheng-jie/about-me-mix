@@ -1,6 +1,6 @@
 import { Injectable, signal, WritableSignal } from '@angular/core'
 import { ElementPositionProgress } from '@about-me-mix/communal/store/section-progress'
-import { environment } from '../../../environments/environment'
+import { environment } from '@/environments/environment'
 
 @Injectable({
   providedIn: 'root',
