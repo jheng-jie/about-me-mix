@@ -31,7 +31,7 @@ export class StoreService {
    */
   initialize() {
     if (typeof window === 'undefined') return
-    window.addEventListener('resize', throttle(this.resetScreenSize, 333, { leading: true, trailing: true }))
+    window.addEventListener('resize', throttle(this.resetScreenSize.bind(this), 333, { leading: true, trailing: true }))
     this.resetScreenSize()
     this.switchDarkMode(GetDarkStorage())
   }

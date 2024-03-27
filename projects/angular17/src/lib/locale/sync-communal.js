@@ -22,7 +22,7 @@ function flattenJson(obj, parentKey = '') {
           acc[arrayKey] = item
         })
       } else {
-        acc[newKey] = value
+        acc[newKey] = value.replace(/\{0}/, 'Angular')
       }
       return acc
     },

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core'
 import { environment } from '../../../environments/environment'
-import { animate, state, style, transition, trigger } from '@angular/animations'
+import { animate, state, style, transition, trigger, AnimationEvent } from '@angular/animations'
 import { CommonModule } from '@angular/common'
 import { LocaleIconMap, Locales } from '../../../lib/constant'
 import { StoreService } from '../../../stores/store.service'
@@ -66,5 +66,19 @@ export class SwitchLanguageComponent {
   onLocaleSelect(event: MouseEvent, locale: string) {
     this.onDropdownToggle(event, false)
     location.replace(`${environment.MIX_MENU_LINK_ANGULAR}/${locale}/home`)
+  }
+
+  // Main Dom
+  display: string = 'none'
+
+  /**
+   * @desc 動畫狀態
+   */
+  onAnimation(event: AnimationEvent) {
+    if (event.toState === 'open' && event.phaseName === 'start') {
+      this.display = 'block'
+    } else if (event.toState === 'closed' && event.phaseName === 'done') {
+      this.display = 'none'
+    }
   }
 }

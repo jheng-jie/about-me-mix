@@ -1,2 +1,5 @@
-<div class="h-130 flex items-center justify-center">{{ position | json }}</div>
-<p>opening works!</p>
+<section class="h-200vh w-full relative">
+  <div #container class="sticky top-0 left-0 h-100vh w-full">
+    <app-content *ngFor="let index of repeat" [index]="index"></app-content>
+  </div>
+</section>

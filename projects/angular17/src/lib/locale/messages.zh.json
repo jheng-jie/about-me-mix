@@ -1,13 +1,13 @@
 {
   "locale": "zh",
   "translations": {
-    "website.title": "{0} - SSG 混合框架測試",
-    "website.description": "React, Vue, Svelte 靜態站點測試 {0}",
+    "website.title": "Angular - SSG 混合框架測試",
+    "website.description": "React, Vue, Svelte 靜態站點測試 Angular",
     "header.title": "About Me",
     "section.opening.title": "歡迎來到我的自介網頁",
     "section.opening.desc": "這裡展示了一個獨特的設計",
     "section.opening.desc2": "無論您選擇哪個框架都能體驗到一致效果",
-    "section.opening.target": "目前您所見的是使用 {0} 框架打造的版本。",
+    "section.opening.target": "目前您所見的是使用 Angular 框架打造的版本。",
     "section.dialogue[0]": "您好，我是 Jie",
     "section.dialogue[1]": "專業的前端 Web 工程師",
     "section.dialogue[2]": "擁有 8 年豐富的開發經驗，其中包括 3 年的全棧技能。",

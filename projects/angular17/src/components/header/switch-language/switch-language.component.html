@@ -4,7 +4,7 @@
   <!--mask-->
   <button *ngIf="show" (click)="onDropdownToggle($event, false)" class="fixed left-0 top-0 w-full h-full z-0"></button>
   <!--dropdown-->
-  <div [@openClose]="show ? 'open' : 'closed'" class="absolute top-0 left-1/2 -translate-x-1/2 pt-12 md:pt-11 lg:pt-12 z-10 w-12">
+  <div (@openClose.start)="onAnimation($event)" (@openClose.done)="onAnimation($event)" [@openClose]="show ? 'open' : 'closed'" [ngStyle]="{ display }" class="absolute top-0 left-1/2 -translate-x-1/2 pt-12 md:pt-11 lg:pt-12 z-10 w-12">
     <div class="bg-white rounded-1.5 py-1 shadow-md">
       <ng-container *ngFor="let locale of locales">
         <button (click)="onLocaleSelect($event, locale)" class="hover:bg-gray-200 transition-colors p-1.5">
