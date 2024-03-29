@@ -10,6 +10,23 @@
 
 > [GitHub Page](https://jheng-jie.github.io/about-me-mix/react/zh/home/)
 
+## 快速比較
+
+|               | Vue                      | React                                | Svelte                         | Angular                          |
+| ------------- |--------------------------| ------------------------------------ | ------------------------------ | -------------------------------- |
+|               | ![vue](./assets/vue.jpg) | ![react](./assets/react.jpg)         | ![svelte](./assets/svelte.jpg) | ![angular](./assets/angular.jpg) |
+| Server        | Nuxt 3                   | Next 14                              | SvelteKit 2                    | Angular 17                       |
+| Store         | Pinia                    | Zustand                              | svelte/store                   | Signal                           |
+| i18n          | @nuxtjs/i18n             | i18next, next-i18next, react-i18next | sveltekit-i18n                 | @angular/localize                |
+| CSS           | sass                     | sass                                 | sass                           | sass                             |
+| Atomic        | @unocss/postcss          | @unocss/postcss                      | @unocss/postcss                | UnoCSS CLI                       |
+| Difficulty    | Low                      | Medium                               | Low                            | High                             |
+| Learning      | Easy                     | Medium                               | Easy                           | Hard                             |
+| Compatibility | Low                      | High                                 | Low                            | Low                              |
+| Build         | Vite                     | Webpack                              | Vite                           | ESBuild                          |
+| Bundle Size   | 182 kB / 971 kB          | 218 kB / 1.2 MB                      | 125 kB / 910 kB                | 201 kB / 993 kB                  |
+  
+
 ## 框架
 
 - `node 18.18+`
@@ -71,16 +88,3 @@ about-me-mix
 │
 └── README.md         # 當前位置
 ```
-
-## 快速比較
-
-|             | Vue                      | React                                | Svelte                         | Angular                          |
-| ----------- | ------------------------ | ------------------------------------ | ------------------------------ | -------------------------------- |
-|             | ![vue](./assets/vue.jpg) | ![react](./assets/react.jpg)         | ![svelte](./assets/svelte.jpg) | ![angular](./assets/angular.jpg) |
-| Difficulty  | Low                      | Medium                               | Low                            | High                             |
-| Store       | Pinia                    | Zustand                              | svelte/store                   | Signal                           |
-| i18n        | @nuxtjs/i18n             | i18next, next-i18next, react-i18next | sveltekit-i18n                 | @angular/localize                |
-| CSS         | sass                     | sass                                 | sass                           | sass                             |
-| Atomic      | @unocss/postcss          | @unocss/postcss                      | @unocss/postcss                | UnoCSS CLI                       |
-| Build       | Vite                     | Webpack                              | Vite                           | ESBuild                          |
-| Bundle Size | 182 kB / 971 kB          | 218 kB / 1.2 MB                      | 125 kB / 910 kB                | 201 kB / 993 kB                  |
