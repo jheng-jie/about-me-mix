@@ -1,27 +1,26 @@
 # Angular17
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.1.
+> `Angular 17` + `Style: UnoCSS` + `i18n: @angular/localize` + `Store: Service + Signal`
 
-## Development server
+## Develop
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+```sh
+yarn dev
+```
 
-## Code scaffolding
+## Build SSG
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```sh
+yarn build
+# ouput: ./dist/angular17/browser
+```
 
-## Build
+## Note
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+1. 無法覆蓋開發服務，需要自啟 static 代理服務
 
-## Running unit tests
+2. 無法結合 UnoCSS 進行開發，需要結合 UnoCSS CLI
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+3. 語系無法共用 JSON，需要再轉譯
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+4. 語系在編譯階段必須指定，無法動態切換

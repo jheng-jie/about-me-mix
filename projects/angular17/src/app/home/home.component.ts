@@ -8,6 +8,7 @@ import { ShaderComponent } from './components/shader/shader.component'
 import { ElementPositionProgress, getChildrenRect, getElementProgressData } from '@about-me-mix/communal/store/section-progress'
 import { environment } from '@/environments/environment'
 import { ProgressService } from './service/progress.service'
+import { Meta, Title } from '@angular/platform-browser'
 
 @Component({
   selector: 'app-home',
@@ -23,8 +24,13 @@ export class HomeComponent {
   // onScroll
   onScrollClear?: () => void
 
-  constructor(public progress: ProgressService) {
+  constructor(public progress: ProgressService, private metaTagService: Meta, private titleService: Title) {
     this.env = environment
+  }
+
+  ngOnInit() {
+    this.titleService.setTitle($localize`:@@website.title:website.title`)
+    this.metaTagService.addTag({ name: 'description', content: $localize`:@@website.description:website.title` })
   }
 
   ngOnDestroy() {

@@ -58,4 +58,5 @@ if [ "$target" = "all" ] || [ "$target" = "angular17" ]; then
   rm -rf ./$dist/angular
   yarn workspace @about-me-mix/angular17 build
   mv ./projects/angular17/dist/angular17/browser ./$dist/angular
+  echo '<script>location.href="/about-me-mix/angular/zh/home/";</script><meta http-equiv="refresh" content="0;url=/about-me-mix/angular/zh/home/">' > ./$dist/angular/index.html
 fi

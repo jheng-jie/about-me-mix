@@ -1,0 +1,138 @@
+.coding__code-box {
+  display: inline;
+
+  i {
+    display: inline-block;
+    font-style: normal;
+  }
+  b {
+    display: inline-block;
+    width: 0;
+
+    &:before {
+      content: '';
+    }
+  }
+  p,
+  i {
+    height: 1.25rem;
+    width: -moz-fit-content;
+    width: fit-content;
+    overflow: hidden;
+    white-space: nowrap;
+    vertical-align: top;
+    line-height: 1.25rem;
+    @media (min-width: 1024px) {
+      height: 1.5rem;
+      line-height: 1.5rem;
+    }
+
+    &[data-show] {
+      display: block;
+      max-height: 0;
+    }
+  }
+  $orange: 'export', 'function', 'string', 'number', 'let', 'if', 'return';
+  @each $key in $orange {
+    [data-#{$key}] {
+      &:before {
+        color: #f97316;
+        content: $key;
+      }
+    }
+  }
+  [data-test] {
+    &:after {
+      color: #eab308;
+      content: 'test';
+    }
+  }
+  [data-length] {
+    &:after {
+      color: #a78bfa;
+      content: 'length';
+    }
+  }
+  [data-y] {
+    color: #eab308;
+  }
+  [data-b] {
+    color: #38bdf8;
+  }
+  [data-g] {
+    color: #10b981;
+  }
+  // 前空白
+  [data-l] {
+    &:before {
+      content: '';
+      display: inline-block;
+      width: 0.25rem;
+    }
+  }
+  // 尾空白
+  [data-r] {
+    &:after {
+      content: '';
+      display: inline-block;
+      width: 0.25rem;
+    }
+  }
+  // 等於
+  [data-eq] {
+    &:before {
+      content: '=';
+      margin-left: 0.25rem;
+      margin-right: 0.25rem;
+      display: inline-block;
+      --tw-text-opacity: 1;
+      color: rgb(255 255 255 / var(--tw-text-opacity));
+    }
+  }
+  // 加等於
+  [data-aeq] {
+    &:before {
+      content: '+=';
+      margin-left: 0.25rem;
+      margin-right: 0.25rem;
+      display: inline-block;
+      --tw-text-opacity: 1;
+      color: rgb(255 255 255 / var(--tw-text-opacity));
+    }
+  }
+  // 小於
+  [data-lt] {
+    &:before {
+      content: '<';
+      margin-left: 0.25rem;
+      margin-right: 0.25rem;
+      --tw-text-opacity: 1;
+      color: rgb(255 255 255 / var(--tw-text-opacity));
+    }
+  }
+  // 逗號
+  [data-co] {
+    &:after {
+      content: ',';
+      margin-right: 0.25rem;
+      --tw-text-opacity: 1;
+      color: rgb(255 255 255 / var(--tw-text-opacity));
+    }
+  }
+  // 斜線註解
+  [data-mark] {
+    color: #6b7280;
+    &:before {
+      content: '//';
+      margin-right: 0.25rem;
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .coding__code-box p,
+  .coding__code-box i {
+    height: 1.5rem;
+    line-height: 1.5rem;
+  }
+}
