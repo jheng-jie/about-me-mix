@@ -12,6 +12,10 @@
 
 ## 框架
 
+- `node 18.18+`
+
+- `yarn 1.2+`
+
 > [Nuxt v3 + Vue3](./projects/nuxt3/README.md)
 
 > [Next v14 + Page Router](./projects/next14/README.md)
@@ -80,4 +84,3 @@ about-me-mix
 | Atomic      | @unocss/postcss          | @unocss/postcss                      | @unocss/postcss                | UnoCSS CLI                       |
 | Build       | Vite                     | Webpack                              | Vite                           | ESBuild                          |
 | Bundle Size | 182 kB / 971 kB          | 218 kB / 1.2 MB                      | 125 kB / 910 kB                | 201 kB / 993 kB                  |
-

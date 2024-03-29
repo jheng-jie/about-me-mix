@@ -13,46 +13,21 @@
       "desc2": "osUuigcdtGrJbtffuB",
       "target": "WXxQDYdZN {0} ALgtpZP。"
     },
-    "dialogue": [
-      "Xr，Hp Jie",
-      "WPKNY Web vki",
-      "cY 8 AWZuRNsG，HIxw 3 KcffHi。"
-    ],
+    "dialogue": ["Xr，Hp Jie", "WPKNY Web vki", "cY 8 AWZuRNsG，HIxw 3 KcffHi。"],
     "experience": {
       "title": "pTl"
     },
     "coding": {
       "title": "kKFuA",
-      "message": [
-        "mciXWXJMrEjz",
-        "xx Prettier iO",
-        "QXzbulG，EpYs",
-        "mXGEGac",
-        "bE，ERwFROG",
-        "zj，RwOWGaUwp"
-      ],
+      "message": ["mciXWXJMrEjz", "xx Prettier iO", "QXzbulG，EpYs", "mXGEGac", "bE，ERwFROG", "zj，RwOWGaUwp"],
       "desc": "fRhYcT",
       "param": "ZIOQja",
       "return": "0=T, 1=S, 2=m, >=3=s",
-      "comment": [
-        "eIfL",
-        "brMD",
-        "egyDsW",
-        "IkDJSq",
-        "aylacP",
-        "hRNx"
-      ]
+      "comment": ["eIfL", "brMD", "egyDsW", "IkDJSq", "aylacP", "hRNx"]
     }
   },
-  "end": [
-    "zv",
-    "ev",
-    "Bw"
-  ],
-  "team": [
-    "VZ",
-    "Gh"
-  ],
+  "end": ["zv", "ev", "Bw"],
+  "team": ["VZ", "Gh"],
   "experience": {
     "2015": {
       "company": "Qnn",

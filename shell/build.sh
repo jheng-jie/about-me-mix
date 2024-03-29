@@ -46,7 +46,7 @@ fi
 
 # vite svelte
 if [ "$target" = "all" ] || [ "$target" = "svelte-kit2" ]; then
-  echo '--- svelte kit 4 ---\n'
+  echo '--- svelte kit 2 ---\n'
   rm -rf ./$dist/svelte
   yarn workspace @about-me-mix/svelte-kit2 build
   mv ./projects/svelte-kit2/output ./$dist/svelte

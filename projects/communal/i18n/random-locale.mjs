@@ -35,7 +35,9 @@ const deepRandomValue = data => {
         break
       }
       case 'string': {
-        result[key] = Array.from(deepData).map(char => /[\u4E00-\u9FA5]/.test(char) ? randomStr() : char).join('')
+        result[key] = Array.from(deepData)
+          .map(char => (/[\u4E00-\u9FA5]/.test(char) ? randomStr() : char))
+          .join('')
         break
       }
       case 'symbol':

@@ -14,4 +14,3 @@ yarn dev
 yarn generate
 # ouput: ./.output/
 ```
-
