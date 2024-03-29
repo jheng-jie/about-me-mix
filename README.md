@@ -68,6 +68,16 @@ about-me-mix
 └── README.md         # 當前位置
 ```
 
-## 框架比較
+## 快速比較
 
-> TODO
+|             | Vue                      | React                                | Svelte                         | Angular                          |
+| ----------- | ------------------------ | ------------------------------------ | ------------------------------ | -------------------------------- |
+|             | ![vue](./assets/vue.jpg) | ![react](./assets/react.jpg)         | ![svelte](./assets/svelte.jpg) | ![angular](./assets/angular.jpg) |
+| Difficulty  | Low                      | Medium                               | Low                            | High                             |
+| Store       | Pinia                    | Zustand                              | svelte/store                   | Signal                           |
+| i18n        | @nuxtjs/i18n             | i18next, next-i18next, react-i18next | sveltekit-i18n                 | @angular/localize                |
+| CSS         | sass                     | sass                                 | sass                           | sass                             |
+| Atomic      | @unocss/postcss          | @unocss/postcss                      | @unocss/postcss                | UnoCSS CLI                       |
+| Build       | Vite                     | Webpack                              | Vite                           | ESBuild                          |
+| Bundle Size | 182 kB / 971 kB          | 218 kB / 1.2 MB                      | 125 kB / 910 kB                | 201 kB / 993 kB                  |
+

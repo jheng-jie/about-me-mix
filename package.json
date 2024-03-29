@@ -11,7 +11,9 @@
     "angular17": "yarn workspace @about-me-mix/angular17 dev",
     "dev": "sh ./shell/dev.sh",
     "build": "sh ./shell/build.sh",
-    "deploy": "rm -rf ./docs && cp -a ./about-me-mix ./docs"
+    "deploy": "rm -rf ./docs && cp -a ./about-me-mix ./docs",
+    "prettier:check": "prettier --check .",
+    "prettier:write": "prettier --write ."
   },
   "workspaces": [
     "projects/*"

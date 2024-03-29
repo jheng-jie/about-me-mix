@@ -1,0 +1,9 @@
+node_modules/
+**/*node_modules/
+about-me-mix/
+/docs
+**/*dist/
+**/*.angular/
+**/*.next/
+**/*.nuxt/
+**/*.svelte-kit/
