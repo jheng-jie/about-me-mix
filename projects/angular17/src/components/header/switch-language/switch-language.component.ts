@@ -1,4 +1,4 @@
-import { Component } from '@angular/core'
+import { Component, Inject, LOCALE_ID } from '@angular/core'
 import { environment } from '@/environments/environment'
 import { animate, state, style, transition, trigger, AnimationEvent } from '@angular/animations'
 import { CommonModule } from '@angular/common'
@@ -34,6 +34,8 @@ export class SwitchLanguageComponent {
   // 下拉選單
   show: boolean = false
 
+  constructor(@Inject(LOCALE_ID) public locale: string) {}
+
   /**
    * @desc 開關選單
    */
@@ -50,8 +52,9 @@ export class SwitchLanguageComponent {
 
   // 當前語系圖示
   get icon() {
-    return this.iconMap.get('zh')
+    return this.iconMap.get(this.locale) ?? this.iconMap.get('zh')
   }
+
   // 語系列表
   get locales() {
     return Locales
