@@ -8,7 +8,6 @@ import { ShaderComponent } from './components/shader/shader.component'
 import { ElementPositionProgress, getChildrenRect, getElementProgressData } from '@about-me-mix/communal/store/section-progress'
 import { environment } from '@/environments/environment'
 import { ProgressService } from './service/progress.service'
-import { StoreService } from '@/stores/store.service'
 
 @Component({
   selector: 'app-home',
@@ -24,7 +23,7 @@ export class HomeComponent {
   // onScroll
   onScrollClear?: () => void
 
-  constructor(public store: StoreService, public progress: ProgressService) {
+  constructor(public progress: ProgressService) {
     this.env = environment
   }
 

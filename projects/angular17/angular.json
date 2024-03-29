@@ -11,7 +11,7 @@
         }
       },
       "i18n": {
-        "sourceLocale": "null",
+        "sourceLocale": "fr",
         "locales": {
           "en": {
             "translation": "src/lib/locale/messages.en.json"
@@ -55,8 +55,8 @@
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumWarning": "20kb",
+                  "maximumError": "40kb"
                 }
               ],
               "outputHashing": "all"

@@ -1,6 +1,5 @@
-import { Component } from '@angular/core'
+import { Component, effect } from '@angular/core'
 import { CommonModule } from '@angular/common'
-import { map, Observable } from 'rxjs'
 import { environment } from '@/environments/environment'
 import { StoreService } from '@/stores/store.service'
 
@@ -13,11 +12,14 @@ import { StoreService } from '@/stores/store.service'
 })
 export class DarkModeComponent {
   env: typeof environment
-  dark$: Observable<boolean>
+  dark: boolean
 
   constructor(public store: StoreService) {
     this.env = environment
-    this.dark$ = this.store.state$.pipe(map(state => state.dark))
+    this.dark = this.store.state().dark
+    effect(() => {
+      this.dark = this.store.state().dark
+    })
   }
 
   /**

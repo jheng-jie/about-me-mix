@@ -1,6 +1,5 @@
 // src/app/services/store.service.ts
-import { Inject, Injectable, LOCALE_ID } from '@angular/core'
-import { BehaviorSubject } from 'rxjs'
+import { Inject, Injectable, LOCALE_ID, signal, WritableSignal } from '@angular/core'
 import CommunalStore, { GetDarkStorage, SetDarkMode } from '@about-me-mix/communal/store/initialize'
 import throttle from 'lodash-es/throttle'
 
@@ -12,8 +11,7 @@ const initialState: State = CommunalStore.website
   providedIn: 'root',
 })
 export class StoreService {
-  private state = new BehaviorSubject<State>(initialState)
-  state$ = this.state.asObservable()
+  state: WritableSignal<typeof initialState> = signal(initialState)
 
   constructor(@Inject(LOCALE_ID) public locale: string) {
     this.initialize()
@@ -23,7 +21,7 @@ export class StoreService {
    * @desc 取得當前狀態
    */
   get current(): State {
-    return this.state.value
+    return this.state()
   }
 
   /**
@@ -40,8 +38,8 @@ export class StoreService {
    * @desc 設定視窗大小
    */
   resetScreenSize() {
-    this.state.next({
-      ...this.state.value,
+    this.state.set({
+      ...this.state(),
       width: window.innerWidth,
       height: window.innerHeight,
       sizeUpdateTimestamp: Date.now(),
@@ -52,8 +50,8 @@ export class StoreService {
    * @desc 設定日夜
    */
   switchDarkMode(dark: boolean) {
-    this.state.next({
-      ...this.state.value,
+    this.state.set({
+      ...this.state(),
       dark,
     })
     SetDarkMode(dark)

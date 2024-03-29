@@ -1,7 +1,9 @@
-import { Component, effect, Inject, Input } from '@angular/core'
+import { Component, effect, ElementRef, Input, ViewChild } from '@angular/core'
 import { CommonModule } from '@angular/common'
-import { ElementPositionProgress } from '@about-me-mix/communal/store/section-progress'
 import { ProgressService } from '../../service/progress.service'
+import { createShaderTween, TweenShader } from '@about-me-mix/communal/src/shader'
+import { environment } from '@/environments/environment'
+import { StoreService } from '@/stores/store.service'
 
 @Component({
   selector: 'app-shader',
@@ -13,12 +15,48 @@ import { ProgressService } from '../../service/progress.service'
 export class ShaderComponent {
   @Input() index: number = -1
 
-  // 當頁捲軸進度
-  position?: ElementPositionProgress
+  // Main Dom
+  @ViewChild('container') container!: ElementRef
+  @ViewChild('canvas') canvas!: ElementRef
 
-  constructor(public progress: ProgressService) {
+  // Shader Tween
+  shader?: TweenShader
+
+  constructor(public progress: ProgressService, public store: StoreService) {
     effect(() => {
-      this.position = this.progress.progress()?.[this?.index]
+      const { height = 0, hidden = true, progress = 0 } = this.progress.progress()?.[this?.index] ?? {}
+      if (height === 0) return
+      // hidden
+      if (this.container.nativeElement) this.container.nativeElement.style.display = hidden ? 'none' : ''
+      // update tween
+      if (!hidden) this.shader?.progress(progress)
     })
+
+    // 尺寸更新重新繪製
+    let prev = this.store.state().sizeUpdateTimestamp
+    effect(() => {
+      const next = this.store.state().sizeUpdateTimestamp
+      if (next === prev) return
+      prev = next
+      this.shader?.resetSize()
+    })
+  }
+
+  // destroyed
+  ngOnDestroy() {
+    this.shader?.kill()
+  }
+
+  async ngAfterViewInit() {
+    if (typeof window === 'undefined') return
+    if (!this.canvas?.nativeElement) return
+    this.shader = await createShaderTween(this.canvas?.nativeElement, {
+      bg: '#27272a',
+      bg2: '#8b5cf6',
+      noise: `${environment.MIX_ASSETS_URL}/noise.jpg`,
+      noise2: `${environment.MIX_ASSETS_URL}/noise2.jpg`,
+    })
+    const { progress = 0 } = this.progress?.progress()?.[this?.index] ?? {}
+    this.shader?.progress(progress)
   }
 }

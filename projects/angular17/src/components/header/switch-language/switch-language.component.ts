@@ -3,7 +3,6 @@ import { environment } from '@/environments/environment'
 import { animate, state, style, transition, trigger, AnimationEvent } from '@angular/animations'
 import { CommonModule } from '@angular/common'
 import { LocaleIconMap, Locales } from '@/lib/constant'
-import { StoreService } from '@/stores/store.service'
 
 @Component({
   selector: 'app-switch-language',
@@ -34,8 +33,6 @@ import { StoreService } from '@/stores/store.service'
 export class SwitchLanguageComponent {
   // 下拉選單
   show: boolean = false
-
-  constructor(public store: StoreService) {}
 
   /**
    * @desc 開關選單

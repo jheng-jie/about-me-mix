@@ -30,6 +30,11 @@ export class DialogueComponent {
     })
   }
 
+  // destroyed
+  ngOnDestroy() {
+    this.tween?.kill()
+  }
+
   ngAfterViewInit() {
     this.tween = createDialogueTween(this.container?.nativeElement)
   }
