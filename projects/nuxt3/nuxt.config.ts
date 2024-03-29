@@ -68,6 +68,7 @@ export default defineNuxtConfig({
           [`${MIX_ASSETS_URL}`]: path.resolve('../communal/static/assets'),
           [`${MIX_BASE_URL}/react`]: path.resolve('../../about-me-mix/react'),
           [`${MIX_BASE_URL}/svelte`]: path.resolve('../../about-me-mix/svelte'),
+          [`${MIX_BASE_URL}/angular`]: path.resolve('../../about-me-mix/angular'),
         },
       }),
     ],

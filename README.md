@@ -18,6 +18,8 @@
 
 > [SvelteKit v2 + Svelte v4](./projects/svelte-kit2/README.md)
 
+> [Angular v17](./projects/angular17/README.md)
+
 ## Develop
 
 ```sh
@@ -27,6 +29,7 @@ yarn dev
 yarn workspace @about-me-mix/nuxt3 dev
 yarn workspace @about-me-mix/svelte-kit2 dev
 yarn workspace @about-me-mix/next14 dev
+yarn workspace @about-me-mix/angular17 dev
 ```
 
 ## Build
@@ -59,7 +62,8 @@ about-me-mix
 │   ├── communal      # 共用的資源或程式
 │   ├── next14        # Next 14
 │   ├── svelte-kit2   # Svelte Kit 4
-│   └── nuxt3         # Nuxt 3
+│   ├── nuxt3         # Nuxt 3
+│   └── angular17     # Angular 17
 │
 └── README.md         # 當前位置
 ```

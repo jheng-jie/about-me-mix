@@ -5,7 +5,7 @@ import DarkMode from './components/dark-mode/index.vue'
 const route = useRoute()
 const router = useRouter()
 const { locale } = useI18n()
-const { MIX_GIT_PATH, MIX_MENU_LINK_REACT, MIX_MENU_LINK_SVELTE } = useRuntimeConfig().public
+const { MIX_GIT_PATH, MIX_MENU_LINK_REACT, MIX_MENU_LINK_SVELTE, MIX_MENU_LINK_ANGULAR } = useRuntimeConfig().public
 
 /**
  * @desc 跳轉
@@ -70,6 +70,10 @@ watch(locale, () => (toggle.value = false))
           <!--divide-->
           <div class="w-full md:w-0.5 h-0.5 mb-2 md:mb-0 md:h-4 mt-2 md:mt-0 md:mx-3 bg-gray-100 dark:bg-zinc-700" />
           <!--framework-->
+          <button @click="goto(MIX_MENU_LINK_ANGULAR)" class="cursor-pointer h-10 lg:h-12 mx-3 relative group">
+            Angular
+            <span class="hidden md:inline-block bg-purple-500 dark:bg-purple-400 h-0 group-hover:h-1 w-7 transition-height rounded-t-2 absolute bottom-0 left-1/2 -translate-x-1/2" />
+          </button>
           <button @click="push(localePath('/home/'))" :class="{ 'color-emerald-500': /\/home(\/?)/.test(route.path) }" class="cursor-pointer h-10 lg:h-12 mx-3 relative group">
             Vue
             <span class="hidden md:inline-block bg-emerald-500 h-1 group-hover:h-2 w-7 transition-height rounded-t-2 absolute bottom-0 left-1/2 -translate-x-1/2" />
