@@ -8,6 +8,7 @@
     "nuxt3": "yarn workspace @about-me-mix/nuxt3 dev",
     "svelte-kit2": "yarn workspace @about-me-mix/svelte-kit2 dev",
     "next14": "yarn workspace @about-me-mix/next14 dev",
+    "angular17": "yarn workspace @about-me-mix/angular17 dev",
     "dev": "sh ./shell/dev.sh",
     "build": "sh ./shell/build.sh",
     "deploy": "rm -rf ./docs && cp -a ./about-me-mix ./docs"

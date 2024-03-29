@@ -1,0 +1,29 @@
+<section class="h-400vh bg-gradient-to-b from-zinc-950 to-zinc-800">
+  <div #container class="coding h-100vh w-full px-2 pb-2 sticky top-0 flex flex-col items-center justify-start lg:justify-center">
+    <!--dialogue-->
+    <div class="flex items-center justify-center flex-col lg:flex-row pt-18 lg:pt-5 pb-7 lg:pb-5 flex-shrink-0 w-full">
+      <!--icon-->
+      <img [src]="avatar" alt="" class="w-20 h-20 mb-3 lg:mb-0 lg:w-30 lg:h-30 shadow-lg rounded-full" />
+      <!--message-->
+      <div class="flex-shrink-0 max-w-100 flex-none lg:flex-1 lg:ml-10 text-4 lg:text-5 relative">
+        <p class="coding__dialogue origin-top lg:origin-left bg-white rounded-3 shadow-lg px-3 lg:px-5 leading-10 lg:leading-16 inline-block" [attr.data-step]="0" i18n="@@section.coding.message[0]">section.coding.message[0]</p>
+        <p class="coding__dialogue hidden opacity-0 origin-top lg:origin-left scale-80 bg-white rounded-3 shadow-lg px-3 lg:px-5 leading-10 lg:leading-16 inline-block" i18n="@@section.coding.message[1]" [attr.data-step]="1">section.coding.message[1]</p>
+        <p class="coding__dialogue hidden opacity-0 origin-top lg:origin-left scale-80 bg-white rounded-3 shadow-lg px-3 lg:px-5 leading-10 lg:leading-16 inline-block" i18n="@@section.coding.message[2]" [attr.data-step]="2">section.coding.message[2]</p>
+        <p class="coding__dialogue hidden opacity-0 origin-top lg:origin-left scale-80 bg-white rounded-3 shadow-lg px-3 lg:px-5 leading-10 lg:leading-16 inline-block" i18n="@@section.coding.message[3]" [attr.data-step]="3">section.coding.message[3]</p>
+        <p class="coding__dialogue hidden opacity-0 origin-top lg:origin-left scale-80 bg-white rounded-3 shadow-lg px-3 lg:px-5 leading-10 lg:leading-16 inline-block" i18n="@@section.coding.message[4]" [attr.data-step]="4">section.coding.message[4]</p>
+        <p class="coding__dialogue hidden opacity-0 origin-top lg:origin-left scale-80 bg-white rounded-3 shadow-lg px-3 lg:px-5 leading-10 lg:leading-16 inline-block" i18n="@@section.coding.message[5]" [attr.data-step]="5">section.coding.message[5]</p>
+      </div>
+    </div>
+    <!--code range-->
+    <div class="text-3 overflow-hidden lg:text-4 flex text-white w-full h-130 lg:max-w-180 p-2 lg:p-5 flex-1 lg:flex-none rounded-1 lg:rounded-2 bg-zinc-800 shadow-lg">
+      <!--line-->
+      <div class="flex-shrink-0 hidden lg:block mr-2 border-r-2 border-zinc-700 pr-2">
+        <p *ngFor="let i of lines" class="text-zinc-600">
+          <span class="w-5 text-right inline-block">{{ i }}</span>
+        </p>
+      </div>
+      <!--code-->
+      <app-code></app-code>
+    </div>
+  </div>
+</section>

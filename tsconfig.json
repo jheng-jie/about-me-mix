@@ -8,6 +8,9 @@
     },
     {
       "path": "./projects/nuxt3/tsconfig.json"
+    },
+    {
+      "path": "./projects/angular17/tsconfig.app.json"
     }
   ]
 }

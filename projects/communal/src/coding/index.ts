@@ -4,12 +4,12 @@ import gsap, { Power0, Back } from 'gsap'
  * @desc 遞歸移除樣式
  */
 export const removeStyles = (el: HTMLElement) => {
-  el.removeAttribute('style')
+  el?.removeAttribute('style')
 
-  if (el.childNodes.length > 0) {
+  if (el?.childNodes.length > 0) {
     for (let child in el.childNodes) {
       /* filter element nodes only */
-      if (el.childNodes[child].nodeType == 1) removeStyles(el.childNodes[child] as HTMLElement)
+      if (el?.childNodes?.[child]?.nodeType == 1) removeStyles(el.childNodes[child] as HTMLElement)
     }
   }
 }
@@ -61,6 +61,7 @@ export const createCodingTween = (container: HTMLDivElement): gsap.core.Timeline
   Array.from({ length: 3 })
     .map((_, index) => index + 2)
     .map(step => {
+      console.log(step)
       // message
       const dialogue = container.querySelectorAll(`.coding__dialogue[data-step='${step}']`)
       tl.to(dialogue, AnimateVarsDialogueShow, tl.totalDuration())

@@ -6,7 +6,7 @@ source $(dirname "$0")/unit.sh
 echo '------ build start ------\n'
 
 # menu list
-menu=(all nuxt3 svelte-kit2 next14)
+menu=(all nuxt3 svelte-kit2 next14 angular17)
 
 # select
 echo "Select one env using up/down keys and enter to confirm:"
@@ -50,4 +50,13 @@ if [ "$target" = "all" ] || [ "$target" = "svelte-kit2" ]; then
   rm -rf ./$dist/svelte
   yarn workspace @about-me-mix/svelte-kit2 build
   mv ./projects/svelte-kit2/output ./$dist/svelte
+fi
+
+# angular
+if [ "$target" = "all" ] || [ "$target" = "angular17" ]; then
+  echo '--- angular 17 ---\n'
+  rm -rf ./$dist/angular
+  yarn workspace @about-me-mix/angular17 build
+  mv ./projects/angular17/dist/angular17/browser ./$dist/angular
+  echo '<script>location.href="/about-me-mix/angular/zh/home/";</script><meta http-equiv="refresh" content="0;url=/about-me-mix/angular/zh/home/">' > ./$dist/angular/index.html
 fi

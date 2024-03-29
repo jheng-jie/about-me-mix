@@ -1,0 +1,16 @@
+<section class="experience w-full h-600vh bg-gradient-to-b from-zinc-700 to-zinc-950">
+  <div #container class="fixed left-0 top-0 w-full h-100vh flex flex-nowrap overflow-hidden whitespace-nowrap">
+    <!--title-->
+    <div class="w-full h-100vh flex items-center justify-center flex-shrink-0 font-bold text-white text-10 lg:text-16">
+      <h1 i18n="@@section.experience.title" class="experience__title hidden opacity-0 scale-50">section.experience.title</h1>
+    </div>
+    <!--works-->
+    <div *ngFor="let work of experience" class="flex-shrink-0 inline-block pt-40vh">
+      <app-point [details]="work"></app-point>
+    </div>
+    <!--finish-->
+    <div class="w-full h-100vh flex items-center justify-center flex-shrink-0 font-bold text-white text-10 lg:text-16">
+      <h1 i18n="@@section.coding.title" class="experience__title-coding">section.coding.title</h1>
+    </div>
+  </div>
+</section>
