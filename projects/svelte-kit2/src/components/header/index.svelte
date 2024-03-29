@@ -2,7 +2,7 @@
   import { t, locale } from '$lib/i18n'
   import SwitchLanguage from './components/switch-language/index.svelte'
   import DarkMode from './components/dark-mode/index.svelte'
-  import { MIX_GIT_PATH, MIX_MENU_LINK_SVELTE, MIX_MENU_LINK_VUE, MIX_MENU_LINK_REACT } from '$env/static/public'
+  import { MIX_GIT_PATH, MIX_MENU_LINK_SVELTE, MIX_MENU_LINK_VUE, MIX_MENU_LINK_REACT, MIX_MENU_LINK_ANGULAR } from '$env/static/public'
   import { base } from '$app/paths'
   import { page } from '$app/stores'
 
@@ -70,6 +70,10 @@
           <!--divide-->
           <div class="w-full md:w-0.5 h-0.5 mb-2 md:mb-0 md:h-4 mt-2 md:mt-0 md:mx-3 bg-gray-100 dark:bg-zinc-700" />
           <!--framework-->
+          <button on:keyup={() => false} on:click={() => push(MIX_MENU_LINK_ANGULAR)} class="cursor-pointer h-10 lg:h-12 mx-3 relative group">
+            Angular
+            <span class="hidden md:inline-block bg-purple-500 dark:bg-purple-400 h-0 group-hover:h-1 w-7 transition-height rounded-t-2 absolute bottom-0 left-1/2 -translate-x-1/2" />
+          </button>
           <button on:keyup={() => false} on:click={() => push(MIX_MENU_LINK_VUE)} class="cursor-pointer h-10 lg:h-12 mx-3 relative group">
             Vue
             <span class="hidden md:inline-block bg-emerald-500 h-0 group-hover:h-1 w-7 transition-height rounded-t-2 absolute bottom-0 left-1/2 -translate-x-1/2" />
