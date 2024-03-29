@@ -23,6 +23,7 @@ nextApp.prepare().then(() => {
   // vue svelte 直接使用打包結果
   serverApp.use(`${MIX_BASE_URL}/vue`, express.static(path.resolve('../../about-me-mix/vue')))
   serverApp.use(`${MIX_BASE_URL}/svelte`, express.static(path.resolve('../../about-me-mix/svelte')))
+  serverApp.use(`${MIX_BASE_URL}/angular`, express.static(path.resolve('../../about-me-mix/angular')))
 
   // next
   serverApp.use((req, res) => handle(req, res, parse(req.url, true)))

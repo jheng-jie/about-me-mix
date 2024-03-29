@@ -3,7 +3,7 @@ const dotenv = require('dotenv')
 
 // NOTE: 生產模式未經過 server.mjs，要手動載 env
 if (process.env.NODE_ENV === 'production') dotenv.config({ path: path.resolve('../../.env') })
-const { MIX_BASE_URL, MIX_ASSETS_URL, MIX_MENU_LINK_VUE, MIX_MENU_LINK_REACT, MIX_MENU_LINK_SVELTE, MIX_DEFAULT_LOCALE, MIX_SUPPORTS_LOCALES, MIX_GIT_PATH } = process.env
+const { MIX_BASE_URL, MIX_ASSETS_URL } = process.env
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -15,14 +15,9 @@ const nextConfig = {
 
   // env
   env: {
-    MIX_BASE_URL,
-    MIX_ASSETS_URL,
-    MIX_MENU_LINK_VUE,
-    MIX_MENU_LINK_REACT,
-    MIX_MENU_LINK_SVELTE,
-    MIX_DEFAULT_LOCALE,
-    MIX_SUPPORTS_LOCALES,
-    MIX_GIT_PATH,
+    ...Object.keys(process.env)
+      .filter(key => key.startsWith('MIX_'))
+      .reduce((res, key) => ({ ...res, [key]: process.env[key] }), {}),
   },
 
   // 內建 i18n 不支援 export

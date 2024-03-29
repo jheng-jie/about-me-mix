@@ -9,7 +9,7 @@ type State = typeof CommunalStore.website
 export const useClientStore = create<State>(() => CommunalStore.website)
 
 // update state
-const setState = (cb: (state: State) => State | void) => useClientStore.setState(produce<State>(cb))
+const setState = (cb: (state: State) => Partial<State> | void) => useClientStore.setState(produce(cb))
 
 /**
  * @desc website init
@@ -35,8 +35,6 @@ export const resetScreenSize = () =>
  * @desc 設定日夜
  */
 export const switchDarkMode = (dark: boolean) => {
-  setState(state => {
-    state.dark = dark
-  })
+  setState(() => ({ dark }))
   SetDarkMode(dark)
 }
