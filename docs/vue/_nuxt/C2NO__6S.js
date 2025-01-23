@@ -1,1 +1,0 @@
-import{d as t,l as n,t as s,v as o,x as r}from"./BGwDrt1t.js";const a={class:"fixed w-full h-full left-0 top-0 bg-gray-100 text-gray-500 font-bold flex items-center justify-center"},i=t({__name:"index",setup(c){const{MIX_BASE_URL:e}=n().public;return s({meta:[{"http-equiv":"refresh",content:`0;url=${e}/vue/home/`}]}),(l,u)=>(o(),r("span",a,"redirect..."))}});export{i as default};

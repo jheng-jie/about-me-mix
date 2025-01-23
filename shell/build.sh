@@ -50,6 +50,8 @@ if [ "$target" = "all" ] || [ "$target" = "svelte-kit2" ]; then
   rm -rf ./$dist/svelte
   yarn workspace @about-me-mix/svelte-kit2 build
   mv ./projects/svelte-kit2/output ./$dist/svelte
+  mkdir -p ./$dist/svelte/home/
+  echo '<script>location.href="/about-me-mix/svelte/zh/home/";</script><meta http-equiv="refresh" content="0;url=/about-me-mix/svelte/zh/home/">' > ./$dist/svelte/home/index.html
 fi
 
 # angular
@@ -58,5 +60,7 @@ if [ "$target" = "all" ] || [ "$target" = "angular17" ]; then
   rm -rf ./$dist/angular
   yarn workspace @about-me-mix/angular17 build
   mv ./projects/angular17/dist/angular17/browser ./$dist/angular
+  mkdir -p ./$dist/angular/home/
   echo '<script>location.href="/about-me-mix/angular/zh/home/";</script><meta http-equiv="refresh" content="0;url=/about-me-mix/angular/zh/home/">' > ./$dist/angular/index.html
+  echo '<script>location.href="/about-me-mix/angular/zh/home/";</script><meta http-equiv="refresh" content="0;url=/about-me-mix/angular/zh/home/">' > ./$dist/angular/home/index.html
 fi
